@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include metadata.html %}
+{% include fontface.html %}
+{% include fontawesome.html %}
+<style>
+{% include portfolio.css %}
+</style>
+</head>
+<body id="home">
+  <main>
+    <div class="container">
+      {% include backhome.html %}
+      <section>
+        <h1 class="heading">Labs</h1>
+        <p class="lead">My private batcave</p>
+      </section>
+    </div>
+  </main>
+  {% include footer.html %}
+  <script>
+    {% include fontface_observer.js %}
+    {% include register_service_worker.js %}
+    {% include galite.js %}
+    {% include modernizr.js %}
+  </script>
+</body>
+</html>

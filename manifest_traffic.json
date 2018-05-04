@@ -1,0 +1,15 @@
+{
+  "short_name": "JB Traffic",
+  "name": "JB Traffic",
+  "icons": [
+    {
+      "src":"images/static/logos/logo_circle.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://joaobordalo.com/traffic",
+  "background_color": "#000",
+  "theme_color": "#fff",
+  "display": "standalone"
+}

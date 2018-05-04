@@ -1,0 +1,15 @@
+{
+  "short_name": "João Bordalo",
+  "name": "João Bordalo",
+  "icons": [
+    {
+      "src":"images/static/logos/logo_circle.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://joaobordalo.com",
+  "background_color": "#000",
+  "theme_color": "#fff",
+  "display": "standalone"
+}

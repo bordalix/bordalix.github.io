@@ -1,0 +1,85 @@
+---
+title: Portfolio
+layout: portfolio
+---
+
+  <style>
+    .box {
+      width:25%;
+      padding-top:25%;
+      float:left;
+      position: relative;
+      background-size: auto 70%;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      cursor: pointer;
+    }
+    .box.wtst     { background-color: #546A76; }
+    .box.iscore   { background-color: #88A0A8; }
+    .box.hatitude { background-color: #B4CEB3; }
+    .box.cowork   { background-color: #DBD3C9; }
+    .box_text {
+      text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding-top: 40px;
+      z-index:3;
+    }
+    .box_text h3, .box_text p { color: #fff; }
+  </style>
+  <script>
+    function goTo(page) {
+      var url = '/portfolio/' + page + '.html';
+      window.location = url;
+    }
+    /* run this when page is ready */
+    document.addEventListener("DOMContentLoaded", function () {
+      /* lazy load div background images */
+      var boxes = document.getElementsByClassName('box');
+      [].forEach.call(boxes, function (box) {
+        var src = box.getAttribute('data-bg-image');
+        if (src) {
+          src = '/images/static/portfolio/' + src;
+          Modernizr.on('webp', function(result) {
+            src = src + (result ? '.webp' : '.png');
+            box.style.backgroundImage = 'url(' + src + ')';
+          });
+        }
+      });
+    });
+  </script>
+  <main>
+    <section>
+      <div class="container">
+        <h1 class="heading">Portfolio</h1>
+        <p class="lead">Some stuff I made recently</p>
+      </div>
+      <div class="container-fluid">
+        <div class="box wtst" onclick="goTo('wtst')" data-bg-image="wtst">
+          <div class="overlay"></div>
+          <div class="box_text">
+            <h3>Where to surf today</h3>
+          </div>
+        </div>
+        <div class="box iscore" onclick="goTo('iscore')" data-bg-image="iscore">
+          <div class="box_text">
+            <h3>iScore</h3>
+          </div>
+        </div>
+        <div class="box hatitude" onclick="goTo('hatitude')" data-bg-image="hatitude">
+          <div class="box_text">
+            <h3>Hatitude</h3>
+          </div>
+        </div>
+        <div class="box cowork" onclick="goTo('cowork')" data-bg-image="cowork">
+          <div class="box_text">
+            <h3>CoWork Azeitão</h3>
+          </div>
+        </div>
+        <div style="clear: both"></div>
+      </div>
+    </section>
+  </main>

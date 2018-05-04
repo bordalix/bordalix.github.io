@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include metadata.html %}
+{% include fontface.html %}
+{% include fontawesome.html %}
+<style>
+{% include homepage.css %}
+</style>
+</head>
+
+<body id="home">
+  <script>
+    function goTo(page) {
+      var url = '/portfolio/' + page + '.html';
+      window.location = url;
+    }
+  </script>
+  <main>
+    <section id="intro">
+      <div class="container">
+	      <h1>
+          Hello.<br />
+          I'm <span class="text-primary">João Bordalo</span>, a
+          full stack <span class="text-primary">developer</span>
+          living in Portugal.
+	      </h1>
+      </div>
+    </section>
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="heading">Selected work</h2>
+        <p class="lead">Some stuff I made recently</p>
+      </div>
+      <div class="container-fluid">
+        <div class="box wtst" onclick="goTo('wtst')" data-bg-image="wtst">
+          <div class="overlay"></div>
+          <div class="box_text">
+            <h3>Where to surf today</h3>
+          </div>
+        </div>
+        <div class="box iscore" onclick="goTo('iscore')" data-bg-image="iscore">
+          <div class="box_text">
+            <h3>iScore</h3>
+          </div>
+        </div>
+        <div class="box hatitude" onclick="goTo('hatitude')" data-bg-image="hatitude">
+          <div class="box_text">
+            <h3>Hatitude</h3>
+          </div>
+        </div>
+        <div class="box cowork" onclick="goTo('cowork')" data-bg-image="cowork">
+          <div class="box_text">
+            <h3>CoWork Azeitão</h3>
+          </div>
+        </div>
+        <div style="clear: both"></div>
+      </div>
+    </section>
+    <section id="skills">
+      <div class="container">
+        <h2 class="heading">Skills</h2>
+        <p class="lead">Jack of all trades</p>
+        <div class="text_column left">
+          <div class="skill-item">
+            <div class="progress-title">DevOps</div>
+            <div class="progress">
+              <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;" class="progress-bar progress-bar-skill1"><span class="sr-only">60</span></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="progress-title">Data modeling</div>
+            <div class="progress">
+              <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" class="progress-bar progress-bar-skill2"><span class="sr-only">70</span></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="progress-title">Business logic</div>
+            <div class="progress">
+              <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;" class="progress-bar progress-bar-skill3"><span class="sr-only">80</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="text_column right">
+          <div class="skill-item">
+            <div class="progress-title">API layer / MVC</div>
+            <div class="progress">
+              <div role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;" class="progress-bar progress-bar-skill4"><span class="sr-only">90</span></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="progress-title">User interface</div>
+            <div class="progress">
+              <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;" class="progress-bar progress-bar-skill5"><span class="sr-only">80</span></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="progress-title">User Experience</div>
+            <div class="progress">
+              <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" class="progress-bar progress-bar-skill6"><span class="sr-only">70</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="clear: both"></div>
+      </div>
+    </section>
+    <section id="about" class="grey">
+      <div class="container">
+        <h2 class="heading">About me</h2>
+        <p class="lead">Creative, doer, problem solver</p>
+        <div class="text_column left">
+          <p>
+            My name is João Bordalo. I'm 45 years old and live in beautiful
+            Azeitão, Portugal. I studied Computer Science at
+            <a href="https://www.uminho.pt/EN">University of Minho</a>
+            and work as a freelance software developer and consultant.
+          </p>
+          <p>
+            I <a href="https://github.com/bordalix/">code</a>,
+            <a href="https://joaobordalo.com/blog">blog</a>, advise and consult,
+            although not necessarily in that order. I also tweet as
+            <a href="https://twitter.com/bordalix">@bordalix</a>.
+            When I'm doing none of those things, I enjoy reading, working out,
+            and playing with my 3 kids.
+          </p>
+        </div>
+        <div class="text_column right">
+          <p>
+            If you're looking for a full stack developer, let's get in touch!
+            I look forward to hearing from you.
+          </p>
+          <p class="social">
+            <a href="https://twitter.com/bordalix" title="twitter" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://plus.google.com/+JoaoBordalo" title="gplus" class="gplus"><i class="fa fa-google-plus"></i></a>
+            <a href="https://stackoverflow.com/users/7006174/bordalix" title="stack-overflow" class="stack-overflow"><i class="fa fa-stack-overflow"></i></a>
+            <a href="https://github.com/bordalix" title="github" class="github"><i class="fa fa-github"></i></a>
+            <a href="https://joaobordalo.com/blog" title="blog" class="rss"><i class="fa fa-rss"></i></a>
+            <a href="mailto:joao.bordalo@gmail.com" title="email" class="email"><i class="fa fa-envelope-o"></i></a>
+          </p>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </section>
+    <section id="contact">
+      <div class="container">
+        <h2 class="heading">Contact</h2>
+        <p class="lead">Let's talk</p>
+        <div class="text_column left">
+          <form id="contact-form" action="https://formspree.io/joao.bordalo@gmail.com" method="post">
+            <div class="controls">
+              <div class="form-group">
+                <label for="name">Your name *</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name" required="required" class="form-control" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email">Your email *</label>
+                <input type="email" name="_replyto" id="email" placeholder="Enter your email" required="required" class="form-control" autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="message">Your message *</label>
+                <textarea rows="4" name="message" id="message" placeholder="Enter your message" required="required" class="form-control"></textarea>
+              </div>
+              <div class="button">
+                <input type="submit" value="Send message" class="btn btn-primary btn-block">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="text_column right">
+          <p>
+            I'm fluent in Portuguese, English and Spanish, and medium level on
+            French. I learned Esperanto some years ago, but it's really rusty.
+          </p> 
+          <p>
+            If you prefer, you can just drop by and have a beer, or contact me
+            using the alternative methods listed below:
+          </p>
+          <div class="contact-info-block">
+            <div class="ci-icon"><i class="fa fa-fw fa-map-marker"></i></div>
+            <div class="ci-text">Azeitão, Portugal</div>
+          </div>
+          <div class="contact-info-block">
+            <div class="ci-icon"><i class="fa fa-fw fa-envelope-o"></i></div>
+            <div class="ci-text">joao.bordalo@gmail.com</div>
+          </div>
+          <div class="contact-info-block">
+            <div class="ci-icon"><i class="fa fa-fw fa-phone"></i></div>
+            <div class="ci-text">+351 932673256</div>
+          </div>
+          <div class="contact-info-block">
+            <div class="ci-icon"><i class="fa fa-fw fa-check-square-o"></i></div>
+            <div class="ci-text">Freelance available</div>
+          </div>
+        </div>
+        <div style="clear: both"></div>
+      </div>
+    </section>
+    <section id="experience" class="grey">
+      <div class="container">
+        <h2 class="heading">Experience</h2>
+        <p class="lead">20 years of experience</p>
+        <ul class="timeline">
+          <li>
+            <div class="timeline-image">
+              <h3>Sep 1990<br>-<br>May 1996</h3>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Minho University</h4>
+                <h4 class="subheading">Graduate Student</h4>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  Complementary studies in cryptography and distributed operating
+                  systems.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline-inverted">
+            <div class="timeline-image">
+              <h3>Jun 1995<br>-<br>May 1996</h3>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>IDITE-Minho</h4>
+                <h4 class="subheading">Project Manager</h4>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  EU project, with coordination of teams
+                  in several UE countries.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-image">
+              <h3>Jun 1996<br>-<br>May 1998</h3>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Telenet ISP</h4>
+                <h4 class="subheading">Systems engineer</h4>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  ISP's mail system engineer.<br />
+                  System administrator.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline-inverted">
+            <div class="timeline-image">
+              <h3>Apr 1998<br>-<br>Apr 1999</h3>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>IP Global ISP</h4>
+                <h4 class="subheading">Systems engineer</h4>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  ISP's provisioning system.<br />
+                  Network security officer.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-image">
+              <h3>May 1999<br>-<br>Feb 2002</h3>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Novis ISP</h4>
+                <h4 class="subheading">Systems engineer</h4>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  Responsible for mail, proxy, DNS e AAA systems.<br />
+                  Network security officer.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline-inverted">
+            <div class="timeline-image">
+              <h3>Mar 2002<br>-<br>Apr 2006</h3>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Clix Portal</h4>
+                <h4 class="subheading">CTO</h4>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  Overall technical guidance.<br />
+                  R&amp;D of new portal products and services.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-image">
+              <h3>Jul 2006<br>-<br>Dec 2015</h3>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4>Excentric digital agency</h4>
+                <h4 class="subheading">Partner</h4>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  Innovation and R&amp;D.<br />
+                  Digital marketing.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline-inverted">
+          <div class="timeline-image">
+            <h3>Jan 2016<br>-<br>Present</h3>
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>Freelance</h4>
+              <h4 class="subheading">Full stack Developer</h4>
+            </div>
+            <div class="timeline-body">
+              <p>
+                Development of web apps.<br />
+                Consulting and advising.
+              </p>
+            </div>
+          </div>
+        </li>
+        </ul>
+      </div>
+    </section>
+    <section id="resume">
+      <div class="container">
+        <h2 class="heading">Resume</h2>
+        <p class="lead">The full story</p>
+        <div class="text_column left">
+          <p>
+            Back in 1992, while at my Informatics and Systems Engineering course
+            at the Minho University, I had the first contact with the Internet.
+            At that time, Internet was nothing else than a few email addresses,
+            some FTP sites, the Usenet and a couple of archaic search engines -
+            the World Wide Web was still to be publicly available. But it was
+            enough to get me hooked.
+          </p>
+          <p>
+            I started my working experience in 1996 working for Telenet, one of
+            the first ISP in Portugal, which was later bought by IP Global (also
+            an ISP), which later was acquired by Sonae (the biggest non-financial
+            group in Portugal) giving birth to Novis, a telco company. During
+            this period, I developed strong technical knowledges in Internet
+            access technologies and services, learn several open-source
+            programming languages and developed my design, usability and
+            accessibility skills.
+          </p>
+          <p>
+            In 1999, the SonaeCom group decided to spin off Clix, the portal and
+            future ISP brand for the the group telecommunications arm. In 2002, I
+            accept the invitation to become Clix technical director, where I
+            developed my management and strategic skills, and helped the company
+            to develop the second biggest portal in Portugal, as to search and
+            implement innovative access products, such as wireless broadband and
+            TV over IP technologies.
+          </p>
+        </div>
+        <div class="text_column right">
+          <p>
+            Early 2006, I decided to exit the Sonae group and formed my own
+            company, Excentric, focusing on digital media and advertising, which
+            became financial healthy in 6 months, with significant growth and
+            development in new business areas.
+          </p>
+          <p>
+            In 2013, Excentric merged with Grey Lisboa (a WPP company), giving
+            birth to ExcentricGrey, a full service advertising agency, where I
+            had the role of partner. At the end of 2015, WPP bought the remaining
+            stake in the company, and I decided it was time to begin a new
+            chapter in my professional life.
+          </p>
+          <p>
+            Almost 10 years doing management roles kept me away from getting my
+            hands dirty, and I felt I needed to re-learn the new skills of the
+            trade. So, in 2016 I decided to take a break, and spent the entire
+            year experimenting with stuff like Dockers, Meteor, MongoDB,
+            Blockchain, Artificial Intelligence and Machine Learning.
+          </p>
+          <p>
+            In 2017, I spent the entire year advising a Venture Builder fund on
+            new technologies and startup evaluation. I also developed several
+            website and applications for customers, and consulted a few customers
+            on innovation and disruptive technologies.
+          <p>
+            And now, here I am, looking for new opportunities.
+          </p>
+        </div>
+        <div style="clear: both"></div>
+        <div class="button">
+          <button onclick="window.location = 'images/static/cv/cv.pdf'" class="btn btn-primary btn-block">Download my CV</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include footer.html %}
+  <script>
+    {% include fontface_observer.js %}
+    {% include register_service_worker.js %}
+    {% include galite.js %}
+    {% include modernizr.js %}
+    /* run this when page is ready */
+    document.addEventListener("DOMContentLoaded", function () {
+      /* lazy load div background images */
+      var boxes = document.getElementsByClassName('box');
+      [].forEach.call(boxes, function (box) {
+        var src = box.getAttribute('data-bg-image');
+        if (src) {
+          src = '/images/static/portfolio/' + src;
+          Modernizr.on('webp', function(result) {
+            src = src + (result ? '.webp' : '.png');
+            box.style.backgroundImage = 'url(' + src + ')';
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
