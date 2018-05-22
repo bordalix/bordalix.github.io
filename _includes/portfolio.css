@@ -104,6 +104,15 @@ nav img {
   height: 24px;
   vertical-align: middle;
 }
+pre {
+  background-color: #ddd;
+  margin: 1em 0px;
+}
+code {
+  font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  color: #333;
+  font-size:13px;
+}
 ul {
  list-style: disc;
  margin: 1rem 0 1rem 1rem;

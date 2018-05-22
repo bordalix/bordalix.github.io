@@ -1,0 +1,159 @@
+---
+title: Ethereum roulette
+layout: portfolio
+---
+
+<style>
+  .technical-info-block .ti-icon { color: #117922; }
+</style>
+
+<main>
+  <section>
+    <div class="container">
+      <h1 class="heading">Ethereum roulette</h2>
+      <p class="lead">European roulette PoC deployed to the ropsten network</p>
+      <p class="url">
+        <i class="fa fa-external-link"></i>
+        <a href="http://ethereum-roulette.ga">http://ethereum-roulette.ga</a>
+      </p>
+      <p class="url">
+        <i class="fa fa-github"></i>
+        <a href="https://github.com/bordalix/ethereum-roulette">https://github.com/bordalix/ethereum-roulette</a>
+      </p>
+      <div class="text_column left">
+        <a href="http://ethereum-roulette.ga">
+          <picture>
+            <source srcset="../images/static/portfolio/roulette.webp" type="image/webp">
+            <source srcset="../images/static/portfolio/roulette.png" type="image/png"> 
+            <img src="../images/static/portfolio/roulette.png" alt="thumbnail">
+          </picture>
+        </a>
+      </div>
+      <div class="text_column right">
+        <div class="technical-info-block">
+          <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+          <div class="ti-text">
+            <span class="skill">DevOps</span><br />
+            Nginx, AWS
+          </div>
+        </div>
+        <div class="technical-info-block">
+          <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+          <div class="ti-text">
+            <span class="skill">Database</span><br />
+            Ethereum blockchain
+          </div>
+        </div>
+        <div class="technical-info-block">
+          <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+          <div class="ti-text">
+            <span class="skill">Business logic</span><br />
+            Ethereum smart contract
+          </div>
+        </div>
+        <div class="technical-info-block">
+          <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+          <div class="ti-text">
+            <span class="skill">API Layer / MVC</span><br />
+            Metamask, web3js
+          </div>
+        </div>
+        <div class="technical-info-block">
+          <div class="ti-icon"><i class="fa fa-check-circle-o"></i></i></div>
+          <div class="ti-text">
+            <span class="skill">Design / UI</span><br />
+            Bootstrap
+          </div>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+  </section>
+  <section class="grey">
+    <div class="container">
+    <h3>Full story</h3>
+    <div class="text_column left">
+      <p><strong>Motivation</strong></p>
+      <p>
+        I decided to learn more about developing smart contracts, and since I learn
+        by building stuff, so I decided to implement a casino roulette, with the business
+        logic being implemented in Solidity, the language of choice to develop smart
+        contracts in the Ethereum blockchain.
+      </p>
+      <p>
+        The frontend is a regular html page, with the web3 javascript library, which makes
+        it possible to interact with the Ethereum blockchain via javascript. The web3
+        library is injected in the page by the Chrome extension Metamask.
+      </p>
+      <p><strong>How to play</strong></p>
+      <p>
+        You’ll need to have the <a href="https://metamask.io/">Metamask</a> Chrome extension
+        installed, have an account on the ropsten network, have some ether and
+        <a href="http://ethereum-roulette.ga">access the dapp</a>
+      </p>
+      <p>
+        Every bet has a fixed amount of 0.01 ether (around €6) and you can bet by
+        clicking on the board. The roulette just accepts a bet when has sufficient funds to
+        pay for it and every other active bet.
+      </p>
+      <p>
+        Different people can be playing at the same time.
+      </p>
+      <p>
+        One of the players will click the “Spin Wheel” button, which will generate a
+        random number and all bets will be dealt with accordingly.
+      </p>
+      <p>
+        When a player wins a bet, the payout is credited on his personal account.
+        The player can, at any moment, click the “Cash out” button and receive their winnings.
+      </p>
+    </div>
+    <div class="text_column right">
+      <p><strong>Clone repo</strong></p>
+      <p>What you’ll need</p>
+      <ul>
+        <li>
+          Ganache: you can download a self-contained prebuilt Ganache binary for your
+          platform of choice using the "Download" button on the
+          <a href="http://truffleframework.com/ganache/">Ganache website</a>.
+          After, run it and keep it running, this will deploy a private Ethereum network
+          on your machine, port 7545
+        </li>
+        <li>
+          npm: follow <a href="https://www.npmjs.com/get-npm">this instructions</a>
+          to install npm
+        </li>
+        <li>
+          <a href="https://metamask.io/">Metamask</a> Chrome extension installed and
+          running
+        </li>
+      </ul>
+      <p><strong>How to lunch the ethereum roulette on your machine</strong></p>
+      <p>Run Ganache and keep it running.</p>
+      <p>Clone the repo from github:</p>
+      <pre>
+        <code>
+  git clone https://github.com/bordalix/ethereum-roulette.git
+  cd ethereum-roulette
+  npm install</code>
+      </pre>
+      <p>Deploy the contract to your private blockchain:</p>
+      <pre>
+        <code>
+  truffle deploy --reset</code>
+      </pre>
+      <p>Run the webserver</p>
+      <pre>
+        <code>
+  npm run dev</code>
+      </pre>
+      <p>
+        You now have the ethereum roulette on
+        <a href="http://localhost:3000">http://localhost:3000</a>.
+      </p>
+      <p>Have fun.</p>
+    </div>
+    <div style="clear: both"></div>
+  </div>
+  </section>
+</main>
