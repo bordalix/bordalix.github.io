@@ -54,6 +54,11 @@
             <h3>Ethereum roulette</h3>
           </div>
         </div>
+        <div class="box cowork" onclick="goTo('cowork')" data-bg-image="cowork">
+          <div class="box_text">
+            <h3>CoWork Azeitão</h3>
+          </div>
+        </div>
         <div style="clear: both"></div>
       </div>
     </section>
@@ -422,7 +427,7 @@
       [].forEach.call(boxes, function (box) {
         var src = box.getAttribute('data-bg-image');
         if (src) {
-          src = '/images/static/portfolio/' + src;
+          src = 'https://cdn.joaobordalo.com/images/static/portfolio/' + src;
           Modernizr.on('webp', function(result) {
             src = src + (result ? '.webp' : '.png');
             box.style.backgroundImage = 'url(' + src + ')';

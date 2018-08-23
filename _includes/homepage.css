@@ -173,8 +173,8 @@ nav img {
   background: #1f75b2;
 }
 .box {
-  width:25%;
-  padding-top:25%;
+  width:20%;
+  padding-top:20%;
   float:left;
   position: relative;
   background-size: auto 70%;
@@ -182,11 +182,11 @@ nav img {
   background-position: center bottom;
   cursor: pointer;
 }
-.box.wtst     { background-color: #546A76; }
-.box.iscore   { background-color: #88A0A8; }
-.box.hatitude { background-color: #DBD3C9; }
-.box.cowork   { background-color: #DBD3C9; }
-.box.roulette { background-color: #B4CEB3; }
+.box.wtst     { background-color: #546a76; }
+.box.iscore   { background-color: #88a0a8; }
+.box.hatitude { background-color: #dbd3c9; }
+.box.cowork   { background-color: #bcb4dd; }
+.box.roulette { background-color: #b4ceb3; }
 .box_text {
   text-align: center;
   position: absolute;
