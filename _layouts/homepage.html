@@ -33,28 +33,28 @@
         <p class="lead">Some stuff I made recently</p>
       </div>
       <div class="container-fluid">
-        <div class="box wtst" onclick="goTo('wtst')" data-bg-image="wtst">
+        <div class="box wtst" data-bg-image="wtst">
           <div class="overlay"></div>
           <div class="box_text">
             <h3>Where to surf today</h3>
           </div>
         </div>
-        <div class="box iscore" onclick="goTo('iscore')" data-bg-image="iscore">
+        <div class="box iscore" data-bg-image="iscore">
           <div class="box_text">
             <h3>iScore</h3>
           </div>
         </div>
-        <div class="box hatitude" onclick="goTo('hatitude')" data-bg-image="hatitude">
+        <div class="box hatitude" data-bg-image="hatitude">
           <div class="box_text">
             <h3>Hatitude</h3>
           </div>
         </div>
-        <div class="box roulette" onclick="goTo('ethereum-roulette')" data-bg-image="ethroulette">
+        <div class="box ethereum-roulette" data-bg-image="ethroulette">
           <div class="box_text">
             <h3>Ethereum roulette</h3>
           </div>
         </div>
-        <div class="box cowork" onclick="goTo('cowork')" data-bg-image="cowork">
+        <div class="box cowork" data-bg-image="cowork">
           <div class="box_text">
             <h3>CoWork Azeitão</h3>
           </div>
@@ -408,8 +408,8 @@
           </p>
         </div>
         <div style="clear: both"></div>
-        <div class="button">
-          <button onclick="window.location = 'images/static/cv/cv.pdf'" class="btn btn-primary btn-block">Download my CV</button>
+        <div style="text-align: center; padding-top: 40px">
+          <a href="images/static/cv/cv.pdf" class="btn btn-primary btn-block">Download my CV</a>
         </div>
       </div>
     </section>
@@ -422,9 +422,9 @@
     {% include modernizr.js %}
     /* run this when page is ready */
     document.addEventListener("DOMContentLoaded", function () {
-      /* lazy load div background images */
       var boxes = document.getElementsByClassName('box');
       [].forEach.call(boxes, function (box) {
+        /* lazy load div background images */
         var src = box.getAttribute('data-bg-image');
         if (src) {
           src = 'https://cdn.joaobordalo.com/images/static/portfolio/' + src;
@@ -433,6 +433,9 @@
             box.style.backgroundImage = 'url(' + src + ')';
           });
         }
+        /* add event listener for click */
+        var item = box.className.split(' ')[1];
+        box.addEventListener('click', function() {goTo(item)});
       });
     });
   </script>

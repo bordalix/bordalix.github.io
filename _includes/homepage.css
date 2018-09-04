@@ -182,11 +182,11 @@ nav img {
   background-position: center bottom;
   cursor: pointer;
 }
-.box.wtst     { background-color: #546a76; }
-.box.iscore   { background-color: #88a0a8; }
-.box.hatitude { background-color: #dbd3c9; }
-.box.cowork   { background-color: #bcb4dd; }
-.box.roulette { background-color: #b4ceb3; }
+.box.wtst              { background-color: #546a76; }
+.box.iscore            { background-color: #88a0a8; }
+.box.hatitude          { background-color: #dbd3c9; }
+.box.cowork            { background-color: #bcb4dd; }
+.box.ethereum-roulette { background-color: #b4ceb3; }
 .box_text {
   text-align: center;
   position: absolute;
