@@ -3,7 +3,7 @@
   "name": "João Bordalo",
   "icons": [
     {
-      "src":"images/static/logos/logo_circle.png",
+      "src":"https://cdn.joaobordalo.com/images/static/logos/logo_circle.png",
       "sizes": "512x512",
       "type": "image/png"
     }
