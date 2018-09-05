@@ -10,12 +10,6 @@
 </head>
 
 <body id="home">
-  <script>
-    function goTo(page) {
-      var url = '/portfolio/' + page + '.html';
-      window.location = url;
-    }
-  </script>
   <main>
     <section id="intro">
       <div class="container">
@@ -402,9 +396,10 @@
           </p>
         </div>
         <div style="clear: both"></div>
-        <div style="text-align: center; padding-top: 40px">
-          <a href="images/static/cv/cv.pdf" class="btn btn-primary btn-block">Download my CV</a>
-        </div>
+        <input type="button"
+               id="downloadCV"
+               value="Download my CV"
+               class="btn btn-primary btn-block">
       </div>
     </section>
   </main>
@@ -414,6 +409,14 @@
     {% include register_service_worker.js %}
     {% include galite.js %}
     {% include modernizr.js %}
+    function goTo(page) {
+      var url = '/portfolio/' + page + '.html';
+      window.location = url;
+    }
+    function downloadCV() {
+      var url = '/images/static/cv/cv.pdf';
+      window.location = url;
+    }
     /* run this when page is ready */
     document.addEventListener("DOMContentLoaded", function () {
       var boxes = document.getElementsByClassName('box');
@@ -431,6 +434,8 @@
         var item = box.className.split(' ')[1];
         box.addEventListener('click', function() {goTo(item)});
       });
+      var dCV = document.getElementById('downloadCV');
+      dCV.addEventListener('click', function() { downloadCV() });
     });
   </script>
 </body>
