@@ -190,12 +190,14 @@ nav img {
   background-position: center bottom;
   cursor: pointer;
 }
-.box.wtst              { background-color: #546a76; }
-.box.iscore            { background-color: #88a0a8; }
-.box.hatitude          { background-color: #dbd3c9; }
-.box.cowork            { background-color: #bcb4dd; }
-.box.ethereum-roulette { background-color: #b4ceb3; }
-.box.appcexplorer      { background-color: #abdcd6; }
+.box.wtst               { background-color: #546a76; }
+.box.iscore             { background-color: #88a0a8; }
+.box.hatitude           { background-color: #dbd3c9; }
+.box.cowork             { background-color: #bcb4dd; }
+.box.ethereum-roulette  { background-color: #b4ceb3; }
+.box.batalhadosbitaites { background-color: #ff6884; }
+.box.worldleague        { background-color: #86c5df; }
+.box.appcexplorer       { background-color: #abdcd6; }
 .box_text {
   text-align: center;
   position: absolute;
@@ -526,6 +528,13 @@ pre {
   margin-bottom: 24px;
 }
 strong { font-weight:700; }
+span.skill {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #757575;
+  font-size: 14px;
+}
 @media (min-width: 1200px) {
   .container {
     max-width: 1020px;
