@@ -13,14 +13,18 @@ layout: portfolio
       /* lazy load div background images */
       var boxes = document.getElementsByClassName('box');
       [].forEach.call(boxes, function (box) {
+        /* lazy load div background images */
         var src = box.getAttribute('data-bg-image');
         if (src) {
-          src = '/images/static/portfolio/' + src;
+          src = 'https://cdn.joaobordalo.com/images/static/portfolio/' + src;
           Modernizr.on('webp', function(result) {
             src = src + (result ? '.webp' : '.png');
             box.style.backgroundImage = 'url(' + src + ')';
           });
         }
+        /* add event listener for click */
+        var item = box.className.split(' ')[1];
+        box.addEventListener('click', function() {goTo(item)});
       });
     });
   </script>
@@ -37,17 +41,17 @@ layout: portfolio
             <h3>Where to surf today</h3>
           </div>
         </div>
-        <div class="box iscore" onclick="goTo('iscore')" data-bg-image="iscore">
+        <div class="box iscore" data-bg-image="iscore">
           <div class="box_text">
             <h3>iScore</h3>
           </div>
         </div>
-        <div class="box hatitude" onclick="goTo('hatitude')" data-bg-image="hatitude">
+        <div class="box hatitude" data-bg-image="hatitude">
           <div class="box_text">
             <h3>Hatitude</h3>
           </div>
         </div>
-        <div class="box ethereum-roulette" onclick="goTo('ethereum-roulette')" data-bg-image="ethroulette">
+        <div class="box ethereum-roulette" data-bg-image="ethroulette">
           <div class="box_text">
             <h3>Ethereum roulette</h3>
           </div>
