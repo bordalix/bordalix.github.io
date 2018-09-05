@@ -5,14 +5,16 @@
 {% include fontface.html %}
 {% include fontawesome.html %}
 <style>
-{% include portfolio.css %}
+{% include homepage.css %}
 </style>
 </head>
 
 <body id="home">
-{% include backhome.html %}
-{{ content }}
-{% include footer.html %}
+  <div class="wrap">
+    {% include backhome.html %}
+    {{ content }}
+  </div>
+  {% include footer.html %}
   <script>
     {% include fontface_observer.js %}
     {% include register_service_worker.js %}
