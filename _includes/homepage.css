@@ -541,6 +541,13 @@ span.skill {
   color: #757575;
   font-size: 14px;
 }
+.text_column.left figure img { padding-bottom: 0;}
+figcaption {
+  font-size:12px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+}
 @media (min-width: 1200px) {
   .container {
     max-width: 1020px;
