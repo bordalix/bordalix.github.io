@@ -638,7 +638,6 @@ fieldset[disabled] .btn-primary:hover {
 .btn-primary:hover {
   background: #1f75b2;
   color: #fff;
-  border: solid 1px #1f75b2;
 }
 
 .btn-block {
