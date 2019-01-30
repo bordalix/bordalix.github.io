@@ -82,7 +82,7 @@ img {
 div.cams img {
   margin: 3%;
   width: 94%;
-  border: 1px solid #999;
+  background: url('https://cdn.joaobordalo.com/images/static/traffic/placeholder.png') no-repeat scroll 0 0;
 }
 section { padding: 60px 0; }
 nav p {
