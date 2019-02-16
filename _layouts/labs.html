@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% include metadata.html %}
-{% include fontface.html %}
-{% include fontawesome.html %}
+{% include html/metadata.html %}
+{% include html/fontface.html %}
+{% include html/fontawesome.html %}
 <style>
-{% include homepage.css %}
+{% include css/main.css %}
+{% include css/footer.css %}
+{% include css/media.css %}
 </style>
 {% seo %}
 </head>
 <body id="home">
   <main>
     <div class="container">
-      {% include backhome.html %}
+      {% include html/backhome.html %}
     </div>
     <section>
       <div class="container">
@@ -60,12 +62,12 @@
       </div>
     </section>
   </main>
-  {% include footer.html %}
+  {% include html/footer.html %}
   <script>
-    {% include fontface_observer.js %}
-    {% include register_service_worker.js %}
-    {% include galite.js %}
-    {% include modernizr.js %}
+    {% include js/fontface_observer.js %}
+    {% include js/register_service_worker.js %}
+    {% include js/galite.js %}
+    {% include js/modernizr.js %}
   </script>
 </body>
 </html>

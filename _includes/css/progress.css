@@ -1,0 +1,55 @@
+.progress-title {
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #757575;
+  font-size: 12px;
+}
+
+.progress,
+.progress-bar {
+  box-shadow: inset 0 0 0 transparent;
+}
+
+.progress {
+  overflow: hidden;
+  margin-bottom: 24px;
+  background-color: #f5f5f5;
+  border-radius: 0;
+  height: 24px;
+}
+
+.progress-bar {
+  float: left;
+  width: 0;
+  height: 100%;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  transition: width 0.6s ease;
+}
+
+.progress-bar-skill1 {
+  background-color: #95c7ec;
+}
+
+.progress-bar-skill2 {
+  background-color: #7fbce8;
+}
+
+.progress-bar-skill3 {
+  background-color: #6ab1e4;
+}
+
+.progress-bar-skill4 {
+  background-color: #55a6e0;
+}
+
+.progress-bar-skill5 {
+  background-color: #409bdc;
+}
+
+.progress-bar-skill6 {
+  background-color: #1f75b2;
+}

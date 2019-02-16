@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% include metadata.html %}
-{% include fontface.html %}
-{% include fontawesome.html %}
+{% include html/metadata.html %}
+{% include html/fontface.html %}
+{% include html/fontawesome.html %}
 <style>
-{% include homepage.css %}
+{% include css/main.css %}
+{% include css/box.css %}
+{% include css/form.css %}
+{% include css/contact.css %}
+{% include css/progress.css %}
+{% include css/timeline.css %}
+{% include css/footer.css %}
+{% include css/media.css %}
 </style>
 {% seo %}
 </head>
@@ -404,12 +411,12 @@
       </div>
     </section>
   </main>
-  {% include footer.html %}
+  {% include html/footer.html %}
   <script>
-    {% include fontface_observer.js %}
-    {% include register_service_worker.js %}
-    {% include galite.js %}
-    {% include modernizr.js %}
+    {% include js/fontface_observer.js %}
+    {% include js/register_service_worker.js %}
+    {% include js/galite.js %}
+    {% include js/modernizr.js %}
     function goTo(page) {
       var url = '/portfolio/' + page + '.html';
       window.location = url;

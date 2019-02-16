@@ -1,0 +1,33 @@
+.footer {
+  background: #282c37;
+  position: relative;
+  margin-top: -88px;
+  height: 88px;
+  clear: both;
+}
+
+.footer p {
+  background: #282c37;
+  color: #ccc;
+  padding: 20px 0;
+  font-size: 14px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+.footer_back_to_top,
+.footer_copyright,
+.text_column {
+  width: 50%;
+  float: left;
+}
+
+.footer_back_to_top p,
+nav.menu-bottom .project.right p {
+  text-align: right;
+}
+
+.footer_back_to_top p a {
+  cursor: pointer;
+  color: #3c9add;
+}

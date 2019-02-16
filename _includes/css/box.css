@@ -1,0 +1,59 @@
+.box {
+  width: 25%;
+  padding-top: 20%;
+  float: left;
+  position: relative;
+  background-size: auto 70%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  cursor: pointer;
+}
+
+.box.wtst {
+  background-color: #546a76;
+}
+
+.box.iscore {
+  background-color: #88a0a8;
+}
+
+.box.hatitude {
+  background-color: #dbd3c9;
+}
+
+.box.cowork {
+  background-color: #bcb4dd;
+}
+
+.box.ethereum-roulette {
+  background-color: #b4ceb3;
+}
+
+.box.batalhadosbitaites {
+  background-color: #ff6884;
+}
+
+.box.worldleague {
+  background-color: #86c5df;
+}
+
+.box.appcexplorer {
+  background-color: #abdcd6;
+}
+
+.box_text {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding-top: 20px;
+  z-index: 3;
+}
+
+.box_text h3,
+.box_text p {
+  color: #fff;
+  font-size: 18px;
+}

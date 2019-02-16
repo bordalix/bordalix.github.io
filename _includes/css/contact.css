@@ -1,0 +1,35 @@
+.contact-info-block:last-child {
+  margin-bottom: 30px;
+}
+
+.contact-info-block {
+  position: relative;
+  text-align: left;
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 14px 10px 14px 0;
+  color: #1f75b2;
+  font-size: 40px;
+}
+
+.contact-info-block .fa-icon {
+  font-size: 20px;
+}
+
+.contact-info-block .ci-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -27px;
+}
+
+.contact-info-block .ci-icon .fa {
+  font-size: 28px;
+}
+
+.contact-info-block .ci-text {
+  position: relative;
+  padding-left: 50px;
+  font-size: 16px;
+  color: #000;
+}

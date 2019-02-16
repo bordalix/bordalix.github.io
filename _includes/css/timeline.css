@@ -1,0 +1,70 @@
+.timeline {
+  position: relative;
+  list-style: none;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1.5px;
+  background-color: #eee;
+}
+
+.timeline > li {
+  min-height: 150px;
+  margin-bottom: 80px;
+}
+
+.timeline > li:last-child {
+  margin-bottom: 0;
+}
+
+.timeline > li .timeline-image {
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  margin-left: -75px;
+  z-index: 100;
+  position: absolute;
+  border: 1px solid #eee;
+  border-radius: 100%;
+  text-align: center;
+  background: #fff;
+}
+
+.timeline > li .timeline-image h3 {
+  margin-top: 45px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.timeline > li .timeline-panel {
+  float: left;
+  width: 41%;
+  padding: 30px 20px 20px;
+  text-align: right;
+  position: relative;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+  padding: 30px 20px 20px;
+  float: right;
+  text-align: left;
+}
+
+.timeline .timeline-heading h4 {
+  margin-top: 0;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.timeline .timeline-heading h4.subheading {
+  text-transform: none;
+  color: #1f75b2;
+  font-size: 20px;
+}

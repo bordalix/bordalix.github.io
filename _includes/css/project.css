@@ -1,0 +1,64 @@
+nav.menu-bottom .project {
+  margin-top: 20px;
+  width: 50%;
+  float: left;
+}
+
+nav.menu-bottom .project p a {
+  padding: 0 12px;
+}
+
+ul {
+  list-style: disc;
+  margin: 1rem 0 1rem 1rem;
+}
+
+figcaption,
+li {
+  font-weight: 300;
+}
+
+li,
+nav.menu-bottom .project p {
+  line-height: 24px;
+}
+
+.portfolio .text_column.left {
+  height: 0;
+  padding-bottom: 37.5%;
+}
+
+.text_column.left img {
+  opacity: 1;
+  width: 100%;
+  box-shadow: 6px 6px 6px #ddd;
+  transition: opacity 0.3s;
+  border: 1px solid #ddd;
+}
+
+pre {
+  background-color: #e6e6e6;
+  margin: 0 0 24px;
+}
+
+span.skill,
+strong {
+  font-weight: 700;
+}
+
+span.skill {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #757575;
+  font-size: 14px;
+}
+
+.text_column.left figure img {
+  padding-bottom: 0;
+}
+
+figcaption {
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+}

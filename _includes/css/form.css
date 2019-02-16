@@ -1,0 +1,139 @@
+.dropdown-menu > li > a {
+  padding: 8px 20px;
+}
+
+.label,
+label {
+  font-weight: 400;
+}
+
+.label {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 0 5px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: #1f75b2;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(43, 144, 217, 0.6);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.button {
+  padding-top: 20px;
+}
+
+.btn {
+  font-weight: 700;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.55;
+  border-radius: 0;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: #1f75b2;
+  background-color: #fff;
+  border-color: #1f75b2;
+}
+
+.btn-primary.active,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background-color: #ebebeb;
+}
+
+.open .dropdown-toggle.btn-primary {
+  color: #1f75b2;
+  background-color: #ebebeb;
+  border-color: #1e6fa9;
+}
+
+.btn-primary.active,
+.btn-primary:active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+
+.btn-primary.disabled,
+.btn-primary.disabled.active,
+.btn-primary.disabled:active,
+.btn-primary.disabled:focus,
+.btn-primary.disabled:hover,
+.btn-primary[disabled],
+.btn-primary[disabled].active,
+.btn-primary[disabled]:active,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary,
+fieldset[disabled] .btn-primary.active,
+fieldset[disabled] .btn-primary:active,
+fieldset[disabled] .btn-primary:focus,
+fieldset[disabled] .btn-primary:hover {
+  background-color: #fff;
+  border-color: #1f75b2;
+}
+
+.btn-primary .badge {
+  color: #fff;
+  background-color: #1f75b2;
+}
+
+.btn-primary.active,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background: #1f75b2;
+  color: #fff;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+input[type="submit"] {
+  width: 100%;
+  cursor: pointer;
+}
+
+input#downloadCV {
+  text-align: center;
+  max-width: 300px;
+  margin: 20px auto 50px;
+}

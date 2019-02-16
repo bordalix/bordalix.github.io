@@ -1,0 +1,394 @@
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+q,
+s,
+samp,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+a,
+label,
+p,
+pre,
+section {
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+label,
+p,
+pre {
+  padding: 0;
+  outline: 0;
+}
+
+a,
+section {
+  margin: 0;
+}
+
+a {
+  padding: 0;
+}
+
+section {
+  outline: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: -1px;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #000;
+}
+
+ol {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: none;
+}
+
+a,
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.fonts-loaded body {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: normal;
+}
+
+a {
+  color: #1f75b2;
+  outline: 0;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3,
+p.lead {
+  font-size: 24px;
+}
+
+nav p,
+p {
+  font-size: 16px;
+}
+
+p {
+  font-weight: 300;
+  margin: 0 0 24px;
+  line-height: 24px;
+}
+
+p.lead {
+  line-height: 30px;
+  margin-bottom: 60px;
+}
+
+p.social {
+  text-align: center;
+  margin-top: 40px;
+}
+
+p.social a {
+  margin: 0 10px 0 0;
+  color: #fff;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  line-height: 40px;
+  font-size: 15px;
+  text-align: center;
+  transition: all 0.2s ease-out;
+  vertical-align: bottom;
+  border: solid 1px #ccc;
+}
+
+p.social a.facebook {
+  background-color: #4460ae;
+}
+
+p.social a.twitter {
+  background-color: #3cf;
+}
+
+p.social a.gplus {
+  background-color: #c21f25;
+}
+
+p.social a.github {
+  background-color: #000;
+}
+
+p.social a.rss {
+  background-color: #e36315;
+}
+
+p.social a.email {
+  background-color: #4a7f45;
+}
+
+p.social a.stack-overflow {
+  background-color: #f48024;
+}
+
+.container,
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container {
+  max-width: 820px;
+  padding: 10px;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+section {
+  padding: 60px 0;
+}
+
+section.grey {
+  background-color: #f6f6f6;
+  padding-bottom: 90px;
+}
+
+section.grey h3 {
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0 0 60px;
+}
+
+nav p {
+  line-height: 20px;
+}
+
+nav.menu-top p a {
+  vertical-align: middle;
+  color: #000;
+}
+
+nav .menu-option {
+  width: 50%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+}
+
+nav .menu-option.right {
+  text-align: right;
+}
+
+nav img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.text-primary {
+  color: #1f75b2;
+}
+
+.heading {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.heading:after {
+  content: " ";
+  display: block;
+  width: 100px;
+  height: 2px;
+  margin: 20px 0;
+  background: #1f75b2;
+}
+
+.text_column {
+  position: relative;
+  min-height: 1px;
+}
+
+.text_column.left {
+  padding-right: 30px;
+}
+
+.text_column.right {
+  padding-left: 30px;
+}
+
+.technical-info-block {
+  position: relative;
+  text-align: left;
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 9px 0;
+}
+
+.technical-info-block .ti-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  font-size: 40px;
+  color: #4b3782;
+}
+
+.technical-info-block .ti-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.technical-info-block .ti-text {
+  position: relative;
+  padding-left: 60px;
+}
