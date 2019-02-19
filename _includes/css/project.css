@@ -24,8 +24,7 @@ nav.menu-bottom .project p {
 }
 
 .portfolio .text_column.left {
-  height: 0;
-  padding-bottom: 37.5%;
+  padding-bottom: 2em;
 }
 
 .text_column.left img {
