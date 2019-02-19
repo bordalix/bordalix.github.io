@@ -64,7 +64,7 @@ p {
 p.lead {
   font-size: 24px;
   line-height: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 p.url {
   font-size: 16px;
@@ -150,8 +150,38 @@ nav img {
   text-align: right;
 }
 .footer_back_to_top p a {
-  cursor:pointer;
+  cursor: pointer;
   color: #3c9add;
+}
+div#incidents {
+  padding-bottom: 60px;
+  height: auto;
+  overflow: auto;
+}
+div#incidents div {
+  width: 100%;
+  margin-bottom: 10px;
+}
+div#incidents div div {
+  background-color: #ea9a27;
+  width: calc(100% - 3em);
+  display: table;
+  float: right;
+  height: 4em;
+}
+div#incidents div div:first-child {
+  background-color: #9b681c;
+  float: left;
+  width: 3em;
+}
+div#incidents div div p {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 1em;
+}
+div#incidents div div i {
+  padding: 1em 0;
+  color: white;
 }
 @media (min-width: 1200px) {
   .container {
@@ -175,9 +205,12 @@ nav img {
 }
 @media (max-width: 768px) {
   .text_column {
-    width:100%;
-    float:none;
-    padding:0;
+    width: 100%;
+    float: none;
+    padding: 0;
   }
-  .text_column.left, .text_column.right { padding:0; }
+  div#incidents div div {
+    height: 6em;
+  }
+  .text_column.left, .text_column.right { padding: 0; }
 }

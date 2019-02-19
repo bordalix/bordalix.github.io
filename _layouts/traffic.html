@@ -19,6 +19,8 @@
           <i class="fa fa-external-link"></i>
           <a href="https://play.google.com/store/apps/details?id=com.id1tpnpcj1ylo4kbx4m88o">Android app</a>
         </p>
+        <p class="lead" id="incidents-label" style="display:none">Incidents</p>
+        <div id="incidents"></div>
         <p class="lead">Entering Lisbon from the South, via 25 de Abril bridge</p>
         <div id="south_cams" class="cams"></div>
         <div style="clear: both"></div>
@@ -37,6 +39,24 @@
     {% include js/galite.js %}
     {% include js/modernizr.js %}
     document.addEventListener("DOMContentLoaded", function () {
+      fetch('https://joaobordalo.com/images/traffic/incidents.json')
+        .then(r => r.json())
+        .then(data => {
+          if (data.length > 0) {
+            document.getElementById('incidents-label').style.display = 'block';
+            var container = document.getElementById('incidents')
+            data.forEach(incident => {
+              var iconContainer = document.createElement('div');
+              iconContainer.innerHTML = '<p><i class="fa fa-warning"></i></p>';
+              var textContainer = document.createElement('div');
+              textContainer.innerHTML = '<p>' + incident.descricaoIncidencia + '</p>';
+              var div = document.createElement('div');
+              div.appendChild(iconContainer);
+              div.appendChild(textContainer);
+              container.appendChild(div);
+            });
+          }
+        });
       const placeholder = 'https://cdn.joaobordalo.com/images' +
                           '/static/traffic/placeholder.png';
       ['south_cams', 'north_cams'].forEach(function (div_id) {
