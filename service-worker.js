@@ -26,7 +26,7 @@ self.addEventListener('fetch', (event) => {
         if (!hasHash(event.request.url) && !/text\/html/.test(resourceType)) {
           return cached;
         }
-    
+
         // If the CSS/JS didn't change since it's been cached, return the cached version
         if (hasHash(event.request.url) && hasSameHash(event.request.url, cached.url)) {
           return cached;
@@ -35,12 +35,12 @@ self.addEventListener('fetch', (event) => {
       return fetch(requestToFetch).then((response) => {
         const clonedResponse = response.clone();
         const contentType = clonedResponse.headers.get('content-type');
-    
+
         if (!clonedResponse || clonedResponse.status !== 200 || clonedResponse.type !== 'basic'
         || /\/sockjs\//.test(event.request.url)) {
           return response;
         }
-    
+
         if (/html/.test(contentType)) {
           caches.open(version).then(cache => cache.put(HTMLToCache, clonedResponse));
         } else {
@@ -52,7 +52,7 @@ self.addEventListener('fetch', (event) => {
               }
             })));
           }
-    
+
           caches.open(version).then(cache => cache.put(event.request, clonedResponse));
         }
         return response;

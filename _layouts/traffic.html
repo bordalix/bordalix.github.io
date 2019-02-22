@@ -39,7 +39,9 @@
     {% include js/galite.js %}
     {% include js/modernizr.js %}
     document.addEventListener("DOMContentLoaded", function () {
-      fetch('https://joaobordalo.com/images/traffic/incidents.json')
+      var jsonURL = 'https://joaobordalo.com/images/traffic/incidents.json?'
+                  + new Date().getTime();
+      fetch(jsonURL)
         .then(r => r.json())
         .then(data => {
           if (data.length > 0) {
@@ -57,8 +59,8 @@
             });
           }
         });
-      const placeholder = 'https://cdn.joaobordalo.com/images' +
-                          '/static/traffic/placeholder.png';
+      const placeholder = 'https://cdn.joaobordalo.com/images'
+                        + '/static/traffic/placeholder.png';
       ['south_cams', 'north_cams'].forEach(function (div_id) {
         var camIDs = {
           south_cams: [305, 306, 307, 5, 308, 309, 310, 311, 7, 312, 313, 149, 532, 314, 316],
