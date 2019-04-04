@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: João Bordalo
 email: joao.bordalo@gmail.com
-description: The place João Bordalo calls home
+description: Hello, I'm João Bordalo, a full stack developer living in Portugal. Here you can see some of my work, know my history or get my CV. Feel free to reach out.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://joaobordalo.com"
 og_image: https://cdn.joaobordalo.com/images/static/logos/logo.png
