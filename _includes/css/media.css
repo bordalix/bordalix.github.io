@@ -21,10 +21,6 @@
     margin: 0 0 60px;
   }
 
-  .timeline > li {
-    min-height: 170px;
-  }
-
   .box_text {
     padding-top: 30px;
   }
@@ -59,41 +55,6 @@
 
   .box_text h3 {
     font-size: 24px;
-  }
-
-  .timeline:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 35px;
-    width: 2px;
-    margin-left: -1.5px;
-    background-color: #eee;
-  }
-
-  .timeline > li .timeline-image {
-    left: 0;
-    width: 70px;
-    height: 70px;
-    margin-left: 0;
-  }
-
-  .timeline > li .timeline-image h3 {
-    margin-top: 15px;
-    font-size: 12px;
-  }
-
-  .timeline > li .timeline-panel {
-    float: right;
-    width: 100%;
-    text-align: left;
-    padding-top: 0;
-    padding-left: 100px;
-  }
-
-  .timeline > li.timeline-inverted > .timeline-panel {
-    padding: 0 20px 0 100px;
   }
 }
 

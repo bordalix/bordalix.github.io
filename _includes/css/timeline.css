@@ -36,7 +36,7 @@
   background: #fff;
 }
 
-.timeline > li .timeline-image h3 {
+.timeline > li .timeline-image p {
   margin-top: 45px;
   font-weight: 400;
   font-size: 16px;
