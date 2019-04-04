@@ -18,8 +18,6 @@ email: joao.bordalo@gmail.com
 description: The place João Bordalo calls home
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://joaobordalo.com"
-twitter_username: bordalix
-github_username:  bordalix
 og_image: https://cdn.joaobordalo.com/images/static/logos/logo.png
 
 # Build settings
