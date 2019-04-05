@@ -61,3 +61,14 @@ figcaption {
   font-style: italic;
   text-align: center;
 }
+
+section.grey {
+  background-color: #f6f6f6;
+  padding-bottom: 90px;
+}
+
+section.grey h3 {
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0 0 60px;
+}
