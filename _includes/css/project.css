@@ -72,3 +72,9 @@ section.grey h3 {
   line-height: 32px;
   margin: 0 0 60px;
 }
+
+@media (max-width: 320px) {
+  nav.menu-bottom .project p a {
+    font-size: 14px;
+  }
+}
