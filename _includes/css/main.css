@@ -279,6 +279,11 @@ section {
   padding: 60px 0;
 }
 
+section.grey {
+  background-color: #f6f6f6;
+  padding-bottom: 90px;
+}
+
 nav p {
   line-height: 20px;
 }
