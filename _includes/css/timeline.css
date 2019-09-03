@@ -39,7 +39,7 @@
 .timeline > li .timeline-image p {
   margin-top: 45px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.2;
 }
 
@@ -60,13 +60,13 @@
 .timeline .timeline-heading h4 {
   margin-top: 0;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .timeline .timeline-heading h4.subheading {
   text-transform: none;
   color: #1f75b2;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 @media (max-width: 768px) {
@@ -91,7 +91,7 @@
 
   .timeline > li .timeline-image p {
     margin-top: 15px;
-    font-size: 12px;
+    font-size: .75rem;
   }
 
   .timeline > li .timeline-panel {

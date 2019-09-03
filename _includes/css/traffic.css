@@ -58,18 +58,18 @@ h3 { font-size: 24px; margin-bottom: 60px; }
 p {
   font-weight: 300;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   margin: 0 0 24px 0;
 }
 p.lead {
   font-size: 24px;
-  line-height: 30px;
+  line-height: 1.25;
   margin-bottom: 40px;
 }
 p.url {
   font-size: 16px;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 1.25;
   margin-bottom: 30px;
   color: #ccc;
 }
@@ -87,7 +87,7 @@ div.cams img {
 section { padding: 60px 0; }
 nav p {
   font-size: 16px;
-  line-height: 20px;
+  line-height: 1.25;
 }
 nav.menu-top p a {
   vertical-align: middle;
@@ -135,7 +135,7 @@ nav img {
   color: #ccc;
   padding: 20px 0;
   font-size: 14px;
-  line-height: 28px;
+  line-height: 2;
   margin-bottom: 0;
 }
 .footer_copyright {
@@ -189,17 +189,17 @@ div#incidents div div i {
   }
   h1 {
     font-size: 60px;
-    line-height: 72px;
+    line-height: 1.2;
     margin: 0 0 24px 0;
   }
   h2 {
     font-size: 40px;
-    line-height: 50px;
+    line-height: 1.25;
     margin: 0 0 40px 0;
   }
   h3 {
     font-size: 24px;
-    line-height: 32px;
+    line-height: 1.33;
     margin: 0 0 60px 0;
   }
 }

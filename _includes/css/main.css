@@ -123,10 +123,14 @@ section {
   display: block;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: -1px;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.2;
   color: #000;
 }
@@ -192,31 +196,31 @@ h6 {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 3rem;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 2.5rem;
 }
 
 h3,
 p.lead {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 nav p,
 p {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 p {
   font-weight: 300;
   margin: 0 0 24px;
-  line-height: 24px;
+  line-height: 1.5;
 }
 
 p.lead {
-  line-height: 30px;
+  line-height: 1.875;
   margin-bottom: 60px;
 }
 
@@ -232,8 +236,8 @@ p.social a {
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  line-height: 40px;
-  font-size: 15px;
+  line-height: 2.5;
+  font-size: 1rem;
   text-align: center;
   transition: all 0.2s ease-out;
   vertical-align: bottom;
@@ -285,7 +289,7 @@ section.grey {
 }
 
 nav p {
-  line-height: 20px;
+  line-height: 1.25;
 }
 
 nav.menu-top p a {

@@ -20,7 +20,7 @@ li {
 
 li,
 nav.menu-bottom .project p {
-  line-height: 24px;
+  line-height: 1.5;
 }
 
 .portfolio .text_column.left {
@@ -49,7 +49,7 @@ span.skill {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #757575;
-  font-size: 14px;
+  font-size: .875rem;
 }
 
 .text_column.left figure img {
@@ -57,7 +57,7 @@ span.skill {
 }
 
 figcaption {
-  font-size: 12px;
+  font-size: .75rem;
   font-style: italic;
   text-align: center;
 }
@@ -68,13 +68,13 @@ section.grey {
 }
 
 section.grey h3 {
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 1.5rem;
+  line-height: 1.33;
   margin: 0 0 60px;
 }
 
 @media (max-width: 320px) {
   nav.menu-bottom .project p a {
-    font-size: 14px;
+    font-size: .875rem;
   }
 }
