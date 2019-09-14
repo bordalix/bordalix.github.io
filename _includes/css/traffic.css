@@ -55,16 +55,18 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 40px; }
 h2 { font-size: 32px; }
 h3 { font-size: 24px; margin-bottom: 60px; }
+h2.lead,
+h3.lead {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.875;
+  margin-bottom: 60px;
+}
 p {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.5;
   margin: 0 0 24px 0;
-}
-p.lead {
-  font-size: 24px;
-  line-height: 1.25;
-  margin-bottom: 40px;
 }
 p.url {
   font-size: 16px;
