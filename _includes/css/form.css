@@ -4,7 +4,7 @@ label {
 }
 
 .label {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Titillium Web", sans-serif;
   text-transform: uppercase;
 }
 
@@ -50,7 +50,7 @@ textarea.form-control {
 
 .btn {
   font-weight: 700;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Titillium Web", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   padding: 6px 12px;

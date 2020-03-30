@@ -166,7 +166,7 @@ table {
 }
 
 .fonts-loaded body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Titillium Web", sans-serif;
   letter-spacing: normal;
 }
 
@@ -210,7 +210,7 @@ p {
 }
 
 p {
-  font-weight: 300;
+  font-weight: 400;
   margin: 0 0 24px;
   line-height: 24px;
 }
@@ -526,7 +526,7 @@ label {
 }
 
 .label {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Titillium Web", sans-serif;
   text-transform: uppercase;
 }
 
@@ -572,7 +572,7 @@ textarea.form-control {
 
 .btn {
   font-weight: 700;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Titillium Web", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   padding: 6px 12px;

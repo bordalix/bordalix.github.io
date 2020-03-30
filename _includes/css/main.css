@@ -170,7 +170,7 @@ table {
 }
 
 .fonts-loaded body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Titillium Web", sans-serif;
   letter-spacing: normal;
 }
 
@@ -210,7 +210,7 @@ h3 {
 h2.lead,
 h3.lead {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.875;
   margin-bottom: 60px;
 }
@@ -227,7 +227,7 @@ p {
 }
 
 p {
-  font-weight: 300;
+  font-weight: 400;
   margin: 0 0 24px;
   line-height: 1.5;
 }
