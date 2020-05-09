@@ -1,0 +1,43 @@
+---
+title: COVID-19
+layout: covid
+description: COVID-19 graphs
+---
+<style>
+  .fluid-column {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+  }
+  .fluid-row {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+  div.graph_container {
+    width: 100%;
+    height: 240px;
+    margin-bottom: 40px;
+    border: solid 2px #eee;
+  }
+  h2.section_divider {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.875;
+    margin-bottom: 30px;
+  }
+  @media (min-width: 414px) {
+    div.graph_container {
+      width: 47%;
+    }
+  }
+</style>
+<section id="main" class="fluid-column">
+  <h2 class="heading">Covid</h2>
+  <p id="loading">
+    A ligar-se a <a href="">https://covid19-api.vost.pt</a>... <br />
+    Por favor aguarde (pode demorar alguns segundos)
+  </p>
+  <div id="content_container" class="fluid-column"></div>
+</section>
