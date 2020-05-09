@@ -15,8 +15,8 @@ const state = {
     '40_49', '30_39', '20_29', '10_19', '0_9'
   ],
   symptoms: [
-    'tosse', 'febre', 'dificuldade_respiratoria',
-    'cefaleia', 'dores_musculares', 'fraqueza_generalizada',
+    'tosse', 'febre', 'dores_musculares', 'cefaleia',
+    'fraqueza_generalizada', 'dificuldade_respiratoria',
   ]
 };
 
@@ -353,6 +353,44 @@ const charts = {
       }],
     });
   },
+  sintomas_stacked: (outer) => {
+    createGraphContainer('sintomas_stacked', outer);
+    Highcharts.chart('sintomas_stacked', {
+      chart: { type: 'area' },
+      title: { text: 'Histórico' },
+      xAxis: {
+          categories: Object.keys(state.json.full.data).map(key => state.json.full.data[key]),
+          tickmarkPlacement: 'on',
+          title: { enabled: false },
+          labels: { step: 30 },
+      },
+      yAxis: {
+          labels: { format: '{value}%' },
+          title: { enabled: false },
+      },
+      tooltip: {
+          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} millions)<br/>',
+          split: true
+      },
+      plotOptions: {
+          area: {
+              stacking: 'percent',
+              lineColor: '#ffffff',
+              lineWidth: 1,
+              marker: {
+                  lineWidth: 1,
+                  lineColor: '#ffffff'
+              },
+          }
+      },
+      series: state.symptoms.map(s => {
+        return {
+          name: s,
+          data: Object.keys(state.json.full.data).map(key => state.json.full[`sintomas_${s}`][key]),
+        }
+      }),
+  });
+  },
 }
 
 // get full update and calculate tests and daily deltas
@@ -415,6 +453,7 @@ function addGraphs() {
   charts['recuperados_total'](outer);
   outer = addLead('Sintomas');
   charts['sintomas'](outer);
+  charts['sintomas_stacked'](outer);
 }
 
 // util function, returns a DOM element, keep your code DRY
