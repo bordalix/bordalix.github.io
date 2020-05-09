@@ -369,7 +369,7 @@ const charts = {
           title: { enabled: false },
       },
       tooltip: {
-          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} millions)<br/>',
+          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b><br/>',
           split: true
       },
       plotOptions: {
