@@ -795,12 +795,12 @@ function renderTOC() {
 
 // run when content is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('https://cors-anywhere.herokuapp.com/https://covid19-api.vost.pt/Requests/get_last_update')
+  fetch('https://covid19-api.vost.pt/Requests/get_last_update')
   .then(response => response.json())
   .then(json => {
     state.json.last = json;
     manageWait();
-    fetch('https://cors-anywhere.herokuapp.com/https://covid19-api.vost.pt/Requests/get_full_dataset')
+    fetch('https://covid19-api.vost.pt/Requests/get_full_dataset')
     .then(response => response.json())
     .then(json => {
       state.json.full = json;
