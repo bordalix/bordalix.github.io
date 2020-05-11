@@ -30,34 +30,6 @@ const state = {
 
 // all charts
 const charts = {
-  confirmados_hoje_ars: (outer) => {
-    createGraphContainer('confirmados_hoje_ars', outer);
-    Highcharts.chart('confirmados_hoje_ars', {
-      chart: { type: 'bar' },
-      title: { text: 'Hoje' },
-      xAxis: { categories: Object.keys(state.regions) },
-      yAxis: { title: { text: null }},
-      legend: { enable: false },
-      series: [{
-          name: 'Confirmados',
-          data: Object.keys(state.regions).map(r => state.json.delta[`confirmados_${r}`][state.json.today]),
-      }],
-    });
-  },
-  confirmados_total_ars: (outer) => {
-    createGraphContainer('confirmados_total_ars', outer);
-    Highcharts.chart('confirmados_total_ars', {
-      chart: { type: 'bar' },
-      title: { text: 'Total' },
-      xAxis: { categories: Object.keys(state.regions) },
-      yAxis: { title: { text: null }},
-      legend: { enable: false },
-      series: [{
-          name: 'Confirmados',
-          data: Object.keys(state.regions).map(r => state.json.last[`confirmados_${r}`])
-      }],
-    });
-  },
   confirmados_dia: (outer) => {
     createGraphContainer('confirmados_dia', outer);
     Highcharts.chart('confirmados_dia', {
@@ -166,6 +138,34 @@ const charts = {
       ],
     });
   },
+  confirmados_hoje_ars: (outer) => {
+    createGraphContainer('confirmados_hoje_ars', outer);
+    Highcharts.chart('confirmados_hoje_ars', {
+      chart: { type: 'bar' },
+      title: { text: 'Hoje' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null }},
+      legend: { enable: false },
+      series: [{
+          name: 'Confirmados',
+          data: Object.keys(state.regions).map(r => state.json.delta[`confirmados_${r}`][state.json.today]),
+      }],
+    });
+  },
+  confirmados_total_ars: (outer) => {
+    createGraphContainer('confirmados_total_ars', outer);
+    Highcharts.chart('confirmados_total_ars', {
+      chart: { type: 'bar' },
+      title: { text: 'Total' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null }},
+      legend: { enable: false },
+      series: [{
+          name: 'Confirmados',
+          data: Object.keys(state.regions).map(r => state.json.last[`confirmados_${r}`])
+      }],
+    });
+  },
   confirmados_historico: (outer) => {
     createGraphContainer('confirmados_historico', outer);
     Highcharts.chart('confirmados_historico', {
@@ -229,32 +229,6 @@ const charts = {
           data: Object.keys(state.json.full.data).map(key => state.json.full[`confirmados_${r}`][key]),
         }
       }),
-    });
-  },
-  obitos_hoje_ars: (outer) => {
-    createGraphContainer('obitos_hoje_ars', outer);
-    Highcharts.chart('obitos_hoje_ars', {
-      chart: { type: 'bar' },
-      title: { text: 'Hoje' },
-      xAxis: { categories: Object.keys(state.regions) },
-      yAxis: { title: { text: null }},
-      series: [{
-        name: 'Óbitos',
-        data: Object.keys(state.regions).map(r => state.json.delta[`obitos_${r}`][state.json.today]),
-      }],
-    });
-  },
-  obitos_total_ars: (outer) => {
-    createGraphContainer('obitos_total_ars', outer);
-    Highcharts.chart('obitos_total_ars', {
-      chart: { type: 'bar' },
-      title: { text: 'Total' },
-      xAxis: { categories: Object.keys(state.regions) },
-      yAxis: { title: { text: null }},
-      series: [{
-        name: 'Óbitos',
-        data: Object.keys(state.regions).map(r => state.json.full[`obitos_${r}`][state.json.today]),
-      }],
     });
   },
   obitos_dia: (outer) => {
@@ -360,6 +334,32 @@ const charts = {
         }
       ],
   });
+  },
+  obitos_hoje_ars: (outer) => {
+    createGraphContainer('obitos_hoje_ars', outer);
+    Highcharts.chart('obitos_hoje_ars', {
+      chart: { type: 'bar' },
+      title: { text: 'Hoje' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null }},
+      series: [{
+        name: 'Óbitos',
+        data: Object.keys(state.regions).map(r => state.json.delta[`obitos_${r}`][state.json.today]),
+      }],
+    });
+  },
+  obitos_total_ars: (outer) => {
+    createGraphContainer('obitos_total_ars', outer);
+    Highcharts.chart('obitos_total_ars', {
+      chart: { type: 'bar' },
+      title: { text: 'Total' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null }},
+      series: [{
+        name: 'Óbitos',
+        data: Object.keys(state.regions).map(r => state.json.full[`obitos_${r}`][state.json.today]),
+      }],
+    });
   },
   obitos_historico: (outer) => {
     createGraphContainer('obitos_historico', outer);
@@ -709,21 +709,21 @@ function addGraphs() {
   let outer;
   applyTheme();
   outer = addLead('Confirmados');
-  charts['confirmados_hoje_ars'](outer);
-  charts['confirmados_total_ars'](outer);
   charts['confirmados_dia'](outer);
   charts['confirmados_total'](outer);
   charts['confirmados_hoje_generos'](outer);
   charts['confirmados_total_generos'](outer);
+  charts['confirmados_hoje_ars'](outer);
+  charts['confirmados_total_ars'](outer);
   charts['confirmados_historico'](outer);
   charts['confirmados_historico_100'](outer);
   outer = addLead('Óbitos');
-  charts['obitos_hoje_ars'](outer);
-  charts['obitos_total_ars'](outer);
   charts['obitos_dia'](outer);
   charts['obitos_total'](outer);
   charts['obitos_hoje_generos'](outer);
   charts['obitos_total_generos'](outer);
+  charts['obitos_hoje_ars'](outer);
+  charts['obitos_total_ars'](outer);
   charts['obitos_historico'](outer);
   charts['obitos_historico_100'](outer);
   outer = addLead('Recuperados');
@@ -744,6 +744,7 @@ function addGraphs() {
   charts['densidade_ars'](outer);
   charts['densidade_casos'](outer);
   renderTOC();
+  document.getElementById('sourceList').style.display = 'block';
 }
 
 // util function, returns a DOM element, keep your code DRY
