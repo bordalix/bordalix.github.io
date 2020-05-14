@@ -743,6 +743,8 @@ function addGraphs() {
   outer = addLead('Densidade populacional');
   charts['densidade_ars'](outer);
   charts['densidade_casos'](outer);
+  outer = addLead('Rt');
+  renderRt(outer);
   renderTOC();
   document.getElementById('sourceList').style.display = 'block';
 }
@@ -788,9 +790,24 @@ function manageWait() {
   }
 }
 
+// renders Table of Content
 function renderTOC() {
   const html = state.toc.map(item => `<a href="#${item.anchor}">${item.label}</a>`).join(' &middot; ');
   document.getElementById('toc').innerHTML = html;
+}
+
+// render Rt graphic
+function renderRt(outer) {
+  const url = 'https://www.nexp.pt/covid19RtWorld/Portugal-Rt.png';
+  const a = document.createElement('a');
+  const img = document.createElement('img');
+  a.href = url;
+  img.src = url;
+  img.classList.add('rt_graph');
+  a.appendChild(img);
+  // createGraphContainer('rt_graph', outer);
+  outer.appendChild(a);
+  // document.getElementById('rt_graph').appendChild(a);
 }
 
 // run when content is loaded
