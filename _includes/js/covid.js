@@ -26,6 +26,7 @@ const state = {
   ],
   loading: 2,
   toc: [],
+  evm: null,
 }
 
 // all charts
@@ -612,6 +613,37 @@ const charts = {
       }),
     });
   },
+  mortalidade_light: (outer) => {
+    createGraphContainer('mortalidade_light', outer);
+    Highcharts.chart('mortalidade_light', {
+      title: { text: 'Máx, mín, média e 2020' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.evm.mmm.xAxis.categories,
+        labels: { step: 90 },
+      },
+      plotOptions: {
+        line: {
+          opacity: 0.3,
+          lineWidth: 1,
+        }
+      },
+      series: state.evm.mmm.yAxis.series,
+    });
+  },
+  mortalidade_acum: (outer) => {
+    createGraphContainer('mortalidade_acum', outer);
+    Highcharts.chart('mortalidade_acum', {
+      chart:  { type: 'column' },
+      title:  { text: 'Acumulados até ontem' },
+      xAxis:  { categories: state.evm.acum.xAxis.categories },
+      yAxis:  { title: { text: null }},
+      series: [{
+        name: 'Óbitos',
+        data: state.evm.acum.yAxis.series.data,
+      }],
+    });
+  },
   densidade_ars: (outer) => {
     createGraphContainer('densidade_ars', outer);
     Highcharts.chart('densidade_ars', {
@@ -740,6 +772,9 @@ function addGraphs() {
   outer = addLead('Sintomas');
   charts['sintomas'](outer);
   charts['sintomas_historico'](outer);
+  outer = addLead('Mortalidade');
+  charts['mortalidade_acum'](outer);
+  charts['mortalidade_light'](outer);
   outer = addLead('Densidade populacional');
   charts['densidade_ars'](outer);
   charts['densidade_casos'](outer);
@@ -798,32 +833,51 @@ function renderTOC() {
 
 // render Rt graphic
 function renderRt(outer) {
-  const url = 'https://www.nexp.pt/covid19RtWorld/Portugal-Rt.png';
-  const a = document.createElement('a');
-  const img = document.createElement('img');
-  a.href = url;
-  img.src = url;
-  img.classList.add('rt_graph');
-  a.appendChild(img);
-  // createGraphContainer('rt_graph', outer);
-  outer.appendChild(a);
-  // document.getElementById('rt_graph').appendChild(a);
+  ['qbBvVcAQw4rM', 't5vpUMAAbJeX','qhjdU0AUz6Yc','q7BSUcAMr_y-','rG_hU8AAmEj9'].forEach(id => {
+    const url = `https://pbs.twimg.com/media/EYY${id}?format=png&name=medium`;
+    const div = document.createElement('div');
+    div.classList.add('rt_container');
+    const a = document.createElement('a');
+    const img = document.createElement('img');
+    a.href = url;
+    img.src = url;
+    img.classList.add('rt_graph');
+    a.appendChild(img);
+    div.appendChild(a)
+    outer.appendChild(div);
+  })
+  // const url = 'https://www.nexp.pt/covid19RtWorld/Portugal-Rt.png';
+}
+
+function apiURL(id) {
+  if (id === 'last_update') return 'https://covid19-api.vost.pt/Requests/get_last_update';
+  if (id === 'full_dataset') return 'https://covid19-api.vost.pt/Requests/get_full_dataset';
+  if (id === 'mortality') {
+    const d = new Date();
+    const s = d.getFullYear() + ("0"+(d.getMonth()+1)).slice(-2) + ("0" + d.getDate()).slice(-2);
+    return `https://cdn.joaobordalo.com/json/mortality-${s}.json`;
+  }
 }
 
 // run when content is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('https://covid19-api.vost.pt/Requests/get_last_update')
+  fetch(apiURL('last_update'))
   .then(response => response.json())
   .then(json => {
     state.json.last = json;
     manageWait();
-    fetch('https://covid19-api.vost.pt/Requests/get_full_dataset')
+    fetch(apiURL('full_dataset'))
     .then(response => response.json())
     .then(json => {
-      state.json.full = json;
-      manageWait();
-      crunchData(json);
-      addGraphs();
+      fetch(apiURL('mortality'))
+      .then(response => response.json())
+      .then(evm => {
+        state.evm = evm;
+        state.json.full = json;
+        manageWait();
+        crunchData(json);
+        addGraphs();
+      });
     });
   });
 });
