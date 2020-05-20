@@ -772,9 +772,11 @@ function addGraphs() {
   outer = addLead('Sintomas');
   charts['sintomas'](outer);
   charts['sintomas_historico'](outer);
-  outer = addLead('Mortalidade');
-  charts['mortalidade_acum'](outer);
-  charts['mortalidade_light'](outer);
+  if (state.evm) {
+    outer = addLead('Mortalidade');
+    charts['mortalidade_acum'](outer);
+    charts['mortalidade_light'](outer);
+  }
   outer = addLead('Densidade populacional');
   charts['densidade_ars'](outer);
   charts['densidade_casos'](outer);
@@ -859,6 +861,13 @@ function apiURL(id) {
   }
 }
 
+function go(json) {
+  state.json.full = json;
+  manageWait();
+  crunchData(json);
+  addGraphs();
+}
+
 // run when content is loaded
 document.addEventListener('DOMContentLoaded', () => {
   fetch(apiURL('last_update'))
@@ -873,11 +882,9 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(response => response.json())
       .then(evm => {
         state.evm = evm;
-        state.json.full = json;
-        manageWait();
-        crunchData(json);
-        addGraphs();
-      });
+        go(json);
+      })
+      .catch(() => go(json));
     });
   });
 });
