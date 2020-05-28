@@ -24,9 +24,9 @@ const state = {
     'tosse', 'febre', 'dores_musculares', 'cefaleia',
     'fraqueza_generalizada', 'dificuldade_respiratoria',
   ],
-  loading: 2,
-  toc: [],
-  evm: null,
+  loading: 2, // loading state (from 2 to 0)
+  toc: [],    // table of contents
+  evm: null,  // mortality data
 }
 
 // all charts
@@ -704,7 +704,7 @@ const charts = {
 }
 
 // get full update and calculate tests and daily deltas
-function crunchData(json) {
+function crunchData() {
   // find today index (starts with zero)
   state.json.today = Object.keys(state.json.full.data).reduce((acc, cur) => {
     if (state.json.last.data === state.json.full.data[cur]) acc = cur;
@@ -721,10 +721,10 @@ function crunchData(json) {
   });
   // calculate deltas for all days and indicators
   const delta = {};
-  Object.keys(json).forEach(key => {
+  Object.keys(state.json.full).forEach(key => {
     if (!key.match(/^data/) && !key.match(/^sintomas/)) {
       delta[key] = {};
-      Object.keys(json[key]).forEach(idx => {
+      Object.keys(state.json.full[key]).forEach(idx => {
         delta[key][idx] = null;
         if (idx !== '0') {
           const previous = `${parseInt(idx) - 1}`;
@@ -780,10 +780,10 @@ function addGraphs() {
   outer = addLead('Densidade populacional');
   charts['densidade_ars'](outer);
   charts['densidade_casos'](outer);
-  outer = addLead('Rt');
-  renderRt(outer);
+  outer = addLead('Evolução Rt');
+  renderNewRt(outer);
   renderTOC();
-  document.getElementById('sourceList').style.display = 'block';
+  document.getElementById('fontes').style.display = 'block';
 }
 
 // util function, returns a DOM element, keep your code DRY
@@ -829,11 +829,12 @@ function manageWait() {
 
 // renders Table of Content
 function renderTOC() {
-  const html = state.toc.map(item => `<a href="#${item.anchor}">${item.label}</a>`).join(' &middot; ');
+  state.toc.push({ anchor: 'fontes', label: 'Fontes' });
+  let html = state.toc.map(item => `<a href="#${item.anchor}">${item.label}</a>`).join(' &middot; ');
   document.getElementById('toc').innerHTML = html;
 }
 
-// render Rt graphic
+// render Rt graphic - not used at the moment
 function renderRt(outer) {
   ['qbBvVcAQw4rM', 't5vpUMAAbJeX','qhjdU0AUz6Yc','q7BSUcAMr_y-','rG_hU8AAmEj9'].forEach(id => {
     const url = `https://pbs.twimg.com/media/EYY${id}?format=png&name=medium`;
@@ -851,6 +852,20 @@ function renderRt(outer) {
   // const url = 'https://www.nexp.pt/covid19RtWorld/Portugal-Rt.png';
 }
 
+// render new Rt from https://covidcountdown.today
+function renderNewRt(outer) {
+  const div = document.createElement('div');
+  const a = document.createElement('a');
+  const img = document.createElement('img');
+  a.href = 'https://covidcountdown.today/';
+  img.src = 'rt.svg';
+  img.classList.add('rt_graph');
+  a.appendChild(img);
+  div.appendChild(a)
+  outer.appendChild(div);
+}
+
+// given an action, returns a api url
 function apiURL(id) {
   if (id === 'last_update') return 'https://covid19-api.vost.pt/Requests/get_last_update';
   if (id === 'full_dataset') return 'https://covid19-api.vost.pt/Requests/get_full_dataset';
@@ -861,10 +876,11 @@ function apiURL(id) {
   }
 }
 
+// go and render the page
 function go(json) {
   state.json.full = json;
   manageWait();
-  crunchData(json);
+  crunchData();
   addGraphs();
 }
 
