@@ -858,7 +858,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'rt.svg';
+  img.src = 'rt2.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
