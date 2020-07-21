@@ -24,6 +24,13 @@ const state = {
     'tosse', 'febre', 'dores_musculares', 'cefaleia',
     'fraqueza_generalizada', 'dificuldade_respiratoria',
   ],
+  employed: [
+    { month: 'Jan', total: 4815400, young: 295500, old: 4519900, active: 5213900 },
+    { month: 'Fev', total: 4803600, young: 290300, old: 4513300, active: 5213900 },
+    { month: 'Mar', total: 4793400, young: 290000, old: 4503400, active: 5213900 },
+    { month: 'Abr', total: 4750900, young: 268100, old: 4482800, active: 5213900 },
+    { month: 'Mai', total: 4662600, young: 240300, old: 4422400, active: 5213900 },
+  ],
   loading: 2, // loading state (from 2 to 0)
   toc: [],    // table of contents
   evm: null,  // mortality data
@@ -700,7 +707,71 @@ const charts = {
         },
       ],
     });
-  }
+  },
+  empregados_activa: (outer) => {
+    createGraphContainer('empregados_activa', outer);
+    Highcharts.chart('empregados_activa', {
+      title: { text: 'Total população activa' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.employed.map(i => i.month),
+      },
+      legend: { enable: false },
+      series: [{
+        name: 'População',
+        data: state.employed.map(i => i.active),
+      }],
+    });
+  },
+  empregados_total: (outer) => {
+    createGraphContainer('empregados_total', outer);
+    Highcharts.chart('empregados_total', {
+      title: { text: 'Total empregados' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.employed.map(i => i.month),
+      },
+      legend: { enable: false },
+      series: [{
+        name: 'Empregados',
+        data: state.employed.map(i => i.total),
+      }],
+    });
+  },
+  empregados_menos24_total: (outer) => {
+    createGraphContainer('empregados_menos24_total', outer);
+    Highcharts.chart('empregados_menos24_total', {
+      title: { text: 'Total empregados 15 a 24 anos' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.employed.map(i => i.month),
+      },
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Empregados',
+          data: state.employed.map(i => i.young),
+        },
+      ],
+    });
+  },
+  empregados_mais24_total: (outer) => {
+    createGraphContainer('empregados_mais24_total', outer);
+    Highcharts.chart('empregados_mais24_total', {
+      title: { text: 'Total empregados +24 anos' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.employed.map(i => i.month),
+      },
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Empregados',
+          data: state.employed.map(i => i.old),
+        },
+      ],
+    });
+  },
 }
 
 // get full update and calculate tests and daily deltas
@@ -782,6 +853,11 @@ function addGraphs() {
   charts['densidade_casos'](outer);
   outer = addLead('Evolução Rt');
   renderNewRt(outer);
+  outer = addLead('Emprego');
+  charts['empregados_activa'](outer);
+  charts['empregados_total'](outer);
+  charts['empregados_menos24_total'](outer);
+  charts['empregados_mais24_total'](outer);
   renderTOC();
   document.getElementById('fontes').style.display = 'block';
 }
@@ -858,7 +934,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'rt2.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt3.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
