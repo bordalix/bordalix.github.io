@@ -778,7 +778,7 @@ const charts = {
   empregos_mais24_total: (outer) => {
     createGraphContainer('empregos_mais24_total', outer);
     Highcharts.chart('empregos_mais24_total', {
-      title: { text: 'Empregado +24 anos' },
+      title: { text: 'Empregados +24 anos' },
       yAxis: { title: { text: null }},
       xAxis: {
         categories: state.employment.map(i => i.month),
