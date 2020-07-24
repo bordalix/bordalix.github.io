@@ -25,23 +25,23 @@ const state = {
     'fraqueza_generalizada', 'dificuldade_respiratoria',
   ],
   employment: [
-    { month: 'Jan19', young: 305500, old: 4502200 },
-    { month: 'Fev19', young: 301900, old: 4511200 },
-    { month: 'Mar19', young: 296800, old: 4521200 },
-    { month: 'Abr19', young: 301000, old: 4537800 },
-    { month: 'Mai19', young: 295700, old: 4559400 },
-    { month: 'Jun19', young: 305700, old: 4562600 },
-    { month: 'Jul19', young: 309900, old: 4569700 },
-    { month: 'Ago19', young: 320200, old: 4566200 },
-    { month: 'Set19', young: 312400, old: 4567800 },
-    { month: 'Out19', young: 312400, old: 4558400 },
-    { month: 'Nov19', young: 303600, old: 4544400 },
-    { month: 'Dez19', young: 298900, old: 4518700 },
-    { month: 'Jan20', young: 295500, old: 4519900 },
-    { month: 'Fev20', young: 290300, old: 4513300 },
-    { month: 'Mar20', young: 290000, old: 4503400 },
-    { month: 'Abr20', young: 268100, old: 4482800 },
-    { month: 'Mai20', young: 240300, old: 4422400 },
+    { month: 'Jan', year: '19', young: 305500, old: 4502200 },
+    { month: 'Fev', year: '19', young: 301900, old: 4511200 },
+    { month: 'Mar', year: '19', young: 296800, old: 4521200 },
+    { month: 'Abr', year: '19', young: 301000, old: 4537800 },
+    { month: 'Mai', year: '19', young: 295700, old: 4559400 },
+    { month: 'Jun', year: '19', young: 305700, old: 4562600 },
+    { month: 'Jul', year: '19', young: 309900, old: 4569700 },
+    { month: 'Ago', year: '19', young: 320200, old: 4566200 },
+    { month: 'Set', year: '19', young: 312400, old: 4567800 },
+    { month: 'Out', year: '19', young: 312400, old: 4558400 },
+    { month: 'Nov', year: '19', young: 303600, old: 4544400 },
+    { month: 'Dez', year: '19', young: 298900, old: 4518700 },
+    { month: 'Jan', year: '20', young: 295500, old: 4519900 },
+    { month: 'Fev', year: '20', young: 290300, old: 4513300 },
+    { month: 'Mar', year: '20', young: 290000, old: 4503400 },
+    { month: 'Abr', year: '20', young: 268100, old: 4482800 },
+    { month: 'Mai', year: '20', young: 240300, old: 4422400 },
   ],
   loading: 2, // loading state (from 2 to 0)
   toc: [],    // table of contents
@@ -724,36 +724,35 @@ const charts = {
     createGraphContainer('empregos_total', outer);
     Highcharts.chart('empregos_total', {
       title:  { text: 'Total' },
-      xAxis:  { categories: state.employment.map(i => i.month) },
+      xAxis:  { categories: state.employment.map(i => i.month + i.year) },
       yAxis:  { title: { text: null }},
       series: [
         {
-          name: 'Empregados',
+          name: 'Absolutos',
           data: state.employment.map(i => i.young + i.old)
+        },
+        {
+          name: 'Ajustados à sazonalidade',
+          data: state.employment_adjusted.map(i => i ? i.young + i.old : null),
         },
       ],
     });
   },
   empregos_variacao: (outer) => {
-    series = [0];
-    state.employment.forEach((month, index) => {
-      if (index > 0) {
-        const prevMonth = state.employment[index-1];
-        const prevValue = prevMonth.young + prevMonth.old;
-        const thisValue = month.young + month.old;
-        series.push(thisValue - prevValue);
-      }
-    })
     createGraphContainer('empregos_variacao', outer);
     Highcharts.chart('empregos_variacao', {
       chart:  { type: 'column' },
       title:  { text: 'Variação mensal' },
-      xAxis:  { categories: state.employment.map(i => i.month) },
+      xAxis:  { categories: state.employment.map(i => i.month + i.year) },
       yAxis:  { title: { text: null }},
       series: [
         {
-          name: 'Empregados',
-          data: series,
+          name: 'Absolutos',
+          data: state.employment_variation.map(i => i.young + i.old),
+        },
+        {
+          name: 'Ajustados à sazonalidade',
+          data: state.employment_variation_adjusted.map(i => i ? i.young + i.old : null),
         },
       ],
     });
@@ -763,14 +762,16 @@ const charts = {
     Highcharts.chart('empregos_menos24_total', {
       title: { text: 'Empregados 15 a 24 anos' },
       yAxis: { title: { text: null }},
-      xAxis: {
-        categories: state.employment.map(i => i.month),
-      },
+      xAxis:  { categories: state.employment.map(i => i.month + i.year) },
       legend: { enable: false },
       series: [
         {
-          name: 'Empregados',
+          name: 'Absolutos',
           data: state.employment.map(i => i.young),
+        },
+        {
+          name: 'Ajustados à sazonalidade',
+          data: state.employment_adjusted.map(i => i ? i.young : null),
         },
       ],
     });
@@ -780,14 +781,16 @@ const charts = {
     Highcharts.chart('empregos_mais24_total', {
       title: { text: 'Empregados +24 anos' },
       yAxis: { title: { text: null }},
-      xAxis: {
-        categories: state.employment.map(i => i.month),
-      },
+      xAxis:  { categories: state.employment.map(i => i.month + i.year) },
       legend: { enable: false },
       series: [
         {
-          name: 'Empregados',
+          name: 'Absolutos',
           data: state.employment.map(i => i.old),
+        },
+        {
+          name: 'Ajustados à sazonalidade',
+          data: state.employment_adjusted.map(i => i ? i.old : null),
         },
       ],
     });
@@ -825,6 +828,54 @@ function crunchData() {
     }
   });
   state.json.delta = delta;
+  // calculate employement monthly variation
+  state.employment_variation = state.employment.map((month, index) => {
+    if (index === 0) {
+      return { young:0, old: 0 };
+    } else {
+      const prevMonth = state.employment[index - 1];
+      return {
+        young: month.young - prevMonth.young,
+        old: month.old - prevMonth.old,
+      };
+    }
+  });
+  // calculate employement seasonal adjustment
+  state.employment_adjustement = state.employment.map((month, index) => {
+    if (index < 12) {
+      return null;
+    } else {
+      adjustment = state.employment_variation[index - 12];
+      return {
+        young: adjustment.young,
+        old: adjustment.old,
+      };
+    }
+  });
+  //
+  state.employment_adjusted = state.employment.map((month, index) => {
+    if (index < 12) {
+      return null;
+    } else {
+      adjustment = state.employment_adjustement[index];
+      return {
+        young: month.young - adjustment.young,
+        old: month.old - adjustment.old,
+      };
+    }
+  });
+  // calculate employement monthly variation adjusted
+  state.employment_variation_adjusted = state.employment_variation.map((month, index) => {
+    if (index < 12) {
+      return null;
+    } else {
+      adjustment = state.employment_adjustement[index];
+      return {
+        young: month.young - adjustment.young,
+        old: month.old - adjustment.old,
+      };
+    }
+  });
 }
 
 // add the graphs to the DOM
