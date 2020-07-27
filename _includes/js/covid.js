@@ -723,7 +723,7 @@ const charts = {
   empregos_total: (outer) => {
     createGraphContainer('empregos_total', outer);
     Highcharts.chart('empregos_total', {
-      title:  { text: 'Total' },
+      title:  { text: 'Total empregados' },
       xAxis:  { categories: state.employment.map(i => i.month + i.year) },
       yAxis:  { title: { text: null }},
       series: [
