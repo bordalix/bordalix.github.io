@@ -43,6 +43,120 @@ const state = {
     { month: 'Abr', year: '20', young: 268100, old: 4482800 },
     { month: 'Mai', year: '20', young: 240300, old: 4422400 },
   ],
+  unemployment: {
+    "2019": {
+      "Jan": {
+        "Norte": 140696,
+        "Centro": 46703,
+        "LVT": 101758,
+        "Alentejo": 16621,
+        "Algarve": 20748,
+        "Açores": 7685,
+        "Madeira": 16561
+      },
+      "Fev": {
+        "Norte": 137964,
+        "Centro": 45660,
+        "LVT": 100102,
+        "Alentejo": 15783,
+        "Algarve": 19014,
+        "Açores": 7665,
+        "Madeira": 16514
+      },
+      "Mar": {
+        "Norte": 136319,
+        "Centro": 44374,
+        "LVT": 98370,
+        "Alentejo": 15473,
+        "Algarve": 15305,
+        "Açores": 7624,
+        "Madeira": 16311
+      },
+      "Abr": {
+        "Norte": 133143,
+        "Centro": 43663,
+        "LVT": 94043,
+        "Alentejo": 14994,
+        "Algarve": 11782,
+        "Açores": 7422,
+        "Madeira": 16193
+      },
+      "Mai": {
+        "Norte": 126663,
+        "Centro": 41451,
+        "LVT": 91018,
+        "Alentejo": 14007,
+        "Algarve": 9153,
+        "Açores": 7136,
+        "Madeira": 15743
+      },
+      "Jun": {
+        "Norte": 124858,
+        "Centro": 40843,
+        "LVT": 88850,
+        "Alentejo": 13520,
+        "Algarve": 7879,
+        "Açores": 7084,
+        "Madeira": 15157
+      }
+    },
+    "2020": {
+      "Jan": {
+        "Norte": 125571,
+        "Centro": 42894,
+        "LVT": 93050,
+        "Alentejo": 15601,
+        "Algarve": 20815,
+        "Açores": 6973,
+        "Madeira": 15654
+      },
+      "Fev": {
+        "Norte": 124337,
+        "Centro": 41927,
+        "LVT": 92458,
+        "Alentejo": 15106,
+        "Algarve": 19188,
+        "Açores": 6956,
+        "Madeira": 15590
+      },
+      "Mar": {
+        "Norte": 134578,
+        "Centro": 45845,
+        "LVT": 102108,
+        "Alentejo": 16997,
+        "Algarve": 21636,
+        "Açores": 6951,
+        "Madeira": 15646
+      },
+      "Abr": {
+        "Norte": 151853,
+        "Centro": 50807,
+        "LVT": 121004,
+        "Alentejo": 18882,
+        "Algarve": 26379,
+        "Açores": 6963,
+        "Madeira": 16435
+      },
+      "Mai": {
+        "Norte": 156260,
+        "Centro": 52033,
+        "LVT": 129917,
+        "Alentejo": 18619,
+        "Algarve": 27675,
+        "Açores": 6965,
+        "Madeira": 17465
+      },
+      "Jun": {
+        "Norte": 153548,
+        "Centro": 51618,
+        "LVT": 131972,
+        "Alentejo": 18351,
+        "Algarve": 26140,
+        "Açores": 6963,
+        "Madeira": 18073
+      }
+    }
+  },
   loading: 2, // loading state (from 2 to 0)
   toc: [],    // table of contents
   evm: null,  // mortality data
@@ -64,6 +178,7 @@ const charts = {
           name: 'Confirmados',
           data: Object.keys(state.json.full.data).map(k => state.json.delta.confirmados[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   confirmados_total: (outer) => {
@@ -80,6 +195,7 @@ const charts = {
           name: 'Confirmados',
           data: Object.keys(state.json.full.data).map(k => state.json.full.confirmados[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   confirmados_hoje_generos: (outer) => {
@@ -120,7 +236,8 @@ const charts = {
           name: 'Confirmados masculinos',
           data: state.ages.map(age => state.json.delta[`confirmados_${age}_m`][state.json.today]),
         }
-      ]
+      ],
+      credits: { text: 'Dados DGS' },
     });
   },
   confirmados_total_generos: (outer) => {
@@ -156,6 +273,7 @@ const charts = {
           data: state.ages.map(age => state.json.last[`confirmados_${age}_m`]),
         }
       ],
+      credits: { text: 'Dados DGS' },
     });
   },
   confirmados_hoje_ars: (outer) => {
@@ -170,6 +288,7 @@ const charts = {
           name: 'Confirmados',
           data: Object.keys(state.regions).map(r => state.json.delta[`confirmados_${r}`][state.json.today]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   confirmados_total_ars: (outer) => {
@@ -184,6 +303,7 @@ const charts = {
           name: 'Confirmados',
           data: Object.keys(state.regions).map(r => state.json.last[`confirmados_${r}`])
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   confirmados_historico: (outer) => {
@@ -215,6 +335,7 @@ const charts = {
           data: Object.keys(state.json.full.data).map(key => state.json.full[`confirmados_${r}`][key]),
         }
       }),
+      credits: { text: 'Dados DGS' },
     });
   },
   confirmados_historico_100: (outer) => {
@@ -249,6 +370,7 @@ const charts = {
           data: Object.keys(state.json.full.data).map(key => state.json.full[`confirmados_${r}`][key]),
         }
       }),
+      credits: { text: 'Dados DGS' },
     });
   },
   obitos_dia: (outer) => {
@@ -265,6 +387,7 @@ const charts = {
           name: 'Óbitos',
           data: Object.keys(state.json.full.data).map(k => state.json.delta.obitos[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   obitos_total: (outer) => {
@@ -281,6 +404,7 @@ const charts = {
           name: 'Óbitos',
           data: Object.keys(state.json.full.data).map(k => state.json.full.obitos[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   obitos_hoje_generos: (outer) => {
@@ -317,6 +441,7 @@ const charts = {
           data: state.ages.map(age => state.json.delta[`obitos_${age}_m`][state.json.today]),
         }
       ],
+      credits: { text: 'Dados DGS' },
   });
   },
   obitos_total_generos: (outer) => {
@@ -353,6 +478,7 @@ const charts = {
           data: state.ages.map(age => state.json.last[`obitos_${age}_m`]),
         }
       ],
+      credits: { text: 'Dados DGS' },
   });
   },
   obitos_hoje_ars: (outer) => {
@@ -366,6 +492,7 @@ const charts = {
         name: 'Óbitos',
         data: Object.keys(state.regions).map(r => state.json.delta[`obitos_${r}`][state.json.today]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   obitos_total_ars: (outer) => {
@@ -379,6 +506,7 @@ const charts = {
         name: 'Óbitos',
         data: Object.keys(state.regions).map(r => state.json.full[`obitos_${r}`][state.json.today]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   obitos_historico: (outer) => {
@@ -410,6 +538,7 @@ const charts = {
           data: Object.keys(state.json.full.data).map(key => state.json.full[`obitos_${r}`][key]),
         }
       }),
+      credits: { text: 'Dados DGS' },
     });
   },
   obitos_historico_100: (outer) => {
@@ -444,6 +573,7 @@ const charts = {
           data: Object.keys(state.json.full.data).map(key => state.json.full[`obitos_${r}`][key]),
         }
       }),
+      credits: { text: 'Dados DGS' },
     });
   },
   recuperados_dia: (outer) => {
@@ -460,6 +590,7 @@ const charts = {
         name: 'Recuperados',
         data: Object.keys(state.json.full.data).map(k => state.json.delta.recuperados[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   recuperados_total: (outer) => {
@@ -476,6 +607,7 @@ const charts = {
         name: 'Recuperados',
         data: Object.keys(state.json.full.data).map(k => state.json.full.recuperados[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   testes_dia: (outer) => {
@@ -492,6 +624,7 @@ const charts = {
         name: 'Testes',
         data: Object.keys(state.json.full.data).map(k => state.json.delta.testes[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   testes_dia_perc_positivos: (outer) => {
@@ -511,6 +644,7 @@ const charts = {
         name: 'Testes',
         data: Object.keys(state.json.full.data).map(k => Math.floor((state.json.delta.confirmados[k] / state.json.delta.testes[k]) * 100)),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   internados_normal_dia: (outer) => {
@@ -527,6 +661,7 @@ const charts = {
         name: 'Internados',
         data: Object.keys(state.json.full.data).map(k => state.json.delta.internados[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   internados_uci_dia: (outer) => {
@@ -543,6 +678,7 @@ const charts = {
         name: 'Internados UCI',
         data: Object.keys(state.json.full.data).map(k => state.json.delta.internados_uci[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   internados_normal_total: (outer) => {
@@ -559,6 +695,7 @@ const charts = {
         name: 'Internados',
         data: Object.keys(state.json.full.data).map(k => state.json.full.internados[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   internados_uci_total: (outer) => {
@@ -575,6 +712,7 @@ const charts = {
         name: 'Internados UCI',
         data: Object.keys(state.json.full.data).map(k => state.json.full.internados_uci[k]),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   sintomas: (outer) => {
@@ -596,6 +734,7 @@ const charts = {
         name: 'Sintomas',
         data: state.symptoms.map(s => state.json.last[`sintomas_${s}`] * 100),
       }],
+      credits: { text: 'Dados DGS' },
     });
   },
   sintomas_historico: (outer) => {
@@ -630,6 +769,7 @@ const charts = {
           data: Object.keys(state.json.full.data).map(key => state.json.full[`sintomas_${s}`][key]),
         }
       }),
+      credits: { text: 'Dados DGS' },
     });
   },
   mortalidade_light: (outer) => {
@@ -648,6 +788,7 @@ const charts = {
         }
       },
       series: state.evm.mmm.yAxis.series,
+      credits: { text: 'Dados EVM' },
     });
   },
   mortalidade_acum: (outer) => {
@@ -661,6 +802,7 @@ const charts = {
         name: 'Óbitos',
         data: state.evm.acum.yAxis.series.data,
       }],
+      credits: { text: 'Dados EVM' },
     });
   },
   densidade_ars: (outer) => {
@@ -675,6 +817,7 @@ const charts = {
         name: 'Hab/Km2',
         data: Object.keys(state.regions).map(r => state.regions[r]),
       }],
+      credits: { text: 'Dados Pordata' },
     });
   },
   densidade_casos: (outer) => {
@@ -687,7 +830,10 @@ const charts = {
       title: { text: 'Confirmados e óbitos'},
       legend: { enabled: false },
       xAxis: { title: { text: 'Hab/Km2' }},
-      yAxis: { title: { enabled: false }},
+      yAxis: {
+        title: { enabled: false },
+        type: 'logarithmic',
+      },
       plotOptions: {
         scatter: {
           marker: {
@@ -718,6 +864,7 @@ const charts = {
           data: Object.keys(state.regions).map(r => [state.regions[r], state.json.last[`obitos_${r}`]]),
         },
       ],
+      credits: { text: 'Dados Pordata + DGS' },
     });
   },
   empregos_total: (outer) => {
@@ -732,17 +879,18 @@ const charts = {
           data: state.employment.map(i => i.young + i.old)
         },
         {
-          name: 'Ajustados à sazonalidade',
+          name: 'Ajustado à sazonalidade',
           data: state.employment_adjusted.map(i => i ? i.young + i.old : null),
         },
       ],
+      credits: { enabled: true, text: 'Dados INE' },
     });
   },
   empregos_variacao: (outer) => {
     createGraphContainer('empregos_variacao', outer);
     Highcharts.chart('empregos_variacao', {
       chart:  { type: 'column' },
-      title:  { text: 'Variação mensal' },
+      title:  { text: 'Variação mês anterior' },
       xAxis:  { categories: state.employment.map(i => i.month + i.year) },
       yAxis:  { title: { text: null }},
       series: [
@@ -751,10 +899,11 @@ const charts = {
           data: state.employment_variation.map(i => i.young + i.old),
         },
         {
-          name: 'Ajustados à sazonalidade',
+          name: 'Ajustado à sazonalidade',
           data: state.employment_variation_adjusted.map(i => i ? i.young + i.old : null),
         },
       ],
+      credits: { enabled: true, text: 'Dados INE' },
     });
   },
   empregos_menos24_total: (outer) => {
@@ -762,7 +911,7 @@ const charts = {
     Highcharts.chart('empregos_menos24_total', {
       title: { text: 'Empregados 15 a 24 anos' },
       yAxis: { title: { text: null }},
-      xAxis:  { categories: state.employment.map(i => i.month + i.year) },
+      xAxis: { categories: state.employment.map(i => i.month + i.year) },
       legend: { enable: false },
       series: [
         {
@@ -770,10 +919,11 @@ const charts = {
           data: state.employment.map(i => i.young),
         },
         {
-          name: 'Ajustados à sazonalidade',
+          name: 'Ajustado à sazonalidade',
           data: state.employment_adjusted.map(i => i ? i.young : null),
         },
       ],
+      credits: { enabled: true, text: 'Dados INE' },
     });
   },
   empregos_mais24_total: (outer) => {
@@ -789,10 +939,63 @@ const charts = {
           data: state.employment.map(i => i.old),
         },
         {
-          name: 'Ajustados à sazonalidade',
+          name: 'Ajustado à sazonalidade',
           data: state.employment_adjusted.map(i => i ? i.old : null),
         },
       ],
+      credits: { enabled: true, text: 'Dados INE' },
+    });
+  },
+  desemprego_total: (outer) => {
+    createGraphContainer('desemprego_total', outer);
+    Highcharts.chart('desemprego_total', {
+      title: { text: 'Total desempregados' },
+      xAxis: { categories: Object.keys(state.unemployment['2020']) },
+      yAxis: { title: { text: null }},
+      series: [
+        {
+          name: '2019',
+          data: Object.keys(state.unemployment['2019']).map(month => {
+            const regions = Object.keys(state.unemployment['2019'][month]);
+            return regions.reduce((acc, cur) => {
+              acc += state.unemployment['2019'][month][cur];
+              return acc;
+            }, 0);
+          }),
+        },
+        {
+          name: '2020',
+          data: Object.keys(state.unemployment['2020']).map(month => {
+            const regions = Object.keys(state.unemployment['2020'][month]);
+            return regions.reduce((acc, cur) => {
+              acc += state.unemployment['2020'][month][cur];
+              return acc;
+            }, 0);
+          }),
+        },
+      ],
+      credits: { text: 'Dados IEFP' },
+    });
+  },
+  desemprego_ars: (outer) => {
+    createGraphContainer('desemprego_ars', outer);
+    Highcharts.chart('desemprego_ars', {
+      chart: { type: 'bar' },
+      title: { text: 'Desempregados por região' },
+      xAxis: { categories: Object.keys(state.unemployment['2020']['Jun']) },
+      yAxis: { title: { text: null }},
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Junho 2019',
+          data: Object.keys(state.unemployment['2019']['Jun']).map(r => state.unemployment['2019']['Jun'][r]),
+        },
+        {
+          name: 'Junho 2020',
+          data: Object.keys(state.unemployment['2020']['Jun']).map(r => state.unemployment['2020']['Jun'][r]),
+        },
+      ],
+      credits: { text: 'Dados IEFP' },
     });
   },
 }
@@ -881,7 +1084,6 @@ function crunchData() {
 // add the graphs to the DOM
 function addGraphs() {
   let outer;
-  applyTheme();
   outer = addLead('Confirmados');
   charts['confirmados_dia'](outer);
   charts['confirmados_total'](outer);
@@ -929,6 +1131,8 @@ function addGraphs() {
   charts['empregos_variacao'](outer);
   charts['empregos_menos24_total'](outer);
   charts['empregos_mais24_total'](outer);
+  charts['desemprego_total'](outer);
+  charts['desemprego_ars'](outer);
   renderTOC();
   document.getElementById('fontes').style.display = 'block';
 }
@@ -954,12 +1158,6 @@ function addLead(text) {
   outer.classList.add("fluid-row");
   document.getElementById('content_container').appendChild(outer);
   return outer;
-}
-
-// apply some options to the highchart theme
-function applyTheme() {
-  Highcharts.theme = { credits: { enabled: false }};
-  Highcharts.setOptions(Highcharts.theme);
 }
 
 // loading state goes from 2 to 0
@@ -1005,7 +1203,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt3.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20200728.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
@@ -1023,12 +1221,19 @@ function apiURL(id) {
   }
 }
 
+// navigate to anchor if anchor present
+function navigateToAnchor() {
+  const anchor = window.location.hash.substr(1);
+  if (anchor) document.getElementById(anchor)?.scrollIntoView();
+}
+
 // go and render the page
 function go(json) {
   state.json.full = json;
   manageWait();
   crunchData();
   addGraphs();
+  navigateToAnchor();
 }
 
 // run when content is loaded
