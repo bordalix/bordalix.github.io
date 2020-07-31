@@ -1164,8 +1164,30 @@ function crunchData() {
       'T4': null,
     }
   };
+  state.gdp_abs_variation_homologous_quarter = {
+    '2020': {
+      'T1': state.gdp['2020']['T1'] - state.gdp['2019']['T1'],
+      'T2': state.gdp['2020']['T2'] - state.gdp['2019']['T2'],
+      'T3': state.gdp['2020']['T3'] - state.gdp['2019']['T3'],
+      'T4': state.gdp['2020']['T4'] - state.gdp['2019']['T4'],
+    },
+  };
+  state.gdp_per_variation_homologous_quarter = {
+    '2020': {
+      'T1': state.gdp_abs_variation_homologous_quarter['2020']['T1'] / state.gdp['2019']['T1'],
+      'T2': state.gdp_abs_variation_homologous_quarter['2020']['T2'] / state.gdp['2019']['T2'],
+      'T3': state.gdp_abs_variation_homologous_quarter['2020']['T3'] / state.gdp['2019']['T3'],
+      'T4': state.gdp_abs_variation_homologous_quarter['2020']['T4'] / state.gdp['2019']['T4'],
+    },
+  };
+  console.log('state.gdp_abs_variation_previous_quarter');
   console.log(state.gdp_abs_variation_previous_quarter);
+  console.log('state.gdp_per_variation_previous_quarter');
   console.log(state.gdp_per_variation_previous_quarter);
+  console.log('state.gdp_abs_variation_homologous_quarter');
+  console.log(state.gdp_abs_variation_homologous_quarter);
+  console.log('state.gdp_per_variation_homologous_quarter');
+  console.log(state.gdp_per_variation_homologous_quarter);
 }
 
 // add the graphs to the DOM
