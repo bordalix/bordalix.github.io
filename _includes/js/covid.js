@@ -157,6 +157,18 @@ const state = {
       }
     }
   },
+  gdp: {
+    '2019': {
+      'T1': 52660800000,
+      'T2': 52695000000,
+      'T3': 53262800000,
+      'T4': 53702000000,
+    },
+    '2020': {
+      'T1': 52283000000,
+      'T2': 44911000000,
+    },
+  },
   loading: 2, // loading state (from 2 to 0)
   toc: [],    // table of contents
   evm: null,  // mortality data
@@ -998,6 +1010,50 @@ const charts = {
       credits: { text: 'Dados IEFP' },
     });
   },
+  pib_total: (outer) => {
+    createGraphContainer('pib_total', outer);
+    Highcharts.chart('pib_total', {
+      title: { text: 'PIB trimestral' },
+      xAxis: { categories: Object.keys(state.gdp['2019']) },
+      yAxis: { title: { text: null }},
+      series: [
+        {
+          name: '2019',
+          data: Object.keys(state.gdp['2019']).map(quarter => state.gdp['2019'][quarter]),
+        },
+        {
+          name: '2020',
+          data: Object.keys(state.gdp['2020']).map(quarter => state.gdp['2020'][quarter]),
+        },
+      ],
+      credits: { text: 'Dados INE' },
+    });
+  },
+  pib_percentage: (outer) => {
+    createGraphContainer('pib_percentage', outer);
+    Highcharts.chart('pib_percentage', {
+      chart: { type: 'bar' },
+      title: { text: 'Desempregados por região' },
+      xAxis: { categories: Object.keys(state.gdp['2020']) },
+      yAxis: { title: { text: null }},
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Trimestre anterior',
+          data: Object.keys(state.gdp['2020']).map(quarter => {
+            const curr = state.gdp['2020'][quarter];
+            const prev = state.gdp['2019'][quarter];
+            return
+          }),
+        },
+        {
+          name: 'Homólogo',
+          data: Object.keys(state.unemployment['2020']['Jun']).map(r => state.unemployment['2020']['Jun'][r]),
+        },
+      ],
+      credits: { text: 'Dados IEFP' },
+    });
+  },
 }
 
 // get full update and calculate tests and daily deltas
@@ -1079,6 +1135,37 @@ function crunchData() {
       };
     }
   });
+  // calculate gdp variation vs previous quarter
+  state.gdp_abs_variation_previous_quarter = {
+    '2019': {
+      'T1': null,
+      'T2': state.gdp['2019']['T2'] - state.gdp['2019']['T1'],
+      'T3': state.gdp['2019']['T3'] - state.gdp['2019']['T2'],
+      'T4': state.gdp['2019']['T4'] - state.gdp['2019']['T3'],
+    },
+    '2020': {
+      'T1': state.gdp['2020']['T1'] - state.gdp['2019']['T4'],
+      'T2': state.gdp['2020']['T2'] - state.gdp['2020']['T1'],
+      'T3': null,
+      'T4': null,
+    },
+  };
+  state.gdp_per_variation_previous_quarter = {
+    '2019': {
+      'T1': null,
+      'T2': state.gdp_abs_variation_previous_quarter['2019']['T2'] / state.gdp['2019']['T1'],
+      'T3': state.gdp_abs_variation_previous_quarter['2019']['T3'] / state.gdp['2019']['T2'],
+      'T4': state.gdp_abs_variation_previous_quarter['2019']['T4'] / state.gdp['2019']['T3'],
+    },
+    '2020': {
+      'T1': state.gdp_abs_variation_previous_quarter['2020']['T1'] / state.gdp['2019']['T4'],
+      'T2': state.gdp_abs_variation_previous_quarter['2020']['T2'] / state.gdp['2020']['T1'],
+      'T3': null,
+      'T4': null,
+    }
+  };
+  console.log(state.gdp_abs_variation_previous_quarter);
+  console.log(state.gdp_per_variation_previous_quarter);
 }
 
 // add the graphs to the DOM
@@ -1133,6 +1220,8 @@ function addGraphs() {
   charts['empregos_mais24_total'](outer);
   charts['desemprego_total'](outer);
   charts['desemprego_ars'](outer);
+  outer = addLead('PIB');
+  charts['pib_total'](outer);
   renderTOC();
   document.getElementById('fontes').style.display = 'block';
 }
