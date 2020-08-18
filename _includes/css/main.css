@@ -272,6 +272,17 @@ p.social a.stack-overflow {
   background-color: #f48024;
 }
 
+p.warning {
+  padding: 8px;
+  background-color: #b21f3a;
+  color: white;
+}
+
+p.warning a {
+  color: white;
+  text-decoration: underline;
+}
+
 .container,
 .container-fluid {
   margin-right: auto;
