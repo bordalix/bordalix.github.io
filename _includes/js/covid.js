@@ -7,7 +7,8 @@ const state = {
     delta: null,
     today: null,
   },
-  regions: {  // data from https://www.pordata.pt/Municipios/Densidade+populacional-452
+  regions: {
+    // data from https://www.pordata.pt/Municipios/Densidade+populacional-452
     acores: 105,
     arsalgarve: 88,
     arsalentejo: 22,
@@ -16,13 +17,14 @@ const state = {
     arsnorte: 168,
     madeira: 317,
   },
-  ages: [
-    '80_plus', '70_79', '60_69', '50_59',
-    '40_49', '30_39', '20_29', '10_19', '0_9'
-  ],
+  ages: ['80_plus', '70_79', '60_69', '50_59', '40_49', '30_39', '20_29', '10_19', '0_9'],
   symptoms: [
-    'tosse', 'febre', 'dores_musculares', 'cefaleia',
-    'fraqueza_generalizada', 'dificuldade_respiratoria',
+    'tosse',
+    'febre',
+    'dores_musculares',
+    'cefaleia',
+    'fraqueza_generalizada',
+    'dificuldade_respiratoria',
   ],
   employment: [
     { month: 'Jan', year: '19', young: 305500, old: 4502200 },
@@ -45,135 +47,135 @@ const state = {
     { month: 'Jun', year: '20', young: 238800, old: 4454700 },
   ],
   unemployment: {
-    "2019": {
-      "Jan": {
-        "Norte": 140696,
-        "Centro": 46703,
-        "LVT": 101758,
-        "Alentejo": 16621,
-        "Algarve": 20748,
-        "Açores": 7685,
-        "Madeira": 16561
+    '2019': {
+      Jan: {
+        Norte: 140696,
+        Centro: 46703,
+        LVT: 101758,
+        Alentejo: 16621,
+        Algarve: 20748,
+        Açores: 7685,
+        Madeira: 16561,
       },
-      "Fev": {
-        "Norte": 137964,
-        "Centro": 45660,
-        "LVT": 100102,
-        "Alentejo": 15783,
-        "Algarve": 19014,
-        "Açores": 7665,
-        "Madeira": 16514
+      Fev: {
+        Norte: 137964,
+        Centro: 45660,
+        LVT: 100102,
+        Alentejo: 15783,
+        Algarve: 19014,
+        Açores: 7665,
+        Madeira: 16514,
       },
-      "Mar": {
-        "Norte": 136319,
-        "Centro": 44374,
-        "LVT": 98370,
-        "Alentejo": 15473,
-        "Algarve": 15305,
-        "Açores": 7624,
-        "Madeira": 16311
+      Mar: {
+        Norte: 136319,
+        Centro: 44374,
+        LVT: 98370,
+        Alentejo: 15473,
+        Algarve: 15305,
+        Açores: 7624,
+        Madeira: 16311,
       },
-      "Abr": {
-        "Norte": 133143,
-        "Centro": 43663,
-        "LVT": 94043,
-        "Alentejo": 14994,
-        "Algarve": 11782,
-        "Açores": 7422,
-        "Madeira": 16193
+      Abr: {
+        Norte: 133143,
+        Centro: 43663,
+        LVT: 94043,
+        Alentejo: 14994,
+        Algarve: 11782,
+        Açores: 7422,
+        Madeira: 16193,
       },
-      "Mai": {
-        "Norte": 126663,
-        "Centro": 41451,
-        "LVT": 91018,
-        "Alentejo": 14007,
-        "Algarve": 9153,
-        "Açores": 7136,
-        "Madeira": 15743
+      Mai: {
+        Norte: 126663,
+        Centro: 41451,
+        LVT: 91018,
+        Alentejo: 14007,
+        Algarve: 9153,
+        Açores: 7136,
+        Madeira: 15743,
       },
-      "Jun": {
-        "Norte": 124858,
-        "Centro": 40843,
-        "LVT": 88850,
-        "Alentejo": 13520,
-        "Algarve": 7879,
-        "Açores": 7084,
-        "Madeira": 15157
-      }
+      Jun: {
+        Norte: 124858,
+        Centro: 40843,
+        LVT: 88850,
+        Alentejo: 13520,
+        Algarve: 7879,
+        Açores: 7084,
+        Madeira: 15157,
+      },
     },
-    "2020": {
-      "Jan": {
-        "Norte": 125571,
-        "Centro": 42894,
-        "LVT": 93050,
-        "Alentejo": 15601,
-        "Algarve": 20815,
-        "Açores": 6973,
-        "Madeira": 15654
+    '2020': {
+      Jan: {
+        Norte: 125571,
+        Centro: 42894,
+        LVT: 93050,
+        Alentejo: 15601,
+        Algarve: 20815,
+        Açores: 6973,
+        Madeira: 15654,
       },
-      "Fev": {
-        "Norte": 124337,
-        "Centro": 41927,
-        "LVT": 92458,
-        "Alentejo": 15106,
-        "Algarve": 19188,
-        "Açores": 6956,
-        "Madeira": 15590
+      Fev: {
+        Norte: 124337,
+        Centro: 41927,
+        LVT: 92458,
+        Alentejo: 15106,
+        Algarve: 19188,
+        Açores: 6956,
+        Madeira: 15590,
       },
-      "Mar": {
-        "Norte": 134578,
-        "Centro": 45845,
-        "LVT": 102108,
-        "Alentejo": 16997,
-        "Algarve": 21636,
-        "Açores": 6951,
-        "Madeira": 15646
+      Mar: {
+        Norte: 134578,
+        Centro: 45845,
+        LVT: 102108,
+        Alentejo: 16997,
+        Algarve: 21636,
+        Açores: 6951,
+        Madeira: 15646,
       },
-      "Abr": {
-        "Norte": 151853,
-        "Centro": 50807,
-        "LVT": 121004,
-        "Alentejo": 18882,
-        "Algarve": 26379,
-        "Açores": 6963,
-        "Madeira": 16435
+      Abr: {
+        Norte: 151853,
+        Centro: 50807,
+        LVT: 121004,
+        Alentejo: 18882,
+        Algarve: 26379,
+        Açores: 6963,
+        Madeira: 16435,
       },
-      "Mai": {
-        "Norte": 156260,
-        "Centro": 52033,
-        "LVT": 129917,
-        "Alentejo": 18619,
-        "Algarve": 27675,
-        "Açores": 6965,
-        "Madeira": 17465
+      Mai: {
+        Norte: 156260,
+        Centro: 52033,
+        LVT: 129917,
+        Alentejo: 18619,
+        Algarve: 27675,
+        Açores: 6965,
+        Madeira: 17465,
       },
-      "Jun": {
-        "Norte": 153548,
-        "Centro": 51618,
-        "LVT": 131972,
-        "Alentejo": 18351,
-        "Algarve": 26140,
-        "Açores": 6963,
-        "Madeira": 18073
-      }
-    }
+      Jun: {
+        Norte: 153548,
+        Centro: 51618,
+        LVT: 131972,
+        Alentejo: 18351,
+        Algarve: 26140,
+        Açores: 6963,
+        Madeira: 18073,
+      },
+    },
   },
   gdp: {
     '2019': {
-      'T1': 52660800000,
-      'T2': 52695000000,
-      'T3': 53262800000,
-      'T4': 53702000000,
+      T1: 52660800000,
+      T2: 52695000000,
+      T3: 53262800000,
+      T4: 53702000000,
     },
     '2020': {
-      'T1': 52283000000,
-      'T2': 44911000000,
+      T1: 52283000000,
+      T2: 44911000000,
     },
   },
   loading: 2, // loading state (from 2 to 0)
-  toc: [],    // table of contents
-  evm: null,  // mortality data
-}
+  toc: [], // table of contents
+  evm: null, // mortality data
+};
 
 // all charts
 const charts = {
