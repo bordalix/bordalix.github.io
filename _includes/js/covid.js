@@ -102,6 +102,15 @@ const state = {
         Açores: 7084,
         Madeira: 15157,
       },
+      Jul: {
+        Norte: 124246,
+        Centro: 40626,
+        LVT: 89204,
+        Alentejo: 13956,
+        Algarve: 7229 ,
+        Açores: 7058,
+        Madeira: 14971,
+      },
     },
     '2020': {
       Jan: {
@@ -158,6 +167,15 @@ const state = {
         Açores: 6963,
         Madeira: 18073,
       },
+      Jul: {
+        Norte: 154667,
+        Centro: 51267,
+        LVT: 135240,
+        Alentejo: 17995,
+        Algarve: 22850,
+        Açores: 6957,
+        Madeira: 18326,
+      },
     },
   },
   gdp: {
@@ -177,6 +195,11 @@ const state = {
   evm: null, // mortality data
 };
 
+function compactDate(date) {
+  const match = date.match(/(\d\d)-(\d\d)-\d\d\d\d/);
+  return match ? `${match[1]}/${match[2]}` : date;
+}
+
 // all charts
 const charts = {
   confirmados_dia: (outer) => {
@@ -185,7 +208,7 @@ const charts = {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -202,7 +225,7 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -327,7 +350,7 @@ const charts = {
       chart: { type: 'area' },
       title: { text: 'Evolução' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(key => state.json.full.data[key]),
+        categories: Object.keys(state.json.full.data).map(key => compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -359,7 +382,7 @@ const charts = {
       chart: { type: 'area' },
       title: { text: 'Evolução peso relativo' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(key => state.json.full.data[key]),
+        categories: Object.keys(state.json.full.data).map(key => compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -394,7 +417,7 @@ const charts = {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -411,7 +434,7 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -530,7 +553,7 @@ const charts = {
       chart: { type: 'area' },
       title: { text: 'Evolução' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(key => state.json.full.data[key]),
+        categories: Object.keys(state.json.full.data).map(key => compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -562,7 +585,7 @@ const charts = {
       chart: { type: 'area' },
       title: { text: 'Evolução peso relativo' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(key => state.json.full.data[key]),
+        categories: Object.keys(state.json.full.data).map(key => compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -597,7 +620,7 @@ const charts = {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -614,7 +637,7 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -631,7 +654,7 @@ const charts = {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -639,7 +662,7 @@ const charts = {
         name: 'Testes',
         data: Object.keys(state.json.full.data).map(k => state.json.delta.testes[k]),
       }],
-      credits: { text: 'Dados DGS' },
+      credits: { text: 'Dados DGS - deixou de informar a 16/08/2020' },
     });
   },
   testes_dia_perc_positivos: (outer) => {
@@ -651,7 +674,7 @@ const charts = {
         labels: { format: '{value}%' },
       },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -659,7 +682,7 @@ const charts = {
         name: 'Testes',
         data: Object.keys(state.json.full.data).map(k => Math.floor((state.json.delta.confirmados[k] / state.json.delta.testes[k]) * 100)),
       }],
-      credits: { text: 'Dados DGS' },
+      credits: { text: 'Dados DGS - deixou de informar a 16/08/2020' },
     });
   },
   internados_normal_dia: (outer) => {
@@ -668,7 +691,7 @@ const charts = {
       title: { text: 'Variação diária' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -685,7 +708,7 @@ const charts = {
       title: { text: 'Variação diária UCI' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -702,7 +725,7 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -719,7 +742,7 @@ const charts = {
       title: { text: 'Total UCI' },
       yAxis: { title: { text: null }},
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(k => state.json.full.data[k]),
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -997,17 +1020,17 @@ const charts = {
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
       title: { text: 'Desempregados por região' },
-      xAxis: { categories: Object.keys(state.unemployment['2020']['Jun']) },
+      xAxis: { categories: Object.keys(state.unemployment['2020']['Jul']) },
       yAxis: { title: { text: null }},
       legend: { enable: false },
       series: [
         {
-          name: 'Junho 2019',
-          data: Object.keys(state.unemployment['2019']['Jun']).map(r => state.unemployment['2019']['Jun'][r]),
+          name: 'Julho 2019',
+          data: Object.keys(state.unemployment['2019']['Jul']).map(r => state.unemployment['2019']['Jul'][r]),
         },
         {
-          name: 'Junho 2020',
-          data: Object.keys(state.unemployment['2020']['Jun']).map(r => state.unemployment['2020']['Jun'][r]),
+          name: 'Julho 2020',
+          data: Object.keys(state.unemployment['2020']['Jul']).map(r => state.unemployment['2020']['Jul'][r]),
         },
       ],
       credits: { text: 'Dados IEFP' },
@@ -1084,12 +1107,15 @@ function crunchData() {
         delta[key][idx] = null;
         if (idx !== '0') {
           const previous = `${parseInt(idx) - 1}`;
-          delta[key][idx] = state.json.full[key][idx] - state.json.full[key][previous];
+          const diff = state.json.full[key][idx] - state.json.full[key][previous];
+          delta[key][idx] = state.json.full[key][idx] > 0 ? diff : null;
         }
       });
     }
   });
   state.json.delta = delta;
+  console.log('total', state.json.full.testes);
+  console.log('delya', state.json.delta.testes);
   // calculate employement monthly variation
   state.employment_variation = state.employment.map((month, index) => {
     if (index === 0) {
@@ -1183,14 +1209,6 @@ function crunchData() {
       'T4': state.gdp_abs_variation_homologous_quarter['2020']['T4'] / state.gdp['2019']['T4'],
     },
   };
-  console.log('state.gdp_abs_variation_previous_quarter');
-  console.log(state.gdp_abs_variation_previous_quarter);
-  console.log('state.gdp_per_variation_previous_quarter');
-  console.log(state.gdp_per_variation_previous_quarter);
-  console.log('state.gdp_abs_variation_homologous_quarter');
-  console.log(state.gdp_abs_variation_homologous_quarter);
-  console.log('state.gdp_per_variation_homologous_quarter');
-  console.log(state.gdp_per_variation_homologous_quarter);
 }
 
 // add the graphs to the DOM
@@ -1225,9 +1243,10 @@ function addGraphs() {
   charts['internados_uci_dia'](outer);
   charts['internados_normal_total'](outer);
   charts['internados_uci_total'](outer);
-  outer = addLead('Sintomas');
-  charts['sintomas'](outer);
-  charts['sintomas_historico'](outer);
+  // removed due to changes in report data
+  // outer = addLead('Sintomas');
+  // charts['sintomas'](outer);
+  // charts['sintomas_historico'](outer);
   if (state.evm) {
     outer = addLead('Mortalidade');
     charts['mortalidade_acum'](outer);
@@ -1317,7 +1336,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20200819.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20200827.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
