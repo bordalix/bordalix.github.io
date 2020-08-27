@@ -772,7 +772,7 @@ const charts = {
         name: 'Sintomas',
         data: state.symptoms.map(s => state.json.last[`sintomas_${s}`] * 100),
       }],
-      credits: { text: 'Dados DGS' },
+      credits: { text: 'Dados DGS - deixou de informar a 16/08/2020' },
     });
   },
   sintomas_historico: (outer) => {
@@ -781,7 +781,7 @@ const charts = {
       chart: { type: 'area' },
       title: { text: 'Evolução' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map(key => state.json.full.data[key]),
+        categories: Object.keys(state.json.full.data).map(key => compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -807,7 +807,7 @@ const charts = {
           data: Object.keys(state.json.full.data).map(key => state.json.full[`sintomas_${s}`][key]),
         }
       }),
-      credits: { text: 'Dados DGS' },
+      credits: { text: 'Dados DGS - deixou de informar a 16/08/2020' },
     });
   },
   mortalidade_light: (outer) => {
@@ -1089,6 +1089,8 @@ function crunchData() {
     if (state.json.last.data === state.json.full.data[cur]) acc = cur;
     return acc;
   }, 0);
+  // find last date with symptoms
+  state.symptoms.forEach(s => state.json.last[`sintomas_${s}`] = state.json.full[`sintomas_${s}`][172]),
   // calculate number of total tests
   state.json.full.testes = {};
   Object.keys(state.json.full.confirmados).forEach(key => {
@@ -1114,8 +1116,6 @@ function crunchData() {
     }
   });
   state.json.delta = delta;
-  console.log('total', state.json.full.testes);
-  console.log('delya', state.json.delta.testes);
   // calculate employement monthly variation
   state.employment_variation = state.employment.map((month, index) => {
     if (index === 0) {
@@ -1243,10 +1243,9 @@ function addGraphs() {
   charts['internados_uci_dia'](outer);
   charts['internados_normal_total'](outer);
   charts['internados_uci_total'](outer);
-  // removed due to changes in report data
-  // outer = addLead('Sintomas');
-  // charts['sintomas'](outer);
-  // charts['sintomas_historico'](outer);
+  outer = addLead('Sintomas');
+  charts['sintomas'](outer);
+  charts['sintomas_historico'](outer);
   if (state.evm) {
     outer = addLead('Mortalidade');
     charts['mortalidade_acum'](outer);
