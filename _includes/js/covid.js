@@ -44,7 +44,8 @@ const state = {
     { month: 'Mar', year: '20', young: 290000, old: 4503400 },
     { month: 'Abr', year: '20', young: 268100, old: 4482800 },
     { month: 'Mai', year: '20', young: 240600, old: 4430800 },
-    { month: 'Jun', year: '20', young: 238800, old: 4454700 },
+    { month: 'Jun', year: '20', young: 235100, old: 4469200 },
+    { month: 'Jul', year: '20', young: 244800, old: 4461200 },
   ],
   unemployment: {
     '2019': {
