@@ -108,9 +108,18 @@ const state = {
         Centro: 40626,
         LVT: 89204,
         Alentejo: 13956,
-        Algarve: 7229 ,
+        Algarve: 7229,
         Açores: 7058,
         Madeira: 14971,
+      },
+      Aug: {
+        Norte: 127281,
+        Centro: 42323,
+        LVT: 91140,
+        Alentejo: 14268,
+        Algarve: 7353,
+        Açores: 7040,
+        Madeira: 14925,
       },
     },
     '2020': {
@@ -176,6 +185,15 @@ const state = {
         Algarve: 22850,
         Açores: 6957,
         Madeira: 18326,
+      },
+      Aug: {
+        Norte: 158013,
+        Centro: 51944,
+        LVT: 134944,
+        Alentejo: 18156,
+        Algarve: 20425,
+        Açores: 6949,
+        Madeira: 18900,
       },
     },
   },
@@ -1336,7 +1354,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20200827.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20200922.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
