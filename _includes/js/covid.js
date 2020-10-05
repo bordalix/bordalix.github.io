@@ -46,6 +46,7 @@ const state = {
     { month: 'Mai', year: '20', young: 240600, old: 4430800 },
     { month: 'Jun', year: '20', young: 235100, old: 4469200 },
     { month: 'Jul', year: '20', young: 244800, old: 4461200 },
+    { month: 'Aug', year: '20', young: 250100, old: 4487300 },
   ],
   unemployment: {
     '2019': {
@@ -667,6 +668,46 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
+  amostras_dia: (outer) => {
+    createGraphContainer('amostras_dia', outer);
+    Highcharts.chart('amostras_dia', {
+      title: { text: 'Por dia' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.amostras.map(k => compactDate(k[0])),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [{
+        name: 'amostras',
+        data: state.amostras.map(k => parseInt(k[2], 10)),
+      }],
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  amostras_dia_perc_positivos: (outer) => {
+    createGraphContainer('amostras_dia_perc_positivos', outer);
+    Highcharts.chart('amostras_dia_perc_positivos', {
+      title: { text: '% Positivos' },
+      yAxis: {
+        title: { text: null },
+        labels: { format: '{value}%' },
+      },
+      xAxis: {
+        categories: state.amostras.map(k => compactDate(k[0])),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [{
+        name: 'amostras',
+        data: state.amostras.map((a,k) => {
+          if (parseInt(a[2]) === 0) return 0;
+          return parseFloat((100 * state.json.delta.confirmados[k] / parseInt(a[2])).toFixed(2));
+        }),
+      }],
+      credits: { text: 'Dados DGS' },
+    });
+  },
   testes_dia: (outer) => {
     createGraphContainer('testes_dia', outer);
     Highcharts.chart('testes_dia', {
@@ -1254,9 +1295,9 @@ function addGraphs() {
   outer = addLead('Recuperados');
   charts['recuperados_dia'](outer);
   charts['recuperados_total'](outer);
-  outer = addLead('Testes');
-  charts['testes_dia'](outer);
-  charts['testes_dia_perc_positivos'](outer);
+  outer = addLead('Amostras');
+  charts['amostras_dia'](outer);
+  charts['amostras_dia_perc_positivos'](outer);
   outer = addLead('Internados');
   charts['internados_normal_dia'](outer);
   charts['internados_uci_dia'](outer);
@@ -1285,7 +1326,7 @@ function addGraphs() {
   outer = addLead('PIB');
   charts['pib_total'](outer);
   renderTOC();
-  document.getElementById('fontes').style.display = 'block';
+  document.getElementById('Fontes').style.display = 'block';
 }
 
 // util function, returns a DOM element, keep your code DRY
@@ -1325,7 +1366,7 @@ function manageWait() {
 
 // renders Table of Content
 function renderTOC() {
-  state.toc.push({ anchor: 'fontes', label: 'Fontes' });
+  state.toc.push({ anchor: 'Fontes', label: 'Fontes' });
   let html = state.toc.map(item => `<a href="#${item.anchor}">${item.label}</a>`).join(' &middot; ');
   document.getElementById('toc').innerHTML = html;
 }
@@ -1370,6 +1411,11 @@ function apiURL(id) {
     const s = d.getFullYear() + ("0"+(d.getMonth()+1)).slice(-2) + ("0" + d.getDate()).slice(-2);
     return `https://cdn.joaobordalo.com/json/mortality-${s}.json`;
   }
+  if (id === 'amostras') {
+    const d = new Date();
+    const s = d.getFullYear() + ("0"+(d.getMonth()+1)).slice(-2) + ("0" + d.getDate()).slice(-2);
+    return `https://cdn.joaobordalo.com/json/amostras-${s}.json`;
+  }
 }
 
 // navigate to anchor if anchor present
@@ -1401,7 +1447,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(response => response.json())
       .then(evm => {
         state.evm = evm;
-        go(json);
+        fetch(apiURL('amostras'))
+        .then(response => response.json())
+        .then(amostras => {
+          state.amostras = amostras.splice(1);
+          go(json);
+        })
       })
       .catch(() => go(json));
     });
