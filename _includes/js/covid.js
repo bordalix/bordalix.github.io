@@ -1367,7 +1367,7 @@ function manageWait() {
 // renders Table of Content
 function renderTOC() {
   state.toc.push({ anchor: 'Fontes', label: 'Fontes' });
-  let html = state.toc.map(item => `<a href="#${item.anchor}">${item.label}</a>`).join(' &middot; ');
+  const html = 'Index: <br />' + state.toc.map(item => `<a href="#${item.anchor}">${item.label}</a>`).join(' &middot; ');
   document.getElementById('toc').innerHTML = html;
 }
 
@@ -1424,11 +1424,27 @@ function navigateToAnchor() {
   if (anchor) document.getElementById(anchor)?.scrollIntoView();
 }
 
+function addPrefix(number) {
+  if (number > 0) return `+${number}`;
+  if (number < 0) return `-${number}`;
+  return number;
+}
+
+function addTodayNumbers() {
+  const html = `Última actualização a ${state.json.last.data}: <br />`
+             + `<a href="#Confirmados">Confirmados</a>: ${addPrefix(state.json.last.confirmados_novos)} <br />`
+             + `<a href="#Internados">Internados</a>: ${addPrefix(state.json.delta.internados[state.json.today])} `
+             + `dos quais ${addPrefix(state.json.delta.internados_uci[state.json.today])} em UCI <br />`
+             + `<a href="#Óbitos">Óbitos</a>: ${addPrefix(state.json.delta.obitos[state.json.today])}`;
+  document.getElementById("lastUpdate").innerHTML = html;
+}
+
 // go and render the page
 function go(json) {
   state.json.full = json;
   manageWait();
   crunchData();
+  addTodayNumbers();
   addGraphs();
   navigateToAnchor();
 }
