@@ -47,6 +47,7 @@ const state = {
     { month: 'Jun', year: '20', young: 235100, old: 4469200 },
     { month: 'Jul', year: '20', young: 244800, old: 4461200 },
     { month: 'Aug', year: '20', young: 250100, old: 4487300 },
+    { month: 'Sep', year: '20', young: 257900, old: 4504000 },
   ],
   unemployment: {
     '2019': {
@@ -122,6 +123,15 @@ const state = {
         Açores: 7040,
         Madeira: 14925,
       },
+      Sep: {
+        Norte: 126215,
+        Centro: 42188,
+        LVT: 88445,
+        Alentejo: 14264,
+        Algarve: 8276,
+        Açores: 7029,
+        Madeira: 14865,
+      },
     },
     '2020': {
       Jan: {
@@ -196,6 +206,15 @@ const state = {
         Açores: 6949,
         Madeira: 18900,
       },
+      Sep: {
+        Norte: 156650,
+        Centro: 50938,
+        LVT: 136844,
+        Alentejo: 18152,
+        Algarve: 21310,
+        Açores: 6942,
+        Madeira: 19338,
+      },
     },
   },
   gdp: {
@@ -208,6 +227,7 @@ const state = {
     '2020': {
       T1: 52283000000,
       T2: 44911000000,
+      T3: 50839252000
     },
   },
   loading: 2, // loading state (from 2 to 0)
@@ -1080,17 +1100,17 @@ const charts = {
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
       title: { text: 'Desempregados por região' },
-      xAxis: { categories: Object.keys(state.unemployment['2020']['Jul']) },
+      xAxis: { categories: Object.keys(state.unemployment['2020']['Sep']) },
       yAxis: { title: { text: null }},
       legend: { enable: false },
       series: [
         {
-          name: 'Julho 2019',
-          data: Object.keys(state.unemployment['2019']['Jul']).map(r => state.unemployment['2019']['Jul'][r]),
+          name: 'Setembro 2019',
+          data: Object.keys(state.unemployment['2019']['Sep']).map(r => state.unemployment['2019']['Sep'][r]),
         },
         {
-          name: 'Julho 2020',
-          data: Object.keys(state.unemployment['2020']['Jul']).map(r => state.unemployment['2020']['Jul'][r]),
+          name: 'Setembro 2020',
+          data: Object.keys(state.unemployment['2020']['Sep']).map(r => state.unemployment['2020']['Sep'][r]),
         },
       ],
       credits: { text: 'Dados IEFP' },
@@ -1426,16 +1446,15 @@ function navigateToAnchor() {
 
 function addPrefix(number) {
   if (number > 0) return `+${number}`;
-  if (number < 0) return `-${number}`;
   return number;
 }
 
 function addTodayNumbers() {
   const html = `Última actualização a ${state.json.last.data}: <br />`
              + `<a href="#Confirmados">Confirmados</a>: ${addPrefix(state.json.last.confirmados_novos)} <br />`
-             + `<a href="#Internados">Internados</a>: ${addPrefix(state.json.delta.internados[state.json.today])} `
-             + `dos quais ${addPrefix(state.json.delta.internados_uci[state.json.today])} em UCI <br />`
-             + `<a href="#Óbitos">Óbitos</a>: ${addPrefix(state.json.delta.obitos[state.json.today])}`;
+             + `<a href="#Internados">Internados</a>: ${addPrefix(state.json.delta.internados[state.json.today])} (${state.json.full.internados[state.json.today]}) <br />`
+             + `<a href="#Internados">UCI</a>: ${addPrefix(state.json.delta.internados_uci[state.json.today])} (${state.json.full.internados_uci[state.json.today]}) <br />`
+             + `<a href="#Óbitos">Óbitos</a>: ${addPrefix(state.json.delta.obitos[state.json.today])} (${state.json.full.obitos[state.json.today]})`;
   document.getElementById("lastUpdate").innerHTML = html;
 }
 
