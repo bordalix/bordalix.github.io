@@ -29,6 +29,7 @@ nav.menu-bottom .project p {
 
 .text_column.left img {
   opacity: 1;
+  height: auto;
   width: 100%;
   box-shadow: 6px 6px 6px #ddd;
   transition: opacity 0.3s;
