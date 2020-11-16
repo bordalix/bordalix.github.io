@@ -923,6 +923,55 @@ const charts = {
       credits: { text: 'Dados EVM' },
     });
   },
+  mortalidade_excessiva: (outer) => {
+    createGraphContainer('mortalidade_excessiva', outer);
+    Highcharts.chart('mortalidade_excessiva', {
+      title: { text: 'Mortalidade excessiva' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.evm.mmm.xAxis.categories,
+        labels: { step: 90 },
+      },
+      series: [
+        state.evm.mmm.yAxis.series[1],
+        state.evm.mmm.yAxis.series[3],
+      ],
+      credits: { text: 'Dados EVM' },
+    });
+  },
+  mortalidade_excessiva_percentagem: (outer) => {
+    createGraphContainer('mortalidade_excessiva_percentagem', outer);
+    Highcharts.chart('mortalidade_excessiva_percentagem', {
+      title: { text: 'Mortalidade excessiva %' },
+      yAxis: {
+        title: { text: null },
+        labels: {
+          formatter: function () {
+              return this.value + '%';
+          }
+        },
+      },
+      xAxis: {
+        categories: state.evm.mmm.xAxis.categories,
+        labels: { step: 90 },
+      },
+      series: [
+        {
+          data: state.evm.mmm.yAxis.series[1].data.map(n => 0),
+          name: 'Média',
+        },
+        {
+          data: state.evm.mmm.yAxis.series[3].data.map((n, idx) => {
+            if (n == null) return null;
+            const avg = state.evm.mmm.yAxis.series[1].data[idx];
+            return parseFloat(((n - avg) / avg * 100).toFixed(2));
+          }),
+          name: '2020 em %',
+        }
+      ],
+      credits: { text: 'Dados EVM' },
+    });
+  },
   densidade_ars: (outer) => {
     createGraphContainer('densidade_ars', outer);
     Highcharts.chart('densidade_ars', {
@@ -1330,6 +1379,8 @@ function addGraphs() {
     outer = addLead('Mortalidade');
     charts['mortalidade_acum'](outer);
     charts['mortalidade_light'](outer);
+    charts['mortalidade_excessiva'](outer);
+    charts['mortalidade_excessiva_percentagem'](outer);
   }
   outer = addLead('Densidade populacional');
   charts['densidade_ars'](outer);
