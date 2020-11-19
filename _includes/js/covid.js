@@ -688,6 +688,40 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
+  ativos_dia: (outer) => {
+    createGraphContainer('ativos_dia', outer);
+    Highcharts.chart('ativos_dia', {
+      title: { text: 'Por dia' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [{
+        name: 'Activos',
+        data: Object.keys(state.json.full.data).map(k => state.json.delta.ativos[k]),
+      }],
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  ativos_total: (outer) => {
+    createGraphContainer('ativos_total', outer);
+    Highcharts.chart('ativos_total', {
+      title: { text: 'Total' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map(k => compactDate(state.json.full.data[k])),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [{
+        name: 'Activos',
+        data: Object.keys(state.json.full.data).map(k => state.json.full.ativos[k]),
+      }],
+      credits: { text: 'Dados DGS' },
+    });
+  },
   amostras_dia: (outer) => {
     createGraphContainer('amostras_dia', outer);
     Highcharts.chart('amostras_dia', {
@@ -1364,6 +1398,9 @@ function addGraphs() {
   outer = addLead('Recuperados');
   charts['recuperados_dia'](outer);
   charts['recuperados_total'](outer);
+  outer = addLead('Activos');
+  charts['ativos_dia'](outer);
+  charts['ativos_total'](outer);
   outer = addLead('Amostras');
   charts['amostras_dia'](outer);
   charts['amostras_dia_perc_positivos'](outer);
