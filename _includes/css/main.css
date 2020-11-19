@@ -374,3 +374,9 @@ nav img {
 .text_column.right {
   padding-left: 30px;
 }
+
+a.btt {
+  cursor:pointer;
+  font-size: 13px;
+  padding-left: 10px;
+}

@@ -132,6 +132,15 @@ const state = {
         Açores: 7029,
         Madeira: 14865,
       },
+      Oct: {
+        Norte: 124078,
+        Centro: 41647,
+        LVT: 87441,
+        Alentejo: 14686,
+        Algarve: 10285,
+        Açores: 7007,
+        Madeira: 14876,
+      },
     },
     '2020': {
       Jan: {
@@ -214,6 +223,15 @@ const state = {
         Algarve: 21310,
         Açores: 6942,
         Madeira: 19338,
+      },
+      Oct: {
+        Norte: 153020,
+        Centro: 48843,
+        LVT: 133707,
+        Alentejo: 17536,
+        Algarve: 24088,
+        Açores: 6950,
+        Madeira: 19404,
       },
     },
   },
@@ -1183,17 +1201,17 @@ const charts = {
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
       title: { text: 'Desempregados por região' },
-      xAxis: { categories: Object.keys(state.unemployment['2020']['Sep']) },
+      xAxis: { categories: Object.keys(state.unemployment['2020']['Oct']) },
       yAxis: { title: { text: null }},
       legend: { enable: false },
       series: [
         {
-          name: 'Setembro 2019',
-          data: Object.keys(state.unemployment['2019']['Sep']).map(r => state.unemployment['2019']['Sep'][r]),
+          name: 'Outubro 2019',
+          data: Object.keys(state.unemployment['2019']['Oct']).map(r => state.unemployment['2019']['Oct'][r]),
         },
         {
-          name: 'Setembro 2020',
-          data: Object.keys(state.unemployment['2020']['Sep']).map(r => state.unemployment['2020']['Sep'][r]),
+          name: 'Outubro 2020',
+          data: Object.keys(state.unemployment['2020']['Oct']).map(r => state.unemployment['2020']['Oct'][r]),
         },
       ],
       credits: { text: 'Dados IEFP' },
@@ -1447,10 +1465,11 @@ function createGraphContainer(id, outer) {
 
 // adds a new h2 and a new div, returns the div
 function addLead(text) {
+  const btt = '<a onclick="window.scrollTo(0,0);" class="btt"><i class="fa fa-level-up"></i></a>'
   const h2 = document.createElement('h2');
   h2.id = text.replace(/\s/g,'_');
   h2.classList.add("section_divider");
-  h2.innerHTML = text;
+  h2.innerHTML = text + btt;
   document.getElementById('content_container').appendChild(h2);
   state.toc.push({ anchor: h2.id, label: text });
   const outer = document.createElement('div');
@@ -1540,6 +1559,7 @@ function addPrefix(number) {
 function addTodayNumbers() {
   const html = `Última actualização a ${state.json.last.data}: <br />`
              + `<a href="#Confirmados">Confirmados</a>: ${addPrefix(state.json.last.confirmados_novos)} <br />`
+             + `<a href="#Activos">Activos</a>: ${addPrefix(state.json.delta.ativos[state.json.today])} (${state.json.last.ativos}) <br />`
              + `<a href="#Internados">Internados</a>: ${addPrefix(state.json.delta.internados[state.json.today])} (${state.json.full.internados[state.json.today]}) <br />`
              + `<a href="#Internados">UCI</a>: ${addPrefix(state.json.delta.internados_uci[state.json.today])} (${state.json.full.internados_uci[state.json.today]}) <br />`
              + `<a href="#Óbitos">Óbitos</a>: ${addPrefix(state.json.delta.obitos[state.json.today])} (${state.json.full.obitos[state.json.today]})`;
