@@ -253,6 +253,7 @@ const state = {
   evm: null, // mortality data
 };
 
+// remove year from date
 function compactDate(date) {
   const match = date.match(/(\d\d)-(\d\d)-\d\d\d\d/);
   return match ? `${match[1]}/${match[2]}` : date;
@@ -1551,11 +1552,13 @@ function navigateToAnchor() {
   if (anchor) document.getElementById(anchor)?.scrollIntoView();
 }
 
+// add a '+' on positive numbers
 function addPrefix(number) {
   if (number > 0) return `+${number}`;
   return number;
 }
 
+// add summary of stats for the present day
 function addTodayNumbers() {
   const html = `Última actualização a ${state.json.last.data}: <br />`
              + `<a href="#Confirmados">Confirmados</a>: ${addPrefix(state.json.last.confirmados_novos)} <br />`
@@ -1576,28 +1579,28 @@ function go(json) {
   navigateToAnchor();
 }
 
+// fetch all data
+async function fetchData() {
+  // get last update information (to manage waiting time)
+  let response = await fetch(apiURL('last_update'));
+  state.json.last = await response.json();
+  manageWait();
+  // get full dataset from VOST
+  response = await fetch(apiURL('full_dataset'));
+  const full_dataset = await response.json();
+  // get mortality data
+  response = await fetch(apiURL('mortality'));
+  state.evm = await response.json();
+  // get tests data
+  response = await fetch(apiURL('amostras'));
+  const amostras = await response.json();
+  state.amostras = amostras.splice(1);
+  // render all graphics
+  go(full_dataset);
+}
+
 // run when content is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  fetch(apiURL('last_update'))
-  .then(response => response.json())
-  .then(json => {
-    state.json.last = json;
-    manageWait();
-    fetch(apiURL('full_dataset'))
-    .then(response => response.json())
-    .then(json => {
-      fetch(apiURL('mortality'))
-      .then(response => response.json())
-      .then(evm => {
-        state.evm = evm;
-        fetch(apiURL('amostras'))
-        .then(response => response.json())
-        .then(amostras => {
-          state.amostras = amostras.splice(1);
-          go(json);
-        })
-      })
-      .catch(() => go(json));
-    });
-  });
+  fetchData()
+  .catch (e => console.log(e.message));
 });
