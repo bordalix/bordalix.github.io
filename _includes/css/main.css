@@ -128,11 +128,16 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   letter-spacing: -1px;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.2;
   color: #000;
+}
+
+.fonts-loaded body {
+  font-family: "Titillium Web", sans-serif;
+  letter-spacing: 0;
 }
 
 ol {
@@ -167,11 +172,6 @@ table {
 
 * {
   box-sizing: border-box;
-}
-
-.fonts-loaded body {
-  font-family: "Titillium Web", sans-serif;
-  letter-spacing: normal;
 }
 
 a {
