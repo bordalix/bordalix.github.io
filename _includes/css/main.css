@@ -128,16 +128,19 @@ html {
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  letter-spacing: -1px;
+  font-family: "Titillium Web", sans-serif;
+  letter-spacing: 0;
   font-size: 16px;
   line-height: 1.2;
   color: #000;
 }
 
-.fonts-loaded body {
-  font-family: "Titillium Web", sans-serif;
-  letter-spacing: 0;
+main {
+  display: none;
+}
+
+.fonts-loaded main {
+  display: block;
 }
 
 ol {
