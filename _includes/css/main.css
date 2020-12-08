@@ -136,11 +136,11 @@ body {
 }
 
 main {
-  display: none;
+  visibility: hidden;
 }
 
 .fonts-loaded main {
-  display: block;
+  visibility: visible;
 }
 
 ol {
