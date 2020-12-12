@@ -1560,13 +1560,43 @@ function addPrefix(number) {
 
 // add summary of stats for the present day
 function addTodayNumbers() {
-  const html = `Última actualização a ${state.json.last.data}: <br />`
-             + `<a href="#Confirmados">Confirmados</a>: ${addPrefix(state.json.last.confirmados_novos)} <br />`
-             + `<a href="#Activos">Activos</a>: ${addPrefix(state.json.delta.ativos[state.json.today])} (${state.json.last.ativos}) <br />`
-             + `<a href="#Internados">Internados</a>: ${addPrefix(state.json.delta.internados[state.json.today])} (${state.json.full.internados[state.json.today]}) <br />`
-             + `<a href="#Internados">UCI</a>: ${addPrefix(state.json.delta.internados_uci[state.json.today])} (${state.json.full.internados_uci[state.json.today]}) <br />`
-             + `<a href="#Óbitos">Óbitos</a>: ${addPrefix(state.json.delta.obitos[state.json.today])} (${state.json.full.obitos[state.json.today]})`;
-  document.getElementById("lastUpdate").innerHTML = html;
+  const table = '<table>'
+              + '  <thead>'
+              + '    <tr>'
+              + '      <td></td>'
+              + `      <td class="right">Hoje</td>`
+              + `      <td class="right">Total</td>`
+              + '    </tr>'
+              + '  </thead>'
+              + '  <tbody>'
+              + '    <tr>'
+              + '      <td><a href="#Confirmados">Confirmados</a></td>'
+              + `      <td>${addPrefix(state.json.last.confirmados_novos)}</td>`
+              + `      <td>${state.json.last.confirmados}</td>`
+              + '    </tr>'
+              + '    <tr>'
+              + '      <td><a href="#Activos">Activos</a></td>'
+              + `      <td>${addPrefix(state.json.delta.ativos[state.json.today])}</td>`
+              + `      <td>${state.json.last.ativos}</td>`
+              + '    </tr>'
+              + '    <tr>'
+              + '      <td><a href="#Internados">Internados</a></td>'
+              + `      <td>${addPrefix(state.json.delta.internados[state.json.today])}</td>`
+              + `      <td>${state.json.full.internados[state.json.today]}</td>`
+              + '    </tr>'
+              + '    <tr>'
+              + '      <td><a href="#Internados">UCI</a></td>'
+              + `      <td>${addPrefix(state.json.delta.internados_uci[state.json.today])}</td>`
+              + `      <td>${state.json.full.internados_uci[state.json.today]}</td>`
+              + '    </tr>'
+              + '    <tr>'
+              + '      <td><a href="#Óbitos">Óbitos</a></td>'
+              + `      <td>${addPrefix(state.json.delta.obitos[state.json.today])}</td>`
+              + `      <td>${state.json.full.obitos[state.json.today]}</td>`
+              + '    </tr>'
+              + '  </tbody>'
+              + '</table>';
+  document.getElementById("summary").innerHTML = table;
 }
 
 // go and render the page

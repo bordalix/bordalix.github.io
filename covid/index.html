@@ -30,6 +30,18 @@ description: COVID-19 graphs
   p#Fontes {
     display: none;
   }
+  #summary table {
+    width: 100%;
+  }
+  #summary table tbody tr {
+    border-top: solid 2px #eee;
+  }
+  #summary table td {
+    text-align: right;
+  }
+  #summary table td:nth-child(1) {
+    text-align: left;
+  }
   img.rt_graph {
     width: 100%;
     padding: 10px;
@@ -38,7 +50,8 @@ description: COVID-19 graphs
   }
   @media (min-width: 440px) {
     div.graph_container,
-    div.rt_container {
+    div.rt_container,
+    #summary table {
       width: 47%;
     }
   }
@@ -53,6 +66,7 @@ description: COVID-19 graphs
   </p>
   -->
   <p id="lastUpdate"></p>
+  <p id="summary"></p>
   <p id="toc"></p>
   <p id="loading">
     A ligar-se a <a href="">https://covid19-api.vost.pt</a>... <br />
