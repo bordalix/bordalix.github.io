@@ -1523,7 +1523,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20201102.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20201212.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
@@ -1632,5 +1632,5 @@ async function fetchData() {
 // run when content is loaded
 document.addEventListener('DOMContentLoaded', () => {
   fetchData()
-  .catch (e => console.log(e.message));
+  .catch ((e) => console.log(e.message));
 });
