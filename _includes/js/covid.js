@@ -781,6 +781,40 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
+  amostras_dia_pcr: (outer) => {
+    createGraphContainer('amostras_dia_pcr', outer);
+    Highcharts.chart('amostras_dia_pcr', {
+      title: { text: 'PCR por dia' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.amostras.map(k => compactDate(k[0])),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [{
+        name: 'amostras PCR',
+        data: state.amostras.map(k => parseInt(k[4], 10)),
+      }],
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  amostras_dia_antigenio: (outer) => {
+    createGraphContainer('amostras_dia_antigenio', outer);
+    Highcharts.chart('amostras_dia_antigenio', {
+      title: { text: 'Antigénio por dia' },
+      yAxis: { title: { text: null }},
+      xAxis: {
+        categories: state.amostras.map(k => compactDate(k[0])),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [{
+        name: 'amostras antigénio',
+        data: state.amostras.map(k => parseInt(k[6], 10)),
+      }],
+      credits: { text: 'Dados DGS' },
+    });
+  },
   testes_dia: (outer) => {
     createGraphContainer('testes_dia', outer);
     Highcharts.chart('testes_dia', {
@@ -1423,6 +1457,8 @@ function addGraphs() {
   outer = addLead('Amostras');
   charts['amostras_dia'](outer);
   charts['amostras_dia_perc_positivos'](outer);
+  charts['amostras_dia_pcr'](outer);
+  charts['amostras_dia_antigenio'](outer);
   outer = addLead('Internados');
   charts['internados_normal_dia'](outer);
   charts['internados_uci_dia'](outer);
