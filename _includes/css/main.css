@@ -291,6 +291,10 @@ p.warning a {
   text-decoration: underline;
 }
 
+p.right {
+  text-align: right;
+}
+
 .container,
 .container-fluid {
   margin-right: auto;

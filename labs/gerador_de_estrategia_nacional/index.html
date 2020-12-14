@@ -1,21 +1,21 @@
 ---
 title: Gerador de estratégia nacional
-layout: strategy
+layout: inner
 description: Gerador de estratégia nacional
 ---
 
-<style>
-  p.right {
-    text-align: right;
-  }
-</style>
 <section id="main">
-  <h2 class="heading">Gerador de estratégia nacional</h2>
-  <h3 class="lead">Inspirado neste <a href="https://twitter.com/bordalix/status/1302014840832241665">twit</a></h3>
-  <p class="right">
-    Número de páginas
-    <input id="numPages" type="number" size="3">
-    <button onclick="generateBullshit()">Gerar</button>
-  </p>
-  <div id="content_container"></div>
+  <div class="container">
+    <h2 class="heading">Gerador de estratégia nacional</h2>
+    <h3 class="lead">Inspirado neste <a href="https://twitter.com/bordalix/status/1302014840832241665">twit</a></h3>
+    <p class="right">
+      Número de páginas
+      <input id="numPages" type="number" size="3">
+      <button onclick="generateBullshit()">Gerar</button>
+    </p>
+    <div id="content_container"></div>
+  </div>
 </section>
+<script>
+  {% include js/strategy.js %}
+</script>

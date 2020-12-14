@@ -1431,6 +1431,14 @@ function crunchData() {
 // add the graphs to the DOM
 function addGraphs() {
   let outer;
+  outer = addLead('Activos');
+  charts['ativos_dia'](outer);
+  charts['ativos_total'](outer);
+  outer = addLead('Amostras');
+  charts['amostras_dia'](outer);
+  charts['amostras_dia_perc_positivos'](outer);
+  charts['amostras_dia_pcr'](outer);
+  charts['amostras_dia_antigenio'](outer);
   outer = addLead('Confirmados');
   charts['confirmados_dia'](outer);
   charts['confirmados_total'](outer);
@@ -1440,6 +1448,28 @@ function addGraphs() {
   charts['confirmados_total_ars'](outer);
   charts['confirmados_historico'](outer);
   charts['confirmados_historico_100'](outer);
+  outer = addLead('Densidade populacional');
+  charts['densidade_ars'](outer);
+  charts['densidade_casos'](outer);
+  outer = addLead('Emprego');
+  charts['empregos_total'](outer);
+  charts['empregos_variacao'](outer);
+  charts['empregos_menos24_total'](outer);
+  charts['empregos_mais24_total'](outer);
+  charts['desemprego_total'](outer);
+  charts['desemprego_ars'](outer);
+  outer = addLead('Internados');
+  charts['internados_normal_dia'](outer);
+  charts['internados_uci_dia'](outer);
+  charts['internados_normal_total'](outer);
+  charts['internados_uci_total'](outer);
+  if (state.evm) {
+    outer = addLead('Mortalidade');
+    charts['mortalidade_acum'](outer);
+    charts['mortalidade_light'](outer);
+    charts['mortalidade_excessiva'](outer);
+    charts['mortalidade_excessiva_percentagem'](outer);
+  }
   outer = addLead('Óbitos');
   charts['obitos_dia'](outer);
   charts['obitos_total'](outer);
@@ -1449,46 +1479,16 @@ function addGraphs() {
   charts['obitos_total_ars'](outer);
   charts['obitos_historico'](outer);
   charts['obitos_historico_100'](outer);
+  outer = addLead('PIB');
+  charts['pib_total'](outer);
   outer = addLead('Recuperados');
   charts['recuperados_dia'](outer);
   charts['recuperados_total'](outer);
-  outer = addLead('Activos');
-  charts['ativos_dia'](outer);
-  charts['ativos_total'](outer);
-  outer = addLead('Amostras');
-  charts['amostras_dia'](outer);
-  charts['amostras_dia_perc_positivos'](outer);
-  charts['amostras_dia_pcr'](outer);
-  charts['amostras_dia_antigenio'](outer);
-  outer = addLead('Internados');
-  charts['internados_normal_dia'](outer);
-  charts['internados_uci_dia'](outer);
-  charts['internados_normal_total'](outer);
-  charts['internados_uci_total'](outer);
+  outer = addLead('Rt');
+  renderNewRt(outer);
   outer = addLead('Sintomas');
   charts['sintomas'](outer);
   charts['sintomas_historico'](outer);
-  if (state.evm) {
-    outer = addLead('Mortalidade');
-    charts['mortalidade_acum'](outer);
-    charts['mortalidade_light'](outer);
-    charts['mortalidade_excessiva'](outer);
-    charts['mortalidade_excessiva_percentagem'](outer);
-  }
-  outer = addLead('Densidade populacional');
-  charts['densidade_ars'](outer);
-  charts['densidade_casos'](outer);
-  outer = addLead('Evolução Rt');
-  renderNewRt(outer);
-  outer = addLead('Emprego');
-  charts['empregos_total'](outer);
-  charts['empregos_variacao'](outer);
-  charts['empregos_menos24_total'](outer);
-  charts['empregos_mais24_total'](outer);
-  charts['desemprego_total'](outer);
-  charts['desemprego_ars'](outer);
-  outer = addLead('PIB');
-  charts['pib_total'](outer);
   renderTOC();
   document.getElementById('Fontes').style.display = 'block';
 }
@@ -1591,8 +1591,7 @@ function navigateToAnchor() {
 
 // add a '+' on positive numbers
 function addPrefix(number) {
-  if (number > 0) return `+${number}`;
-  return number;
+  return number > 0 ? `+${number}` : number;
 }
 
 // add summary of stats for the present day
@@ -1607,14 +1606,14 @@ function addTodayNumbers() {
               + '  </thead>'
               + '  <tbody>'
               + '    <tr>'
-              + '      <td><a href="#Confirmados">Confirmados</a></td>'
-              + `      <td>${addPrefix(state.json.last.confirmados_novos)}</td>`
-              + `      <td>${state.json.last.confirmados}</td>`
-              + '    </tr>'
-              + '    <tr>'
               + '      <td><a href="#Activos">Activos</a></td>'
               + `      <td>${addPrefix(state.json.delta.ativos[state.json.today])}</td>`
               + `      <td>${state.json.last.ativos}</td>`
+              + '    </tr>'
+              + '    <tr>'
+              + '      <td><a href="#Confirmados">Confirmados</a></td>'
+              + `      <td>${addPrefix(state.json.last.confirmados_novos)}</td>`
+              + `      <td>${state.json.last.confirmados}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Internados">Internados</a></td>'
@@ -1622,9 +1621,14 @@ function addTodayNumbers() {
               + `      <td>${state.json.full.internados[state.json.today]}</td>`
               + '    </tr>'
               + '    <tr>'
-              + '      <td><a href="#Internados">UCI</a></td>'
+              + '      <td><a href="#Internados">Internados UCI</a></td>'
               + `      <td>${addPrefix(state.json.delta.internados_uci[state.json.today])}</td>`
               + `      <td>${state.json.full.internados_uci[state.json.today]}</td>`
+              + '    </tr>'
+              + '    <tr>'
+              + '      <td><a href="#Recuperados">Recuperados</a></td>'
+              + `      <td>${addPrefix(state.json.delta.recuperados[state.json.today])}</td>`
+              + `      <td>${state.json.full.recuperados[state.json.today]}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Óbitos">Óbitos</a></td>'
@@ -1644,6 +1648,7 @@ function go(json) {
   addTodayNumbers();
   addGraphs();
   navigateToAnchor();
+  document.getElementsByTagName('footer')[0].style.visibility = 'visible';
 }
 
 // fetch all data

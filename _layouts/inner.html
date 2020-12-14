@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include html/metadata.html %}
+  {% include html/fontface.html %}
+  {% include html/fontawesome.html %}
+  <style>
+    {% include css/box.css %}
+    {% include css/footer.css %}
+    {% include css/main.css %}
+    {% include css/media.css %}
+    {% include css/project.css %}
+    {% include css/technical-info.css %}
+  </style>
+  {% seo %}
+</head>
+
+<body id="home">
+  {% include html/backhome.html %}
+  {{ content }}
+  {% include html/footer.html %}
+  <script>
+    {% include js/fontface_observer.js %}
+    {% include js/galite.js %}
+    {% include js/modernizr.js %}
+  </script>
+</body>
+</html>

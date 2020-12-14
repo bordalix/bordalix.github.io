@@ -1,87 +1,46 @@
 ---
 title: COVID-19
-layout: covid
+layout: inner
 description: COVID-19 graphs
 ---
 <style>
-  .fluid-column {
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-  }
-  .fluid-row {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-  }
-  div.graph_container {
-    width: 100%;
-    height: 240px;
-    margin-bottom: 40px;
-    border: solid 2px #eee;
-  }
-  h2.section_divider {
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.875;
-    margin-bottom: 30px;
-  }
-  p#Fontes {
-    display: none;
-  }
-  #summary table {
-    width: 100%;
-  }
-  #summary table tbody tr {
-    border-top: solid 2px #eee;
-  }
-  #summary table td {
-    text-align: right;
-  }
-  #summary table td:nth-child(1) {
-    text-align: left;
-  }
-  img.rt_graph {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 40px;
-    border: solid 2px #eee;
-  }
-  @media (min-width: 440px) {
-    div.graph_container,
-    div.rt_container,
-    #summary table {
-      width: 47%;
-    }
-  }
+  {% include css/covid.css %}
 </style>
-<section id="main" class="fluid-column">
-  <h2 class="heading">Covid</h2>
-  <!--
-  <p class="warning">
-    Devido a alterações no relatório por parte da DGS, de momento não é possível actualizar os dados.<br />
-    Enquanto o problema não for resolvido, os últimos dados existentes são de 16 de Agosto de 2020.<br />
-    Mais informações na <a href="https://twitter.com/dssgpt/status/1295396789407940613?s=09">página do Twitter da Data Science for Social Good Portugal</a>.
-  </p>
-  -->
-  <p id="lastUpdate"></p>
-  <p id="summary"></p>
-  <p id="toc"></p>
-  <p id="loading">
-    A ligar-se a <a href="">https://covid19-api.vost.pt</a>... <br />
-    Por favor aguarde (pode demorar alguns segundos)
-  </p>
-  <div id="content_container" class="fluid-column"></div>
-  <p id="Fontes">
-    Fontes:<br />
-    &middot; <a href="https://covid19-api.vost.pt">Vost.pt</a> - Dados DGS<br />
-    &middot; <a href="https://github.com/dssg-pt/covid19pt-data/blob/master/amostras.csv">DSSG Portugal</a> - Dados DGS, Amostras<br />
-    &middot; <a href="https://evm.min-saude.pt/">EVM Min. Saúde</a> - Mortalidade<br />
-    &middot; <a href="https://covidcountdown.today/">Covidcountdown</a> - Gráfico Rt<br />
-    &middot; <a href="https://www.pordata.pt/Municipios/Densidade+populacional-452">Pordata</a> - Hab/Km2<br />
-    &middot; <a href="https://www.iefp.pt/estatisticas">IEFP</a> - Desemprego<br />
-    &middot; <a href="https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0007970&selTab=tab0">INE</a> - Emprego<br />
-    &middot; <a href="https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0009884&selTab=tab0">INE</a> - PIB<br />
-  </p>
-</section>
+
+<div class="container">
+  <section id="main" class="fluid-column">
+    <h2 class="heading">Covid</h2>
+    <!--
+    <p class="warning">
+      Devido a alterações no relatório por parte da DGS, de momento não é possível actualizar os dados.<br />
+      Enquanto o problema não for resolvido, os últimos dados existentes são de 16 de Agosto de 2020.<br />
+      Mais informações na <a href="https://twitter.com/dssgpt/status/1295396789407940613?s=09">página do Twitter da Data Science for Social Good Portugal</a>.
+    </p>
+    -->
+    <p id="lastUpdate"></p>
+    <p id="summary"></p>
+    <p id="toc"></p>
+    <p id="loading">
+      A ligar-se a <a href="">https://covid19-api.vost.pt</a>... <br />
+      Por favor aguarde (pode demorar alguns segundos)
+    </p>
+    <div id="content_container" class="fluid-column"></div>
+    <p id="Fontes">
+      Fontes:<br />
+      &middot; <a href="https://covid19-api.vost.pt">Vost.pt</a> - Dados DGS<br />
+      &middot; <a href="https://github.com/dssg-pt/covid19pt-data/blob/master/amostras.csv">DSSG Portugal</a> - Dados DGS, Amostras<br />
+      &middot; <a href="https://evm.min-saude.pt/">EVM Min. Saúde</a> - Mortalidade<br />
+      &middot; <a href="https://covidcountdown.today/">Covidcountdown</a> - Gráfico Rt<br />
+      &middot; <a href="https://www.pordata.pt/Municipios/Densidade+populacional-452">Pordata</a> - Hab/Km2<br />
+      &middot; <a href="https://www.iefp.pt/estatisticas">IEFP</a> - Desemprego<br />
+      &middot; <a href="https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0007970&selTab=tab0">INE</a> - Emprego<br />
+      &middot; <a href="https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_indicadores&contecto=pi&indOcorrCod=0009884&selTab=tab0">INE</a> - PIB<br />
+    </p>
+    <p>&nbsp;</p>
+  </section>
+</div>
+
+<script src="https://cdn.joaobordalo.com/js/highcharts-8.2.2.js"></script>
+<script>
+  {% include js/covid.js %}
+</script>
