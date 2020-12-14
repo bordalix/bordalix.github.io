@@ -254,6 +254,8 @@ nav img {
 .text_column {
   position: relative;
   min-height: 1px;
+  width: 50%;
+  float: left;
 }
 
 .text_column.left {
