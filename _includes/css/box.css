@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .box {
     width: 50%;
     padding-top: 50%;

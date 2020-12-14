@@ -39,7 +39,7 @@ div#incidents div div i {
   padding: 1em 0;
   color: white;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   div.cams {
     grid-template-columns: 100%;
   }

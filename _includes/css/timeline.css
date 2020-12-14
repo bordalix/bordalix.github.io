@@ -67,7 +67,7 @@
   color: #1f75b2;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
   section#experience {
     padding-bottom: 30px;

@@ -296,7 +296,7 @@ a.btt {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .text_column {
     width: 100%;
     float: none;

@@ -15,8 +15,7 @@
 }
 
 .footer_back_to_top,
-.footer_copyright,
-.text_column {
+.footer_copyright {
   width: 50%;
   float: left;
 }
