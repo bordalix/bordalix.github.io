@@ -1,5 +1,5 @@
 .footer {
-  background: #282c37;
+  background-color: #282c37;
   position: relative;
   margin-top: -88px;
   height: 88px;
@@ -7,7 +7,6 @@
 }
 
 .footer p {
-  background: #282c37;
   color: #ccc;
   padding: 20px 0;
   font-size: .875rem;

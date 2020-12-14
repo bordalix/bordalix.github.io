@@ -28,7 +28,7 @@ p#Fontes {
   width: 100%;
 }
 #summary table tbody tr {
-  border-top: solid 2px #eee;
+  border-top: solid 1px #eee;
 }
 #summary table td {
   text-align: right;

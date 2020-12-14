@@ -14,9 +14,23 @@
     {% include css/timeline.css %}
     {% include css/footer.css %}
     {% include css/print.css %}
+    {% include css/dark_mode.css %}
   </style>
 </head>
 <body id="home">
+  <nav class="menu-top">
+    <div class="container">
+      <div class="menu-option"></div>
+      <div class="menu-option right">
+        <p>
+          <a>
+            <i class="fa fa-adjust dark-theme-toggle" aria-hidden="true" style="font-size:21px"></i>
+          </a>
+          <span class="sr-only">Dark mode toggle</span>
+        </p>
+      </div>
+    </div>
+  </nav>
   <main>
     <section id="intro">
       <div class="container">
@@ -431,6 +445,7 @@
     {% include js/fontface_observer.js %}
     {% include js/galite.js %}
     {% include js/modernizr.js %}
+    {% include js/dark_mode.js %}
     function goTo(page) {
       var url = '/portfolio/' + page + '.html';
       window.location = url;

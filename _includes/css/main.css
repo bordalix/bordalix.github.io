@@ -201,6 +201,8 @@ nav p {
 nav.menu-top p a {
   vertical-align: middle;
   color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 nav .menu-option {

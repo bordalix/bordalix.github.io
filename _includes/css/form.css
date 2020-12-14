@@ -68,13 +68,6 @@ textarea.form-control {
 }
 
 .btn-primary.active,
-.btn-primary:active,
-.btn-primary:focus,
-.btn-primary:hover {
-  background-color: #ebebeb;
-}
-
-.btn-primary.active,
 .btn-primary:active {
   background-image: none;
 }
