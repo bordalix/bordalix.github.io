@@ -9,7 +9,7 @@
   display: block;
   margin: 0;
   padding: 14px 10px 14px 0;
-  color: #1f75b2;
+  color: var(--my-blue);
   font-size: 40px;
 }
 

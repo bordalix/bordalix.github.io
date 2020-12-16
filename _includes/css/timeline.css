@@ -64,7 +64,7 @@
 
 .timeline .timeline-heading h4.subheading {
   text-transform: none;
-  color: #1f75b2;
+  color: var(--my-blue);
 }
 
 @media (max-width: 767px) {

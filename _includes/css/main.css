@@ -58,7 +58,7 @@ table {
 }
 
 a {
-  color: #1f75b2;
+  color: var(--my-blue);
   outline: 0;
 }
 
@@ -234,7 +234,7 @@ nav img {
 }
 
 .text-primary {
-  color: #1f75b2;
+  color: var(--my-blue);
 }
 
 .heading {
@@ -248,7 +248,7 @@ nav img {
   width: 100px;
   height: 2px;
   margin: 20px 0;
-  background: #1f75b2;
+  background: var(--my-blue);
 }
 
 .text_column {

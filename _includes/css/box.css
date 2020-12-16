@@ -10,51 +10,51 @@
 }
 
 .box.wtst {
-  background-color: #546a76;
+  background-color: rgba(84, 106, 118, var(--box-opacity));
 }
 
 .box.iscore {
-  background-color: #88a0a8;
+  background-color: rgba(136, 160, 168, var(--box-opacity));
 }
 
 .box.hatitude {
-  background-color: #dbd3c9;
+  background-color: rgba(219, 211, 201, var(--box-opacity));
 }
 
 .box.cowork {
-  background-color: #bcb4dd;
+  background-color: rgba(188, 180, 221, var(--box-opacity));
 }
 
 .box.ethereum-roulette {
-  background-color: #b4ceb3;
+  background-color: rgba(180, 206, 179, var(--box-opacity));
 }
 
 .box.batalhadosbitaites {
-  background-color: #ff6884;
+  background-color: rgba(255, 104, 132, var(--box-opacity));
 }
 
 .box.worldleague {
-  background-color: #86c5df;
+  background-color: rgba(134, 197, 223, var(--box-opacity));
 }
 
 .box.appcexplorer {
-  background-color: #abdcd6;
+  background-color: rgba(171, 220, 214, var(--box-opacity));
 }
 
 .box.appcoins {
-  background-color: #ffaa48;
+  background-color: rgba(255, 170, 72, var(--box-opacity));
 }
 
 .box.dogoffleash {
-  background-color: #8ed6d7;
+  background-color: rgba(142, 214, 215, var(--box-opacity));
 }
 
 .box.guiasporttv {
-  background-color: #a6aaed;
+  background-color: rgba(166, 170, 237, var(--box-opacity));
 }
 
 .box.bitcoinstats {
-  background-color: #c0c0c0;
+  background-color: rgba(192, 192, 192, var(--box-opacity));
 }
 
 .box_text {

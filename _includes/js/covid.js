@@ -1679,8 +1679,8 @@ function setDarkTheme() {
       backgroundColor: {
         linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
         stops: [
-          [0, '#212121'],
-          [1, '#313131']
+          [0, '#0a476f'],
+          [1, '#001e45']
         ]
       },
       plotBorderColor: '#606063'

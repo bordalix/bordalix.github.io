@@ -1,28 +1,25 @@
-// Select the button
-const btn = document.querySelector(".dark-theme-toggle");
-// Select the theme preference from localStorage
-const currentTheme = localStorage.getItem("theme");
+// select the button
+const btn = document.querySelector('.dark-theme-toggle');
+// select the theme preference from localStorage
+const currentTheme = localStorage.getItem('theme');
 
-// If the current theme in localStorage is "dark"...
-if (currentTheme == "dark") {
-  // ...then use the .dark-theme class
-  document.body.classList.add("dark-theme");
+if (currentTheme == 'dark') {
+  document.body.classList.add('dark-theme');
+  document.documentElement.style.setProperty('--box-opacity', 0.6);
+  document.documentElement.style.setProperty('--my-blue', '#2280c3');
 }
 
-// Listen for a click on the button
-btn.addEventListener("click", function() {
-  // Toggle the .dark-theme class on each click
-  document.body.classList.toggle("dark-theme");
-
-  // Let's say the theme is equal to light
-  let theme = "light";
-  // If the body contains the .dark-theme class...
+btn.addEventListener('click', function() {
+  // toggle class dark-theme
+  document.body.classList.toggle('dark-theme');
+  // change box opacity and save theme to local storage
   if (document.body.classList.contains("dark-theme")) {
-    // ...then let's make the theme dark
-    theme = "dark";
+    document.documentElement.style.setProperty('--box-opacity', 0.6);
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.style.setProperty('--box-opacity', 1);
+    localStorage.setItem('theme', 'light');
   }
-  // Then save the choice in localStorage
-  localStorage.setItem("theme", theme);
-  // Reload page if Covid, to allow highcharts to adjust
+  // reload page if Covid, to allow highcharts to adjust
   if (window.location.pathname.match(/covid/)) window.location.reload();
 });
