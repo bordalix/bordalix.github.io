@@ -51,7 +51,7 @@ const state = {
     { month: 'Oct', year: '20', young: 246300, old: 4521300 },
   ],
   unemployment: {
-    '2019': {
+    2019: {
       Jan: {
         Norte: 140696,
         Centro: 46703,
@@ -142,8 +142,17 @@ const state = {
         Açores: 7007,
         Madeira: 14876,
       },
+      Nov: {
+        Norte: 122861,
+        Centro: 41388,
+        LVT: 87593,
+        Alentejo: 14674,
+        Algarve: 17350,
+        Açores: 6994,
+        Madeira: 15101,
+      },
     },
-    '2020': {
+    2020: {
       Jan: {
         Norte: 125571,
         Centro: 42894,
@@ -234,19 +243,28 @@ const state = {
         Açores: 6950,
         Madeira: 19404,
       },
+      Nov: {
+        Norte: 149421,
+        Centro: 47823,
+        LVT: 128024 ,
+        Alentejo: 17226,
+        Algarve: 29082,
+        Açores: 6962 ,
+        Madeira: 19749,
+      },
     },
   },
   gdp: {
-    '2019': {
+    2019: {
       T1: 52660800000,
       T2: 52695000000,
       T3: 53262800000,
       T4: 53702000000,
     },
-    '2020': {
+    2020: {
       T1: 52283000000,
       T2: 44911000000,
-      T3: 50839252000
+      T3: 50839252000,
     },
   },
   toc: [], // table of contents
@@ -1236,17 +1254,17 @@ const charts = {
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
       title: { text: 'Desempregados por região' },
-      xAxis: { categories: Object.keys(state.unemployment['2020']['Oct']) },
+      xAxis: { categories: Object.keys(state.unemployment['2020']['Nov']) },
       yAxis: { title: { text: null }},
       legend: { enable: false },
       series: [
         {
           name: 'Outubro 2019',
-          data: Object.keys(state.unemployment['2019']['Oct']).map(r => state.unemployment['2019']['Oct'][r]),
+          data: Object.keys(state.unemployment['2019']['Nov']).map(r => state.unemployment['2019']['Nov'][r]),
         },
         {
           name: 'Outubro 2020',
-          data: Object.keys(state.unemployment['2020']['Oct']).map(r => state.unemployment['2020']['Oct'][r]),
+          data: Object.keys(state.unemployment['2020']['Nov']).map(r => state.unemployment['2020']['Nov'][r]),
         },
       ],
       credits: { text: 'Dados IEFP' },
