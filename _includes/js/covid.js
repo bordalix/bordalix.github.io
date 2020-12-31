@@ -277,10 +277,28 @@ function compactDate(date) {
   return match ? `${match[1]}/${match[2]}` : date;
 }
 
+// calculate 7 days average for an array of values
+function movingAverage(array, days = 7) {
+  const resp = [];
+  for (let counter = 0; counter < array.length; counter += 1 ) {
+    if (counter < days - 1) {
+      resp.push(null);
+    } else {
+      let accum = 0;
+      for (let aux = days - 1; aux >= 0; aux -= 1) {
+        accum += array[counter - aux];
+      }
+      resp.push(parseInt(accum / days));
+    }
+  }
+  return resp;
+}
+
 // all charts
 const charts = {
   confirmados_dia: (outer) => {
     createGraphContainer('confirmados_dia', outer);
+    const data = Object.keys(state.json.full.data).map(k => state.json.delta.confirmados[k]);
     Highcharts.chart('confirmados_dia', {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
@@ -289,10 +307,16 @@ const charts = {
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
-      series: [{
+      series: [
+        {
           name: 'Confirmados',
-          data: Object.keys(state.json.full.data).map(k => state.json.delta.confirmados[k]),
-      }],
+          data: data,
+        },
+        {
+          name: 'Média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
@@ -490,6 +514,7 @@ const charts = {
   },
   obitos_dia: (outer) => {
     createGraphContainer('obitos_dia', outer);
+    const data = Object.keys(state.json.full.data).map(k => state.json.delta.obitos[k]);
     Highcharts.chart('obitos_dia', {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
@@ -498,10 +523,16 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
+      series: [
+        {
           name: 'Óbitos',
-          data: Object.keys(state.json.full.data).map(k => state.json.delta.obitos[k]),
-      }],
+          data: data,
+        },
+        {
+          name: 'Média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
@@ -693,6 +724,7 @@ const charts = {
   },
   recuperados_dia: (outer) => {
     createGraphContainer('recuperados_dia', outer);
+    const data = Object.keys(state.json.full.data).map(k => state.json.delta.recuperados[k]);
     Highcharts.chart('recuperados_dia', {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
@@ -701,10 +733,16 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
-        name: 'Recuperados',
-        data: Object.keys(state.json.full.data).map(k => state.json.delta.recuperados[k]),
-      }],
+      series: [
+        {
+          name: 'Recuperados',
+          data: data,
+        },
+        {
+          name: 'Média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
@@ -727,6 +765,7 @@ const charts = {
   },
   ativos_dia: (outer) => {
     createGraphContainer('ativos_dia', outer);
+    const data = Object.keys(state.json.full.data).map(k => state.json.delta.ativos[k]);
     Highcharts.chart('ativos_dia', {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
@@ -735,10 +774,16 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
-        name: 'Activos',
-        data: Object.keys(state.json.full.data).map(k => state.json.delta.ativos[k]),
-      }],
+      series: [
+        {
+          name: 'Activos',
+          data: data,
+        },
+        {
+          name: 'Média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
@@ -761,6 +806,7 @@ const charts = {
   },
   amostras_dia: (outer) => {
     createGraphContainer('amostras_dia', outer);
+    const data = state.amostras.map(k => parseInt(k[2], 10));
     Highcharts.chart('amostras_dia', {
       title: { text: 'Por dia' },
       yAxis: { title: { text: null }},
@@ -769,15 +815,25 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
-        name: 'amostras',
-        data: state.amostras.map(k => parseInt(k[2], 10)),
-      }],
+      series: [
+        {
+          name: 'amostras',
+          data: data,
+        },
+        {
+          name: 'média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
   amostras_dia_perc_positivos: (outer) => {
     createGraphContainer('amostras_dia_perc_positivos', outer);
+    const data = state.amostras.map((a,k) => {
+      if (parseInt(a[2]) === 0) return 0;
+      return parseFloat((100 * state.json.delta.confirmados[k] / parseInt(a[2])).toFixed(2));
+    })
     Highcharts.chart('amostras_dia_perc_positivos', {
       title: { text: '% Positivos' },
       yAxis: {
@@ -789,18 +845,22 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
-        name: 'amostras',
-        data: state.amostras.map((a,k) => {
-          if (parseInt(a[2]) === 0) return 0;
-          return parseFloat((100 * state.json.delta.confirmados[k] / parseInt(a[2])).toFixed(2));
-        }),
-      }],
+      series: [
+        {
+          name: 'amostras',
+          data: data,
+        },
+        {
+          name: 'média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
   amostras_dia_pcr: (outer) => {
     createGraphContainer('amostras_dia_pcr', outer);
+    const data = state.amostras.map(k => parseInt(k[4], 10));
     Highcharts.chart('amostras_dia_pcr', {
       title: { text: 'PCR por dia' },
       yAxis: { title: { text: null }},
@@ -809,15 +869,22 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
-        name: 'amostras PCR',
-        data: state.amostras.map(k => parseInt(k[4], 10)),
-      }],
+      series: [
+        {
+          name: 'amostras PCR',
+          data: data,
+        },
+        {
+          name: 'média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
   amostras_dia_antigenio: (outer) => {
     createGraphContainer('amostras_dia_antigenio', outer);
+    const data = state.amostras.map(k => parseInt(k[6], 10));
     Highcharts.chart('amostras_dia_antigenio', {
       title: { text: 'Antigénio por dia' },
       yAxis: { title: { text: null }},
@@ -826,10 +893,16 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
-        name: 'amostras antigénio',
-        data: state.amostras.map(k => parseInt(k[6], 10)),
-      }],
+      series: [
+        {
+          name: 'amostras antigénio',
+          data: data,
+        },
+        {
+          name: 'média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
@@ -872,6 +945,7 @@ const charts = {
   },
   internados_normal_dia: (outer) => {
     createGraphContainer('internados_normal_dia', outer);
+    const data = Object.keys(state.json.full.data).map(k => state.json.delta.internados[k]);
     Highcharts.chart('internados_normal_dia', {
       title: { text: 'Variação diária' },
       yAxis: { title: { text: null }},
@@ -880,15 +954,22 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
-        name: 'Internados',
-        data: Object.keys(state.json.full.data).map(k => state.json.delta.internados[k]),
-      }],
+      series: [
+        {
+          name: 'Internados',
+          data: data,
+        },
+        {
+          name: 'Média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
   internados_uci_dia: (outer) => {
     createGraphContainer('internados_uci_dia', outer);
+    const data = Object.keys(state.json.full.data).map(k => state.json.delta.internados_uci[k]);
     Highcharts.chart('internados_uci_dia', {
       title: { text: 'Variação diária UCI' },
       yAxis: { title: { text: null }},
@@ -897,10 +978,16 @@ const charts = {
         labels: { step: 30 },
       },
       legend: { enable: false },
-      series: [{
-        name: 'Internados UCI',
-        data: Object.keys(state.json.full.data).map(k => state.json.delta.internados_uci[k]),
-      }],
+      series: [
+        {
+          name: 'Internados UCI',
+          data: data,
+        },
+        {
+          name: 'Média 7 dias',
+          data: movingAverage(data),
+        },
+      ],
       credits: { text: 'Dados DGS' },
     });
   },
@@ -1536,12 +1623,9 @@ function addLead(text) {
 
 // loading state goes from 5 to 1
 function manageWait(step) {
-  console.log('step', step);
   function addTo(id, html) {
-    console.log('addTo');
     const actual = document.getElementById(id).innerHTML;
     document.getElementById(id).innerHTML = actual + html;
-    console.log('addTo ends');
   }
   switch(step) {
     case 5:
