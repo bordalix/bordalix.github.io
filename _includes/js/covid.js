@@ -249,7 +249,6 @@ const state = {
       T3: 50839252000
     },
   },
-  loading: 2, // loading state (from 2 to 0)
   toc: [], // table of contents
   evm: null, // mortality data
 };
@@ -1517,15 +1516,32 @@ function addLead(text) {
   return outer;
 }
 
-// loading state goes from 2 to 0
-function manageWait() {
-  if (state.loading === 2) {
-    state.loading = 1;
-    document.getElementById("loading").innerHTML = 'A chamar o estagiário para desenhar os gráficos...';
-    document.getElementById("lastUpdate").innerHTML = `Última actualização a ${state.json.last.data}`;
-  } else if (state.loading === 1) {
-    state.loading = 0;
-    document.getElementById("loading").remove();
+// loading state goes from 5 to 1
+function manageWait(step) {
+  console.log('step', step);
+  function addTo(id, html) {
+    console.log('addTo');
+    const actual = document.getElementById(id).innerHTML;
+    document.getElementById(id).innerHTML = actual + html;
+    console.log('addTo ends');
+  }
+  switch(step) {
+    case 5:
+      addTo('lastUpdate', `Última actualização a ${state.json.last.data}`)
+      addTo('loading', 'A aceder aos dados DGS via VOST... ');
+      break;
+    case 4:
+      addTo('loading', 'Feito<br />A aceder aos dados de mortalidade... ');
+      break;
+    case 3:
+      addTo('loading', 'Feito<br />A aceder aos dados de amostras... ');
+      break;
+    case 2:
+      addTo('loading', 'Feito<br />A chamar o estagiário para desenhar os gráficos... ');
+      break;
+    case 1:
+      document.getElementById("loading").remove();
+      break;
   }
 }
 
@@ -1643,7 +1659,6 @@ function addTodayNumbers() {
 // go and render the page
 function go(json) {
   state.json.full = json;
-  manageWait();
   crunchData();
   addTodayNumbers();
   addGraphs();
@@ -1656,19 +1671,25 @@ async function fetchData() {
   // get last update information (to manage waiting time)
   let response = await fetch(apiURL('last_update'));
   state.json.last = await response.json();
-  manageWait();
+  manageWait(5);
   // get full dataset from VOST
   response = await fetch(apiURL('full_dataset'));
   const full_dataset = await response.json();
+  manageWait(4);
   // get mortality data
   response = await fetch(apiURL('mortality'));
   state.evm = await response.json();
+  manageWait(3);
   // get tests data
   response = await fetch(apiURL('amostras'));
   const amostras = await response.json();
   state.amostras = amostras.splice(1);
+  manageWait(2);
   // render all graphics
-  go(full_dataset);
+  setTimeout(function() {
+    go(full_dataset);
+    manageWait(1);
+  }, 1000);
 }
 
 function setDarkTheme() {
