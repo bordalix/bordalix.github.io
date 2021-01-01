@@ -817,11 +817,11 @@ const charts = {
       legend: { enable: false },
       series: [
         {
-          name: 'amostras',
+          name: 'Amostras',
           data: data,
         },
         {
-          name: 'média 7 dias',
+          name: 'Média 7 dias',
           data: movingAverage(data),
         },
       ],
@@ -847,11 +847,11 @@ const charts = {
       legend: { enable: false },
       series: [
         {
-          name: 'amostras',
+          name: 'Amostras',
           data: data,
         },
         {
-          name: 'média 7 dias',
+          name: 'Média 7 dias',
           data: movingAverage(data),
         },
       ],
@@ -871,11 +871,11 @@ const charts = {
       legend: { enable: false },
       series: [
         {
-          name: 'amostras PCR',
+          name: 'Amostras PCR',
           data: data,
         },
         {
-          name: 'média 7 dias',
+          name: 'Média 7 dias',
           data: movingAverage(data),
         },
       ],
@@ -895,11 +895,11 @@ const charts = {
       legend: { enable: false },
       series: [
         {
-          name: 'amostras antigénio',
+          name: 'Amostras antigénio',
           data: data,
         },
         {
-          name: 'média 7 dias',
+          name: 'Média 7 dias',
           data: movingAverage(data),
         },
       ],
