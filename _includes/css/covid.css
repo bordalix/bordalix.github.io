@@ -21,8 +21,9 @@ h2.section_divider {
   line-height: 1.875;
   margin-bottom: 30px;
 }
-p#Fontes {
+div#Fontes {
   display: none;
+  margin-bottom: 2rem;
 }
 #summary table {
   width: 100%;
