@@ -49,6 +49,7 @@ const state = {
     { month: 'Aug', year: '20', young: 250100, old: 4487300 },
     { month: 'Sep', year: '20', young: 257900, old: 4504000 },
     { month: 'Oct', year: '20', young: 246300, old: 4521300 },
+    { month: 'Nov', year: '20', young: 255100, old: 4547200 },
   ],
   unemployment: {
     2019: {
@@ -246,10 +247,10 @@ const state = {
       Nov: {
         Norte: 149421,
         Centro: 47823,
-        LVT: 128024 ,
+        LVT: 128024,
         Alentejo: 17226,
         Algarve: 29082,
-        Açores: 6962 ,
+        Açores: 6962,
         Madeira: 19749,
       },
     },
