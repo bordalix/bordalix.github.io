@@ -1984,7 +1984,7 @@ async function fetchData() {
   // get vaccines data
   response = await fetch(apiURL('vaccines'));
   const vaccines = await response.json();
-  state.vaccines = vaccines.splice(1);
+  state.vaccines = vaccines.splice(1).map((day) => [Date.parse(day[0]), parseInt(day[1], 10)]);
   manageWait(2);
   // crunch data
   state.json.full = full_dataset;
