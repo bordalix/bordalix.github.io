@@ -1561,17 +1561,15 @@ const charts = {
       yAxis: { title: { text: null } },
       xAxis: {
         type: 'datetime',
-        dateTimeLabelFormats: {
-          // don't display the dummy year
-          month: '%e/%b',
-          year: '%b',
+        labels: {
+          format: '{value:%d/%m}',
         },
         tickLength: 0,
       },
       series: [
         {
           name: 'Vacinas',
-          data: state.vaccines.map((day) => [Date.parse(day[0]), parseInt(day[1], 10)]),
+          data: state.vaccines,
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1933,14 +1931,19 @@ function addTodayNumbers() {
               + `      <td>${state.json.full.internados_uci[state.json.today]}</td>`
               + '    </tr>'
               + '    <tr>'
+              + '      <td><a href="#Óbitos">Óbitos</a></td>'
+              + `      <td>${addPrefix(state.json.delta.obitos[state.json.today])}</td>`
+              + `      <td>${state.json.full.obitos[state.json.today]}</td>`
+              + '    </tr>'
+              + '    <tr>'
               + '      <td><a href="#Recuperados">Recuperados</a></td>'
               + `      <td>${addPrefix(state.json.delta.recuperados[state.json.today])}</td>`
               + `      <td>${state.json.full.recuperados[state.json.today]}</td>`
               + '    </tr>'
               + '    <tr>'
-              + '      <td><a href="#Óbitos">Óbitos</a></td>'
-              + `      <td>${addPrefix(state.json.delta.obitos[state.json.today])}</td>`
-              + `      <td>${state.json.full.obitos[state.json.today]}</td>`
+              + '      <td><a href="#Vacinas">Vacinas</a></td>'
+              + `      <td></td>`
+              + `      <td>${state.vaccines[state.vaccines.length-1][1]}</td>`
               + '    </tr>'
               + '  </tbody>'
               + '</table>';
@@ -1979,7 +1982,7 @@ async function fetchData() {
   // get vaccines data
   response = await fetch(apiURL('vaccines'));
   const vaccines = await response.json();
-  state.vaccines = vaccines.splice(1);
+  state.vaccines = vaccines.splice(1).map((day) => [Date.parse(day[0]), parseInt(day[1], 10)]);
   manageWait(1);
   // render all graphics
   setTimeout(function () {
