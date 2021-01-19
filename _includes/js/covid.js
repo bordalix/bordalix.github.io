@@ -49,6 +49,7 @@ const state = {
     { month: 'Aug', year: '20', young: 250100, old: 4487300 },
     { month: 'Sep', year: '20', young: 257900, old: 4504000 },
     { month: 'Oct', year: '20', young: 246300, old: 4521300 },
+    { month: 'Nov', year: '20', young: 255100, old: 4547200 },
   ],
   unemployment: {
     2019: {
@@ -246,10 +247,10 @@ const state = {
       Nov: {
         Norte: 149421,
         Centro: 47823,
-        LVT: 128024 ,
+        LVT: 128024,
         Alentejo: 17226,
         Algarve: 29082,
-        Açores: 6962 ,
+        Açores: 6962,
         Madeira: 19749,
       },
     },
@@ -1804,18 +1805,21 @@ function manageWait(step) {
     document.getElementById(id).innerHTML = actual + html;
   }
   switch (step) {
-    case 5:
+    case 6:
       addTo('lastUpdate', `Última actualização a ${state.json.last.data}`);
       addTo('loading', 'A aceder aos dados DGS via VOST... ');
       break;
-    case 4:
+    case 5:
       addTo('loading', 'Feito<br />A aceder aos dados de mortalidade... ');
       break;
-    case 3:
+    case 4:
       addTo('loading', 'Feito<br />A aceder aos dados de amostras... ');
       break;
-    case 2:
+    case 3:
       addTo('loading', 'Feito<br />A aceder aos dados de vacinação... ');
+      break;
+    case 2:
+      addTo('loading', 'Feito<br />Mostrar tabela com os dados do dia... ');
       break;
     case 1:
       addTo('loading', 'Feito<br />A chamar o estagiário para desenhar os gráficos... ');
@@ -1948,13 +1952,11 @@ function addTodayNumbers() {
               + '  </tbody>'
               + '</table>';
   document.getElementById("summary").innerHTML = table;
+  console.log('summary done');
 }
 
 // go and render the page
-function go(json) {
-  state.json.full = json;
-  crunchData();
-  addTodayNumbers();
+async function go(json) {
   addGraphs();
   navigateToAnchor();
   document.getElementsByTagName('footer')[0].style.visibility = 'visible';
@@ -1965,24 +1967,30 @@ async function fetchData() {
   // get last update information (to manage waiting time)
   let response = await fetch(apiURL('last_update'));
   state.json.last = await response.json();
-  manageWait(5);
+  manageWait(6);
   // get full dataset from VOST
   response = await fetch(apiURL('full_dataset'));
   const full_dataset = await response.json();
-  manageWait(4);
+  manageWait(5);
   // get mortality data
   response = await fetch(apiURL('mortality'));
   state.evm = await response.json();
-  manageWait(3);
+  manageWait(4);
   // get tests data
   response = await fetch(apiURL('amostras'));
   const amostras = await response.json();
   state.amostras = amostras.splice(1);
-  manageWait(2);
+  manageWait(3);
   // get vaccines data
   response = await fetch(apiURL('vaccines'));
   const vaccines = await response.json();
-  state.vaccines = vaccines.splice(1).map((day) => [Date.parse(day[0]), parseInt(day[1], 10)]);
+  state.vaccines = vaccines.splice(1);
+  manageWait(2);
+  // crunch data
+  state.json.full = full_dataset;
+  crunchData();
+  // add table with summary for today
+  addTodayNumbers();
   manageWait(1);
   // render all graphics
   setTimeout(function () {
