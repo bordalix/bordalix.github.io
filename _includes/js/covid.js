@@ -1987,24 +1987,6 @@ function renderTOC() {
   document.getElementById('toc').innerHTML = html;
 }
 
-// render Rt graphic - not used at the moment
-function renderRt(outer) {
-  ['qbBvVcAQw4rM', 't5vpUMAAbJeX','qhjdU0AUz6Yc','q7BSUcAMr_y-','rG_hU8AAmEj9'].forEach(id => {
-    const url = `https://pbs.twimg.com/media/EYY${id}?format=png&name=medium`;
-    const div = document.createElement('div');
-    div.classList.add('rt_container');
-    const a = document.createElement('a');
-    const img = document.createElement('img');
-    a.href = url;
-    img.src = url;
-    img.classList.add('rt_graph');
-    a.appendChild(img);
-    div.appendChild(a)
-    outer.appendChild(div);
-  })
-  // const url = 'https://www.nexp.pt/covid19RtWorld/Portugal-Rt.png';
-}
-
 // render new Rt from https://covidcountdown.today
 function renderNewRt(outer) {
   const div = document.createElement('div');
