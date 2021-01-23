@@ -17,7 +17,19 @@ const state = {
     arsnorte: 168,
     madeira: 317,
   },
-  ages: ['80_plus', '70_79', '60_69', '50_59', '40_49', '30_39', '20_29', '10_19', '0_9'],
+  ages: ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus'],
+  population_by_age: {
+    // https://www.pordata.pt/Portugal/Popula%c3%a7%c3%a3o+residente++m%c3%a9dia+anual+total+e+por+grupo+et%c3%a1rio-10-1127
+    '0_9':     433332 + 461299,
+    '10_19':   507646 + 549033,
+    '20_29':   544575 + 547505,
+    '30_39':   571355 + 679093,
+    '40_49':   792670 + 782555,
+    '50_59':   747581 + 734540,
+    '60_69':   672758 + 620543,
+    '70_79':   544016 + 429107,
+    '80_plus': 352218 + 316442,
+  },
   symptoms: [
     'tosse',
     'febre',
@@ -152,6 +164,15 @@ const state = {
         Açores: 6994,
         Madeira: 15101,
       },
+      Dec: {
+        Norte: 123369,
+        Centro: 41678,
+        LVT: 88732,
+        Alentejo: 14918,
+        Algarve: 19479,
+        Açores: 6982,
+        Madeira: 15324,
+      },
     },
     2020: {
       Jan: {
@@ -252,6 +273,15 @@ const state = {
         Algarve: 29082,
         Açores: 6962,
         Madeira: 19749,
+      },
+      Dec: {
+        Norte: 150308,
+        Centro: 50576,
+        LVT: 125213,
+        Alentejo: 17740,
+        Algarve: 31313,
+        Açores: 6988,
+        Madeira: 20116,
       },
     },
   },
@@ -362,13 +392,13 @@ const charts = {
       xAxis: [
         {
           categories: state.ages,
-          reversed: false,
+          reversed: true,
           labels: { step: 1 },
         },
         {
           // mirror axis on right side
           opposite: true,
-          reversed: false,
+          reversed: true,
           categories: state.ages,
           linkedTo: 0,
           labels: { step: 1 },
@@ -408,13 +438,13 @@ const charts = {
       xAxis: [
         {
           categories: state.ages,
-          reversed: false,
+          reversed: true,
           labels: { step: 1 },
         },
         {
           // mirror axis on right side
           opposite: true,
-          reversed: false,
+          reversed: true,
           categories: state.ages,
           linkedTo: 0,
           labels: { step: 1 },
@@ -442,11 +472,65 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
+  confirmados_grupo_etario: (outer) => {
+    createGraphContainer('confirmados_grupo_etario', outer);
+    const data = state.ages.map((age) => {
+      return {
+        name: age,
+        data: Object.keys(state.json.full[`confirmados_${age}`]).map((key) => {
+          return state.json.full[`confirmados_${age}`][key];
+        }),
+      };
+    });
+    Highcharts.chart('confirmados_grupo_etario', {
+      title: { text: 'Confirmados idade' },
+      yAxis: { title: { text: null } },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 }, // show only every 30 days
+      },
+      legend: { enable: false },
+      series: data,
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  confirmados_grupo_etario_percentagem: (outer) => {
+    createGraphContainer('confirmados_grupo_etario_percentagem', outer);
+    const data = state.ages.map((age) => {
+      return {
+        name: age,
+        data: Object.keys(state.json.full[`confirmados_${age}`]).map((key) => {
+          const p =
+            (state.json.full[`confirmados_${age}`][key] * 100) /
+            state.population_by_age[age];
+          return parseFloat(p.toFixed(2));
+        }),
+      };
+    });
+    Highcharts.chart('confirmados_grupo_etario_percentagem', {
+      title: { text: 'Confirmados idade (% população)' },
+      yAxis: {
+        labels: { format: '{value}%' },
+        title: { text: null },
+      },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 }, // show only every 30 days
+      },
+      legend: { enable: false },
+      series: data,
+      credits: { text: 'Dados DGS + Pordata' },
+    });
+  },
   confirmados_hoje_ars: (outer) => {
     createGraphContainer('confirmados_hoje_ars', outer);
     Highcharts.chart('confirmados_hoje_ars', {
       chart: { type: 'bar' },
-      title: { text: 'Hoje' },
+      title: { text: 'Hoje ARS' },
       xAxis: { categories: Object.keys(state.regions) },
       yAxis: { title: { text: null } },
       legend: { enable: false },
@@ -465,7 +549,7 @@ const charts = {
     createGraphContainer('confirmados_total_ars', outer);
     Highcharts.chart('confirmados_total_ars', {
       chart: { type: 'bar' },
-      title: { text: 'Total' },
+      title: { text: 'Total ARS' },
       xAxis: { categories: Object.keys(state.regions) },
       yAxis: { title: { text: null } },
       legend: { enable: false },
@@ -484,7 +568,7 @@ const charts = {
     createGraphContainer('confirmados_historico', outer);
     Highcharts.chart('confirmados_historico', {
       chart: { type: 'area' },
-      title: { text: 'Evolução' },
+      title: { text: 'Evolução confirmados' },
       xAxis: {
         categories: Object.keys(state.json.full.data).map((key) =>
           compactDate(state.json.full.data[key])
@@ -520,7 +604,7 @@ const charts = {
     createGraphContainer('confirmados_historico_100', outer);
     Highcharts.chart('confirmados_historico_100', {
       chart: { type: 'area' },
-      title: { text: 'Evolução peso relativo' },
+      title: { text: 'Evolução confirmados' },
       xAxis: {
         categories: Object.keys(state.json.full.data).map((key) =>
           compactDate(state.json.full.data[key])
@@ -610,13 +694,13 @@ const charts = {
       xAxis: [
         {
           categories: state.ages,
-          reversed: false,
+          reversed: true,
           labels: { step: 1 },
         },
         {
           // mirror axis on right side
           opposite: true,
-          reversed: false,
+          reversed: true,
           categories: state.ages,
           linkedTo: 0,
           labels: { step: 1 },
@@ -656,13 +740,13 @@ const charts = {
       xAxis: [
         {
           categories: state.ages,
-          reversed: false,
+          reversed: true,
           labels: { step: 1 },
         },
         {
           // mirror axis on right side
           opposite: true,
-          reversed: false,
+          reversed: true,
           categories: state.ages,
           linkedTo: 0,
           labels: { step: 1 },
@@ -690,11 +774,63 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
+  obitos_grupo_etario: (outer) => {
+    createGraphContainer('obitos_grupo_etario', outer);
+    const data = state.ages.map((age) => {
+      return {
+        name: age,
+        data: Object.keys(state.json.full[`obitos_${age}`]).map(
+          (key) => state.json.full[`obitos_${age}`][key]
+        ),
+      };
+    });
+    Highcharts.chart('obitos_grupo_etario', {
+      title: { text: 'Óbitos idade' },
+      yAxis: { title: { text: null } },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 }, // show only every 30 days
+      },
+      legend: { enable: false },
+      series: data,
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  obitos_grupo_etario_percentagem: (outer) => {
+    createGraphContainer('obitos_grupo_etario_percentagem', outer);
+    const data = state.ages.map((age) => {
+      return {
+        name: age,
+        data: Object.keys(state.json.full[`obitos_${age}`]).map((key) => {
+          const p = state.json.full[`obitos_${age}`][key] * 100 / state.population_by_age[age];
+          return parseFloat(p.toFixed(2));
+        }),
+      };
+    });
+    Highcharts.chart('obitos_grupo_etario_percentagem', {
+      title: { text: 'Óbitos idade (% população)' },
+      yAxis: {
+        labels: { format: '{value}%' },
+        title: { text: null },
+      },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 }, // show only every 30 days
+      },
+      legend: { enable: false },
+      series: data,
+      credits: { text: 'Dados DGS + Pordata' },
+    });
+  },
   obitos_hoje_ars: (outer) => {
     createGraphContainer('obitos_hoje_ars', outer);
     Highcharts.chart('obitos_hoje_ars', {
       chart: { type: 'bar' },
-      title: { text: 'Hoje' },
+      title: { text: 'Hoje ARS' },
       xAxis: { categories: Object.keys(state.regions) },
       yAxis: { title: { text: null } },
       series: [
@@ -712,7 +848,7 @@ const charts = {
     createGraphContainer('obitos_total_ars', outer);
     Highcharts.chart('obitos_total_ars', {
       chart: { type: 'bar' },
-      title: { text: 'Total' },
+      title: { text: 'Total ARS' },
       xAxis: { categories: Object.keys(state.regions) },
       yAxis: { title: { text: null } },
       series: [
@@ -730,7 +866,7 @@ const charts = {
     createGraphContainer('obitos_historico', outer);
     Highcharts.chart('obitos_historico', {
       chart: { type: 'area' },
-      title: { text: 'Evolução' },
+      title: { text: 'Evolução óbitos' },
       xAxis: {
         categories: Object.keys(state.json.full.data).map((key) =>
           compactDate(state.json.full.data[key])
@@ -766,7 +902,7 @@ const charts = {
     createGraphContainer('obitos_historico_100', outer);
     Highcharts.chart('obitos_historico_100', {
       chart: { type: 'area' },
-      title: { text: 'Evolução peso relativo' },
+      title: { text: 'Evolução óbitos' },
       xAxis: {
         categories: Object.keys(state.json.full.data).map((key) =>
           compactDate(state.json.full.data[key])
@@ -1365,7 +1501,7 @@ const charts = {
           ]),
         },
       ],
-      credits: { text: 'Dados Pordata + DGS' },
+      credits: { text: 'Dados DGS + Pordata' },
     });
   },
   empregos_total: (outer) => {
@@ -1490,15 +1626,15 @@ const charts = {
       legend: { enable: false },
       series: [
         {
-          name: 'Outubro 2019',
-          data: Object.keys(state.unemployment['2019']['Nov']).map(
-            (r) => state.unemployment['2019']['Nov'][r]
+          name: 'Dezembro 2019',
+          data: Object.keys(state.unemployment['2019']['Dec']).map(
+            (r) => state.unemployment['2019']['Dec'][r]
           ),
         },
         {
-          name: 'Outubro 2020',
-          data: Object.keys(state.unemployment['2020']['Nov']).map(
-            (r) => state.unemployment['2020']['Nov'][r]
+          name: 'Dezembro 2020',
+          data: Object.keys(state.unemployment['2020']['Dec']).map(
+            (r) => state.unemployment['2020']['Dec'][r]
           ),
         },
       ],
@@ -1612,6 +1748,16 @@ function crunchData() {
     }
   });
   state.json.delta = delta;
+  // calculate confirmed/deaths by age group
+  ['confirmados', 'obitos'].forEach((kind) => {
+    state.ages.forEach((age) => {
+      const id = `${kind}_${age}`;
+      state.json.full[id] = {};
+      Object.keys(state.json.full[`${id}_f`]).forEach((key) => {
+        state.json.full[id][key] = state.json.full[`${id}_f`][key] + state.json.full[`${id}_m`][key];
+      })
+    })
+  })
   // calculate employement monthly variation
   state.employment_variation = state.employment.map((month, index) => {
     if (index === 0) {
@@ -1723,6 +1869,8 @@ function addGraphs() {
   charts['confirmados_total'](outer);
   charts['confirmados_hoje_generos'](outer);
   charts['confirmados_total_generos'](outer);
+  charts['confirmados_grupo_etario'](outer);
+  charts['confirmados_grupo_etario_percentagem'](outer);
   charts['confirmados_hoje_ars'](outer);
   charts['confirmados_total_ars'](outer);
   charts['confirmados_historico'](outer);
@@ -1754,6 +1902,8 @@ function addGraphs() {
   charts['obitos_total'](outer);
   charts['obitos_hoje_generos'](outer);
   charts['obitos_total_generos'](outer);
+  charts['obitos_grupo_etario'](outer);
+  charts['obitos_grupo_etario_percentagem'](outer);
   charts['obitos_hoje_ars'](outer);
   charts['obitos_total_ars'](outer);
   charts['obitos_historico'](outer);
@@ -1952,7 +2102,6 @@ function addTodayNumbers() {
               + '  </tbody>'
               + '</table>';
   document.getElementById("summary").innerHTML = table;
-  console.log('summary done');
 }
 
 // go and render the page
