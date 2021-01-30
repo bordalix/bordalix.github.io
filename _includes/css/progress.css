@@ -32,24 +32,54 @@
 
 .progress-bar-skill1 {
   background-color: #95c7ec;
+  transition: width 2s ease;
+  width: 0;
+}
+.ended .progress-bar-skill1 {
+  width: 60%;
 }
 
 .progress-bar-skill2 {
   background-color: #7fbce8;
+  transition: width 2s ease;
+  width: 0;
+}
+.ended .progress-bar-skill2 {
+  width: 70%;
 }
 
 .progress-bar-skill3 {
   background-color: #6ab1e4;
+  transition: width 2s ease;
+  width: 0;
+}
+.ended .progress-bar-skill3 {
+  width: 80%;
 }
 
 .progress-bar-skill4 {
   background-color: #55a6e0;
+  transition: width 2s ease;
+  width: 0;
+}
+.ended .progress-bar-skill4 {
+  width: 90%;
 }
 
 .progress-bar-skill5 {
   background-color: #409bdc;
+  transition: width 2s ease;
+  width: 0;
+}
+.ended .progress-bar-skill5 {
+  width: 80%;
 }
 
 .progress-bar-skill6 {
   background-color: var(--my-blue);
+  transition: width 2s ease;
+  width: 0;
+}
+.ended .progress-bar-skill6 {
+  width: 70%;
 }
