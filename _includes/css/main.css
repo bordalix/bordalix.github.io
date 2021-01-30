@@ -310,3 +310,11 @@ a.btt {
     padding-left: 0;
   }
 }
+
+.dark-theme-toggle {
+  cursor: pointer;
+}
+
+.menu-option .fa {
+  vertical-align: middle;
+}
