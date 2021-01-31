@@ -9,11 +9,12 @@
     {% include css/footer.css %}
     {% include css/main.css %}
     {% include css/dark_mode.css %}
+    {% include css/animations.css %}
   </style>
   {% seo %}
 </head>
 
-<body id="home">
+<body id="home" class="no-js">
   {% include html/backhome.html %}
   {{ content }}
   {% include html/footer.html %}
@@ -22,6 +23,7 @@
     {% include js/galite.js %}
     {% include js/modernizr.js %}
     {% include js/dark_mode.js %}
+    {% include js/animations.js %}
   </script>
 </body>
 </html>

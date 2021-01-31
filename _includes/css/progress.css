@@ -35,6 +35,7 @@
   transition: width 2s ease;
   width: 0;
 }
+.no-js .progress-bar-skill1,
 .ended .progress-bar-skill1 {
   width: 60%;
 }
@@ -44,6 +45,7 @@
   transition: width 2s ease;
   width: 0;
 }
+.no-js .progress-bar-skill2,
 .ended .progress-bar-skill2 {
   width: 70%;
 }
@@ -53,6 +55,7 @@
   transition: width 2s ease;
   width: 0;
 }
+.no-js .progress-bar-skill3,
 .ended .progress-bar-skill3 {
   width: 80%;
 }
@@ -62,6 +65,7 @@
   transition: width 2s ease;
   width: 0;
 }
+.no-js .progress-bar-skill4,
 .ended .progress-bar-skill4 {
   width: 90%;
 }
@@ -71,6 +75,7 @@
   transition: width 2s ease;
   width: 0;
 }
+.no-js .progress-bar-skill5,
 .ended .progress-bar-skill5 {
   width: 80%;
 }
@@ -80,6 +85,7 @@
   transition: width 2s ease;
   width: 0;
 }
+.no-js .progress-bar-skill6,
 .ended .progress-bar-skill6 {
   width: 70%;
 }

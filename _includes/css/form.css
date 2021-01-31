@@ -49,16 +49,17 @@ textarea.form-control {
 }
 
 .btn {
+  border: 1px solid var(--my-blue);
+  border-radius: 0;
+  cursor: pointer;
   font-weight: 700;
   font-family: "Titillium Web", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 6px 12px;
   font-size: 1rem;
+  letter-spacing: 0.1em;
   line-height: 1.55;
-  border-radius: 0;
   margin-bottom: 40px;
-  cursor: pointer;
+  padding: 6px 12px;
+  text-transform: uppercase;
 }
 
 .btn-primary {
@@ -115,8 +116,7 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input#downloadCV {
-  text-align: center;
-  max-width: 300px;
-  margin: 20px auto 50px;
+a.btn:hover,
+a.btn:focus {
+  text-decoration: none;
 }

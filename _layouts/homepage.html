@@ -15,9 +15,10 @@
     {% include css/footer.css %}
     {% include css/print.css %}
     {% include css/dark_mode.css %}
+    {% include css/animations.css %}
   </style>
 </head>
-<body id="home">
+<body id="home" class="no-js">
   <nav class="menu-top">
     <div class="container">
       <div class="menu-option"></div>
@@ -31,7 +32,7 @@
   </nav>
   <main>
     <section id="intro">
-      <div class="container animated">
+      <div class="container">
 	      <h1>
           Hello.<br />
           I'm <span class="text-primary">João Bordalo</span>, a
@@ -41,43 +42,51 @@
       </div>
     </section>
     <section id="portfolio">
-      <div class="container animated">
+      <div class="container">
         <h2 class="heading">Selected work</h2>
         <h3 class="lead">Some stuff I made recently</h3>
       </div>
-      <div class="container-fluid  animated">
-        <div class="box wtst" data-bg-image="wheretosurftoday">
-          <div class="overlay"></div>
-          <div class="box_text">
-            <h3>Where to surf today</h3>
+      <div class="container-fluid">
+        <a href="/portfolio/wtst.html">
+          <div class="box wtst" data-bg-image="wheretosurftoday">
+            <div class="overlay"></div>
+            <div class="box_text">
+              <h3>Where to surf today</h3>
+            </div>
           </div>
-        </div>
-        <div class="box appcexplorer" data-bg-image="appcexplorer">
-          <div class="box_text">
-            <h3>APPC Explorer</h3>
+        </a>
+        <a href="/portfolio/appcexplorer.html">
+          <div class="box appcexplorer" data-bg-image="appcexplorer">
+            <div class="box_text">
+              <h3>APPC Explorer</h3>
+            </div>
           </div>
-        </div>
-        <div class="box hatitude" data-bg-image="hatitude">
-          <div class="box_text">
-            <h3>Hatitude</h3>
+        </a>
+        <a href="/portfolio/hatitude.html">
+          <div class="box hatitude" data-bg-image="hatitude">
+            <div class="box_text">
+              <h3>Hatitude</h3>
+            </div>
           </div>
-        </div>
-        <div class="box ethereum-roulette" data-bg-image="ethroulette">
-          <div class="box_text">
-            <h3>Ethereum roulette</h3>
+        </a>
+        <a href="/portfolio/ethereum-roulette.html">
+          <div class="box ethereum-roulette" data-bg-image="ethroulette">
+            <div class="box_text">
+              <h3>Ethereum roulette</h3>
+            </div>
           </div>
-        </div>
+        </a>
         <div style="clear: both"></div>
       </div>
     </section>
     <section id="skills">
-      <div class="container animated">
+      <div class="container">
         <h2 class="heading">Skills</h2>
         <h3 class="lead">Jack of all trades</h3>
-        <div class="text_column left animated">
+        <div class="text_column left">
           <div class="skill-item">
             <div class="progress-title">DevOps</div>
-            <div class="progress animated">
+            <div class="progress">
               <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-skill1"><span class="sr-only">60</span></div>
             </div>
           </div>
@@ -118,7 +127,7 @@
       </div>
     </section>
     <section id="about" class="grey">
-      <div class="container animated">
+      <div class="container">
         <h2 class="heading">About me</h2>
         <h3 class="lead">Creative, doer, problem solver</h3>
         <div class="text_column left">
@@ -169,11 +178,11 @@
       <div style="clear: both"></div>
     </section>
     <section id="contact">
-      <div class="container animated">
+      <div class="container">
         <h2 class="heading" id="contact">Contact</h2>
         <h3 class="lead">Let's talk</h3>
         <div class="text_column left">
-          <form id="contact-form" action="https://formspree.io/joao.bordalo@gmail.com" method="post">
+          <form id="contact-form" action="https://formspree.io/f/joao.bordalo@gmail.com" method="post">
             <div class="controls">
               <div class="form-group">
                 <label for="name">Your name *</label>
@@ -224,7 +233,7 @@
       </div>
     </section>
     <section id="experience" class="grey">
-      <div class="container animated">
+      <div class="container">
         <h2 class="heading" id="experience">Experience</h2>
         <h3 class="lead">20 years of experience</h3>
         <ul class="timeline">
@@ -368,7 +377,7 @@
       </div>
     </section>
     <section id="resume">
-      <div class="container animated">
+      <div class="container">
         <h2 class="heading" id="resume">Resume</h2>
         <h3 class="lead">The full story</h3>
         <div class="text_column left">
@@ -431,10 +440,14 @@
           </p>
         </div>
         <div style="clear: both"></div>
-        <input type="button"
-               id="downloadCV"
-               value="Download my CV"
-               class="btn btn-primary btn-block active">
+        <div class="center">
+          <a
+            id="downloadCV"
+            class="btn btn-primary btn-block active"
+            href="https://cdn.joaobordalo.com/images/static/cv/cv2020.pdf">
+            Download my CV
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -445,48 +458,8 @@
     {% include js/modernizr.js %}
     {% include js/dark_mode.js %}
     {% include js/unregister_service_worker.js %}
-    function goTo(page) {
-      var url = '/portfolio/' + page + '.html';
-      window.location = url;
-    }
-    function downloadCV() {
-      window.location = 'https://cdn.joaobordalo.com/images/static/cv/cv2020.pdf';
-    }
-    /* run this when page is ready */
-    document.addEventListener("DOMContentLoaded", function () {
-      var boxes = document.getElementsByClassName('box');
-      [].forEach.call(boxes, function (box) {
-        /* lazy load div background images */
-        var src = box.getAttribute('data-bg-image');
-        if (src) {
-          src = 'https://cdn.joaobordalo.com/images/static/portfolio/' + src;
-          Modernizr.on('webp', function(result) {
-            src = src + (result ? '.webp' : '.png');
-            box.style.backgroundImage = 'url(' + src + ')';
-          });
-        }
-        /* add event listener for click */
-        var item = box.className.split(' ')[1];
-        box.addEventListener('click', function() {goTo(item)});
-        // Create an intersection observer with default options, that 
-        // triggers a class on/off depending on an element’s visibility 
-        // in the viewport
-        const animationObserver = new IntersectionObserver((entries) => {
-          console.log('entries', entries);
-          entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('ended');
-          })
-        });
-        // Use that IntersectionObserver to observe the visibility
-        // of some elements
-        for (const element of document.querySelectorAll('.animated')) {
-          console.log('element', element)
-          animationObserver.observe(element);
-        }
-      });
-      var dCV = document.getElementById('downloadCV');
-      dCV.addEventListener('click', function() { downloadCV() });
-    });
+    {% include js/animations.js %}
+    {% include js/box.js %}
   </script>
 </body>
 </html>
