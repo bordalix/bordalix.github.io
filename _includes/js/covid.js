@@ -62,6 +62,7 @@ const state = {
     { month: 'Sep', year: '20', young: 257900, old: 4504000 },
     { month: 'Oct', year: '20', young: 246300, old: 4521300 },
     { month: 'Nov', year: '20', young: 255100, old: 4547200 },
+    { month: 'Dec', year: '20', young: 238000, old: 4526800 },
   ],
   unemployment: {
     2019: {
@@ -1993,7 +1994,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210110.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210201.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
