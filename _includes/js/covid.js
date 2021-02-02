@@ -297,6 +297,7 @@ const state = {
       T1: 52283000000,
       T2: 44911000000,
       T3: 50839252000,
+      T4: 50533582000,
     },
   },
   toc: [], // table of contents
@@ -327,6 +328,37 @@ function movingAverage(array, days = 7) {
   return resp;
 }
 
+// all tables
+const tables = {
+  ifr: (outer) => {
+    createGraphContainer('ifr', outer);
+    let table = '<table>'
+              + '  <thead>'
+              + '    <tr>'
+              + '      <td>Idade</td>'
+              + '      <td>Confirmados</td>'
+              + '      <td>Óbitos</td>'
+              + '      <td>CFR</td>'
+              + '    </tr>'
+              + '  </thead>'
+              + '  <tbody>';
+    state.ages.forEach(age => {
+      const last = state.json.last;
+      let confir = last[`confirmados_${age}_f`] + last[`confirmados_${age}_m`];
+      let obitos = last[`obitos_${age}_f`] + last[`obitos_${age}_m`];
+      let cfrate = (100 * obitos / confir).toFixed(2) + '%';
+      table  += '    <tr>'
+              + `      <td>${age}</td>`
+              + `      <td>${confir}</td>`
+              + `      <td>${obitos}</td>`
+              + `      <td>${cfrate}</td>`
+              + '    </tr>';
+    });
+    table += '  </tbody>'
+           + '</table>';
+    document.querySelector('#ifr').innerHTML = table;
+  }
+}
 // all charts
 const charts = {
   confirmados_dia: (outer) => {
@@ -1662,34 +1694,7 @@ const charts = {
           ),
         },
       ],
-      credits: { text: 'Dados INE' },
-    });
-  },
-  pib_percentage: (outer) => {
-    createGraphContainer('pib_percentage', outer);
-    Highcharts.chart('pib_percentage', {
-      chart: { type: 'bar' },
-      title: { text: 'Desempregados por região' },
-      xAxis: { categories: Object.keys(state.gdp['2020']) },
-      yAxis: { title: { text: null } },
-      legend: { enable: false },
-      series: [
-        {
-          name: 'Trimestre anterior',
-          data: Object.keys(state.gdp['2020']).map((quarter) => {
-            const curr = state.gdp['2020'][quarter];
-            const prev = state.gdp['2019'][quarter];
-            return;
-          }),
-        },
-        {
-          name: 'Homólogo',
-          data: Object.keys(state.unemployment['2020']['Jun']).map(
-            (r) => state.unemployment['2020']['Jun'][r]
-          ),
-        },
-      ],
-      credits: { text: 'Dados IEFP' },
+      credits: { text: 'Dados INE (T4 2020 provisórios)' },
     });
   },
   vacinas: (outer) => {
@@ -1909,6 +1914,7 @@ function addGraphs() {
   charts['obitos_total_ars'](outer);
   charts['obitos_historico'](outer);
   charts['obitos_historico_100'](outer);
+  tables['ifr'](outer);
   outer = addLead('PIB');
   charts['pib_total'](outer);
   outer = addLead('Recuperados');

@@ -25,16 +25,23 @@ div#Fontes {
   display: none;
   margin-bottom: 2rem;
 }
-#summary table {
+#covid table {
   width: 100%;
 }
-#summary table tbody tr {
+#covid .graph_container table {
+  margin: 1rem auto;
+  width: 90%;
+}
+#covid table thead {
+  font-weight: 700;
+}
+#covid table tbody tr {
   border-top: solid 1px #eee;
 }
-#summary table td {
+#covid table td {
   text-align: right;
 }
-#summary table td:nth-child(1) {
+#covid table td:nth-child(1) {
   text-align: left;
 }
 img.rt_graph {
