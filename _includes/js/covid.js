@@ -9,13 +9,13 @@ const state = {
   },
   regions: {
     // data from https://www.pordata.pt/Municipios/Densidade+populacional-452
-    acores: 105,
-    arsalgarve: 88,
-    arsalentejo: 22,
-    arscentro: 79,
-    arslvt: 942,
-    arsnorte: 168,
-    madeira: 317,
+    acores: { density: 105, population: 242796 },
+    arsalgarve: { density: 88, population: 451006 },
+    arsalentejo: { density: 22, population: 509849 },
+    arscentro: { density: 79, population: 1744525 },
+    arslvt: { density: 942, population: 3629871 },
+    arsnorte: { density: 168, population: 3682370 },
+    madeira: { density: 317, population: 270000 },
   },
   ages: ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus'],
   population_by_age: {
@@ -597,6 +597,48 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
+  confirmados_hoje_ars_per_population: (outer) => {
+    createGraphContainer('confirmados_hoje_ars_per_population', outer);
+    Highcharts.chart('confirmados_hoje_ars_per_population', {
+      chart: { type: 'bar' },
+      title: { text: 'Hoje ARS (% população)' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null } },
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Confirmados (% população)',
+          data: Object.keys(state.regions).map((r) => {
+            const confirmed = state.json.delta[`confirmados_${r}`][state.json.today];
+            const population = state.regions[r].population;
+            return Math.round((confirmed * 100 / population) * 10000) / 10000;
+          }),
+        },
+      ],
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  confirmados_total_ars_per_population: (outer) => {
+    createGraphContainer('confirmados_total_ars_per_population', outer);
+    Highcharts.chart('confirmados_total_ars_per_population', {
+      chart: { type: 'bar' },
+      title: { text: 'Total ARS (% população)' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null } },
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Confirmados (% população)',
+          data: Object.keys(state.regions).map((r) => {
+            const confirmed = state.json.last[`confirmados_${r}`];
+            const population = state.regions[r].population;
+            return Math.round((confirmed * 100 / population) * 10000) / 10000;
+          }),
+        },
+      ],
+      credits: { text: 'Dados DGS' },
+    });
+  },
   confirmados_historico: (outer) => {
     createGraphContainer('confirmados_historico', outer);
     Highcharts.chart('confirmados_historico', {
@@ -895,6 +937,47 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
+  obitos_hoje_ars_per_population: (outer) => {
+    createGraphContainer('obitos_hoje_ars_per_population', outer);
+    Highcharts.chart('obitos_hoje_ars_per_population', {
+      chart: { type: 'bar' },
+      title: { text: 'Hoje ARS (% população)' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null } },
+      series: [
+        {
+          name: 'Óbitos (% população)',
+          data: Object.keys(state.regions).map((r) => {
+            const deaths = state.json.delta[`obitos_${r}`][state.json.today];
+            const population = state.regions[r].population;
+            console.log('region, percentage', r, Math.round((deaths * 100 / population) * 10000) / 10000);
+            return Math.round((deaths * 100 / population) * 10000) / 10000;
+          }),
+        },
+      ],
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  obitos_total_ars_per_population: (outer) => {
+    createGraphContainer('obitos_total_ars_per_population', outer);
+    Highcharts.chart('obitos_total_ars_per_population', {
+      chart: { type: 'bar' },
+      title: { text: 'Total ARS (% população)' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null } },
+      series: [
+        {
+          name: 'Óbitos (% população)',
+          data: Object.keys(state.regions).map((r) => {
+            const deaths = state.json.full[`obitos_${r}`][state.json.today];
+            const population = state.regions[r].population;
+            return Math.round((deaths * 100 / population) * 10000) / 10000;
+          }),
+        },
+      ],
+      credits: { text: 'Dados DGS' },
+    });
+  },
   obitos_historico: (outer) => {
     createGraphContainer('obitos_historico', outer);
     Highcharts.chart('obitos_historico', {
@@ -1172,55 +1255,6 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
-  testes_dia: (outer) => {
-    createGraphContainer('testes_dia', outer);
-    Highcharts.chart('testes_dia', {
-      title: { text: 'Por dia' },
-      yAxis: { title: { text: null } },
-      xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          compactDate(state.json.full.data[k])
-        ),
-        labels: { step: 30 },
-      },
-      legend: { enable: false },
-      series: [
-        {
-          name: 'Testes',
-          data: Object.keys(state.json.full.data).map((k) => state.json.delta.testes[k]),
-        },
-      ],
-      credits: { text: 'Dados DGS - deixou de informar a 16/08/2020' },
-    });
-  },
-  testes_dia_perc_positivos: (outer) => {
-    createGraphContainer('testes_dia_perc_positivos', outer);
-    Highcharts.chart('testes_dia_perc_positivos', {
-      title: { text: '% Positivos' },
-      yAxis: {
-        title: { text: null },
-        labels: { format: '{value}%' },
-      },
-      xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          compactDate(state.json.full.data[k])
-        ),
-        labels: { step: 30 },
-      },
-      legend: { enable: false },
-      series: [
-        {
-          name: 'Testes',
-          data: Object.keys(state.json.full.data).map((k) =>
-            Math.floor(
-              (state.json.delta.confirmados[k] / state.json.delta.testes[k]) * 100
-            )
-          ),
-        },
-      ],
-      credits: { text: 'Dados DGS - deixou de informar a 16/08/2020' },
-    });
-  },
   internados_normal_dia: (outer) => {
     createGraphContainer('internados_normal_dia', outer);
     const data = Object.keys(state.json.full.data).map(
@@ -1467,9 +1501,36 @@ const charts = {
       credits: { text: 'Dados EVM' },
     });
   },
-  densidade_ars: (outer) => {
-    createGraphContainer('densidade_ars', outer);
-    Highcharts.chart('densidade_ars', {
+  mortalidade_mais_covid: (outer) => {
+    createGraphContainer('mortalidade_mais_covid', outer);
+    Highcharts.chart('mortalidade_mais_covid', {
+      title: { text: 'Mortalidade por mês' },
+      xAxis: state.evm.monthly.xAxis,
+      yAxis: { title: { text: null } },
+      series: state.evm.monthly.yAxis.series,
+      credits: { text: 'Dados EVM' },
+    });
+  },
+  populacao_ars: (outer) => {
+    createGraphContainer('populacao_ars', outer);
+    Highcharts.chart('populacao_ars', {
+      chart: { type: 'bar' },
+      title: { text: 'Habitantes' },
+      xAxis: { categories: Object.keys(state.regions) },
+      yAxis: { title: { text: null } },
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Habitantes',
+          data: Object.keys(state.regions).map((r) => state.regions[r].population),
+        },
+      ],
+      credits: { text: 'Dados SNS' },
+    });
+  },
+  populacao_densidade_ars: (outer) => {
+    createGraphContainer('populacao_densidade_ars', outer);
+    Highcharts.chart('populacao_densidade_ars', {
       chart: { type: 'bar' },
       title: { text: 'Habitantes / Km2' },
       xAxis: { categories: Object.keys(state.regions) },
@@ -1478,25 +1539,24 @@ const charts = {
       series: [
         {
           name: 'Hab/Km2',
-          data: Object.keys(state.regions).map((r) => state.regions[r]),
+          data: Object.keys(state.regions).map((r) => state.regions[r].density),
         },
       ],
       credits: { text: 'Dados Pordata' },
     });
   },
-  densidade_casos: (outer) => {
-    createGraphContainer('densidade_casos', outer);
-    Highcharts.chart('densidade_casos', {
+  populacao_densidade_confirmados: (outer) => {
+    createGraphContainer('populacao_densidade_confirmados', outer);
+    Highcharts.chart('populacao_densidade_confirmados', {
       chart: {
         type: 'scatter',
         zoomType: 'xy',
       },
-      title: { text: 'Confirmados e óbitos' },
+      title: { text: 'Confirmados (% população)' },
       legend: { enabled: false },
       xAxis: { title: { text: 'Hab/Km2' } },
       yAxis: {
         title: { enabled: false },
-        type: 'logarithmic',
       },
       plotOptions: {
         scatter: {
@@ -1522,19 +1582,57 @@ const charts = {
         {
           name: 'confirmados',
           data: Object.keys(state.regions).map((r) => [
-            state.regions[r],
-            state.json.last[`confirmados_${r}`],
-          ]),
-        },
-        {
-          name: 'óbitos',
-          data: Object.keys(state.regions).map((r) => [
-            state.regions[r],
-            state.json.last[`obitos_${r}`],
+            state.regions[r].density,
+            state.json.last[`confirmados_${r}`] / state.regions[r].population,
           ]),
         },
       ],
-      credits: { text: 'Dados DGS + Pordata' },
+      credits: { text: 'Dados DGS + Pordata + SNS' },
+    });
+  },
+  populacao_densidade_obitos: (outer) => {
+    createGraphContainer('populacao_densidade_obitos', outer);
+    Highcharts.chart('populacao_densidade_obitos', {
+      chart: {
+        type: 'scatter',
+        zoomType: 'xy',
+      },
+      title: { text: 'Óbitos (% população)' },
+      legend: { enabled: false },
+      xAxis: { title: { text: 'Hab/Km2' } },
+      yAxis: {
+        title: { enabled: false },
+      },
+      plotOptions: {
+        scatter: {
+          marker: {
+            radius: 5,
+            states: {
+              hover: {
+                enabled: true,
+                lineColor: 'rgb(100,100,100)',
+              },
+            },
+          },
+          states: {
+            hover: {
+              marker: {
+                enabled: false,
+              },
+            },
+          },
+        },
+      },
+      series: [
+        {
+          name: 'óbitos',
+          data: Object.keys(state.regions).map((r) => [
+            state.regions[r].density,
+            state.json.last[`obitos_${r}`] / state.regions[r].population,
+          ]),
+        },
+      ],
+      credits: { text: 'Dados DGS + Pordata + SNS' },
     });
   },
   empregos_total: (outer) => {
@@ -1878,12 +1976,16 @@ function addGraphs() {
   charts['confirmados_grupo_etario'](outer);
   charts['confirmados_grupo_etario_percentagem'](outer);
   charts['confirmados_hoje_ars'](outer);
+  charts['confirmados_hoje_ars_per_population'](outer);
   charts['confirmados_total_ars'](outer);
+  charts['confirmados_total_ars_per_population'](outer);
   charts['confirmados_historico'](outer);
   charts['confirmados_historico_100'](outer);
   outer = addLead('Densidade populacional');
-  charts['densidade_ars'](outer);
-  charts['densidade_casos'](outer);
+  charts['populacao_ars'](outer);
+  charts['populacao_densidade_ars'](outer);
+  charts['populacao_densidade_confirmados'](outer);
+  charts['populacao_densidade_obitos'](outer);
   outer = addLead('Emprego');
   charts['empregos_total'](outer);
   charts['empregos_variacao'](outer);
@@ -1902,6 +2004,7 @@ function addGraphs() {
     charts['mortalidade_light'](outer);
     charts['mortalidade_excessiva'](outer);
     charts['mortalidade_excessiva_percentagem'](outer);
+    charts['mortalidade_mais_covid'](outer);
   }
   outer = addLead('Óbitos');
   charts['obitos_dia'](outer);
@@ -1911,7 +2014,9 @@ function addGraphs() {
   charts['obitos_grupo_etario'](outer);
   charts['obitos_grupo_etario_percentagem'](outer);
   charts['obitos_hoje_ars'](outer);
+  charts['obitos_hoje_ars_per_population'](outer);
   charts['obitos_total_ars'](outer);
+  charts['obitos_total_ars_per_population'](outer);
   charts['obitos_historico'](outer);
   charts['obitos_historico_100'](outer);
   tables['ifr'](outer);
