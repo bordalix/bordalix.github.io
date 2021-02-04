@@ -611,7 +611,7 @@ const charts = {
           data: Object.keys(state.regions).map((r) => {
             const confirmed = state.json.delta[`confirmados_${r}`][state.json.today];
             const population = state.regions[r].population;
-            return Math.round((confirmed * 100 / population) * 10000) / 10000;
+            return Math.round(((confirmed * 100) / population) * 10000) / 10000;
           }),
         },
       ],
@@ -632,7 +632,7 @@ const charts = {
           data: Object.keys(state.regions).map((r) => {
             const confirmed = state.json.last[`confirmados_${r}`];
             const population = state.regions[r].population;
-            return Math.round((confirmed * 100 / population) * 10000) / 10000;
+            return Math.round(((confirmed * 100) / population) * 10000) / 10000;
           }),
         },
       ],
@@ -879,7 +879,8 @@ const charts = {
       return {
         name: age,
         data: Object.keys(state.json.full[`obitos_${age}`]).map((key) => {
-          const p = state.json.full[`obitos_${age}`][key] * 100 / state.population_by_age[age];
+          const p =
+            (state.json.full[`obitos_${age}`][key] * 100) / state.population_by_age[age];
           return parseFloat(p.toFixed(2));
         }),
       };
@@ -950,8 +951,12 @@ const charts = {
           data: Object.keys(state.regions).map((r) => {
             const deaths = state.json.delta[`obitos_${r}`][state.json.today];
             const population = state.regions[r].population;
-            console.log('region, percentage', r, Math.round((deaths * 100 / population) * 10000) / 10000);
-            return Math.round((deaths * 100 / population) * 10000) / 10000;
+            console.log(
+              'region, percentage',
+              r,
+              Math.round(((deaths * 100) / population) * 10000) / 10000
+            );
+            return Math.round(((deaths * 100) / population) * 10000) / 10000;
           }),
         },
       ],
@@ -971,7 +976,7 @@ const charts = {
           data: Object.keys(state.regions).map((r) => {
             const deaths = state.json.full[`obitos_${r}`][state.json.today];
             const population = state.regions[r].population;
-            return Math.round((deaths * 100 / population) * 10000) / 10000;
+            return Math.round(((deaths * 100) / population) * 10000) / 10000;
           }),
         },
       ],
@@ -1583,7 +1588,7 @@ const charts = {
           name: 'confirmados',
           data: Object.keys(state.regions).map((r) => [
             state.regions[r].density,
-            state.json.last[`confirmados_${r}`] / state.regions[r].population,
+            (100 * state.json.last[`confirmados_${r}`]) / state.regions[r].population,
           ]),
         },
       ],
@@ -1628,11 +1633,28 @@ const charts = {
           name: 'óbitos',
           data: Object.keys(state.regions).map((r) => [
             state.regions[r].density,
-            state.json.last[`obitos_${r}`] / state.regions[r].population,
+            (100 * state.json.last[`obitos_${r}`]) / state.regions[r].population,
           ]),
         },
       ],
       credits: { text: 'Dados DGS + Pordata + SNS' },
+    });
+  },
+  populacao_idade: (outer) => {
+    createGraphContainer('populacao_idade', outer);
+    Highcharts.chart('populacao_idade', {
+      chart: { type: 'bar' },
+      title: { text: 'Idades' },
+      xAxis: { categories: state.ages },
+      yAxis: { title: { text: null } },
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Habitantes',
+          data: state.ages.map((age) => state.population_by_age[age]),
+        },
+      ],
+      credits: { text: 'Dados Pordata' },
     });
   },
   empregos_total: (outer) => {
@@ -1981,11 +2003,6 @@ function addGraphs() {
   charts['confirmados_total_ars_per_population'](outer);
   charts['confirmados_historico'](outer);
   charts['confirmados_historico_100'](outer);
-  outer = addLead('Densidade populacional');
-  charts['populacao_ars'](outer);
-  charts['populacao_densidade_ars'](outer);
-  charts['populacao_densidade_confirmados'](outer);
-  charts['populacao_densidade_obitos'](outer);
   outer = addLead('Emprego');
   charts['empregos_total'](outer);
   charts['empregos_variacao'](outer);
@@ -2022,6 +2039,12 @@ function addGraphs() {
   tables['ifr'](outer);
   outer = addLead('PIB');
   charts['pib_total'](outer);
+  outer = addLead('População');
+  charts['populacao_ars'](outer);
+  charts['populacao_densidade_ars'](outer);
+  charts['populacao_densidade_confirmados'](outer);
+  charts['populacao_densidade_obitos'](outer);
+  charts['populacao_idade'](outer);
   outer = addLead('Recuperados');
   charts['recuperados_dia'](outer);
   charts['recuperados_total'](outer);
