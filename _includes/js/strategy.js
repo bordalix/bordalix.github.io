@@ -1,15 +1,15 @@
 const components = [
   [
-    'Caros colegas',
+    'Caros colegas,',
     'Por outro lado',
-    'Assim mesmo',
-    'Não poderemos esquecer',
-    'Do mesmo modo',
+    'Assim mesmo,',
+    'Não poderemos esquecer que',
+    'Do mesmo modo,',
     'A prática mostra que',
     'Nunca é demais insistir, uma vez que',
     'A experiência mostra que',
     'É fundamental ressaltar que',
-    'O incentivo ao avanço tecnológico',
+    'O incentivo ao avanço tecnológico,',
   ],
   [
     'a execução deste projecto',
@@ -45,12 +45,10 @@ const components = [
     'do nosso sistema de formação de quadros. ',
     'das condições apropriadas para os negócios. ',
     'dos índices pretendidos. ',
-    'das forma de acção. ',
+    'da forma de acção. ',
   ],
 ];
 
-const paragraphsPerPage = 4;
-const sentencesPerParagraph = 5;
 const content = document.getElementById('content_container');
 
 function addParagraph(html) {
@@ -68,11 +66,13 @@ function addPageSeparator(num) {
 
 function generateBullshit() {
   content.innerHTML = '';
-  const numOfPages = document.getElementById('numPages').value || 1;
-  for (let page = 0; page < numOfPages; page++) {
-    for (let paragraph = 0; paragraph < paragraphsPerPage; paragraph++) {
+  const numParagraphs = document.getElementById('numParagraphs').value || 4;
+  const numSentences = document.getElementById('numSentences').value || 5;
+  const numPages = document.getElementById('numPages').value || 1;
+  for (let page = 0; page < numPages; page++) {
+    for (let paragraph = 0; paragraph < numParagraphs; paragraph++) {
       const paragraph = [];
-      for (let sentence = 0; sentence < sentencesPerParagraph; sentence++) {
+      for (let sentence = 0; sentence < numSentences; sentence++) {
         const sentence = [];
         for (let j = 0; j < components.length; j++) {
           const index = Math.floor(Math.random() * components[j].length);
@@ -82,7 +82,7 @@ function generateBullshit() {
       }
       addParagraph(paragraph.join(''));
     }
-    addPageSeparator(page);
+    if (!document.getElementById('omitPage').checked) addPageSeparator(page);
   }
 }
 
