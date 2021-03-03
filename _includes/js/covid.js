@@ -359,8 +359,56 @@ const tables = {
     document.querySelector('#ifr').innerHTML = table;
   }
 }
+
 // all charts
 const charts = {
+  confirmados_dia_ars: (outer) => {
+    createGraphContainer('confirmados_dia_ars', outer);
+    Highcharts.chart('confirmados_dia_ars', {
+      title: { text: 'Confirmados por dia' },
+      yAxis: { min: 0, title: { text: null } },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 }, // show only every 30 days
+      },
+      legend: { enable: false },
+      series: Object.keys(state.regions).map((region) => {
+        return {
+          name: region,
+          data: Object.keys(state.json.delta[`confirmados_${region}`]).map((d) => {
+            return state.json.delta[`confirmados_${region}`][d];
+          }),
+        };
+      }),
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  confirmados_dia_ars_percentagem: (outer) => {
+    createGraphContainer('confirmados_dia_ars_percentagem', outer);
+    Highcharts.chart('confirmados_dia_ars_percentagem', {
+      title: { text: 'Confirmados por dia % população' },
+      yAxis: { min: 0, title: { text: null } },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 }, // show only every 30 days
+      },
+      legend: { enable: false },
+      series: Object.keys(state.regions).map((region) => {
+        return {
+          name: region,
+          data: Object.keys(state.json.delta[`confirmados_${region}`]).map((d) => {
+            const p = state.json.delta[`confirmados_${region}`][d] / state.regions[region].population;
+            return parseFloat((100 * p).toFixed(2));
+          }),
+        };
+      }),
+      credits: { text: 'Dados DGS' },
+    });
+  },
   confirmados_dia: (outer) => {
     createGraphContainer('confirmados_dia', outer);
     const data = Object.keys(state.json.full.data).map(
@@ -543,7 +591,7 @@ const charts = {
       };
     });
     Highcharts.chart('confirmados_grupo_etario_percentagem', {
-      title: { text: 'Confirmados idade (% população)' },
+      title: { text: 'Confirmados idade % população' },
       yAxis: {
         labels: { format: '{value}%' },
         title: { text: null },
@@ -601,13 +649,13 @@ const charts = {
     createGraphContainer('confirmados_hoje_ars_per_population', outer);
     Highcharts.chart('confirmados_hoje_ars_per_population', {
       chart: { type: 'bar' },
-      title: { text: 'Hoje ARS (% população)' },
+      title: { text: 'Hoje ARS % população' },
       xAxis: { categories: Object.keys(state.regions) },
       yAxis: { title: { text: null } },
       legend: { enable: false },
       series: [
         {
-          name: 'Confirmados (% população)',
+          name: 'Confirmados % população',
           data: Object.keys(state.regions).map((r) => {
             const confirmed = state.json.delta[`confirmados_${r}`][state.json.today];
             const population = state.regions[r].population;
@@ -622,13 +670,13 @@ const charts = {
     createGraphContainer('confirmados_total_ars_per_population', outer);
     Highcharts.chart('confirmados_total_ars_per_population', {
       chart: { type: 'bar' },
-      title: { text: 'Total ARS (% população)' },
+      title: { text: 'Total ARS % população' },
       xAxis: { categories: Object.keys(state.regions) },
       yAxis: { title: { text: null } },
       legend: { enable: false },
       series: [
         {
-          name: 'Confirmados (% população)',
+          name: 'Confirmados % população',
           data: Object.keys(state.regions).map((r) => {
             const confirmed = state.json.last[`confirmados_${r}`];
             const population = state.regions[r].population;
@@ -886,7 +934,7 @@ const charts = {
       };
     });
     Highcharts.chart('obitos_grupo_etario_percentagem', {
-      title: { text: 'Óbitos idade (% população)' },
+      title: { text: 'Óbitos idade % população' },
       yAxis: {
         labels: { format: '{value}%' },
         title: { text: null },
@@ -942,20 +990,15 @@ const charts = {
     createGraphContainer('obitos_hoje_ars_per_population', outer);
     Highcharts.chart('obitos_hoje_ars_per_population', {
       chart: { type: 'bar' },
-      title: { text: 'Hoje ARS (% população)' },
+      title: { text: 'Hoje ARS % população' },
       xAxis: { categories: Object.keys(state.regions) },
       yAxis: { title: { text: null } },
       series: [
         {
-          name: 'Óbitos (% população)',
+          name: 'Óbitos % população',
           data: Object.keys(state.regions).map((r) => {
             const deaths = state.json.delta[`obitos_${r}`][state.json.today];
             const population = state.regions[r].population;
-            console.log(
-              'region, percentage',
-              r,
-              Math.round(((deaths * 100) / population) * 10000) / 10000
-            );
             return Math.round(((deaths * 100) / population) * 10000) / 10000;
           }),
         },
@@ -967,12 +1010,12 @@ const charts = {
     createGraphContainer('obitos_total_ars_per_population', outer);
     Highcharts.chart('obitos_total_ars_per_population', {
       chart: { type: 'bar' },
-      title: { text: 'Total ARS (% população)' },
+      title: { text: 'Total ARS % população' },
       xAxis: { categories: Object.keys(state.regions) },
       yAxis: { title: { text: null } },
       series: [
         {
-          name: 'Óbitos (% população)',
+          name: 'Óbitos % população',
           data: Object.keys(state.regions).map((r) => {
             const deaths = state.json.full[`obitos_${r}`][state.json.today];
             const population = state.regions[r].population;
@@ -1557,7 +1600,7 @@ const charts = {
         type: 'scatter',
         zoomType: 'xy',
       },
-      title: { text: 'Confirmados (% população)' },
+      title: { text: 'Confirmados % população' },
       legend: { enabled: false },
       xAxis: { title: { text: 'Hab/Km2' } },
       yAxis: {
@@ -1602,7 +1645,7 @@ const charts = {
         type: 'scatter',
         zoomType: 'xy',
       },
-      title: { text: 'Óbitos (% população)' },
+      title: { text: 'Óbitos % população' },
       legend: { enabled: false },
       xAxis: { title: { text: 'Hab/Km2' } },
       yAxis: {
@@ -2003,6 +2046,8 @@ function addGraphs() {
   charts['confirmados_total_ars_per_population'](outer);
   charts['confirmados_historico'](outer);
   charts['confirmados_historico_100'](outer);
+  charts['confirmados_dia_ars'](outer);
+  charts['confirmados_dia_ars_percentagem'](outer);
   outer = addLead('Emprego');
   charts['empregos_total'](outer);
   charts['empregos_variacao'](outer);
