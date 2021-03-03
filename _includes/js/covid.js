@@ -1860,9 +1860,9 @@ const charts = {
       credits: { text: 'Dados INE (T4 2020 provisórios)' },
     });
   },
-  vacinas: (outer) => {
-    createGraphContainer('vacinas', outer);
-    Highcharts.chart('vacinas', {
+  vacinas_total: (outer) => {
+    createGraphContainer('vacinas_total', outer);
+    Highcharts.chart('vacinas_total', {
       title: { text: 'Vacinas' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1874,8 +1874,33 @@ const charts = {
       },
       series: [
         {
-          name: 'Vacinas',
-          data: state.vaccines,
+          name: 'Doses administradas',
+          data: state.vaccines.total,
+        },
+      ],
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  vacinas_pessoas: (outer) => {
+    createGraphContainer('vacinas_pessoas', outer);
+    Highcharts.chart('vacinas_pessoas', {
+      title: { text: 'Vacinados' },
+      yAxis: { title: { text: null } },
+      xAxis: {
+        type: 'datetime',
+        labels: {
+          format: '{value:%d/%m}',
+        },
+        tickLength: 0,
+      },
+      series: [
+        {
+          name: 'Uma dose',
+          data: state.vaccines.onedose,
+        },
+        {
+          name: 'Duas doses',
+          data: state.vaccines.twodose,
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -2020,6 +2045,19 @@ function crunchData() {
       'T4': state.gdp_abs_variation_homologous_quarter['2020']['T4'] / state.gdp['2019']['T4'],
     },
   };
+  // calculate number of people vaccinated
+  state.vaccines = {
+    total: [],
+    onedose: [],
+    twodose: [],
+  };
+  state.json.vaccines.forEach(day => {
+    state.vaccines.total.push([Date.parse(day[0]), parseInt(day[1], 10)]);
+    if (day[2] && day[3]) {
+      state.vaccines.onedose.push([Date.parse(day[0]), parseInt(day[2] - day[3], 10)]);
+      state.vaccines.twodose.push([Date.parse(day[0]), parseInt(day[3], 10)]);
+    }
+  });
 }
 
 // add graphs to the DOM
@@ -2099,7 +2137,8 @@ function addGraphs() {
   charts['sintomas'](outer);
   charts['sintomas_historico'](outer);
   outer = addLead('Vacinas');
-  charts['vacinas'](outer);
+  charts['vacinas_total'](outer);
+  charts['vacinas_pessoas'](outer);
   renderTOC();
   document.getElementById('Fontes').style.display = 'block';
 }
@@ -2259,7 +2298,7 @@ function addTodayNumbers() {
               + '    <tr>'
               + '      <td><a href="#Vacinas">Vacinas</a></td>'
               + `      <td></td>`
-              + `      <td>${state.vaccines[state.vaccines.length-1][1]}</td>`
+              + `      <td>${state.vaccines.total[state.vaccines.total.length - 1][1]}</td>`
               + '    </tr>'
               + '  </tbody>'
               + '</table>';
@@ -2295,7 +2334,7 @@ async function fetchData() {
   // get vaccines data
   response = await fetch(apiURL('vaccines'));
   const vaccines = await response.json();
-  state.vaccines = vaccines.splice(1).map((day) => [Date.parse(day[0]), parseInt(day[1], 10)]);
+  state.json.vaccines = vaccines.splice(1);
   manageWait(2);
   // crunch data
   state.json.full = full_dataset;
