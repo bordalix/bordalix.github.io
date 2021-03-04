@@ -20,14 +20,14 @@ const state = {
   ages: ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus'],
   population_by_age: {
     // https://www.pordata.pt/Portugal/Popula%c3%a7%c3%a3o+residente++m%c3%a9dia+anual+total+e+por+grupo+et%c3%a1rio-10-1127
-    '0_9':     433332 + 461299,
-    '10_19':   507646 + 549033,
-    '20_29':   544575 + 547505,
-    '30_39':   571355 + 679093,
-    '40_49':   792670 + 782555,
-    '50_59':   747581 + 734540,
-    '60_69':   672758 + 620543,
-    '70_79':   544016 + 429107,
+    '0_9': 433332 + 461299,
+    '10_19': 507646 + 549033,
+    '20_29': 544575 + 547505,
+    '30_39': 571355 + 679093,
+    '40_49': 792670 + 782555,
+    '50_59': 747581 + 734540,
+    '60_69': 672758 + 620543,
+    '70_79': 544016 + 429107,
     '80_plus': 352218 + 316442,
   },
   symptoms: [
@@ -63,6 +63,7 @@ const state = {
     { month: 'Oct', year: '20', young: 246300, old: 4521300 },
     { month: 'Nov', year: '20', young: 255100, old: 4547200 },
     { month: 'Dec', year: '20', young: 238000, old: 4526800 },
+    { month: 'Jan', year: '21', young: 225300, old: 4422000 },
   ],
   unemployment: {
     2019: {
@@ -285,19 +286,30 @@ const state = {
         Madeira: 20116,
       },
     },
+    2021: {
+      Jan: {
+        Norte: 157668,
+        Centro: 52083,
+        LVT: 135230,
+        Alentejo: 18426,
+        Algarve: 33571,
+        Açores: 7032,
+        Madeira: 20349,
+      },
+    },
   },
   gdp: {
     2019: {
       T1: 52660800000,
       T2: 52695000000,
       T3: 53262800000,
-      T4: 53702000000,
+      T4: 54159100000,
     },
     2020: {
-      T1: 52283000000,
-      T2: 44911000000,
-      T3: 50839252000,
-      T4: 50533582000,
+      T1: 52733300000,
+      T2: 46406600000,
+      T3: 51645500000,
+      T4: 51923400000,
     },
   },
   toc: [], // table of contents
@@ -401,7 +413,9 @@ const charts = {
         return {
           name: region,
           data: Object.keys(state.json.delta[`confirmados_${region}`]).map((d) => {
-            const p = state.json.delta[`confirmados_${region}`][d] / state.regions[region].population;
+            const p =
+              state.json.delta[`confirmados_${region}`][d] /
+              state.regions[region].population;
             return parseFloat((100 * p).toFixed(2));
           }),
         };
@@ -1096,6 +1110,55 @@ const charts = {
           data: Object.keys(state.json.full.data).map(
             (key) => state.json.full[`obitos_${r}`][key]
           ),
+        };
+      }),
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  obitos_dia_ars: (outer) => {
+    createGraphContainer('obitos_dia_ars', outer);
+    Highcharts.chart('obitos_dia_ars', {
+      title: { text: 'Óbitos por dia' },
+      yAxis: { min: 0, title: { text: null } },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 }, // show only every 30 days
+      },
+      legend: { enable: false },
+      series: Object.keys(state.regions).map((region) => {
+        return {
+          name: region,
+          data: Object.keys(state.json.delta[`obitos_${region}`]).map((d) => {
+            return state.json.delta[`obitos_${region}`][d];
+          }),
+        };
+      }),
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  obitos_dia_ars_percentagem: (outer) => {
+    createGraphContainer('obitos_dia_ars_percentagem', outer);
+    Highcharts.chart('obitos_dia_ars_percentagem', {
+      title: { text: 'Óbitos por dia % população' },
+      yAxis: { min: 0, title: { text: null } },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 }, // show only every 30 days
+      },
+      legend: { enable: false },
+      series: Object.keys(state.regions).map((region) => {
+        return {
+          name: region,
+          data: Object.keys(state.json.delta[`obitos_${region}`]).map((d) => {
+            const p =
+              state.json.delta[`obitos_${region}`][d] /
+              state.regions[region].population;
+            return parseFloat((100 * p).toFixed(4));
+          }),
         };
       }),
       credits: { text: 'Dados DGS' },
@@ -1808,6 +1871,16 @@ const charts = {
             }, 0);
           }),
         },
+        {
+          name: '2021',
+          data: Object.keys(state.unemployment['2021']).map((month) => {
+            const regions = Object.keys(state.unemployment['2021'][month]);
+            return regions.reduce((acc, cur) => {
+              acc += state.unemployment['2021'][month][cur];
+              return acc;
+            }, 0);
+          }),
+        },
       ],
       credits: { text: 'Dados IEFP' },
     });
@@ -1822,15 +1895,21 @@ const charts = {
       legend: { enable: false },
       series: [
         {
-          name: 'Dezembro 2019',
-          data: Object.keys(state.unemployment['2019']['Dec']).map(
-            (r) => state.unemployment['2019']['Dec'][r]
+          name: 'Janeiro 2019',
+          data: Object.keys(state.unemployment['2019']['Jan']).map(
+            (r) => state.unemployment['2019']['Jan'][r]
           ),
         },
         {
-          name: 'Dezembro 2020',
-          data: Object.keys(state.unemployment['2020']['Dec']).map(
-            (r) => state.unemployment['2020']['Dec'][r]
+          name: 'Janeiro 2020',
+          data: Object.keys(state.unemployment['2020']['Jan']).map(
+            (r) => state.unemployment['2020']['Jan'][r]
+          ),
+        },
+        {
+          name: 'Janeiro 2021',
+          data: Object.keys(state.unemployment['2021']['Jan']).map(
+            (r) => state.unemployment['2021']['Jan'][r]
           ),
         },
       ],
@@ -2119,6 +2198,8 @@ function addGraphs() {
   charts['obitos_total_ars_per_population'](outer);
   charts['obitos_historico'](outer);
   charts['obitos_historico_100'](outer);
+  charts['obitos_dia_ars'](outer);
+  charts['obitos_dia_ars_percentagem'](outer);
   tables['ifr'](outer);
   outer = addLead('PIB');
   charts['pib_total'](outer);
@@ -2212,7 +2293,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210201.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210304.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
