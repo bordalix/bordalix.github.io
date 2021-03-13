@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   {% include html/metadata.html %}
-  {% include html/fontface.html %}
   {% include html/fontawesome.html %}
   <style>
     {% include css/reset.css %}
@@ -23,10 +22,7 @@
     <div class="container">
       <div class="menu-option"></div>
       <div class="menu-option right">
-        <p>
-          <i class="fa fa-adjust dark-theme-toggle" aria-hidden="true" style="font-size:21px"></i>
-          <span class="sr-only">Dark mode toggle</span>
-        </p>
+        {% include html/navright.html %}
       </div>
     </div>
   </nav>
@@ -316,7 +312,7 @@
               </div>
               <div class="timeline-body">
                 <p>
-                  Owner of mail, proxy, DNS e AAA systems<br />
+                  Mail, proxy, DNS e AAA systems<br />
                   Network security officer
                 </p>
               </div>
@@ -453,7 +449,6 @@
   </main>
   {% include html/footer.html %}
   <script>
-    {% include js/fontface_observer.js %}
     {% include js/galite.js %}
     {% include js/modernizr.js %}
     {% include js/dark_mode.js %}
