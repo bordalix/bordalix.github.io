@@ -1,3 +1,4 @@
+
 html {
   font-size: 16px;
 }
@@ -8,6 +9,10 @@ body {
   font-size: 16px;
   line-height: 1.2;
   color: #000;
+}
+
+input, textarea {
+  font-family: inherit;
 }
 
 ul {
@@ -123,7 +128,6 @@ p.social a {
   font-size: 1rem;
   text-align: center;
   transition: all 0.2s ease-out;
-  vertical-align: bottom;
   border: solid 1px #ccc;
 }
 
@@ -308,10 +312,6 @@ a.btt {
 }
 .dark-theme-toggle {
   cursor: pointer;
-}
-
-.menu-option .fa {
-  vertical-align: middle;
 }
 
 a#downloadCV {
