@@ -296,6 +296,15 @@ const state = {
         Açores: 7032,
         Madeira: 20349,
       },
+      Fev: {
+        Norte: 159942,
+        Centro: 51498,
+        LVT: 141326,
+        Alentejo: 18231,
+        Algarve: 33459,
+        Açores: 7056,
+        Madeira: 20331,
+      },
     },
   },
   gdp: {
@@ -1886,6 +1895,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
+    const lastMonth = { name: 'Fevereiro', id: 'Fev' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
@@ -1895,21 +1905,21 @@ const charts = {
       legend: { enable: false },
       series: [
         {
-          name: 'Janeiro 2019',
-          data: Object.keys(state.unemployment['2019']['Jan']).map(
-            (r) => state.unemployment['2019']['Jan'][r]
+          name: `${lastMonth.name} 2019`,
+          data: Object.keys(state.unemployment['2019'][lastMonth.id]).map(
+            (r) => state.unemployment['2019'][lastMonth.id][r]
           ),
         },
         {
-          name: 'Janeiro 2020',
-          data: Object.keys(state.unemployment['2020']['Jan']).map(
-            (r) => state.unemployment['2020']['Jan'][r]
+          name: `${lastMonth.name} 2020`,
+          data: Object.keys(state.unemployment['2020'][lastMonth.id]).map(
+            (r) => state.unemployment['2020'][lastMonth.id][r]
           ),
         },
         {
-          name: 'Janeiro 2021',
-          data: Object.keys(state.unemployment['2021']['Jan']).map(
-            (r) => state.unemployment['2021']['Jan'][r]
+          name: `${lastMonth.name} 2021`,
+          data: Object.keys(state.unemployment['2021'][lastMonth.id]).map(
+            (r) => state.unemployment['2021'][lastMonth.id][r]
           ),
         },
       ],
@@ -2293,7 +2303,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210304.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210416.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
