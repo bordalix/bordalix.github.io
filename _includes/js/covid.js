@@ -305,6 +305,24 @@ const state = {
         Açores: 7056,
         Madeira: 20331,
       },
+      Mar: {
+        Norte: 158483,
+        Centro: 51154,
+        LVT: 143653,
+        Alentejo: 18631,
+        Algarve: 33453,
+        Açores: 7049,
+        Madeira: 20428,
+      },
+      Abr: {
+        Norte: 156362,
+        Centro: 50187,
+        LVT: 140134,
+        Alentejo: 17753,
+        Algarve: 32271,
+        Açores: 6993,
+        Madeira: 20188,
+      },
     },
   },
   gdp: {
@@ -312,13 +330,13 @@ const state = {
       T1: 52660800000,
       T2: 52695000000,
       T3: 53262800000,
-      T4: 54159100000,
+      T4: 54164300000,
     },
     2020: {
-      T1: 52733300000,
-      T2: 46406600000,
-      T3: 51645500000,
-      T4: 51923400000,
+      T1: 52718000000,
+      T2: 46315100000,
+      T3: 51592200000,
+      T4: 51840500000,
     },
   },
   toc: [], // table of contents
@@ -1895,7 +1913,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
-    const lastMonth = { name: 'Fevereiro', id: 'Fev' };
+    const lastMonth = { name: 'Abril', id: 'Abr' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
@@ -2303,7 +2321,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210416.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210525.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
