@@ -1,3 +1,9 @@
+.fa-check-circle-o:before { content: "\f05d"; }
+.fa-check-square-o:before { content: "\f046"; }
+.fa-external-link:before { content: "\f08e"; }
+.fa-info-circle:before { content: "\f05a"; }
+.fa-times-circle-o:before { content: "\f05c"; }
+
 nav.menu-bottom .project {
   margin-top: 20px;
   width: 50%;
@@ -61,12 +67,6 @@ figcaption {
 section.grey {
   background-color: #f6f6f6;
   padding-bottom: 90px;
-}
-
-section.grey h3 {
-  font-size: 1.5rem;
-  line-height: 1.33;
-  margin: 0 0 60px;
 }
 
 @media (max-width: 320px) {

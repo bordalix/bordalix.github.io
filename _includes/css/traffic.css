@@ -1,3 +1,7 @@
+
+.fa-external-link:before { content: "\f08e"; }
+.fa-warning:before { content: "\f071"; }
+
 div.cams {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -43,4 +47,15 @@ div#incidents div div i {
   div.cams {
     grid-template-columns: 100%;
   }
+}
+
+p.warning {
+  padding: 8px;
+  background-color: #b21f3a;
+  color: white;
+}
+
+p.warning a {
+  color: white;
+  text-decoration: underline;
 }

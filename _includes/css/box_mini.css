@@ -1,0 +1,93 @@
+.box {
+  width: 25%;
+  padding-top: 20%;
+  float: left;
+  position: relative;
+  background-size: auto 70%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  cursor: pointer;
+}
+
+.box.wtst {
+  background-color: rgba(84, 106, 118, var(--box-opacity));
+}
+.no-js .box.wtst {
+  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/wheretosurftoday.png);
+}
+
+.box.hatitude {
+  background-color: rgba(219, 211, 201, var(--box-opacity));
+}
+.no-js .box.hatitude {
+  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/hatitude.png);
+}
+
+.box.ethereum-roulette {
+  background-color: rgba(180, 206, 179, var(--box-opacity));
+}
+.no-js .box.ethereum-roulette {
+  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/ethroulette.png);
+}
+
+.box.appcexplorer {
+  background-color: rgba(171, 220, 214, var(--box-opacity));
+}
+.no-js .box.appcexplorer {
+  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/appcexplorer.png);
+}
+
+.box_text {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding-top: 20px;
+  z-index: 3;
+}
+
+.box_text h3,
+.box_text p {
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 1200px) {
+  .box_text {
+    padding-top: 30px;
+  }
+  .box_text h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .box {
+    width: 50%;
+    padding-top: 50%;
+  }
+  .box_text {
+    padding-top: 50px;
+  }
+  .box_text h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .box_text {
+    padding-top: 20px;
+  }
+  .box_text h3 {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .box_text h3 {
+    font-size: 1rem;
+  }
+}
+
