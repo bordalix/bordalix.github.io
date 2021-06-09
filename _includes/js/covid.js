@@ -336,8 +336,20 @@ const state = {
       T1: 52718000000,
       T2: 46315100000,
       T3: 51592200000,
-      T4: 51840500000,
+      T4: 51808100000,
     },
+    2021: {
+      T1: 50780300000,
+    },
+  },
+  gdp_flat: () => {
+    const aux = {};
+    Object.keys(state.gdp).forEach(year => {
+      Object.keys(state.gdp[year]).forEach(quarter => {
+        aux[`${quarter}/${year}`] = state.gdp[year][quarter];
+      })
+    });
+    return aux;
   },
   toc: [], // table of contents
   evm: null, // mortality data
@@ -1945,8 +1957,26 @@ const charts = {
     });
   },
   pib_total: (outer) => {
+    const tmpData = state.gdp_flat();
     createGraphContainer('pib_total', outer);
     Highcharts.chart('pib_total', {
+      title: { text: 'PIB evolução' },
+      xAxis: { categories: Object.keys(tmpData) },
+      yAxis: { title: { text: null } },
+      series: [
+        {
+          name: 'PIB',
+          data: Object.keys(tmpData).map(
+            (quarter) => tmpData[quarter]
+          ),
+        },
+      ],
+      credits: { text: 'Dados INE' },
+    });
+  },
+  pib_trimestral: (outer) => {
+    createGraphContainer('pib_trimestral', outer);
+    Highcharts.chart('pib_trimestral', {
       title: { text: 'PIB trimestral' },
       xAxis: { categories: Object.keys(state.gdp['2019']) },
       yAxis: { title: { text: null } },
@@ -1963,8 +1993,14 @@ const charts = {
             (quarter) => state.gdp['2020'][quarter]
           ),
         },
+        {
+          name: '2021',
+          data: Object.keys(state.gdp['2021']).map(
+            (quarter) => state.gdp['2021'][quarter]
+          ),
+        },
       ],
-      credits: { text: 'Dados INE (T4 2020 provisórios)' },
+      credits: { text: 'Dados INE' },
     });
   },
   vacinas_total: (outer) => {
@@ -2231,6 +2267,7 @@ function addGraphs() {
   tables['ifr'](outer);
   outer = addLead('PIB');
   charts['pib_total'](outer);
+  charts['pib_trimestral'](outer);
   outer = addLead('População');
   charts['populacao_ars'](outer);
   charts['populacao_densidade_ars'](outer);
