@@ -2367,7 +2367,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210525.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210630.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
