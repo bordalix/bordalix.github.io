@@ -80,3 +80,7 @@ body.dark-theme .btn-primary:hover {
 body.dark-theme .text_column.left img {
   box-shadow: 6px 6px 6px #424242;
 }
+
+body.dark-theme .menu-option svg {
+  fill: white;
+}

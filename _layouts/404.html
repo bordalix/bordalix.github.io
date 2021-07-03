@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% include html/metadata.html %}
-{% include html/fontawesome.html %}
-<style>
-{% include css/reset.css %}
-{% include css/main.css %}
-{% include css/footer.css %}
-</style>
-{% seo %}
+  {% include html/metadata.html %}
+  {% include html/fontawesome.html %}
+  <style>
+    {% include css/reset.css %}
+    {% include css/main.css %}
+    {% include css/footer.css %}
+    {% include css/dark_mode.css %}
+  </style>
+  {% seo %}
 </head>
 
 <body id="home">
@@ -31,6 +32,7 @@
   </main>
   <script>
     {% include js/modernizr.js %}
+    {% include js/dark_mode.js %}
   </script>
 </body>
 </html>
