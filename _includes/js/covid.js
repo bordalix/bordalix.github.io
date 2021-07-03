@@ -2306,9 +2306,14 @@ function createGraphContainer(id, outer) {
   outer.appendChild(div);
 }
 
+function backToTop() {
+  window.scrollTo(0, 0);
+  history.pushState('', document.title, window.location.pathname + window.location.search);
+}
+
 // adds a new h2 and a new div, returns the div
 function addLead(text) {
-  const btt = '<a onclick="window.scrollTo(0,0);" class="btt"><i class="fa fa-level-up"></i></a>'
+  const btt = '<a onclick="backToTop()" class="btt"><i class="fa fa-level-up"></i></a>';
   const h2 = document.createElement('h2');
   h2.id = text.replace(/\s/g,'_');
   h2.classList.add("section_divider");
