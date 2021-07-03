@@ -34,8 +34,15 @@ div#Fontes {
   width: 100%;
 }
 #covid .graph_container table {
-  margin: 1rem auto;
+  font-size: .8rem;
+  margin: .5rem auto;
   width: 90%;
+}
+#covid .graph_container table tr.total {
+  border-top: solid 1px #666;
+}
+#covid .graph_container table td {
+  padding: 2px 0;
 }
 #covid table thead {
   font-weight: 700;
