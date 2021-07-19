@@ -392,7 +392,9 @@ function movingAverage(array, days = 7) {
 const tables = {
   ifr: (outer) => {
     createGraphContainer('ifr', outer);
-    let table = '<table>'
+    let total_confir = 0;
+    let total_obitos = 0;
+    let table = '<table style="font-size:.8rem">'
               + '  <thead>'
               + '    <tr>'
               + '      <td>Idade</td>'
@@ -404,17 +406,26 @@ const tables = {
               + '  <tbody>';
     state.ages.forEach(age => {
       const last = state.json.last;
-      let confir = last[`confirmados_${age}_f`] + last[`confirmados_${age}_m`];
-      let obitos = last[`obitos_${age}_f`] + last[`obitos_${age}_m`];
-      let cfrate = (100 * obitos / confir).toFixed(2) + '%';
-      table  += '    <tr>'
-              + `      <td>${age}</td>`
-              + `      <td>${confir}</td>`
-              + `      <td>${obitos}</td>`
-              + `      <td>${cfrate}</td>`
-              + '    </tr>';
+      const confir = last[`confirmados_${age}_f`] + last[`confirmados_${age}_m`];
+      const obitos = last[`obitos_${age}_f`] + last[`obitos_${age}_m`];
+      const cfrate = (100 * obitos / confir).toFixed(2) + '%';
+      total_confir += confir;
+      total_obitos += obitos;
+      table += '    <tr style="padding: 1px">'
+             + `      <td>${age}</td>`
+             + `      <td>${confir}</td>`
+             + `      <td>${obitos}</td>`
+             + `      <td>${cfrate}</td>`
+             + '    </tr>';
     });
-    table += '  </tbody>'
+    const total_cfrate = ((100 * total_obitos) / total_confir).toFixed(2) + '%';
+    table += '    <tr class="total">'
+           + '      <td>Total</td>'
+           + `      <td>${total_confir}</td>`
+           + `      <td>${total_obitos}</td>`
+           + `      <td>${total_cfrate}</td>`
+           + '    </tr>'
+           + '  </tbody>'
            + '</table>';
     document.querySelector('#ifr').innerHTML = table;
   }
@@ -2306,9 +2317,14 @@ function createGraphContainer(id, outer) {
   outer.appendChild(div);
 }
 
+function backToTop() {
+  window.scrollTo(0, 0);
+  history.pushState('', document.title, window.location.pathname + window.location.search);
+}
+
 // adds a new h2 and a new div, returns the div
 function addLead(text) {
-  const btt = '<a onclick="window.scrollTo(0,0);" class="btt"><i class="fa fa-level-up"></i></a>'
+  const btt = '<a onclick="backToTop()" class="btt"><i class="fa fa-level-up"></i></a>';
   const h2 = document.createElement('h2');
   h2.id = text.replace(/\s/g,'_');
   h2.classList.add("section_divider");

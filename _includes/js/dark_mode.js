@@ -1,3 +1,5 @@
+document.querySelector('body').classList.remove('no-js');
+document.querySelector('body').classList.add('has-js');
 // select the button
 const btn = document.querySelector('.dark-theme-toggle');
 // select the theme preference from localStorage
@@ -9,11 +11,11 @@ if (currentTheme == 'dark') {
   document.documentElement.style.setProperty('--my-blue', '#2280c3');
 }
 
-btn.addEventListener('click', function() {
+btn.addEventListener('click', function () {
   // toggle class dark-theme
   document.body.classList.toggle('dark-theme');
   // change box opacity and save theme to local storage
-  if (document.body.classList.contains("dark-theme")) {
+  if (document.body.classList.contains('dark-theme')) {
     document.documentElement.style.setProperty('--box-opacity', 0.6);
     localStorage.setItem('theme', 'dark');
   } else {
