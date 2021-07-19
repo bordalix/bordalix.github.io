@@ -22,7 +22,6 @@
 
 .progress-bar {
   float: left;
-  width: 0;
   height: 100%;
   font-size: .875rem;
   line-height: 1.7;
@@ -33,7 +32,7 @@
 .progress-bar-skill1 {
   background-color: #95c7ec;
   transition: width 2s ease;
-  width: 0;
+  width: 60%;
 }
 .no-js .progress-bar-skill1,
 .ended .progress-bar-skill1 {
@@ -43,7 +42,7 @@
 .progress-bar-skill2 {
   background-color: #7fbce8;
   transition: width 2s ease;
-  width: 0;
+  width: 70%;
 }
 .no-js .progress-bar-skill2,
 .ended .progress-bar-skill2 {
@@ -53,7 +52,7 @@
 .progress-bar-skill3 {
   background-color: #6ab1e4;
   transition: width 2s ease;
-  width: 0;
+  width: 80%;
 }
 .no-js .progress-bar-skill3,
 .ended .progress-bar-skill3 {
@@ -63,7 +62,7 @@
 .progress-bar-skill4 {
   background-color: #55a6e0;
   transition: width 2s ease;
-  width: 0;
+  width: 90%;
 }
 .no-js .progress-bar-skill4,
 .ended .progress-bar-skill4 {
@@ -73,7 +72,7 @@
 .progress-bar-skill5 {
   background-color: #409bdc;
   transition: width 2s ease;
-  width: 0;
+  width: 80%;
 }
 .no-js .progress-bar-skill5,
 .ended .progress-bar-skill5 {
@@ -83,7 +82,7 @@
 .progress-bar-skill6 {
   background-color: var(--my-blue);
   transition: width 2s ease;
-  width: 0;
+  width: 70%;
 }
 .no-js .progress-bar-skill6,
 .ended .progress-bar-skill6 {
