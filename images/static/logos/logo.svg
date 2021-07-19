@@ -4,9 +4,12 @@
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="300pt" height="300pt" viewBox="0 0 300 300"
  preserveAspectRatio="xMidYMid meet">
-  <metadata>
-    Created by potrace 1.10, written by Peter Selinger 2001-2011
-  </metadata>
+  <style>
+    path { fill: black; }
+    @media (prefers-color-scheme: dark) {
+      path { fill: white; }
+    }
+  </style>
   <g transform="translate(0,300) scale(0.1,-0.1)" fill="black">
     <path d="M1880 2697 c-105 -70 -96 -239 15 -292 48 -22 134 -17 173 11 15 11
     37 40 50 65 42 80 10 183 -68 224 -45 23 -130 19 -170 -8z"/>

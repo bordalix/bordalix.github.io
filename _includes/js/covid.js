@@ -2520,7 +2520,7 @@ async function fetchData() {
   }, 1000);
 }
 
-function setDarkTheme() {
+function setDarkThemeGraphs() {
   const options = {
     colors: ['#1f75b2', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
       '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
@@ -2715,7 +2715,7 @@ function setDarkTheme() {
 
 // run when content is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.body.classList.contains("dark-theme")) setDarkTheme();
+  if (document.body.classList.contains("dark-theme")) setDarkThemeGraphs();
   fetchData()
   .catch ((e) => console.log(e.message));
 });

@@ -1,3 +1,10 @@
+:root {
+  --darkest: #000a0a;
+  --dark: #000f1d;
+  --darkgrey: #002b45;
+  --box-opacity: 1;
+  --my-blue: #1f75b2;
+}
 
 html {
   font-size: 16px;

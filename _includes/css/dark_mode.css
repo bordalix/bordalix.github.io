@@ -1,9 +1,6 @@
-:root {
-  --darkest: #000a0a;
-  --dark: #000f1d;
-  --darkgrey: #002b45;
-  --box-opacity: 1;
-  --my-blue: #1f75b2;
+body.dark-theme {
+  --box-opacity: .6;
+  --my-blue: #2280c3;
 }
 
 body.dark-theme img {
