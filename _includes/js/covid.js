@@ -332,6 +332,15 @@ const state = {
         Açores: 6857,
         Madeira: 19897,
       },
+      Jun: {
+        Norte: 142343,
+        Centro: 45493,
+        LVT: 128848,
+        Alentejo: 15536,
+        Algarve: 20030 ,
+        Açores: 6550,
+        Madeira: 19072,
+      },
     },
   },
   gdp: {
@@ -1945,7 +1954,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
-    const lastMonth = { name: 'Maio', id: 'Mai' };
+    const lastMonth = { name: 'Junho', id: 'Jun' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
@@ -2383,7 +2392,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210630.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210720.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
