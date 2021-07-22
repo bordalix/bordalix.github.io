@@ -2497,6 +2497,8 @@ async function fetchData() {
   // get last update information (to manage waiting time)
   let response = await fetch(apiURL('last_update'));
   state.json.last = await response.json();
+  const found = window.location.search?.match(/^\?(\d\d\-\d\d\-\d\d\d\d)$/);
+  if (found) state.json.last.data = found[1] // implements time machine
   manageWait(6);
   // get full dataset from VOST
   response = await fetch(apiURL('full_dataset'));
