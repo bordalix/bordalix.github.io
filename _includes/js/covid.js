@@ -372,6 +372,10 @@ const state = {
   toc: [], // table of contents
   evm: null, // mortality data
   vaccines: null,
+  last_with_age_data: { // DGS only send this data on some days
+    index: null,
+    label: 'Dados DGS',
+  }
 };
 
 // remove year from date
@@ -414,9 +418,10 @@ const tables = {
               + '  </thead>'
               + '  <tbody>';
     state.ages.forEach(age => {
-      const last = state.json.last;
-      const confir = last[`confirmados_${age}_f`] + last[`confirmados_${age}_m`];
-      const obitos = last[`obitos_${age}_f`] + last[`obitos_${age}_m`];
+      const full = state.json.full;
+      const index = state.last_with_age_data.index;
+      const confir = full[`confirmados_${age}_f`][index] + full[`confirmados_${age}_m`][index];
+      const obitos = full[`obitos_${age}_f`][index] + full[`obitos_${age}_m`][index];
       const cfrate = (100 * obitos / confir).toFixed(2) + '%';
       total_confir += confir;
       total_obitos += obitos;
@@ -436,7 +441,8 @@ const tables = {
            + '    </tr>'
            + '  </tbody>'
            + '</table>';
-    document.querySelector('#ifr').innerHTML = table;
+    const legend = `<p>${state.last_with_age_data.label}</p>`;
+    document.querySelector('#ifr').innerHTML = table + legend;
   }
 }
 
@@ -580,17 +586,17 @@ const charts = {
         {
           name: 'Confirmados femininos',
           data: state.ages.map(
-            (age) => -state.json.delta[`confirmados_${age}_f`][state.json.today]
+            (age) => -state.json.delta[`confirmados_${age}_f`][state.last_with_age_data.index]
           ),
         },
         {
           name: 'Confirmados masculinos',
           data: state.ages.map(
-            (age) => state.json.delta[`confirmados_${age}_m`][state.json.today]
+            (age) => state.json.delta[`confirmados_${age}_m`][state.last_with_age_data.index]
           ),
         },
       ],
-      credits: { text: 'Dados DGS' },
+      credits: { text: state.last_with_age_data.label },
     });
   },
   confirmados_total_generos: (outer) => {
@@ -625,14 +631,14 @@ const charts = {
       series: [
         {
           name: 'Confirmados femininos',
-          data: state.ages.map((age) => -state.json.last[`confirmados_${age}_f`]),
+          data: state.ages.map((age) => -state.json.full[`confirmados_${age}_f`][state.last_with_age_data.index]),
         },
         {
           name: 'Confirmados masculinos',
-          data: state.ages.map((age) => state.json.last[`confirmados_${age}_m`]),
+          data: state.ages.map((age) => state.json.full[`confirmados_${age}_m`][state.last_with_age_data.index]),
         },
       ],
-      credits: { text: 'Dados DGS' },
+      credits: { text: state.last_with_age_data.label },
     });
   },
   confirmados_grupo_etario: (outer) => {
@@ -924,17 +930,17 @@ const charts = {
         {
           name: 'Óbitos femininos',
           data: state.ages.map(
-            (age) => -state.json.delta[`obitos_${age}_f`][state.json.today]
+            (age) => -state.json.delta[`obitos_${age}_f`][state.last_with_age_data.index]
           ),
         },
         {
           name: 'Óbitos masculinos',
           data: state.ages.map(
-            (age) => state.json.delta[`obitos_${age}_m`][state.json.today]
+            (age) => state.json.delta[`obitos_${age}_m`][state.last_with_age_data.index]
           ),
         },
       ],
-      credits: { text: 'Dados DGS' },
+      credits: { text: state.last_with_age_data.label },
     });
   },
   obitos_total_generos: (outer) => {
@@ -969,14 +975,14 @@ const charts = {
       series: [
         {
           name: 'Óbitos femininos',
-          data: state.ages.map((age) => -state.json.last[`obitos_${age}_f`]),
+          data: state.ages.map((age) => -state.json.full[`obitos_${age}_f`][state.last_with_age_data.index]),
         },
         {
           name: 'Óbitos masculinos',
-          data: state.ages.map((age) => state.json.last[`obitos_${age}_m`]),
+          data: state.ages.map((age) => state.json.full[`obitos_${age}_m`][state.last_with_age_data.index]),
         },
       ],
-      credits: { text: 'Dados DGS' },
+      credits: { text: state.last_with_age_data.label },
     });
   },
   obitos_grupo_etario: (outer) => {
@@ -2230,6 +2236,17 @@ function crunchData() {
       state.vaccines.twodose.push([Date.parse(day[0]), parseInt(day[3], 10)]);
     }
   });
+  // find last date with number of deaths by age
+  const dataset_size = Object.keys(state.json.full.confirmados_40_49).length;
+  for (let i = dataset_size - 1; i >= 0; i -= 1) {
+    if (state.json.full.confirmados_40_49[i]) {
+      state.last_with_age_data.index = i;
+      if (i !== dataset_size - 1) {
+        state.last_with_age_data.label = `Dados DGS - referentes a ${state.json.full.data[i]}`;
+      }
+      break;
+    }
+  }
 }
 
 // add graphs to the DOM
@@ -2275,7 +2292,7 @@ function addGraphs() {
     charts['mortalidade_acum'](outer);
     charts['mortalidade_light'](outer);
     charts['mortalidade_excessiva'](outer);
-    charts['mortalidade_excessiva_percentagem'](outer);
+    // charts['mortalidade_excessiva_percentagem'](outer);
     charts['mortalidade_mais_covid'](outer);
   }
   outer = addLead('Óbitos');

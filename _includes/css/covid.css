@@ -35,8 +35,8 @@ div#Fontes {
 }
 #covid .graph_container table {
   font-size: .8rem;
-  margin: .5rem auto;
-  width: 90%;
+  margin: .1rem auto;
+  width: 95%;
 }
 #covid .graph_container table tr.total {
   border-top: solid 1px #666;
@@ -77,4 +77,12 @@ a.btt {
   cursor:pointer;
   font-size: 13px;
   padding-left: 10px;
+}
+
+#ifr p {
+  color: #999999;
+  font-size: 0.6rem;
+  margin: 0 auto;
+  text-align: right;
+  width: 95%;
 }
