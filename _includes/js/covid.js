@@ -378,10 +378,11 @@ const state = {
   }
 };
 
-// remove year from date
+// compact and format date
 function compactDate(date) {
-  const match = date.match(/(\d\d)-(\d\d)-\d\d\d\d/);
-  return match ? `${match[1]}/${match[2]}` : date;
+  const formated = date.replace(/\-/g,'/');
+  const match = formated.match(/(\d\d)\/(\d\d)\/\d\d(\d\d)/);
+  return match ? `${match[1]}/${match[2]}/${match[3]}` : formated;
 }
 
 // calculate 7 days average for an array of values
@@ -2046,7 +2047,7 @@ const charts = {
       xAxis: {
         type: 'datetime',
         labels: {
-          format: '{value:%d/%m}',
+          format: '{value:%d/%m/%y}',
         },
         tickLength: 0,
       },
@@ -2067,7 +2068,7 @@ const charts = {
       xAxis: {
         type: 'datetime',
         labels: {
-          format: '{value:%d/%m}',
+          format: '{value:%d/%m/%y}',
         },
         tickLength: 0,
       },
