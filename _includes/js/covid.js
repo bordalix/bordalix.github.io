@@ -347,6 +347,15 @@ const state = {
         Açores: 6550,
         Madeira: 19072,
       },
+      Jul: {
+        Norte: 139940,
+        Centro: 44261,
+        LVT: 126231,
+        Alentejo: 15197,
+        Algarve: 17932,
+        Açores: 6497,
+        Madeira: 18646,
+      },
     },
   },
   gdp: {
@@ -1968,7 +1977,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
-    const lastMonth = { name: 'Junho', id: 'Jun' };
+    const lastMonth = { name: 'Julho', id: 'Jul' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
