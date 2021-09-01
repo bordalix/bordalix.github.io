@@ -63,7 +63,13 @@ const state = {
     { month: 'Oct', year: '20', young: 246300, old: 4521300 },
     { month: 'Nov', year: '20', young: 255100, old: 4547200 },
     { month: 'Dec', year: '20', young: 238000, old: 4526800 },
-    { month: 'Jan', year: '21', young: 225300, old: 4422000 },
+    { month: 'Jan', year: '21', young: 235600, old: 4399800 },
+    { month: 'Fev', year: '21', young: 233300, old: 4421900 },
+    { month: 'Mar', year: '21', young: 240100, old: 4449700 },
+    { month: 'Abr', year: '21', young: 241200, old: 4468200 },
+    { month: 'Mai', year: '21', young: 254200, old: 4529400 },
+    { month: 'Jun', year: '21', young: 262200, old: 4565600 },
+    { month: 'Jul', year: '21', young: 266500, old: 4601200  },
   ],
   unemployment: {
     2019: {
