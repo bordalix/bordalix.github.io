@@ -11,30 +11,7 @@ description: JB portfolio
   </style>
 
   <script>
-    {% include js/modernizr.js %}
-    function goTo(page) {
-      var url = '/portfolio/' + page + '.html';
-      window.location = url;
-    }
-    /* run this when page is ready */
-    document.addEventListener("DOMContentLoaded", function () {
-      /* lazy load div background images */
-      var boxes = document.getElementsByClassName('box');
-      [].forEach.call(boxes, function (box) {
-        /* lazy load div background images */
-        var src = box.getAttribute('data-bg-image');
-        if (src) {
-          src = 'https://cdn.joaobordalo.com/images/static/portfolio/' + src;
-          Modernizr.on('webp', function(result) {
-            src = src + (result ? '.webp' : '.png');
-            box.style.backgroundImage = 'url(' + src + ')';
-          });
-        }
-        /* add event listener for click */
-        var item = box.className.split(' ')[1];
-        box.addEventListener('click', function() {goTo(item)});
-      });
-    });
+    {% include js/box.js %}
   </script>
   <main>
     <section>
