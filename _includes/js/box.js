@@ -1,3 +1,5 @@
+{% include js/modernizr.js %}
+
 document.addEventListener('DOMContentLoaded', function () {
   var boxes = document.getElementsByClassName('box');
   [].forEach.call(boxes, function (box) {
