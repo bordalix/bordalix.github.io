@@ -48,7 +48,8 @@ body.dark-theme h5,
 body.dark-theme h6,
 body.dark-theme p,
 body.dark-theme .contact-info-block .ci-text,
-body.dark-theme nav.menu-top p a {
+body.dark-theme nav.menu-top p a,
+body.dark-theme nav.menu-top p>span {
   color: #f5f5f5;
 }
 

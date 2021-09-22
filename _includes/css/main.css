@@ -155,7 +155,8 @@ nav p {
   line-height: 1.25;
 }
 
-nav.menu-top p a {
+nav.menu-top p a,
+nav.menu-top p>span {
   vertical-align: middle;
   color: #000;
   text-decoration: none;
