@@ -58,11 +58,11 @@ const state = {
     { month: 'Mai', year: '20', young: 240600, old: 4430800 },
     { month: 'Jun', year: '20', young: 235100, old: 4469200 },
     { month: 'Jul', year: '20', young: 244800, old: 4461200 },
-    { month: 'Aug', year: '20', young: 250100, old: 4487300 },
-    { month: 'Sep', year: '20', young: 257900, old: 4504000 },
-    { month: 'Oct', year: '20', young: 246300, old: 4521300 },
+    { month: 'Ago', year: '20', young: 250100, old: 4487300 },
+    { month: 'Set', year: '20', young: 257900, old: 4504000 },
+    { month: 'Out', year: '20', young: 246300, old: 4521300 },
     { month: 'Nov', year: '20', young: 255100, old: 4547200 },
-    { month: 'Dec', year: '20', young: 238000, old: 4526800 },
+    { month: 'Dez', year: '20', young: 238000, old: 4526800 },
     { month: 'Jan', year: '21', young: 235600, old: 4399800 },
     { month: 'Fev', year: '21', young: 233300, old: 4421900 },
     { month: 'Mar', year: '21', young: 240100, old: 4449700 },
@@ -71,7 +71,7 @@ const state = {
     { month: 'Jun', year: '21', young: 262200, old: 4565600 },
     { month: 'Jul', year: '21', young: 266500, old: 4601200  },
   ],
-  unemployment: {
+  unemployment: { // don't forget to change lastMonth
     2019: {
       Jan: {
         Norte: 140696,
@@ -136,7 +136,7 @@ const state = {
         Açores: 7058,
         Madeira: 14971,
       },
-      Aug: {
+      Ago: {
         Norte: 127281,
         Centro: 42323,
         LVT: 91140,
@@ -145,7 +145,7 @@ const state = {
         Açores: 7040,
         Madeira: 14925,
       },
-      Sep: {
+      Set: {
         Norte: 126215,
         Centro: 42188,
         LVT: 88445,
@@ -154,7 +154,7 @@ const state = {
         Açores: 7029,
         Madeira: 14865,
       },
-      Oct: {
+      Out: {
         Norte: 124078,
         Centro: 41647,
         LVT: 87441,
@@ -172,7 +172,7 @@ const state = {
         Açores: 6994,
         Madeira: 15101,
       },
-      Dec: {
+      Dez: {
         Norte: 123369,
         Centro: 41678,
         LVT: 88732,
@@ -246,7 +246,7 @@ const state = {
         Açores: 6957,
         Madeira: 18326,
       },
-      Aug: {
+      Ago: {
         Norte: 158013,
         Centro: 51944,
         LVT: 134944,
@@ -255,7 +255,7 @@ const state = {
         Açores: 6949,
         Madeira: 18900,
       },
-      Sep: {
+      Set: {
         Norte: 156650,
         Centro: 50938,
         LVT: 136844,
@@ -264,7 +264,7 @@ const state = {
         Açores: 6942,
         Madeira: 19338,
       },
-      Oct: {
+      Out: {
         Norte: 153020,
         Centro: 48843,
         LVT: 133707,
@@ -282,7 +282,7 @@ const state = {
         Açores: 6962,
         Madeira: 19749,
       },
-      Dec: {
+      Dez: {
         Norte: 150308,
         Centro: 50576,
         LVT: 125213,
@@ -355,6 +355,15 @@ const state = {
         Algarve: 17932,
         Açores: 6497,
         Madeira: 18646,
+      },
+      Ago: {
+        Norte: 141178,
+        Centro: 44951,
+        LVT: 127305,
+        Alentejo: 14741,
+        Algarve: 16366,
+        Açores: 6462,
+        Madeira: 17401,
       },
     },
   },
@@ -1977,7 +1986,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
-    const lastMonth = { name: 'Julho', id: 'Jul' };
+    const lastMonth = { name: 'Agosto', id: 'Ago' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
@@ -2426,7 +2435,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210901.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210928.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
