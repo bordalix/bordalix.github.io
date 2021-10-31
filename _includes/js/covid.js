@@ -30,14 +30,7 @@ const state = {
     '70_79': 544016 + 429107,
     '80_plus': 352218 + 316442,
   },
-  symptoms: [
-    'tosse',
-    'febre',
-    'dores_musculares',
-    'cefaleia',
-    'fraqueza_generalizada',
-    'dificuldade_respiratoria',
-  ],
+  symptoms: ['tosse', 'febre', 'dores_musculares', 'cefaleia', 'fraqueza_generalizada', 'dificuldade_respiratoria'],
   employment: [
     { month: 'Jan', year: '19', young: 305500, old: 4502200 },
     { month: 'Fev', year: '19', young: 301900, old: 4511200 },
@@ -72,7 +65,8 @@ const state = {
     { month: 'Jul', year: '21', young: 266500, old: 4601200 },
     { month: 'Ago', year: '21', young: 265700, old: 4548600 },
   ],
-  unemployment: { // don't forget to change lastMonth
+  unemployment: {
+    // don't forget to change lastMonth
     2019: {
       Jan: {
         Norte: 140696,
@@ -335,7 +329,7 @@ const state = {
         Centro: 47926,
         LVT: 135389,
         Alentejo: 16439,
-        Algarve: 26601 ,
+        Algarve: 26601,
         Açores: 6857,
         Madeira: 19897,
       },
@@ -344,7 +338,7 @@ const state = {
         Centro: 45493,
         LVT: 128848,
         Alentejo: 15536,
-        Algarve: 20030 ,
+        Algarve: 20030,
         Açores: 6550,
         Madeira: 19072,
       },
@@ -365,6 +359,15 @@ const state = {
         Algarve: 16366,
         Açores: 6462,
         Madeira: 17401,
+      },
+      Set: {
+        Norte: 138000,
+        Centro: 44853 ,
+        LVT: 122221,
+        Alentejo: 14876,
+        Algarve: 16332,
+        Açores: 6425,
+        Madeira: 16441,
       },
     },
   },
@@ -388,20 +391,21 @@ const state = {
   },
   gdp_flat: () => {
     const aux = {};
-    Object.keys(state.gdp).forEach(year => {
-      Object.keys(state.gdp[year]).forEach(quarter => {
+    Object.keys(state.gdp).forEach((year) => {
+      Object.keys(state.gdp[year]).forEach((quarter) => {
         aux[`${quarter}/${year}`] = state.gdp[year][quarter];
-      })
+      });
     });
     return aux;
   },
   toc: [], // table of contents
   evm: null, // mortality data
   vaccines: null,
-  last_with_age_data: { // DGS only send this data on some days
+  last_with_age_data: {
+    // DGS only send this data on some days
     index: null,
     label: 'Dados DGS',
-  }
+  },
 };
 
 // compact and format date
@@ -1987,7 +1991,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
-    const lastMonth = { name: 'Agosto', id: 'Ago' };
+    const lastMonth = { name: 'Setembro', id: 'Set' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
