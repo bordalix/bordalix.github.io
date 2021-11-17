@@ -69,8 +69,9 @@ const state = {
     { month: 'Abr', year: '21', young: 241200, old: 4468200 },
     { month: 'Mai', year: '21', young: 254200, old: 4529400 },
     { month: 'Jun', year: '21', young: 262200, old: 4565600 },
-    { month: 'Jul', year: '21', young: 266500, old: 4601200 },
-    { month: 'Ago', year: '21', young: 265700, old: 4548600 },
+    { month: 'Jul', year: '21', young: 266600, old: 4585100 },
+    { month: 'Ago', year: '21', young: 261000, old: 4587300 },
+    { month: 'Set', year: '21', young: 246100, old: 4580100 },
   ],
   unemployment: { // don't forget to change lastMonth
     2019: {
@@ -365,6 +366,15 @@ const state = {
         Algarve: 16366,
         Açores: 6462,
         Madeira: 17401,
+      },
+      Set: {
+        Norte: 138000,
+        Centro: 44853,
+        LVT: 122221,
+        Alentejo: 14876,
+        Algarve: 16332,
+        Açores: 6425,
+        Madeira: 16441,
       },
     },
   },
@@ -1987,7 +1997,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
-    const lastMonth = { name: 'Agosto', id: 'Ago' };
+    const lastMonth = { name: 'Setembro', id: 'Set' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
@@ -2436,7 +2446,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20210928.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20211117.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)
