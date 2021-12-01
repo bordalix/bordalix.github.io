@@ -34,14 +34,7 @@ const state = {
     '70_79': 544016 + 429107,
     '80_plus': 352218 + 316442,
   },
-  symptoms: [
-    'tosse',
-    'febre',
-    'dores_musculares',
-    'cefaleia',
-    'fraqueza_generalizada',
-    'dificuldade_respiratoria',
-  ],
+  symptoms: ['tosse', 'febre', 'dores_musculares', 'cefaleia', 'fraqueza_generalizada', 'dificuldade_respiratoria'],
   employment: [
     { month: 'Jan', year: '19', young: 305500, old: 4502200 },
     { month: 'Fev', year: '19', young: 301900, old: 4511200 },
@@ -77,7 +70,8 @@ const state = {
     { month: 'Ago', year: '21', young: 261000, old: 4587300 },
     { month: 'Set', year: '21', young: 246100, old: 4580100 },
   ],
-  unemployment: { // don't forget to change lastMonth
+  unemployment: {
+    // don't forget to change lastMonth
     2019: {
       Jan: {
         Norte: 140696,
@@ -340,7 +334,7 @@ const state = {
         Centro: 47926,
         LVT: 135389,
         Alentejo: 16439,
-        Algarve: 26601 ,
+        Algarve: 26601,
         Açores: 6857,
         Madeira: 19897,
       },
@@ -349,7 +343,7 @@ const state = {
         Centro: 45493,
         LVT: 128848,
         Alentejo: 15536,
-        Algarve: 20030 ,
+        Algarve: 20030,
         Açores: 6550,
         Madeira: 19072,
       },
@@ -453,20 +447,21 @@ const state = {
   },
   gdp_flat: () => {
     const aux = {};
-    Object.keys(state.gdp).forEach(year => {
-      Object.keys(state.gdp[year]).forEach(quarter => {
+    Object.keys(state.gdp).forEach((year) => {
+      Object.keys(state.gdp[year]).forEach((quarter) => {
         aux[`${quarter}/${year}`] = state.gdp[year][quarter];
-      })
+      });
     });
     return aux;
   },
   toc: [], // table of contents
   evm: null, // mortality data
   vaccines: null,
-  last_with_age_data: { // DGS only send this data on some days
+  last_with_age_data: {
+    // DGS only send this data on some days
     index: null,
     label: 'Dados DGS',
-  }
+  },
 };
 
 // compact and format date
