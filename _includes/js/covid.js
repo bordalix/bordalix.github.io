@@ -17,7 +17,11 @@ const state = {
     arsnorte: { density: 168, population: 3682370 },
     madeira: { density: 317, population: 270000 },
   },
-  ages: ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus'],
+  ages: [
+    '0_9', '10_19', '20_29',
+    '30_39', '40_49', '50_59',
+    '60_69', '70_79', '80_plus',
+  ],
   population_by_age: {
     // https://www.pordata.pt/Portugal/Popula%c3%a7%c3%a3o+residente++m%c3%a9dia+anual+total+e+por+grupo+et%c3%a1rio-10-1127
     '0_9': 433332 + 461299,
@@ -377,6 +381,57 @@ const state = {
         Madeira: 16441,
       },
     },
+  },
+  inflation: {
+    2019: {
+      Jan:  0.48,
+      Fev:  0.94,
+      Mar:  0.85,
+      Abr:  0.77,
+      Mai:  0.42,
+      Jun:  0.39,
+      Jul: -0.32,
+      Ago: -0.09,
+      Set: -0.11,
+      Out:  0.02,
+      Nov:  0.32,
+      Dez:  0.42,
+    },
+    2020: {
+      Jan:  0.80,
+      Fev:  0.38,
+      Mar:  0.05,
+      Abr: -0.22,
+      Mai: -0.72,
+      Jun:  0.13,
+      Jul:  0.14,
+      Ago: -0.01,
+      Set: -0.14,
+      Out: -0.07,
+      Nov: -0.22,
+      Dez: -0.23,
+    },
+    2021: {
+      Jan: 0.30,
+      Fev: 0.48,
+      Mar: 0.45,
+      Abr: 0.55,
+      Mai: 1.24,
+      Jun: 0.51,
+      Jul: 1.47,
+      Ago: 1.54,
+      Set: 1.48,
+      Out: 1.83,
+    },
+  },
+  inflation_flat: () => {
+    const aux = {};
+    Object.keys(state.inflation).forEach(year => {
+      Object.keys(state.inflation[year]).forEach(month => {
+        aux[`${month}/${year}`] = state.inflation[year][month];
+      })
+    });
+    return aux;
   },
   gdp: {
     2019: {
@@ -2121,6 +2176,58 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
+  inflacao_total: (outer) => {
+    createGraphContainer('inflacao_total', outer);
+    Highcharts.chart('inflacao_total', {
+      title: { text: 'Inflação mensal' },
+      xAxis: { categories: Object.keys(state.inflation_flat()) },
+      yAxis: {
+        labels: { format: '{value}%' },
+        title: { text: null },
+      },
+      series: [
+        {
+          name: 'Variação homóloga (%)',
+          data: Object.keys(state.inflation_flat()).map((k) => {
+            return state.inflation_flat()[k]
+          }),
+        },
+      ],
+      credits: { enabled: true, text: 'Dados INE' },
+    });
+  },
+  inflacao_mensal: (outer) => {
+    createGraphContainer('inflacao_mensal', outer);
+    Highcharts.chart('inflacao_mensal', {
+      title: { text: 'Inflação mensal' },
+      xAxis: { categories: Object.keys(state.inflation['2020']) },
+      yAxis: {
+        labels: { format: '{value}%' },
+        title: { text: null },
+      },
+      series: [
+        {
+          name: '2019',
+          data: Object.keys(state.inflation['2019']).map((month) => {
+            return state.inflation['2019'][month]
+          }),
+        },
+        {
+          name: '2020',
+          data: Object.keys(state.inflation['2020']).map((month) => {
+            return state.inflation['2020'][month]
+          }),
+        },
+        {
+          name: '2021',
+          data: Object.keys(state.inflation['2021']).map((month) => {
+            return state.inflation['2021'][month]
+          }),
+        },
+      ],
+      credits: { text: 'Dados INE' },
+    });
+  },
 };
 
 // get full update and calculate tests and daily deltas
@@ -2319,6 +2426,9 @@ function addGraphs() {
   charts['empregos_mais24_total'](outer);
   charts['desemprego_total'](outer);
   charts['desemprego_ars'](outer);
+  outer = addLead('Inflação');
+  charts['inflacao_total'](outer);
+  charts['inflacao_mensal'](outer);
   outer = addLead('Internados');
   charts['internados_normal_dia'](outer);
   charts['internados_uci_dia'](outer);
