@@ -2368,11 +2368,16 @@ function crunchData() {
     onedose: [],
     twodose: [],
   };
+  let day0, day1, day2, day3;
   state.json.vaccines.forEach(day => {
-    state.vaccines.total.push([Date.parse(day[0]), parseInt(day[1], 10)]);
-    if (day[2] && day[3]) {
-      state.vaccines.onedose.push([Date.parse(day[0]), parseInt(day[2] - day[3], 10)]);
-      state.vaccines.twodose.push([Date.parse(day[0]), parseInt(day[3], 10)]);
+    day0 = day[0] || day0;
+    day1 = day[1] || day1;
+    day2 = day[2] || day2;
+    day3 = day[3] || day3;
+    state.vaccines.total.push([Date.parse(day0), parseInt(day1, 10)]);
+    if (day2 && day3) {
+      state.vaccines.onedose.push([Date.parse(day0), parseInt(day2 - day3, 10)]);
+      state.vaccines.twodose.push([Date.parse(day0), parseInt(day3, 10)]);
     }
   });
   // find last date with number of deaths by age
