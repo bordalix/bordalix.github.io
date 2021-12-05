@@ -67,7 +67,11 @@ footer {
 }
 @media (min-width: 440px) {
   div.graph_container,
-  div.rt_container,
+  div.rt_container {
+    width: 47%;
+  }
+}
+@media (min-width: 800px) {
   #summary table {
     width: 47%;
   }

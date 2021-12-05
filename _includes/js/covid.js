@@ -2615,6 +2615,11 @@ function addTodayNumbers() {
               + `      <td>${state.json.last.ativos}</td>`
               + '    </tr>'
               + '    <tr>'
+              + '      <td><a href="#Amostras">Amostras</a></td>'
+              + `      <td>${addPrefix(state.amostras[state.json.today-1][2])}</td>`
+              + `      <td>${state.amostras[state.json.today-1][1]}</td>`
+              + '    </tr>'
+              + '    <tr>'
               + '      <td><a href="#Confirmados">Confirmados</a></td>'
               + `      <td>${addPrefix(state.json.last.confirmados_novos)}</td>`
               + `      <td>${state.json.last.confirmados}</td>`
