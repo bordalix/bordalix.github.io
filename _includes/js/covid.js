@@ -2142,6 +2142,10 @@ const charts = {
           name: 'Doses administradas',
           data: state.vaccines.total,
         },
+        {
+          name: 'Boosters',
+          data: state.vaccines.boosters,
+        },
       ],
       credits: { text: 'Dados DGS' },
     });
@@ -2367,17 +2371,22 @@ function crunchData() {
     total: [],
     onedose: [],
     twodose: [],
+    boosters: [],
   };
-  let day0, day1, day2, day3;
+  let day0, day1, day2, day3, day4;
   state.json.vaccines.forEach(day => {
     day0 = day[0] || day0;
     day1 = day[1] || day1;
     day2 = day[2] || day2;
     day3 = day[3] || day3;
+    day4 = day[4] || day4;
     state.vaccines.total.push([Date.parse(day0), parseInt(day1, 10)]);
     if (day2 && day3) {
       state.vaccines.onedose.push([Date.parse(day0), parseInt(day2 - day3, 10)]);
       state.vaccines.twodose.push([Date.parse(day0), parseInt(day3, 10)]);
+    }
+    if (day4) {
+      state.vaccines.boosters.push([Date.parse(day0), parseInt(day4, 10)])
     }
   });
   // find last date with number of deaths by age
