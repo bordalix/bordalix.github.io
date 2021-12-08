@@ -2227,6 +2227,62 @@ const charts = {
       credits: { text: 'Dados INE' },
     });
   },
+  internados_per_activos: (outer) => {
+    createGraphContainer('internados_per_activos', outer);
+    Highcharts.chart('internados_per_activos', {
+      title: { text: 'Internados / activos' },
+      yAxis: {
+        labels: { format: '{value}%' },
+        title: { text: null },
+      },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Percentagem internados / activos',
+          data: Object.keys(state.json.full.data).map((k) => {
+            if (k < 100) return null;
+            const percentage = state.json.full.internados[k] / state.json.full.ativos[k] * 100;
+            return parseFloat(percentage.toFixed(2));
+          }),
+        },
+      ],
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  obitos_per_activos: (outer) => {
+    createGraphContainer('obitos_per_activos', outer);
+    Highcharts.chart('obitos_per_activos', {
+      title: { text: 'Óbitos / activos' },
+      yAxis: {
+        labels: { format: '{value}%' },
+        title: { text: null },
+      },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [
+        {
+          name: 'Percentagem óbitos / activos',
+          data: Object.keys(state.json.full.data).map((k) => {
+            if (k < 100) return null;
+            const percentage = state.json.delta.obitos[k] / state.json.full.ativos[k] * 100;
+            return parseFloat(percentage.toFixed(2));
+          }),
+        },
+      ],
+      credits: { text: 'Dados DGS' },
+    });
+  }
 };
 
 // get full update and calculate tests and daily deltas
@@ -2408,6 +2464,8 @@ function addGraphs() {
   outer = addLead('Activos');
   charts['ativos_dia'](outer);
   charts['ativos_total'](outer);
+  charts['internados_per_activos'](outer);
+  charts['obitos_per_activos'](outer);
   outer = addLead('Amostras');
   charts['amostras_dia'](outer);
   charts['amostras_dia_perc_positivos'](outer);
