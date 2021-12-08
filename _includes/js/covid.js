@@ -1824,42 +1824,41 @@ const charts = {
         type: 'scatter',
         zoomType: 'xy',
       },
-      title: { text: 'Confirmados % população' },
+      title: { text: 'Confirmados % população por ARS' },
       legend: { enabled: false },
       xAxis: { title: { text: 'Hab/Km2' } },
-      yAxis: {
-        title: { enabled: false },
-      },
+      yAxis: { title: { enabled: false } },
       plotOptions: {
-        scatter: {
-          marker: {
-            radius: 5,
-            states: {
-              hover: {
-                enabled: true,
-                lineColor: 'rgb(100,100,100)',
-              },
-            },
-          },
-          states: {
-            hover: {
-              marker: {
-                enabled: false,
-              },
-            },
-          },
-        },
+        series: {
+          dataLabels: {
+            enabled: true,
+          }
+        }
       },
       series: [
         {
           name: 'confirmados',
-          data: Object.keys(state.regions).map((r) => [
-            state.regions[r].density,
-            (100 * state.json.last[`confirmados_${r}`]) / state.regions[r].population,
-          ]),
+          dataLabels: [{
+            align: 'center',
+            format: '{point.name}'
+          }],
+          data: Object.keys(state.regions).map((r) => {
+            return {
+              name: r,
+              x: state.regions[r].density,
+              y: (100 * state.json.last[`confirmados_${r}`]) / state.regions[r].population,
+            };
+          }),
         },
       ],
       credits: { text: 'Dados DGS + Pordata + SNS' },
+      tooltip: {
+        formatter: function () {
+          return `<b>${this.point.name}</b><br />
+                  <b>${this.x}</b> hab/km<sup>2</sup><br />
+                  <b>${this.y.toFixed(2)}%</b> da população`
+        }
+      },
     });
   },
   populacao_densidade_obitos: (outer) => {
@@ -1869,42 +1868,41 @@ const charts = {
         type: 'scatter',
         zoomType: 'xy',
       },
-      title: { text: 'Óbitos % população' },
+      title: { text: 'Óbitos % população por ARS' },
       legend: { enabled: false },
       xAxis: { title: { text: 'Hab/Km2' } },
-      yAxis: {
-        title: { enabled: false },
-      },
+      yAxis: { title: { enabled: false } },
       plotOptions: {
-        scatter: {
-          marker: {
-            radius: 5,
-            states: {
-              hover: {
-                enabled: true,
-                lineColor: 'rgb(100,100,100)',
-              },
-            },
-          },
-          states: {
-            hover: {
-              marker: {
-                enabled: false,
-              },
-            },
-          },
-        },
+        series: {
+          dataLabels: {
+            enabled: true,
+          }
+        }
       },
       series: [
         {
           name: 'óbitos',
-          data: Object.keys(state.regions).map((r) => [
-            state.regions[r].density,
-            (100 * state.json.last[`obitos_${r}`]) / state.regions[r].population,
-          ]),
+          dataLabels: [{
+            align: 'center',
+            format: '{point.name}'
+          }],
+          data: Object.keys(state.regions).map((r) => {
+            return {
+              name: r,
+              x: state.regions[r].density,
+              y: (100 * state.json.last[`obitos_${r}`]) / state.regions[r].population,
+            };
+          }),
         },
       ],
       credits: { text: 'Dados DGS + Pordata + SNS' },
+      tooltip: {
+        formatter: function () {
+          return `<b>${this.point.name}</b><br />
+                  <b>${this.x}</b> hab/km<sup>2</sup><br />
+                  <b>${this.y.toFixed(2)}%</b> da população`
+        }
+      },
     });
   },
   populacao_idade: (outer) => {
