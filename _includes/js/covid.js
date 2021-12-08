@@ -2665,6 +2665,11 @@ function addPrefix(number) {
 
 // add summary of stats for the present day
 function addTodayNumbers() {
+  const lastAmostras = state.amostras[state.json.today-1]
+                    || state.amostras[state.json.today-2]
+                    || state.amostras[state.json.today-3]
+                    || [null, null];
+
   const table = '<table>'
               + '  <thead>'
               + '    <tr>'
@@ -2681,8 +2686,8 @@ function addTodayNumbers() {
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Amostras">Amostras</a></td>'
-              + `      <td>${addPrefix(state.amostras[state.json.today-1][2])}</td>`
-              + `      <td>${state.amostras[state.json.today-1][1]}</td>`
+              + `      <td>${addPrefix(lastAmostras[2])}</td>`
+              + `      <td>${lastAmostras[1]}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Confirmados">Confirmados</a></td>'
