@@ -69,6 +69,7 @@ const state = {
     { month: 'Jul', year: '21', young: 266600, old: 4585100 },
     { month: 'Ago', year: '21', young: 261000, old: 4587300 },
     { month: 'Set', year: '21', young: 246100, old: 4580100 },
+    { month: 'Out', year: '21', young: 246700, old: 4581400 },
   ],
   unemployment: {
     // don't forget to change lastMonth
@@ -373,6 +374,15 @@ const state = {
         Algarve: 16332,
         Açores: 6425,
         Madeira: 16441,
+      },
+      Out: {
+        Norte: 135135,
+        Centro: 43808,
+        LVT: 118237 ,
+        Alentejo: 15234,
+        Algarve: 17331 ,
+        Açores: 6253,
+        Madeira: 15669,
       },
     },
   },
@@ -2045,7 +2055,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
-    const lastMonth = { name: 'Setembro', id: 'Set' };
+    const lastMonth = { name: 'Outubro', id: 'Out' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
