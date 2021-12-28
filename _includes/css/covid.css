@@ -20,6 +20,10 @@ div.graph_container {
   margin-bottom: 40px;
   border: solid 2px #eee;
 }
+p.tip,
+#toc {
+  width: 100%;
+}
 h2.section_divider {
   font-size: 1.5rem;
   font-weight: 400;
@@ -67,7 +71,9 @@ footer {
 }
 @media (min-width: 440px) {
   div.graph_container,
-  div.rt_container {
+  div.rt_container,
+  p.tip,
+  #toc {
     width: 47%;
   }
 }
@@ -89,4 +95,10 @@ a.btt {
   margin: 0 auto;
   text-align: right;
   width: 95%;
+}
+
+p.tip {
+  background-color: #f7f7f7;
+  border: solid #cccccc 1px;
+  padding: 1rem;
 }
