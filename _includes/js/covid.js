@@ -384,6 +384,15 @@ const state = {
         Açores: 6253,
         Madeira: 15669,
       },
+      Nov: {
+        Norte: 129584,
+        Centro: 42805,
+        LVT: 114752 ,
+        Alentejo: 15139,
+        Algarve: 22278 ,
+        Açores: 6295,
+        Madeira: 15031,
+      },
     },
   },
   inflation: {
@@ -2055,7 +2064,7 @@ const charts = {
     });
   },
   desemprego_ars: (outer) => {
-    const lastMonth = { name: 'Outubro', id: 'Out' };
+    const lastMonth = { name: 'Novembro', id: 'Nov' };
     createGraphContainer('desemprego_ars', outer);
     Highcharts.chart('desemprego_ars', {
       chart: { type: 'bar' },
