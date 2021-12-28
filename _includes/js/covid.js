@@ -435,6 +435,7 @@ const state = {
       Ago: 1.54,
       Set: 1.48,
       Out: 1.83,
+      Nov: 2.58,
     },
   },
   inflation_flat: () => {
