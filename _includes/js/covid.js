@@ -2640,26 +2640,7 @@ function renderNewRt(outer) {
 
 // given an action, returns a api url
 function apiURL(id) {
-  if (id === 'last_update') return 'https://covid19-api.vost.pt/Requests/get_last_update';
-  if (id === 'full_dataset') return 'https://covid19-api.vost.pt/Requests/get_full_dataset';
-  if (id === 'mortality') {
-    const d = new Date();
-    const s = d.getFullYear() + ("0"+(d.getMonth()+1)).slice(-2) + ("0" + d.getDate()).slice(-2);
-    return `https://cdn.joaobordalo.com/json/mortality-${s}.json`;
-  }
-  if (id === 'amostras') {
-    const d = new Date();
-    const s = d.getFullYear() + ("0"+(d.getMonth()+1)).slice(-2) + ("0" + d.getDate()).slice(-2);
-    return `https://cdn.joaobordalo.com/json/amostras-${s}.json`;
-  }
-  if (id === 'vaccines') {
-    const d = new Date();
-    const s =
-      d.getFullYear() +
-      ('0' + (d.getMonth() + 1)).slice(-2) +
-      ('0' + d.getDate()).slice(-2);
-    return `https://cdn.joaobordalo.com/json/vaccines-${s}.json`;
-  }
+  return `https://cdn.joaobordalo.com/json/covid/${id}.json`;
 }
 
 // navigate to anchor if anchor present
