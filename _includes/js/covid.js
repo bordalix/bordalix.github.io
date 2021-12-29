@@ -2640,7 +2640,7 @@ function addGraphicsTip() {
   let html = '<i class="fa fa-lightbulb-o" aria-hidden="true" aria-label="Email"></i> ';
   html += document.ontouchstart === undefined ?
     'Clica e arrasta no gráfico para fazer zoom' :
-    'Usa os dedos no gráfico para fazer zoom';
+    'Usa dois dedos no gráfico para fazer zoom';
   const p = document.createElement('p');
   p.classList.add("tip");
   p.innerHTML = html;
