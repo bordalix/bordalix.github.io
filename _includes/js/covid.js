@@ -2701,7 +2701,8 @@ function renderNewRt(outer) {
 
 // given an action, returns a api url
 function apiURL(id) {
-  return `https://cdn.joaobordalo.com/json/covid/${id}.json`;
+  const rnd = Math.floor(Math.random() * 99999999);
+  return `https://cdn.joaobordalo.com/json/covid/${id}.json?${rnd}`;
 }
 
 // navigate to anchor if anchor present
