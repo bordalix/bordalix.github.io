@@ -2713,7 +2713,7 @@ function navigateToAnchor() {
 
 // add a '+' on positive numbers
 function addPrefix(number) {
-  return number > 0 ? `+${number}` : number;
+  return number > 0 ? `+${number.toLocaleString()}` : number.toLocaleString();
 }
 
 // add summary of stats for the present day
@@ -2735,42 +2735,42 @@ function addTodayNumbers() {
               + '    <tr>'
               + '      <td><a href="#Activos">Activos</a></td>'
               + `      <td>${addPrefix(state.json.delta.ativos[state.json.today])}</td>`
-              + `      <td>${state.json.last.ativos}</td>`
+              + `      <td>${state.json.last.ativos.toLocaleString()}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Amostras">Amostras</a></td>'
-              + `      <td>${addPrefix(lastAmostras[2])}</td>`
-              + `      <td>${lastAmostras[1]}</td>`
+              + `      <td>${addPrefix(parseInt(lastAmostras[2]))}</td>`
+              + `      <td>${parseInt(lastAmostras[1]).toLocaleString()}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Confirmados">Confirmados</a></td>'
               + `      <td>${addPrefix(state.json.last.confirmados_novos)}</td>`
-              + `      <td>${state.json.last.confirmados}</td>`
+              + `      <td>${state.json.last.confirmados.toLocaleString()}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Internados">Internados</a></td>'
               + `      <td>${addPrefix(state.json.delta.internados[state.json.today])}</td>`
-              + `      <td>${state.json.full.internados[state.json.today]}</td>`
+              + `      <td>${state.json.full.internados[state.json.today].toLocaleString()}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Internados">Internados UCI</a></td>'
               + `      <td>${addPrefix(state.json.delta.internados_uci[state.json.today])}</td>`
-              + `      <td>${state.json.full.internados_uci[state.json.today]}</td>`
+              + `      <td>${state.json.full.internados_uci[state.json.today].toLocaleString()}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Óbitos">Óbitos</a></td>'
               + `      <td>${addPrefix(state.json.delta.obitos[state.json.today])}</td>`
-              + `      <td>${state.json.full.obitos[state.json.today]}</td>`
+              + `      <td>${state.json.full.obitos[state.json.today].toLocaleString()}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Recuperados">Recuperados</a></td>'
               + `      <td>${addPrefix(state.json.delta.recuperados[state.json.today])}</td>`
-              + `      <td>${state.json.full.recuperados[state.json.today]}</td>`
+              + `      <td>${state.json.full.recuperados[state.json.today].toLocaleString()}</td>`
               + '    </tr>'
               + '    <tr>'
               + '      <td><a href="#Vacinas">Vacinas</a></td>'
               + `      <td></td>`
-              + `      <td>${state.vaccines.total[state.vaccines.total.length - 1][1]}</td>`
+              + `      <td>${state.vaccines.total[state.vaccines.total.length - 1][1].toLocaleString()}</td>`
               + '    </tr>'
               + '  </tbody>'
               + '</table>';
@@ -2778,7 +2778,7 @@ function addTodayNumbers() {
 }
 
 // go and render the page
-async function go(json) {
+async function go() {
   addGraphicsTip();
   addGraphics();
   navigateToAnchor();
@@ -3020,6 +3020,5 @@ function setDarkThemeGraphs() {
 // run when content is loaded
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.classList.contains("dark-theme")) setDarkThemeGraphs();
-  fetchData()
-  .catch ((e) => console.log(e.message));
+  fetchData().catch(console.log);
 });

@@ -39,7 +39,7 @@ div#Fontes {
 }
 #covid .graph_container table {
   font-size: .8rem;
-  margin: .1rem auto;
+  margin: 0 auto;
   width: 95%;
 }
 #covid .graph_container table tr.total {
