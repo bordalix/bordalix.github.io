@@ -2639,8 +2639,8 @@ function addLead(text) {
 function addGraphicsTip() {
   let html = '<i class="fa fa-lightbulb-o" aria-hidden="true" aria-label="Email"></i> ';
   html += document.ontouchstart === undefined ?
-    'Clica e arrasta no gráfico para fazer zoom' :
-    'Usa dois dedos no gráfico para fazer zoom';
+    'Clica e arrasta nos gráficos para fazer zoom' :
+    'Usa dois dedos nos gráficos para fazer zoom';
   const p = document.createElement('p');
   p.classList.add("tip");
   p.innerHTML = html;
