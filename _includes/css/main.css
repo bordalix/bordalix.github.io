@@ -281,3 +281,7 @@ a#downloadCV {
   max-width: 300px;
   margin: 20px auto 50px;
 }
+
+p.navRight {
+  font-size: 21px;
+}
