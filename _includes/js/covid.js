@@ -532,22 +532,24 @@ const tables = {
       const cfrate = (100 * obitos / confir).toFixed(2) + '%';
       total_confir += confir;
       total_obitos += obitos;
-      table += '    <tr style="padding: 1px">'
-             + `      <td>${age}</td>`
-             + `      <td>${confir}</td>`
-             + `      <td>${obitos}</td>`
-             + `      <td>${cfrate}</td>`
-             + '    </tr>';
+      table +=
+        '    <tr style="padding: 1px">' +
+        `      <td>${age}</td>` +
+        `      <td>${confir.toLocaleString()}</td>` +
+        `      <td>${obitos.toLocaleString()}</td>` +
+        `      <td>${cfrate}</td>` +
+        '    </tr>';
     });
     const total_cfrate = ((100 * total_obitos) / total_confir).toFixed(2) + '%';
-    table += '    <tr class="total">'
-           + '      <td>Total</td>'
-           + `      <td>${total_confir}</td>`
-           + `      <td>${total_obitos}</td>`
-           + `      <td>${total_cfrate}</td>`
-           + '    </tr>'
-           + '  </tbody>'
-           + '</table>';
+    table +=
+      '    <tr class="total">' +
+      '      <td>Total</td>' +
+      `      <td>${total_confir.toLocaleString()}</td>` +
+      `      <td>${total_obitos.toLocaleString()}</td>` +
+      `      <td>${total_cfrate}</td>` +
+      '    </tr>' +
+      '  </tbody>' +
+      '</table>';
     const legend = `<p>${state.last_with_age_data.label}</p>`;
     document.querySelector('#ifr').innerHTML = table + legend;
   }
@@ -2640,7 +2642,7 @@ function addGraphicsTip() {
   let html = '<i class="fa fa-lightbulb-o" aria-hidden="true" aria-label="Email"></i> ';
   html += document.ontouchstart === undefined ?
     'Clica e arrasta nos gráficos para fazer zoom' :
-    'Usa dois dedos nos gráficos para fazer zoom';
+    'É possível fazer zoom nos gráficos';
   const p = document.createElement('p');
   p.classList.add("tip");
   p.innerHTML = html;

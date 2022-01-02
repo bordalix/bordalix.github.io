@@ -102,3 +102,5 @@ p.tip {
   border: solid #cccccc 1px;
   padding: 1rem;
 }
+
+p.tip i { color: var(--my-blue); }
