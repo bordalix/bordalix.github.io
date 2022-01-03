@@ -1751,7 +1751,7 @@ const charts = {
     createGraphContainer('mortalidade_light', outer);
     Highcharts.chart('mortalidade_light', {
       chart: { zoomType: 'x', resetZoomButton },
-      title: { text: 'Máx, mín, média e 2021' },
+      title: { text: 'Máx, mín, média e 2022' },
       yAxis: { title: { text: null } },
       xAxis: {
         categories: state.evm.mmm.xAxis.categories,
@@ -1825,7 +1825,7 @@ const charts = {
             const avg = state.evm.mmm.yAxis.series[1].data[idx];
             return parseFloat((((n - avg) / avg) * 100).toFixed(2));
           }),
-          name: '2021 em %',
+          name: '2022 em %',
         },
       ],
       credits: { text: 'Dados EVM' },
