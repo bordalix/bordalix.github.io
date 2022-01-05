@@ -765,11 +765,16 @@ const charts = {
   },
   confirmados_grupo_etario: (outer) => {
     createGraphContainer('confirmados_grupo_etario', outer);
+    let last_value = 0;
     const data = state.ages.map((age) => {
       return {
         name: age,
-        data: Object.keys(state.json.full[`confirmados_${age}`]).map((key) => {
-          return state.json.full[`confirmados_${age}`][key];
+        data: Object.keys(state.json.full[`confirmados_${age}`]).map((key, index) => {
+          // for some reason, 25 April 2021 doesn't have data
+          let value = state.json.full[`confirmados_${age}`][key];
+          if (index > 100 && value === 0) value = last_value;
+          last_value = value;
+          return value;
         }),
       };
     });
@@ -790,13 +795,17 @@ const charts = {
   },
   confirmados_grupo_etario_percentagem: (outer) => {
     createGraphContainer('confirmados_grupo_etario_percentagem', outer);
+    let last_value = 0;
     const data = state.ages.map((age) => {
       return {
         name: age,
-        data: Object.keys(state.json.full[`confirmados_${age}`]).map((key) => {
-          const p =
-            (state.json.full[`confirmados_${age}`][key] * 100) /
-            state.population_by_age[age];
+        data: Object.keys(state.json.full[`confirmados_${age}`]).map((key, index) => {
+          // for some reason, 25 April 2021 doesn't have data
+          let value = state.json.full[`confirmados_${age}`][key];
+          const population = state.population_by_age[age];
+          if (index > 100 && value === 0) value = last_value;
+          last_value = value;
+          const p = value * 100 / population;
           return parseFloat(p.toFixed(2));
         }),
       };
@@ -1113,12 +1122,16 @@ const charts = {
   },
   obitos_grupo_etario: (outer) => {
     createGraphContainer('obitos_grupo_etario', outer);
+    let last_value = 0;
     const data = state.ages.map((age) => {
       return {
         name: age,
-        data: Object.keys(state.json.full[`obitos_${age}`]).map(
-          (key) => state.json.full[`obitos_${age}`][key]
-        ),
+        data: Object.keys(state.json.full[`obitos_${age}`]).map((key, index) => {
+          let value = state.json.full[`obitos_${age}`][key];
+          if (index > 100 && value == 0) value = last_value;
+          last_value = value;
+          return value;
+        }),
       };
     });
     Highcharts.chart('obitos_grupo_etario', {
@@ -1138,12 +1151,16 @@ const charts = {
   },
   obitos_grupo_etario_percentagem: (outer) => {
     createGraphContainer('obitos_grupo_etario_percentagem', outer);
+    let last_value = 0;
     const data = state.ages.map((age) => {
       return {
         name: age,
-        data: Object.keys(state.json.full[`obitos_${age}`]).map((key) => {
-          const p =
-            (state.json.full[`obitos_${age}`][key] * 100) / state.population_by_age[age];
+        data: Object.keys(state.json.full[`obitos_${age}`]).map((key, index) => {
+          let value = state.json.full[`obitos_${age}`][key];
+          const population = state.population_by_age[age];
+          if (index > 100 && value === 0) value = last_value;
+          last_value = value;
+          const p = value * 100 / population;
           return parseFloat(p.toFixed(2));
         }),
       };
@@ -2694,7 +2711,7 @@ function renderNewRt(outer) {
   const a = document.createElement('a');
   const img = document.createElement('img');
   a.href = 'https://covidcountdown.today/';
-  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20211117.svg';
+  img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20220105.svg';
   img.classList.add('rt_graph');
   a.appendChild(img);
   div.appendChild(a)

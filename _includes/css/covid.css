@@ -72,13 +72,13 @@ footer {
 @media (min-width: 440px) {
   div.graph_container,
   div.rt_container,
-  p.tip,
   #toc {
     width: 47%;
   }
 }
 @media (min-width: 800px) {
-  #summary table {
+  #summary table,
+  p.tip {
     width: 47%;
   }
 }
