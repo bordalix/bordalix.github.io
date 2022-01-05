@@ -101,6 +101,7 @@ p.tip {
   background-color: #f7f7f7;
   border: solid #cccccc 1px;
   padding: 1rem;
+  text-align: center;
 }
 
 p.tip i { color: var(--my-blue); }
