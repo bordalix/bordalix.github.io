@@ -70,6 +70,7 @@ const state = {
     { month: 'Ago', year: '21', young: 261000, old: 4587300 },
     { month: 'Set', year: '21', young: 246100, old: 4580100 },
     { month: 'Out', year: '21', young: 246700, old: 4581400 },
+    { month: 'Nov', year: '21', young: 248300, old: 4605200 },
   ],
   unemployment: {
     // don't forget to change lastMonth
@@ -564,6 +565,11 @@ const resetZoomButton = {
   }
 }
 
+const panning = {
+  enabled: true,
+  type: 'x',
+}
+
 // all charts
 const charts = {
   confirmados_dia_ars: (outer) => {
@@ -623,7 +629,7 @@ const charts = {
       (k) => state.json.delta.confirmados[k]
     );
     Highcharts.chart('confirmados_dia', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -2000,6 +2006,7 @@ const charts = {
   empregos_total: (outer) => {
     createGraphContainer('empregos_total', outer);
     Highcharts.chart('empregos_total', {
+      chart: { zoomType: 'x', resetZoomButton },
       title: { text: 'Total empregados' },
       xAxis: { categories: state.employment.map((i) => i.month + i.year) },
       yAxis: { title: { text: null } },
@@ -2019,7 +2026,7 @@ const charts = {
   empregos_variacao: (outer) => {
     createGraphContainer('empregos_variacao', outer);
     Highcharts.chart('empregos_variacao', {
-      chart: { type: 'column' },
+      chart: { type: 'column', zoomType: 'x', resetZoomButton },
       title: { text: 'Variação mês anterior' },
       xAxis: { categories: state.employment.map((i) => i.month + i.year) },
       yAxis: { title: { text: null } },
@@ -2041,6 +2048,7 @@ const charts = {
   empregos_menos24_total: (outer) => {
     createGraphContainer('empregos_menos24_total', outer);
     Highcharts.chart('empregos_menos24_total', {
+      chart: { zoomType: 'x', resetZoomButton },
       title: { text: 'Empregados 15 a 24 anos' },
       yAxis: { title: { text: null } },
       xAxis: { categories: state.employment.map((i) => i.month + i.year) },
@@ -2061,6 +2069,7 @@ const charts = {
   empregos_mais24_total: (outer) => {
     createGraphContainer('empregos_mais24_total', outer);
     Highcharts.chart('empregos_mais24_total', {
+      chart: { zoomType: 'x', resetZoomButton },
       title: { text: 'Empregados +24 anos' },
       yAxis: { title: { text: null } },
       xAxis: { categories: state.employment.map((i) => i.month + i.year) },
@@ -2253,6 +2262,7 @@ const charts = {
   inflacao_total: (outer) => {
     createGraphContainer('inflacao_total', outer);
     Highcharts.chart('inflacao_total', {
+      chart: { zoomType: 'x', resetZoomButton },
       title: { text: 'Inflação mensal' },
       xAxis: { categories: Object.keys(state.inflation_flat()) },
       yAxis: {
