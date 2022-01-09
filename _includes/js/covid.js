@@ -575,7 +575,7 @@ const charts = {
   confirmados_dia_ars: (outer) => {
     createGraphContainer('confirmados_dia_ars', outer);
     Highcharts.chart('confirmados_dia_ars', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Confirmados por dia' },
       yAxis: { min: 0, title: { text: null } },
       xAxis: {
@@ -599,7 +599,7 @@ const charts = {
   confirmados_dia_ars_percentagem: (outer) => {
     createGraphContainer('confirmados_dia_ars_percentagem', outer);
     Highcharts.chart('confirmados_dia_ars_percentagem', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Confirmados por dia % população' },
       yAxis: { min: 0, title: { text: null } },
       xAxis: {
@@ -655,7 +655,7 @@ const charts = {
   confirmados_total: (outer) => {
     createGraphContainer('confirmados_total', outer);
     Highcharts.chart('confirmados_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -785,7 +785,7 @@ const charts = {
       };
     });
     Highcharts.chart('confirmados_grupo_etario', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Confirmados idade' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -817,7 +817,7 @@ const charts = {
       };
     });
     Highcharts.chart('confirmados_grupo_etario_percentagem', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Confirmados idade % população' },
       yAxis: {
         labels: { format: '{value}%' },
@@ -917,7 +917,7 @@ const charts = {
   confirmados_historico: (outer) => {
     createGraphContainer('confirmados_historico', outer);
     Highcharts.chart('confirmados_historico', {
-      chart: { type: 'area', zoomType: 'x', resetZoomButton },
+      chart: { type: 'area', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Evolução confirmados' },
       xAxis: {
         categories: Object.keys(state.json.full.data).map((key) =>
@@ -953,7 +953,7 @@ const charts = {
   confirmados_historico_100: (outer) => {
     createGraphContainer('confirmados_historico_100', outer);
     Highcharts.chart('confirmados_historico_100', {
-      chart: { type: 'area', zoomType: 'x', resetZoomButton },
+      chart: { type: 'area', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Evolução confirmados' },
       xAxis: {
         categories: Object.keys(state.json.full.data).map((key) =>
@@ -993,7 +993,7 @@ const charts = {
     createGraphContainer('obitos_dia', outer);
     const data = Object.keys(state.json.full.data).map((k) => state.json.delta.obitos[k]);
     Highcharts.chart('obitos_dia', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1019,7 +1019,7 @@ const charts = {
   obitos_total: (outer) => {
     createGraphContainer('obitos_total', outer);
     Highcharts.chart('obitos_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1141,7 +1141,7 @@ const charts = {
       };
     });
     Highcharts.chart('obitos_grupo_etario', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Óbitos idade' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1172,7 +1172,7 @@ const charts = {
       };
     });
     Highcharts.chart('obitos_grupo_etario_percentagem', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Óbitos idade % população' },
       yAxis: {
         labels: { format: '{value}%' },
@@ -1268,7 +1268,7 @@ const charts = {
   obitos_historico: (outer) => {
     createGraphContainer('obitos_historico', outer);
     Highcharts.chart('obitos_historico', {
-      chart: { type: 'area', zoomType: 'x', resetZoomButton },
+      chart: { type: 'area', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Evolução óbitos' },
       xAxis: {
         categories: Object.keys(state.json.full.data).map((key) =>
@@ -1304,7 +1304,7 @@ const charts = {
   obitos_historico_100: (outer) => {
     createGraphContainer('obitos_historico_100', outer);
     Highcharts.chart('obitos_historico_100', {
-      chart: { type: 'area', zoomType: 'x', resetZoomButton },
+      chart: { type: 'area', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Evolução óbitos' },
       xAxis: {
         categories: Object.keys(state.json.full.data).map((key) =>
@@ -1343,7 +1343,7 @@ const charts = {
   obitos_dia_ars: (outer) => {
     createGraphContainer('obitos_dia_ars', outer);
     Highcharts.chart('obitos_dia_ars', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Óbitos por dia' },
       yAxis: { min: 0, title: { text: null } },
       xAxis: {
@@ -1367,7 +1367,7 @@ const charts = {
   obitos_dia_ars_percentagem: (outer) => {
     createGraphContainer('obitos_dia_ars_percentagem', outer);
     Highcharts.chart('obitos_dia_ars_percentagem', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Óbitos por dia % população' },
       yAxis: { min: 0, title: { text: null } },
       xAxis: {
@@ -1397,7 +1397,7 @@ const charts = {
       (k) => state.json.delta.recuperados[k]
     );
     Highcharts.chart('recuperados_dia', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1423,7 +1423,7 @@ const charts = {
   recuperados_total: (outer) => {
     createGraphContainer('recuperados_total', outer);
     Highcharts.chart('recuperados_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1448,7 +1448,7 @@ const charts = {
     createGraphContainer('ativos_dia', outer);
     const data = Object.keys(state.json.full.data).map((k) => state.json.delta.ativos[k]);
     Highcharts.chart('ativos_dia', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1474,7 +1474,7 @@ const charts = {
   ativos_total: (outer) => {
     createGraphContainer('ativos_total', outer);
     Highcharts.chart('ativos_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1497,7 +1497,7 @@ const charts = {
     createGraphContainer('amostras_dia', outer);
     const data = state.amostras.map((k) => parseInt(k[2], 10));
     Highcharts.chart('amostras_dia', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1527,7 +1527,7 @@ const charts = {
       );
     });
     Highcharts.chart('amostras_dia_perc_positivos', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: '% Positivos' },
       yAxis: {
         title: { text: null },
@@ -1555,7 +1555,7 @@ const charts = {
     createGraphContainer('amostras_dia_pcr', outer);
     const data = state.amostras.map((k) => parseInt(k[4], 10));
     Highcharts.chart('amostras_dia_pcr', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'PCR por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1580,7 +1580,7 @@ const charts = {
     createGraphContainer('amostras_dia_antigenio', outer);
     const data = state.amostras.map((k) => parseInt(k[6], 10));
     Highcharts.chart('amostras_dia_antigenio', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Antigénio por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1607,7 +1607,7 @@ const charts = {
       (k) => state.json.delta.internados[k]
     );
     Highcharts.chart('internados_normal_dia', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Variação diária' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1636,7 +1636,7 @@ const charts = {
       (k) => state.json.delta.internados_uci[k]
     );
     Highcharts.chart('internados_uci_dia', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Variação diária UCI' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1662,7 +1662,7 @@ const charts = {
   internados_normal_total: (outer) => {
     createGraphContainer('internados_normal_total', outer);
     Highcharts.chart('internados_normal_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1686,7 +1686,7 @@ const charts = {
   internados_uci_total: (outer) => {
     createGraphContainer('internados_uci_total', outer);
     Highcharts.chart('internados_uci_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Total UCI' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1773,7 +1773,7 @@ const charts = {
   mortalidade_light: (outer) => {
     createGraphContainer('mortalidade_light', outer);
     Highcharts.chart('mortalidade_light', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Máx, mín, média e 2022' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1809,7 +1809,7 @@ const charts = {
   mortalidade_excessiva: (outer) => {
     createGraphContainer('mortalidade_excessiva', outer);
     Highcharts.chart('mortalidade_excessiva', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Mortalidade excessiva' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -1823,7 +1823,7 @@ const charts = {
   mortalidade_excessiva_percentagem: (outer) => {
     createGraphContainer('mortalidade_excessiva_percentagem', outer);
     Highcharts.chart('mortalidade_excessiva_percentagem', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Mortalidade excessiva %' },
       yAxis: {
         title: { text: null },
@@ -2006,7 +2006,7 @@ const charts = {
   empregos_total: (outer) => {
     createGraphContainer('empregos_total', outer);
     Highcharts.chart('empregos_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Total empregados' },
       xAxis: { categories: state.employment.map((i) => i.month + i.year) },
       yAxis: { title: { text: null } },
@@ -2026,7 +2026,7 @@ const charts = {
   empregos_variacao: (outer) => {
     createGraphContainer('empregos_variacao', outer);
     Highcharts.chart('empregos_variacao', {
-      chart: { type: 'column', zoomType: 'x', resetZoomButton },
+      chart: { type: 'column', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Variação mês anterior' },
       xAxis: { categories: state.employment.map((i) => i.month + i.year) },
       yAxis: { title: { text: null } },
@@ -2048,7 +2048,7 @@ const charts = {
   empregos_menos24_total: (outer) => {
     createGraphContainer('empregos_menos24_total', outer);
     Highcharts.chart('empregos_menos24_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Empregados 15 a 24 anos' },
       yAxis: { title: { text: null } },
       xAxis: { categories: state.employment.map((i) => i.month + i.year) },
@@ -2069,7 +2069,7 @@ const charts = {
   empregos_mais24_total: (outer) => {
     createGraphContainer('empregos_mais24_total', outer);
     Highcharts.chart('empregos_mais24_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Empregados +24 anos' },
       yAxis: { title: { text: null } },
       xAxis: { categories: state.employment.map((i) => i.month + i.year) },
@@ -2210,7 +2210,7 @@ const charts = {
   vacinas_total: (outer) => {
     createGraphContainer('vacinas_total', outer);
     Highcharts.chart('vacinas_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Vacinas' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -2236,7 +2236,7 @@ const charts = {
   vacinas_pessoas: (outer) => {
     createGraphContainer('vacinas_pessoas', outer);
     Highcharts.chart('vacinas_pessoas', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Vacinados' },
       yAxis: { title: { text: null } },
       xAxis: {
@@ -2262,7 +2262,7 @@ const charts = {
   inflacao_total: (outer) => {
     createGraphContainer('inflacao_total', outer);
     Highcharts.chart('inflacao_total', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Inflação mensal' },
       xAxis: { categories: Object.keys(state.inflation_flat()) },
       yAxis: {
@@ -2315,7 +2315,7 @@ const charts = {
   internados_per_activos: (outer) => {
     createGraphContainer('internados_per_activos', outer);
     Highcharts.chart('internados_per_activos', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Internados / activos' },
       yAxis: {
         labels: { format: '{value}%' },
@@ -2344,7 +2344,7 @@ const charts = {
   obitos_per_activos: (outer) => {
     createGraphContainer('obitos_per_activos', outer);
     Highcharts.chart('obitos_per_activos', {
-      chart: { zoomType: 'x', resetZoomButton },
+      chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Óbitos / activos' },
       yAxis: {
         labels: { format: '{value}%' },
