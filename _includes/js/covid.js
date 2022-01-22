@@ -2559,17 +2559,17 @@ function crunchData() {
 // add graphics to the DOM
 function addGraphics() {
   let outer;
-  outer = addLead('Activos');
+  outer = addLead('Activos', 'activos');
   charts['ativos_dia'](outer);
   charts['ativos_total'](outer);
   charts['internados_per_activos'](outer);
   charts['obitos_per_activos'](outer);
-  outer = addLead('Amostras');
+  outer = addLead('Amostras', 'amostras');
   charts['amostras_dia'](outer);
   charts['amostras_dia_perc_positivos'](outer);
   charts['amostras_dia_pcr'](outer);
   charts['amostras_dia_antigenio'](outer);
-  outer = addLead('Confirmados');
+  outer = addLead('Confirmados', 'confirmados');
   charts['confirmados_dia'](outer);
   charts['confirmados_total'](outer);
   charts['confirmados_hoje_generos'](outer);
@@ -2584,17 +2584,17 @@ function addGraphics() {
   charts['confirmados_historico_100'](outer);
   charts['confirmados_dia_ars'](outer);
   charts['confirmados_dia_ars_percentagem'](outer);
-  outer = addLead('Emprego');
+  outer = addLead('Emprego', 'emprego');
   charts['empregos_total'](outer);
   charts['empregos_variacao'](outer);
   charts['empregos_menos24_total'](outer);
   charts['empregos_mais24_total'](outer);
   charts['desemprego_total'](outer);
   charts['desemprego_ars'](outer);
-  outer = addLead('Inflação');
+  outer = addLead('Inflação', 'inflacao');
   charts['inflacao_total'](outer);
   charts['inflacao_mensal'](outer);
-  outer = addLead('Internados');
+  outer = addLead('Internados', 'internados');
   charts['internados_normal_dia'](outer);
   charts['internados_uci_dia'](outer);
   charts['internados_normal_total'](outer);
@@ -2607,7 +2607,7 @@ function addGraphics() {
     // charts['mortalidade_excessiva_percentagem'](outer);
     charts['mortalidade_mais_covid'](outer);
   }
-  outer = addLead('Óbitos');
+  outer = addLead('Óbitos', 'obitos');
   charts['obitos_dia'](outer);
   charts['obitos_total'](outer);
   charts['obitos_hoje_generos'](outer);
@@ -2623,24 +2623,24 @@ function addGraphics() {
   charts['obitos_dia_ars'](outer);
   charts['obitos_dia_ars_percentagem'](outer);
   tables['ifr'](outer);
-  outer = addLead('PIB');
+  outer = addLead('PIB', 'pib');
   charts['pib_total'](outer);
   charts['pib_trimestral'](outer);
-  outer = addLead('População');
+  outer = addLead('População', 'populacao');
   charts['populacao_ars'](outer);
   charts['populacao_densidade_ars'](outer);
   charts['populacao_densidade_confirmados'](outer);
   charts['populacao_densidade_obitos'](outer);
   charts['populacao_idade'](outer);
-  outer = addLead('Recuperados');
+  outer = addLead('Recuperados', 'recuperados');
   charts['recuperados_dia'](outer);
   charts['recuperados_total'](outer);
-  outer = addLead('Rt');
+  outer = addLead('Rt', 'rt');
   renderNewRt(outer);
-  outer = addLead('Sintomas');
+  outer = addLead('Sintomas', 'sintomas');
   charts['sintomas'](outer);
   charts['sintomas_historico'](outer);
-  outer = addLead('Vacinas');
+  outer = addLead('Vacinas', 'vacinas');
   charts['vacinas_total'](outer);
   charts['vacinas_pessoas'](outer);
   renderTOC();
@@ -2661,14 +2661,14 @@ function backToTop() {
 }
 
 // adds a new h2 and a new div, returns the div
-function addLead(text) {
+function addLead(label, anchor) {
   const btt = '<a onclick="backToTop()" class="btt"><i class="fa fa-level-up"></i></a>';
   const h2 = document.createElement('h2');
-  h2.id = text.replace(/\s/g,'_');
+  h2.id = anchor;
   h2.classList.add("section_divider");
-  h2.innerHTML = text + btt;
+  h2.innerHTML = label + btt;
   document.getElementById('content_container').appendChild(h2);
-  state.toc.push({ anchor: h2.id, label: text });
+  state.toc.push({ anchor, label });
   const outer = document.createElement('div');
   outer.classList.add("outer_container");
   outer.classList.add("fluid-row");
