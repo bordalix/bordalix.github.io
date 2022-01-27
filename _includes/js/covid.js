@@ -494,6 +494,22 @@ const state = {
     index: null,
     label: 'Dados DGS',
   },
+  category_labels: {
+    activos: 'Activos',
+    amostras: 'Amostras',
+    confirmados: 'Confirmados',
+    emprego: 'Emprego',
+    inflacao: 'Inflação',
+    internados: 'Internados',
+    mortalidade: 'Mortalidade',
+    obitos: 'Óbitos',
+    pib: 'PIB',
+    populacao: 'População',
+    recuperados: 'Recuperados',
+    rt: 'Rt',
+    sintomas: 'Sintomas',
+    vacinas: 'Vacinas',
+  }
 };
 
 // compact and format date
@@ -1718,9 +1734,9 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   },
-  sintomas: (outer) => {
-    createGraphContainer('sintomas', outer);
-    Highcharts.chart('sintomas', {
+  sintomas_ocorrencia: (outer) => {
+    createGraphContainer('sintomas_ocorrencia', outer);
+    Highcharts.chart('sintomas_ocorrencia', {
       chart: { type: 'bar' },
       title: { text: 'Percentagem ocorrência' },
       xAxis: { categories: state.symptoms },
@@ -2559,17 +2575,17 @@ function crunchData() {
 // add graphics to the DOM
 function addGraphics() {
   let outer;
-  outer = addLead('Activos', 'activos');
+  outer = addLead('activos');
   charts['ativos_dia'](outer);
   charts['ativos_total'](outer);
   charts['internados_per_activos'](outer);
   charts['obitos_per_activos'](outer);
-  outer = addLead('Amostras', 'amostras');
+  outer = addLead('amostras');
   charts['amostras_dia'](outer);
   charts['amostras_dia_perc_positivos'](outer);
   charts['amostras_dia_pcr'](outer);
   charts['amostras_dia_antigenio'](outer);
-  outer = addLead('Confirmados', 'confirmados');
+  outer = addLead('confirmados');
   charts['confirmados_dia'](outer);
   charts['confirmados_total'](outer);
   charts['confirmados_hoje_generos'](outer);
@@ -2584,30 +2600,30 @@ function addGraphics() {
   charts['confirmados_historico_100'](outer);
   charts['confirmados_dia_ars'](outer);
   charts['confirmados_dia_ars_percentagem'](outer);
-  outer = addLead('Emprego', 'emprego');
+  outer = addLead('emprego');
   charts['empregos_total'](outer);
   charts['empregos_variacao'](outer);
   charts['empregos_menos24_total'](outer);
   charts['empregos_mais24_total'](outer);
   charts['desemprego_total'](outer);
   charts['desemprego_ars'](outer);
-  outer = addLead('Inflação', 'inflacao');
+  outer = addLead('inflacao');
   charts['inflacao_total'](outer);
   charts['inflacao_mensal'](outer);
-  outer = addLead('Internados', 'internados');
+  outer = addLead('internados');
   charts['internados_normal_dia'](outer);
   charts['internados_uci_dia'](outer);
   charts['internados_normal_total'](outer);
   charts['internados_uci_total'](outer);
   if (state.evm) {
-    outer = addLead('Mortalidade');
+    outer = addLead('mortalidade');
     charts['mortalidade_acum'](outer);
     charts['mortalidade_light'](outer);
     charts['mortalidade_excessiva'](outer);
     // charts['mortalidade_excessiva_percentagem'](outer);
     charts['mortalidade_mais_covid'](outer);
   }
-  outer = addLead('Óbitos', 'obitos');
+  outer = addLead('obitos');
   charts['obitos_dia'](outer);
   charts['obitos_total'](outer);
   charts['obitos_hoje_generos'](outer);
@@ -2623,24 +2639,25 @@ function addGraphics() {
   charts['obitos_dia_ars'](outer);
   charts['obitos_dia_ars_percentagem'](outer);
   tables['ifr'](outer);
-  outer = addLead('PIB', 'pib');
+  outer = addLead('pib');
   charts['pib_total'](outer);
   charts['pib_trimestral'](outer);
-  outer = addLead('População', 'populacao');
+  outer = addLead('populacao');
   charts['populacao_ars'](outer);
   charts['populacao_densidade_ars'](outer);
   charts['populacao_densidade_confirmados'](outer);
   charts['populacao_densidade_obitos'](outer);
   charts['populacao_idade'](outer);
-  outer = addLead('Recuperados', 'recuperados');
+  outer = addLead('recuperados');
   charts['recuperados_dia'](outer);
   charts['recuperados_total'](outer);
-  outer = addLead('Rt', 'rt');
+  outer = addLead('rt');
   renderNewRt(outer);
-  outer = addLead('Sintomas', 'sintomas');
-  charts['sintomas'](outer);
+
+  outer = addLead('sintomas');
+  charts['sintomas_ocorrencia'](outer);
   charts['sintomas_historico'](outer);
-  outer = addLead('Vacinas', 'vacinas');
+  outer = addLead('vacinas');
   charts['vacinas_total'](outer);
   charts['vacinas_pessoas'](outer);
   renderTOC();
@@ -2661,7 +2678,8 @@ function backToTop() {
 }
 
 // adds a new h2 and a new div, returns the div
-function addLead(label, anchor) {
+function addLead(anchor) {
+  const label = state.category_labels[anchor];
   const btt = '<a onclick="backToTop()" class="btt"><i class="fa fa-level-up"></i></a>';
   const h2 = document.createElement('h2');
   h2.id = anchor;
@@ -2763,57 +2781,58 @@ function addTodayNumbers() {
                     || state.amostras[state.json.today-3]
                     || [null, null];
 
-  const table = '<table>'
-              + '  <thead>'
-              + '    <tr>'
-              + '      <td></td>'
-              + `      <td class="right">Hoje</td>`
-              + `      <td class="right">Total</td>`
-              + '    </tr>'
-              + '  </thead>'
-              + '  <tbody>'
-              + '    <tr>'
-              + '      <td><a href="#Activos">Activos</a></td>'
-              + `      <td>${addPrefix(state.json.delta.ativos[state.json.today])}</td>`
-              + `      <td>${state.json.last.ativos.toLocaleString()}</td>`
-              + '    </tr>'
-              + '    <tr>'
-              + '      <td><a href="#Amostras">Amostras</a></td>'
-              + `      <td>${addPrefix(parseInt(lastAmostras[2]))}</td>`
-              + `      <td>${parseInt(lastAmostras[1]).toLocaleString()}</td>`
-              + '    </tr>'
-              + '    <tr>'
-              + '      <td><a href="#Confirmados">Confirmados</a></td>'
-              + `      <td>${addPrefix(state.json.last.confirmados_novos)}</td>`
-              + `      <td>${state.json.last.confirmados.toLocaleString()}</td>`
-              + '    </tr>'
-              + '    <tr>'
-              + '      <td><a href="#Internados">Internados</a></td>'
-              + `      <td>${addPrefix(state.json.delta.internados[state.json.today])}</td>`
-              + `      <td>${state.json.full.internados[state.json.today].toLocaleString()}</td>`
-              + '    </tr>'
-              + '    <tr>'
-              + '      <td><a href="#Internados">Internados UCI</a></td>'
-              + `      <td>${addPrefix(state.json.delta.internados_uci[state.json.today])}</td>`
-              + `      <td>${state.json.full.internados_uci[state.json.today].toLocaleString()}</td>`
-              + '    </tr>'
-              + '    <tr>'
-              + '      <td><a href="#Óbitos">Óbitos</a></td>'
-              + `      <td>${addPrefix(state.json.delta.obitos[state.json.today])}</td>`
-              + `      <td>${state.json.full.obitos[state.json.today].toLocaleString()}</td>`
-              + '    </tr>'
-              + '    <tr>'
-              + '      <td><a href="#Recuperados">Recuperados</a></td>'
-              + `      <td>${addPrefix(state.json.delta.recuperados[state.json.today])}</td>`
-              + `      <td>${state.json.full.recuperados[state.json.today].toLocaleString()}</td>`
-              + '    </tr>'
-              + '    <tr>'
-              + '      <td><a href="#Vacinas">Vacinas</a></td>'
-              + `      <td></td>`
-              + `      <td>${state.vaccines.total[state.vaccines.total.length - 1][1].toLocaleString()}</td>`
-              + '    </tr>'
-              + '  </tbody>'
-              + '</table>';
+  const table = `
+    <table>
+      <thead>
+        <tr>
+          <td></td>
+          <td class="right">Hoje</td>
+          <td class="right">Total</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#activos">${state.category_labels.activos}</a></td>
+          <td>${addPrefix(state.json.delta.ativos[state.json.today])}</td>
+          <td>${state.json.last.ativos.toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td><a href="#amostras">${state.category_labels.amostras}</a></td>
+          <td>${addPrefix(parseInt(lastAmostras[2]))}</td>
+          <td>${parseInt(lastAmostras[1]).toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td><a href="#confirmados">${state.category_labels.confirmados}</a></td>
+          <td>${addPrefix(state.json.last.confirmados_novos)}</td>
+          <td>${state.json.last.confirmados.toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td><a href="#internados">${state.category_labels.internados}</a></td>
+          <td>${addPrefix(state.json.delta.internados[state.json.today])}</td>
+          <td>${state.json.full.internados[state.json.today].toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td><a href="#internados">${state.category_labels.internados} UCI</a></td>
+          <td>${addPrefix(state.json.delta.internados_uci[state.json.today])}</td>
+          <td>${state.json.full.internados_uci[state.json.today].toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td><a href="#obitos">${state.category_labels.obitos}</a></td>
+          <td>${addPrefix(state.json.delta.obitos[state.json.today])}</td>
+          <td>${state.json.full.obitos[state.json.today].toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td><a href="#recuperados">${state.category_labels.recuperados}</a></td>
+          <td>${addPrefix(state.json.delta.recuperados[state.json.today])}</td>
+          <td>${state.json.full.recuperados[state.json.today].toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td><a href="#vacinas">${state.category_labels.vacinas}</a></td>
+          <td></td>
+          <td>${state.vaccines.total[state.vaccines.total.length - 1][1].toLocaleString()}</td>
+        </tr>
+      </tbody>
+    </table>`;
   document.getElementById("summary").innerHTML = table;
 }
 
