@@ -482,11 +482,11 @@ const state = {
   },
   gdp_flat: () => {
     const aux = {};
-    Object.keys(state.gdp).forEach((year) => {
-      Object.keys(state.gdp[year]).forEach((quarter) => {
+    for (const year of Object.keys(state.gdp)) {
+      for (const quarter of Object.keys(state.gdp[year])) {
         aux[`${quarter}/${year}`] = state.gdp[year][quarter];
-      });
-    });
+      }
+    }
     return aux;
   },
   toc: [], // table of contents
@@ -555,12 +555,12 @@ const tables = {
               + '    </tr>'
               + '  </thead>'
               + '  <tbody>';
-    state.ages.forEach(age => {
+    for (const age of state.ages) {
       const full = state.json.full;
       const index = state.last_with_age_data.index;
       const confir = full[`confirmados_${age}_f`][index] + full[`confirmados_${age}_m`][index];
       const obitos = full[`obitos_${age}_f`][index] + full[`obitos_${age}_m`][index];
-      const cfrate = (100 * obitos / confir).toFixed(2) + '%';
+      const cfrate = ((100 * obitos) / confir).toFixed(2) + '%';
       total_confir += confir;
       total_obitos += obitos;
       table +=
@@ -570,7 +570,7 @@ const tables = {
         `      <td>${obitos.toLocaleString()}</td>` +
         `      <td>${cfrate}</td>` +
         '    </tr>';
-    });
+    };
     const total_cfrate = ((100 * total_obitos) / total_confir).toFixed(2) + '%';
     table +=
       '    <tr class="total">' +
@@ -2401,39 +2401,39 @@ function crunchData() {
   state.symptoms.forEach(s => state.json.last[`sintomas_${s}`] = state.json.full[`sintomas_${s}`][172]),
   // calculate number of total tests
   state.json.full.testes = {};
-  Object.keys(state.json.full.confirmados).forEach(key => {
+  for (const key of Object.keys(state.json.full.confirmados)) {
     const sjf = state.json.full;
     sjf.testes[key] = null;
     if (sjf.confirmados[key] && sjf.n_confirmados[key]) {
       sjf.testes[key] = sjf.confirmados[key] + sjf.n_confirmados[key] + sjf.lab[key];
     }
-  });
+  };
   // calculate deltas for all days and indicators
   const delta = {};
-  Object.keys(state.json.full).forEach(key => {
+  for (const key of Object.keys(state.json.full)) {
     if (!key.match(/^data/) && !key.match(/^sintomas/)) {
       delta[key] = {};
-      Object.keys(state.json.full[key]).forEach(idx => {
+      for (const idx of Object.keys(state.json.full[key])) {
         delta[key][idx] = null;
         if (idx !== '0') {
           const previous = `${parseInt(idx) - 1}`;
           const diff = state.json.full[key][idx] - state.json.full[key][previous];
           delta[key][idx] = state.json.full[key][idx] > 0 ? diff : null;
         }
-      });
+      };
     }
-  });
+  };
   state.json.delta = delta;
   // calculate confirmed/deaths by age group
-  ['confirmados', 'obitos'].forEach((kind) => {
-    state.ages.forEach((age) => {
+  for (const kind of ['confirmados', 'obitos']) {
+    for (const age of state.ages) {
       const id = `${kind}_${age}`;
       state.json.full[id] = {};
-      Object.keys(state.json.full[`${id}_f`]).forEach((key) => {
+      for (const key of Object.keys(state.json.full[`${id}_f`])) {
         state.json.full[id][key] = state.json.full[`${id}_f`][key] + state.json.full[`${id}_m`][key];
-      })
-    })
-  })
+      };
+    };
+  };
   // calculate employement monthly variation
   state.employment_variation = state.employment.map((month, index) => {
     if (index === 0) {
@@ -2535,7 +2535,7 @@ function crunchData() {
     boosters: [],
   };
   let day0, day1, day2, day3, day4;
-  state.json.vaccines.forEach(day => {
+  for (const day of state.json.vaccines) {
     day0 = day[0] || day0;
     day1 = day[1] || day1;
     day2 = day[2] || day2;
@@ -2547,9 +2547,9 @@ function crunchData() {
       state.vaccines.twodose.push([Date.parse(day0), parseInt(day3, 10)]);
     }
     if (day4) {
-      state.vaccines.boosters.push([Date.parse(day0), parseInt(day4, 10)])
+      state.vaccines.boosters.push([Date.parse(day0), parseInt(day4, 10)]);
     }
-  });
+  };
   // find last date with number of deaths by age
   const dataset_size = Object.keys(state.json.full.confirmados_40_49).length;
   for (let i = dataset_size - 1; i >= 0; i -= 1) {
