@@ -17,11 +17,7 @@ const state = {
     arsnorte: { density: 168, population: 3682370 },
     madeira: { density: 317, population: 270000 },
   },
-  ages: [
-    '0_9', '10_19', '20_29',
-    '30_39', '40_49', '50_59',
-    '60_69', '70_79', '80_plus',
-  ],
+  ages: ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus'],
   population_by_age: {
     // https://www.pordata.pt/Portugal/Popula%c3%a7%c3%a3o+residente++m%c3%a9dia+anual+total+e+por+grupo+et%c3%a1rio-10-1127
     '0_9': 433332 + 461299,
@@ -71,6 +67,7 @@ const state = {
     { month: 'Set', year: '21', young: 246100, old: 4580100 },
     { month: 'Out', year: '21', young: 246700, old: 4581400 },
     { month: 'Nov', year: '21', young: 248300, old: 4605200 },
+    { month: 'Dez', year: '21', young: 253200, old: 4598000 },
   ],
   unemployment: {
     // don't forget to change lastMonth
@@ -379,18 +376,18 @@ const state = {
       Out: {
         Norte: 135135,
         Centro: 43808,
-        LVT: 118237 ,
+        LVT: 118237,
         Alentejo: 15234,
-        Algarve: 17331 ,
+        Algarve: 17331,
         Açores: 6253,
         Madeira: 15669,
       },
       Nov: {
         Norte: 129584,
         Centro: 42805,
-        LVT: 114752 ,
+        LVT: 114752,
         Alentejo: 15139,
-        Algarve: 22278 ,
+        Algarve: 22278,
         Açores: 6295,
         Madeira: 15031,
       },
@@ -407,27 +404,27 @@ const state = {
   },
   inflation: {
     2019: {
-      Jan:  0.48,
-      Fev:  0.94,
-      Mar:  0.85,
-      Abr:  0.77,
-      Mai:  0.42,
-      Jun:  0.39,
+      Jan: 0.48,
+      Fev: 0.94,
+      Mar: 0.85,
+      Abr: 0.77,
+      Mai: 0.42,
+      Jun: 0.39,
       Jul: -0.32,
       Ago: -0.09,
       Set: -0.11,
-      Out:  0.02,
-      Nov:  0.32,
-      Dez:  0.42,
+      Out: 0.02,
+      Nov: 0.32,
+      Dez: 0.42,
     },
     2020: {
-      Jan:  0.80,
-      Fev:  0.38,
-      Mar:  0.05,
+      Jan: 0.8,
+      Fev: 0.38,
+      Mar: 0.05,
       Abr: -0.22,
       Mai: -0.72,
-      Jun:  0.13,
-      Jul:  0.14,
+      Jun: 0.13,
+      Jul: 0.14,
       Ago: -0.01,
       Set: -0.14,
       Out: -0.07,
@@ -435,7 +432,7 @@ const state = {
       Dez: -0.23,
     },
     2021: {
-      Jan: 0.30,
+      Jan: 0.3,
       Fev: 0.48,
       Mar: 0.45,
       Abr: 0.55,
@@ -450,7 +447,7 @@ const state = {
     },
     2022: {
       Jan: 3.34,
-    }
+    },
   },
   inflation_flat: () => {
     const aux = {};
@@ -512,7 +509,7 @@ const state = {
     rt: 'Rt',
     sintomas: 'Sintomas',
     vacinas: 'Vacinas',
-  }
+  },
 };
 
 // compact and format date
