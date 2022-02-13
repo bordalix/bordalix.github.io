@@ -448,14 +448,17 @@ const state = {
       Nov: 2.58,
       Dez: 2.74,
     },
+    2022: {
+      Jan: 3.34,
+    }
   },
   inflation_flat: () => {
     const aux = {};
-    Object.keys(state.inflation).forEach(year => {
-      Object.keys(state.inflation[year]).forEach(month => {
+    for (const year of Object.keys(state.inflation)) {
+      for (const month of Object.keys(state.inflation[year])) {
         aux[`${month}/${year}`] = state.inflation[year][month];
-      })
-    });
+      }
+    }
     return aux;
   },
   gdp: {
@@ -2316,26 +2319,14 @@ const charts = {
         labels: { format: '{value}%' },
         title: { text: null },
       },
-      series: [
+      series: Object.keys(state.inflation).map((year) => (
         {
-          name: '2019',
-          data: Object.keys(state.inflation['2019']).map((month) => {
-            return state.inflation['2019'][month]
-          }),
-        },
-        {
-          name: '2020',
-          data: Object.keys(state.inflation['2020']).map((month) => {
-            return state.inflation['2020'][month]
-          }),
-        },
-        {
-          name: '2021',
-          data: Object.keys(state.inflation['2021']).map((month) => {
-            return state.inflation['2021'][month]
-          }),
-        },
-      ],
+          name: year,
+          data: Object.keys(state.inflation[year]).map((month) => (
+            state.inflation[year][month]
+          )),
+        }
+      )),
       credits: { text: 'Dados INE' },
     });
   },
