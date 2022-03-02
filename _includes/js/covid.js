@@ -17,11 +17,7 @@ const state = {
     arsnorte: { density: 168, population: 3682370 },
     madeira: { density: 317, population: 270000 },
   },
-  ages: [
-    '0_9', '10_19', '20_29',
-    '30_39', '40_49', '50_59',
-    '60_69', '70_79', '80_plus',
-  ],
+  ages: ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus'],
   population_by_age: {
     // https://www.pordata.pt/Portugal/Popula%c3%a7%c3%a3o+residente++m%c3%a9dia+anual+total+e+por+grupo+et%c3%a1rio-10-1127
     '0_9': 433332 + 461299,
@@ -423,27 +419,27 @@ const state = {
   },
   inflation: {
     2019: {
-      Jan:  0.48,
-      Fev:  0.94,
-      Mar:  0.85,
-      Abr:  0.77,
-      Mai:  0.42,
-      Jun:  0.39,
+      Jan: 0.48,
+      Fev: 0.94,
+      Mar: 0.85,
+      Abr: 0.77,
+      Mai: 0.42,
+      Jun: 0.39,
       Jul: -0.32,
       Ago: -0.09,
       Set: -0.11,
-      Out:  0.02,
-      Nov:  0.32,
-      Dez:  0.42,
+      Out: 0.02,
+      Nov: 0.32,
+      Dez: 0.42,
     },
     2020: {
-      Jan:  0.80,
-      Fev:  0.38,
-      Mar:  0.05,
+      Jan: 0.8,
+      Fev: 0.38,
+      Mar: 0.05,
       Abr: -0.22,
       Mai: -0.72,
-      Jun:  0.13,
-      Jul:  0.14,
+      Jun: 0.13,
+      Jul: 0.14,
       Ago: -0.01,
       Set: -0.14,
       Out: -0.07,
@@ -451,7 +447,7 @@ const state = {
       Dez: -0.23,
     },
     2021: {
-      Jan: 0.30,
+      Jan: 0.3,
       Fev: 0.48,
       Mar: 0.45,
       Abr: 0.55,
@@ -466,15 +462,15 @@ const state = {
     },
     2022: {
       Jan: 3.34,
-    }
+    },
   },
   inflation_flat: () => {
     const aux = {};
-    Object.keys(state.inflation).forEach(year => {
-      Object.keys(state.inflation[year]).forEach(month => {
+    for (const year of Object.keys(state.inflation)) {
+      for (const month of Object.keys(state.inflation[year])) {
         aux[`${month}/${year}`] = state.inflation[year][month];
-      })
-    });
+      }
+    }
     return aux;
   },
   gdp: {
@@ -499,11 +495,11 @@ const state = {
   },
   gdp_flat: () => {
     const aux = {};
-    Object.keys(state.gdp).forEach((year) => {
-      Object.keys(state.gdp[year]).forEach((quarter) => {
+    for (const year of Object.keys(state.gdp)) {
+      for (const quarter of Object.keys(state.gdp[year])) {
         aux[`${quarter}/${year}`] = state.gdp[year][quarter];
-      });
-    });
+      }
+    }
     return aux;
   },
   toc: [], // table of contents
@@ -529,7 +525,7 @@ const state = {
     rt: 'Rt',
     sintomas: 'Sintomas',
     vacinas: 'Vacinas',
-  }
+  },
 };
 
 // all tables
@@ -548,12 +544,12 @@ const tables = {
               + '    </tr>'
               + '  </thead>'
               + '  <tbody>';
-    state.ages.forEach(age => {
+    for (const age of state.ages) {
       const full = state.json.full;
       const index = state.last_with_age_data.index;
       const confir = full[`confirmados_${age}_f`][index] + full[`confirmados_${age}_m`][index];
       const obitos = full[`obitos_${age}_f`][index] + full[`obitos_${age}_m`][index];
-      const cfrate = (100 * obitos / confir).toFixed(2) + '%';
+      const cfrate = ((100 * obitos) / confir).toFixed(2) + '%';
       total_confir += confir;
       total_obitos += obitos;
       table +=
@@ -563,7 +559,7 @@ const tables = {
         `      <td>${obitos.toLocaleString()}</td>` +
         `      <td>${cfrate}</td>` +
         '    </tr>';
-    });
+    };
     const total_cfrate = ((100 * total_obitos) / total_confir).toFixed(2) + '%';
     table +=
       '    <tr class="total">' +
