@@ -2652,6 +2652,7 @@ const utils = {
   },
   // add a '+' on positive numbers
   addPrefix(number) {
+    if (!number) return 0;
     return number > 0 ? `+${number.toLocaleString()}` : number.toLocaleString();
   },
   // add summary of stats for the present day
