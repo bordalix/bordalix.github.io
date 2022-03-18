@@ -522,7 +522,7 @@ const state = {
     pib: 'PIB',
     populacao: 'População',
     recuperados: 'Recuperados',
-    rt: 'Rt',
+    rt_incidencia: 'Rt e Incidência',
     sintomas: 'Sintomas',
     vacinas: 'Vacinas',
   },
@@ -2329,6 +2329,42 @@ const charts = {
       ],
       credits: { text: 'Dados DGS' },
     });
+  },
+  rt_nacional: (outer) => {
+    utils.createGraphContainer('rt_nacional', outer);
+    const data = Object.keys(state.json.full.data).map((k) => state.json.full.rt_nacional[k]);
+    Highcharts.chart('rt_nacional', {
+      chart: { zoomType: 'x', resetZoomButton, panning },
+      title: { text: 'Rt' },
+      yAxis: { title: { text: null } },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          utils.compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [{ name: 'Rt', data }],
+      credits: { text: 'Dados DGS' },
+    });
+  },
+  incidencia_nacional: (outer) => {
+    utils.createGraphContainer('incidencia_nacional', outer);
+    const data = Object.keys(state.json.full.data).map((k) => state.json.full.incidencia_nacional[k]);
+    Highcharts.chart('incidencia_nacional', {
+      chart: { zoomType: 'x', resetZoomButton, panning },
+      title: { text: 'Incidência' },
+      yAxis: { title: { text: null } },
+      xAxis: {
+        categories: Object.keys(state.json.full.data).map((k) =>
+          utils.compactDate(state.json.full.data[k])
+        ),
+        labels: { step: 30 },
+      },
+      legend: { enable: false },
+      series: [{ name: 'Incidência', data }],
+      credits: { text: 'Dados DGS' },
+    });
   }
 };
 
@@ -2540,9 +2576,9 @@ const utils = {
     outer = utils.addLead('recuperados');
     charts['recuperados_dia'](outer);
     charts['recuperados_total'](outer);
-    outer = utils.addLead('rt');
-    utils.renderNewRt(outer);
-
+    outer = utils.addLead('rt_incidencia');
+    charts['rt_nacional'](outer);
+    charts['incidencia_nacional'](outer);
     outer = utils.addLead('sintomas');
     charts['sintomas_ocorrencia'](outer);
     charts['sintomas_historico'](outer);
@@ -2627,18 +2663,6 @@ const utils = {
     state.toc.push({ anchor: 'Fontes', label: 'Fontes' });
     const html = 'Index: <br />' + state.toc.map(item => `<a href="#${item.anchor}">${item.label}</a>`).join(' &middot; ');
     document.getElementById('toc').innerHTML = html;
-  },
-  // render new Rt from https://covidcountdown.today
-  renderNewRt(outer) {
-    const div = document.createElement('div');
-    const a = document.createElement('a');
-    const img = document.createElement('img');
-    a.href = 'https://covidcountdown.today/';
-    img.src = 'https://cdn.joaobordalo.com/images/static/covid/rt20220121.svg';
-    img.classList.add('rt_graph');
-    a.appendChild(img);
-    div.appendChild(a)
-    outer.appendChild(div);
   },
   // given an action, returns a api url
   apiURL(id) {
