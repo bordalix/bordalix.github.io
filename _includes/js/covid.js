@@ -530,6 +530,67 @@ const state = {
 
 // all tables
 const tables = {
+  // add summary of stats for the present day
+  todayNumbers() {
+    const lastAmostras = state.amostras[state.json.today-1]
+                      || state.amostras[state.json.today-2]
+                      || state.amostras[state.json.today-3]
+                      || [null, null];
+
+    const table = `
+      <table>
+        <thead>
+          <tr>
+            <td></td>
+            <td class="right">Hoje</td>
+            <td class="right">Total</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#activos">${state.category_labels.activos}</a></td>
+            <td>${utils.addPrefix(state.json.delta.ativos[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.last.ativos)}</td>
+          </tr>
+          <tr>
+            <td><a href="#amostras">${state.category_labels.amostras}</a></td>
+            <td>${utils.addPrefix(parseInt(lastAmostras[2]))}</td>
+            <td>${utils.prettyNumber(parseInt(lastAmostras[1]))}</td>
+          </tr>
+          <tr>
+            <td><a href="#confirmados">${state.category_labels.confirmados}</a></td>
+            <td>${utils.addPrefix(state.json.last.confirmados_novos)}</td>
+            <td>${utils.prettyNumber(state.json.last.confirmados)}</td>
+          </tr>
+          <tr>
+            <td><a href="#internados">${state.category_labels.internados}</a></td>
+            <td>${utils.addPrefix(state.json.delta.internados[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.full.internados[state.json.today])}</td>
+          </tr>
+          <tr>
+            <td><a href="#internados">${state.category_labels.internados} UCI</a></td>
+            <td>${utils.addPrefix(state.json.delta.internados_uci[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.full.internados_uci[state.json.today])}</td>
+          </tr>
+          <tr>
+            <td><a href="#obitos">${state.category_labels.obitos}</a></td>
+            <td>${utils.addPrefix(state.json.delta.obitos[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.full.obitos[state.json.today])}</td>
+          </tr>
+          <tr>
+            <td><a href="#recuperados">${state.category_labels.recuperados}</a></td>
+            <td>${utils.addPrefix(state.json.delta.recuperados[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.full.recuperados[state.json.today])}</td>
+          </tr>
+          <tr>
+            <td><a href="#vacinas">${state.category_labels.vacinas}</a></td>
+            <td></td>
+            <td>${utils.prettyNumber(state.vaccines.total[state.vaccines.total.length - 1][1])}</td>
+          </tr>
+        </tbody>
+      </table>`;
+    document.getElementById("summary").innerHTML = table;
+  },
   ifr: (outer) => {
     utils.createGraphContainer('ifr', outer);
     let total_confir = 0;
@@ -555,8 +616,8 @@ const tables = {
       table +=
         '    <tr style="padding: 1px">' +
         `      <td>${age}</td>` +
-        `      <td>${confir.toLocaleString()}</td>` +
-        `      <td>${obitos.toLocaleString()}</td>` +
+        `      <td>${utils.prettyNumber(confir)}</td>` +
+        `      <td>${utils.prettyNumber(obitos)}</td>` +
         `      <td>${cfrate}</td>` +
         '    </tr>';
     };
@@ -564,8 +625,8 @@ const tables = {
     table +=
       '    <tr class="total">' +
       '      <td>Total</td>' +
-      `      <td>${total_confir.toLocaleString()}</td>` +
-      `      <td>${total_obitos.toLocaleString()}</td>` +
+      `      <td>${utils.prettyNumber(total_confir)}</td>` +
+      `      <td>${utils.prettyNumber(total_obitos)}</td>` +
       `      <td>${total_cfrate}</td>` +
       '    </tr>' +
       '  </tbody>' +
@@ -2366,7 +2427,7 @@ const charts = {
       credits: { text: 'Dados DGS' },
     });
   }
-};
+}
 
 // utils funcs
 const utils = {
@@ -2378,42 +2439,46 @@ const utils = {
       return acc;
     }, 0);
     // find last date with symptoms
-    state.symptoms.forEach(s => state.json.last[`sintomas_${s}`] = state.json.full[`sintomas_${s}`][172]),
+    const lastIndexWithSymptoms = 172;
+    for (const symptom of state.symptoms) {
+      const key = `sintomas_${symptom}`;
+      state.json.last[key] = state.json.full[key][lastIndexWithSymptoms];
+    }
     // calculate number of total tests
     state.json.full.testes = {};
-    Object.keys(state.json.full.confirmados).forEach(key => {
+    for (const day of Object.keys(state.json.full.confirmados)) {
       const sjf = state.json.full;
-      sjf.testes[key] = null;
-      if (sjf.confirmados[key] && sjf.n_confirmados[key]) {
-        sjf.testes[key] = sjf.confirmados[key] + sjf.n_confirmados[key] + sjf.lab[key];
+      sjf.testes[day] = null;
+      if (sjf.confirmados[day] && sjf.n_confirmados[day]) {
+        sjf.testes[day] = sjf.confirmados[day] + sjf.n_confirmados[day] + sjf.lab[day];
       }
-    });
+    };
     // calculate deltas for all days and indicators
     const delta = {};
-    Object.keys(state.json.full).forEach(key => {
-      if (!key.match(/^data/) && !key.match(/^sintomas/)) {
-        delta[key] = {};
-        Object.keys(state.json.full[key]).forEach(idx => {
-          delta[key][idx] = null;
-          if (idx !== '0') {
-            const previous = `${parseInt(idx) - 1}`;
-            const diff = state.json.full[key][idx] - state.json.full[key][previous];
-            delta[key][idx] = state.json.full[key][idx] > 0 ? diff : null;
+    for (const category of Object.keys(state.json.full)) {
+      if (!category.match(/^data/) && !category.match(/^sintomas/)) {
+        delta[category] = {};
+        for (const day of Object.keys(state.json.full[category])) {
+          delta[category][day] = 0;
+          if (day !== '0' && state.json.full[category][day]) {
+            const previous = `${parseInt(day) - 1}`;
+            const diff = state.json.full[category][day] - state.json.full[category][previous];
+            delta[category][day] = state.json.full[category][day] > 0 ? diff : 0;
           }
-        });
+        };
       }
-    });
+    };
     state.json.delta = delta;
     // calculate confirmed/deaths by age group
-    ['confirmados', 'obitos'].forEach((kind) => {
-      state.ages.forEach((age) => {
+    for (const kind of ['confirmados', 'obitos']) {
+      for (const age of state.ages) {
         const id = `${kind}_${age}`;
         state.json.full[id] = {};
-        Object.keys(state.json.full[`${id}_f`]).forEach((key) => {
-          state.json.full[id][key] = state.json.full[`${id}_f`][key] + state.json.full[`${id}_m`][key];
-        })
-      })
-    })
+        for (const day of Object.keys(state.json.full[`${id}_f`])) {
+          state.json.full[id][day] = state.json.full[`${id}_f`][day] + state.json.full[`${id}_m`][day];
+        };
+      };
+    };
     // calculate employement monthly variation
     state.employment_variation = state.employment.map((month, index) => {
       if (index === 0) {
@@ -2470,7 +2535,7 @@ const utils = {
       boosters: [],
     };
     let day0, day1, day2, day3, day4;
-    state.json.vaccines.forEach(day => {
+    for (const day of state.json.vaccines) {
       day0 = day[0] || day0;
       day1 = day[1] || day1;
       day2 = day[2] || day2;
@@ -2484,7 +2549,7 @@ const utils = {
       if (day4) {
         state.vaccines.boosters.push([Date.parse(day0), parseInt(day4, 10)])
       }
-    });
+    };
     // find last date with number of deaths by age
     const dataset_size = Object.keys(state.json.full.confirmados_40_49).length;
     for (let i = dataset_size - 1; i >= 0; i -= 1) {
@@ -2677,68 +2742,7 @@ const utils = {
   // add a '+' on positive numbers
   addPrefix(number) {
     if (!number) return 0;
-    return number > 0 ? `+${number.toLocaleString()}` : number.toLocaleString();
-  },
-  // add summary of stats for the present day
-  addTodayNumbers() {
-    const lastAmostras = state.amostras[state.json.today-1]
-                      || state.amostras[state.json.today-2]
-                      || state.amostras[state.json.today-3]
-                      || [null, null];
-
-    const table = `
-      <table>
-        <thead>
-          <tr>
-            <td></td>
-            <td class="right">Hoje</td>
-            <td class="right">Total</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="#activos">${state.category_labels.activos}</a></td>
-            <td>${utils.addPrefix(state.json.delta.ativos[state.json.today])}</td>
-            <td>${state.json.last.ativos.toLocaleString()}</td>
-          </tr>
-          <tr>
-            <td><a href="#amostras">${state.category_labels.amostras}</a></td>
-            <td>${utils.addPrefix(parseInt(lastAmostras[2]))}</td>
-            <td>${parseInt(lastAmostras[1]).toLocaleString()}</td>
-          </tr>
-          <tr>
-            <td><a href="#confirmados">${state.category_labels.confirmados}</a></td>
-            <td>${utils.addPrefix(state.json.last.confirmados_novos)}</td>
-            <td>${state.json.last.confirmados.toLocaleString()}</td>
-          </tr>
-          <tr>
-            <td><a href="#internados">${state.category_labels.internados}</a></td>
-            <td>${utils.addPrefix(state.json.delta.internados[state.json.today])}</td>
-            <td>${state.json.full.internados[state.json.today].toLocaleString()}</td>
-          </tr>
-          <tr>
-            <td><a href="#internados">${state.category_labels.internados} UCI</a></td>
-            <td>${utils.addPrefix(state.json.delta.internados_uci[state.json.today])}</td>
-            <td>${state.json.full.internados_uci[state.json.today].toLocaleString()}</td>
-          </tr>
-          <tr>
-            <td><a href="#obitos">${state.category_labels.obitos}</a></td>
-            <td>${utils.addPrefix(state.json.delta.obitos[state.json.today])}</td>
-            <td>${state.json.full.obitos[state.json.today].toLocaleString()}</td>
-          </tr>
-          <tr>
-            <td><a href="#recuperados">${state.category_labels.recuperados}</a></td>
-            <td>${utils.addPrefix(state.json.delta.recuperados[state.json.today])}</td>
-            <td>${state.json.full.recuperados[state.json.today].toLocaleString()}</td>
-          </tr>
-          <tr>
-            <td><a href="#vacinas">${state.category_labels.vacinas}</a></td>
-            <td></td>
-            <td>${state.vaccines.total[state.vaccines.total.length - 1][1].toLocaleString()}</td>
-          </tr>
-        </tbody>
-      </table>`;
-    document.getElementById("summary").innerHTML = table;
+    return number > 0 ? `+${utils.prettyNumber(number)}` : utils.prettyNumber(number);
   },
   // compact and format date
   compactDate(date) {
@@ -2954,6 +2958,11 @@ const utils = {
     };
     // Apply the theme
     Highcharts.setOptions(options);
+  },
+  // show numbers with toLocaleString
+  prettyNumber(num) {
+    if (!num) return '0';
+    return num.toLocaleString();
   }
 }
 
@@ -2995,7 +3004,7 @@ async function fetchData() {
   state.json.full = full_dataset;
   utils.crunchData();
   // add table with summary for today
-  utils.addTodayNumbers();
+  tables.todayNumbers();
   utils.manageWait(1);
   // render all graphics
   setTimeout(function () {
@@ -3008,4 +3017,4 @@ async function fetchData() {
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.classList.contains("dark-theme")) setDarkThemeGraphs();
   fetchData().catch(console.log);
-});
+})
