@@ -14,12 +14,10 @@ nav.menu-bottom .project p a {
   padding: 0 12px;
 }
 
-figcaption,
-li {
+figcaption {
   font-weight: 300;
 }
 
-li,
 nav.menu-bottom .project p {
   line-height: 1.5;
 }
