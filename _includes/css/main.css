@@ -16,6 +16,8 @@ body {
   font-size: 16px;
   line-height: 1.2;
   color: #000;
+  min-height: 100vh;
+  position: relative;
 }
 
 input, textarea {
@@ -61,11 +63,20 @@ h1 {
   font-size: 3rem;
 }
 
+h1 a, h1 a:focus, h1 a:hover {
+  color: var(--my-black);
+  text-decoration: none;
+}
+
 h2 {
   font-size: 2.5rem;
 }
 
 h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
   font-size: 1.5rem;
 }
 
@@ -132,6 +143,10 @@ p.social a.stack-overflow {
   background-color: #f48024;
 }
 
+p.subtitle {
+  color: #666;
+}
+
 .container,
 .container-fluid {
   margin-right: auto;
@@ -144,7 +159,7 @@ p.social a.stack-overflow {
 }
 
 .container-fluid {
-  padding: 0;
+  margin: 0 calc(820px - 100%);
 }
 
 section {
@@ -182,6 +197,16 @@ nav .menu-option.right {
 nav .menu-option.right p a,
 nav .menu-option.right p span {
   margin-left: 10px;
+}
+
+nav .post {
+  margin-top: 20px;
+  width: 50%;
+  float: left;
+}
+
+nav .post.right p {
+  text-align: right;
 }
 
 nav img {
@@ -263,6 +288,10 @@ nav img {
 }
 
 @media (max-width: 767px) {
+  .container-fluid {
+    margin: 0 -10px;
+  }
+
   .text_column {
     width: 100%;
     float: none;
@@ -292,4 +321,32 @@ a#downloadCV {
 
 p.navRight {
   font-size: 21px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+article.post {
+  margin-bottom: 80px;
+}
+
+div.inner-container {
+  max-width: 600px;
+}
+
+blockquote {
+  background-color: #eee;
+  border-left: 5px solid #dbdbdb;
+  padding: 1.25em 1.5em;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 24px;
+}
+
+div.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
 }

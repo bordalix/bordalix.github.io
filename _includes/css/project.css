@@ -11,7 +11,7 @@ nav.menu-bottom .project {
 }
 
 nav.menu-bottom .project p a {
-  padding: 0 12px;
+  padding: 0 1rem;
 }
 
 figcaption {
@@ -40,8 +40,7 @@ pre {
   margin: 0 0 24px;
 }
 
-span.skill,
-strong {
+span.skill {
   font-weight: 700;
 }
 

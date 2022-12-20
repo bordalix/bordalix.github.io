@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include html/metadata.html %}
+    <style>
+      {% include css/reset.css %}
+      {% include css/main.css %}
+      {% include css/box_mini.css %}
+      {% include css/form.css %}
+      {% include css/contact.css %}
+      {% include css/progress.css %}
+      {% include css/timeline.css %}
+      {% include css/footer.css %}
+      {% include css/print.css %}
+      {% include css/dark_mode.css %}
+    </style>
+    {% include html/fontawesome.html %}
+  </head>
+  <body id="home" class="no-js">
+    <nav class="menu-top">{% include html/navigation.html %}</nav>
+    <main><div class="container">{{ content }}</div></main>
+    <footer class="footer">{% include html/footer.html %}</footer>
+    <script>
+      {% include js/box.js %}
+      {% include js/dark_mode.js %}
+      {% include js/lazyloading.js %}
+      {% include js/unregister_service_worker.js %}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include html/metadata.html %}
+    <style>
+      {% include css/reset.css %}
+      {% include css/main.css %}
+      {% include css/footer.css %}
+      {% include css/form.css %}
+      {% include css/print.css %}
+      {% include css/dark_mode.css %}
+    </style>
+    {% include html/fontawesome.html %}
+  </head>
+  <body id="home" class="no-js">
+    <nav class="menu-top">{% include html/navigation.html %}</nav>
+    <main>
+      <div class="container">
+        <div class="inner-container">{{ content }}</div>
+      </div>
+    </main>
+    <footer class="footer">{% include html/footer.html %}</footer>
+    <script>
+      {% include js/dark_mode.js %}
+      {% include js/lazyloading.js %}
+      {% include js/tts.js %}
+      {% include js/unregister_service_worker.js %}
+    </script>
+    <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <script>
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/search.json',
+      });
+    </script>
+  </body>
+</html>

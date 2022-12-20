@@ -1,9 +1,9 @@
 .footer {
   background-color: var(--dark);
-  position: relative;
-  margin-top: -88px;
   height: 88px;
-  clear: both;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer p {

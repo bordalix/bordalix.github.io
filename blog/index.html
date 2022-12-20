@@ -1,0 +1,45 @@
+---
+layout: blog
+---
+
+<style>
+  {% include css/blog.css %}
+</style>
+
+<section>
+  <div class="inner-container">
+    <h1 class="heading"><a href="/blog">Blog</a></h1>
+    {% for post in paginator.posts %}
+    <article class="post">
+      <h4>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h4>
+      <p class="subtitle">
+        {{ post.date | timeago }} &middot;
+        <a>
+          <span class="listen">listen</span>
+          <span class="stop" style="display: none">stop</span>
+        </a>
+      </p>
+      <div class="content">{{ post.excerpt }}</div>
+      {% if post.extended %}
+      <a href="{{ post.url }}">Read more...</a>
+      {% endif %}
+    </article>
+    {% endfor %}
+    <!-- Pagination links -->
+    <div class="pagination">
+      <p>
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}">&laquo; Previous</a>
+        {% endif %}
+      </p>
+      <p>Page: {{ paginator.page }} of {{ paginator.total_pages }}</p>
+      <p>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="next">Next &raquo;</a>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</section>

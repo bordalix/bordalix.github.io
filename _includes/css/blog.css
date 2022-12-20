@@ -1,0 +1,17 @@
+iframe, img {
+  width: 100%;
+}
+
+nav.menu-bottom {
+  padding-bottom: 2rem;
+}
+
+nav.menu-bottom .post p a {
+  display: block;
+  padding: 0 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 300px;
+  white-space: nowrap;
+}
+

@@ -16,9 +16,10 @@
 title: João Bordalo
 email: joao.bordalo@gmail.com
 description: Hello, I'm João Bordalo, a full stack developer living in Portugal. Here you can see some of my work, know my history or get my CV. Feel free to reach out.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://joaobordalo.com"
+baseurl: '' # the subpath of your site, e.g. /blog
+url: 'https://joaobordalo.com'
 og_image: https://cdn.joaobordalo.com/images/static/logos/logo_circle.png
+cdn_url: https://cdn.joaobordalo.com/images/static
 
 # Build settings
 markdown: kramdown
@@ -27,7 +28,13 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-timeago
+  - jekyll-paginate
 
+excerpt_separator: <!--more-->
+
+paginate: 5
+paginate_path: '/blog/page:num/'
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

@@ -82,3 +82,8 @@ body.dark-theme .text_column.left img {
 body.dark-theme .menu-option svg {
   fill: white;
 }
+
+body.dark-theme blockquote {
+  background-color: var(--darkgrey);
+  border-left: 5px solid #eee;
+}
