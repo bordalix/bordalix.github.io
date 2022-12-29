@@ -15,3 +15,12 @@ layout: blog
   </p>
   <ul id="results-container"></ul>
 </section>
+
+<script src="/js/simple-jekyll-search.min.js"></script>
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '/search.json',
+  });
+</script>
