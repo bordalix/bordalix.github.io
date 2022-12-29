@@ -15,3 +15,7 @@ nav.menu-bottom .post p a {
   white-space: nowrap;
 }
 
+div.placeholder {
+  background: url('https://cdn.joaobordalo.com/images/static/blog/placeholder.png') no-repeat scroll 0 0;
+}
+

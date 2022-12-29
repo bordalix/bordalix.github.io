@@ -26,7 +26,7 @@ nav.menu-bottom .project.right p {
   text-align: right;
 }
 
-.footer_back_to_top p a {
+.footer_back_to_top p span {
   cursor: pointer;
   color: #4da3e0;
 }

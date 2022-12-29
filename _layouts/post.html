@@ -7,36 +7,38 @@ layout: blog
 </style>
 
 <section>
-  <h1 class="heading"><a href="/blog">Blog</a></h1>
+  <h1 class="heading">
+    <a href="/blog">Blog</a>
+  </h1>
   <article class="post">
-    <h4><a href="{{ page.url }}">{{ page.title }}</a></h4>
+    <h2>
+      <a href="{{ page.url }}">{{ page.title }}</a>
+    </h2>
     <p class="subtitle">
       {{ page.date | timeago }} &middot;
-      <a>
-        <span class="listen">listen</span>
-        <span class="stop" style="display: none">stop</span>
-      </a>
+      <span class="listen">listen</span>
+      <span class="stop" style="display: none">stop</span>
     </p>
     <div class="content">{{ content }}</div>
     <nav class="menu-bottom">
       <!-- Left side -->
       {% if page.previous %}
-      <div class="post left">
-        <p>
-          <strong>« Previous post</strong><br />
-          <a href="{{ page.previous.url }}">{{page.previous.title}}</a>
-        </p>
-      </div>
+        <div class="post left">
+          <p>
+            <strong>« Previous post</strong><br/>
+            <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+          </p>
+        </div>
       {% endif %}
 
       <!-- Right side -->
       {% if page.next %}
-      <div class="post right">
-        <p>
-          <strong>Next post »</strong><br />
-          <a href="{{ page.next.url | relative_url }}">{{page.next.title}}</a>
-        </p>
-      </div>
+        <div class="post right">
+          <p>
+            <strong>Next post »</strong><br/>
+            <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
+          </p>
+        </div>
       {% endif %}
     </nav>
   </article>
