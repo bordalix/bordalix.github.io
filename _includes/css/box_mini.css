@@ -9,32 +9,32 @@
   cursor: pointer;
 }
 
+.box.bitcoinstats {
+  background-color: rgba(192, 192, 192, var(--box-opacity));
+}
+.no-js .box.bitcoinstats {
+  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/bitcoinstats.png);
+}
+
+.box.chesstr {
+  background-color: rgba(167, 116, 82, var(--box-opacity));
+}
+.no-js .box.chesstr {
+  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/chesstr.png);
+}
+
+.box.cowork {
+  background-color: rgba(188, 180, 221, var(--box-opacity));
+}
+.no-js .box.cowork {
+  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/cowork.png);
+}
+
 .box.wtst {
   background-color: rgba(84, 106, 118, var(--box-opacity));
 }
 .no-js .box.wtst {
   background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/wheretosurftoday.png);
-}
-
-.box.hatitude {
-  background-color: rgba(219, 211, 201, var(--box-opacity));
-}
-.no-js .box.hatitude {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/hatitude.png);
-}
-
-.box.ethereum-roulette {
-  background-color: rgba(180, 206, 179, var(--box-opacity));
-}
-.no-js .box.ethereum-roulette {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/ethroulette.png);
-}
-
-.box.appcexplorer {
-  background-color: rgba(171, 220, 214, var(--box-opacity));
-}
-.no-js .box.appcexplorer {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/appcexplorer.png);
 }
 
 .box_text {

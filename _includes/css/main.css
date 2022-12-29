@@ -154,8 +154,7 @@ p.subtitle span {
 
 .container,
 .container-fluid {
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
 }
 
 .container {
@@ -164,7 +163,7 @@ p.subtitle span {
 }
 
 .container-fluid {
-  margin: 0 calc(820px - 100%);
+  margin: 0 calc(600px - 100%);
 }
 
 section {
@@ -271,6 +270,10 @@ nav img {
 @media (min-width: 1200px) {
   .container {
     max-width: 1020px;
+  }
+
+  .container-fluid {
+    margin: 0 calc(820px - 100%);
   }
 
   h1 {
