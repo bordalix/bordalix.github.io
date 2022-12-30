@@ -123,6 +123,10 @@ p.social a {
   border: solid 1px #ccc;
 }
 
+p.social a.nostr {
+  background-color: #9c00afAF;
+}
+
 p.social a.twitter {
   background-color: #3cf;
 }
