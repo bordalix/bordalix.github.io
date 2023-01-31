@@ -1,5 +1,9 @@
-iframe, img {
+iframe,
+img,
+embed,
+object {
   width: 100%;
+  margin-bottom: 24px;
 }
 
 nav.menu-bottom {
@@ -16,6 +20,6 @@ nav.menu-bottom .post p a {
 }
 
 div.placeholder {
-  background: url('https://cdn.joaobordalo.com/images/static/blog/placeholder.png') no-repeat scroll 0 0;
+  background: url('https://cdn.joaobordalo.com/images/static/blog/placeholder.png')
+    no-repeat scroll 0 0;
 }
-
