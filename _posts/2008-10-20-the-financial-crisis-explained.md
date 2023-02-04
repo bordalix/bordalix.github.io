@@ -8,7 +8,8 @@ title: 'The financial crisis explained'
 <p>The best explanation so far (via <a href="http://www.simplicidade.org/notes/">Melo</a>):</p>
 
 <object width="425" height="344">
-  <param name="movie" value="http://www.youtube.com/v/eb_R1-PqRrw&hl=en&fs=1" /><param name="allowFullScreen" value="true" />
+  <param name="movie" value="http://www.youtube.com/v/eb_R1-PqRrw&hl=en&fs=1" />
+<param name="allowFullScreen" value="true" />
   <embed src="http://www.youtube.com/v/eb_R1-PqRrw&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344" />
 </object>
 

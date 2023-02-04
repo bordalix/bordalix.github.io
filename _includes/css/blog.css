@@ -23,3 +23,17 @@ div.placeholder {
   background: url('https://cdn.joaobordalo.com/images/static/blog/placeholder.png')
     no-repeat scroll 0 0;
 }
+
+table {
+  border: 1px solid #333;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+td {
+  padding: 10px;
+}
+
+li {
+  margin-bottom: 12px;
+}

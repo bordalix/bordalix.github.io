@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: 0;
   font-size: 16px;
   line-height: 1.2;
@@ -20,7 +20,8 @@ body {
   position: relative;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: inherit;
 }
 
@@ -63,7 +64,9 @@ h1 {
   font-size: 3rem;
 }
 
-h1 a, h1 a:focus, h1 a:hover {
+h1 a,
+h1 a:focus,
+h1 a:hover {
   color: var(--my-black);
   text-decoration: none;
 }
@@ -124,7 +127,7 @@ p.social a {
 }
 
 p.social a.nostr {
-  background-color: #9c00afAF;
+  background-color: #9c00afaf;
 }
 
 p.social a.twitter {
@@ -184,7 +187,7 @@ nav p {
 }
 
 nav.menu-top p a,
-nav.menu-top p>span {
+nav.menu-top p > span {
   vertical-align: middle;
   color: #000;
   text-decoration: none;
@@ -204,7 +207,7 @@ nav .menu-option.right {
 
 nav .menu-option.right p a,
 nav .menu-option.right p span {
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
 nav .post {
@@ -244,7 +247,7 @@ nav img {
 }
 
 .heading:after {
-  content: " ";
+  content: ' ';
   display: block;
   width: 100px;
   height: 2px;
@@ -366,4 +369,10 @@ div.pagination {
   display: flex;
   justify-content: space-between;
   margin: 2rem 0;
+}
+
+pre {
+  background-color: #e6e6e6;
+  margin: 0 0 24px;
+  padding: 10px;
 }

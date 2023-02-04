@@ -5,4 +5,4 @@ layout: post
 title: "It's a wonderful Internet"
 ---
 
-For all it those, <a href="http://www.itsawonderfulinternet.com/">it's a wonderful Internet</a>.
+<p>For all it those, <a href="http://www.itsawonderfulinternet.com/">it's a wonderful Internet</a>.</p>

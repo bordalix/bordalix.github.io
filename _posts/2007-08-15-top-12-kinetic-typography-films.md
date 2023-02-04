@@ -15,6 +15,8 @@ title: 'Top 12 kinetic typography films'
 
 <p>In the meantime, I've collected some of this movies, and arranged them in a YouTube playlist. If want, you can watch the <a href="">movie explaining what is kinetic typography</a>, or be still and watch the playlist (12 videos, aprox. 22 minutes):</p>
 
-<iframe title="Top 12 kinetic typography films" width="480" height="300" data-src="//www.youtube.com/embed/1B2C8B9F64093791" frameborder="0" allowfullscreen></iframe><p>RSS readers should click <a href="//joaobordalo.com/articles/2007/08/15/top-12-kinetic-typography-films">here</a> to watch the movies.</p>
+<iframe title="Top 12 kinetic typography films" width="480" height="300" data-src="//www.youtube.com/embed/1B2C8B9F64093791" frameborder="0" allowfullscreen></iframe>
+
+<p>RSS readers should click <a href="//joaobordalo.com/articles/2007/08/15/top-12-kinetic-typography-films">here</a> to watch the movies.</p>
 
 <p><strong>Related article:</strong> Vodafone's kinetic typography with user generated content. An idea for a <a href="//joaobordalo.com/articles/2008/12/06/kinetic-typography-with-your-content">Christmas card</a>.</p>
