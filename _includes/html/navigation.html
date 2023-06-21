@@ -12,13 +12,11 @@
           viewBox="0 0 300 300"
           preserveAspectRatio="xMidYMid meet"
           fill="black"
-          style="vertical-align: middle"
-        >
+          style="vertical-align: middle">
           <g transform="translate(0,300) scale(0.1,-0.1)">
             <path
               d="M1880 2697 c-105 -70 -96 -239 15 -292 48 -22 134 -17 173 11 15 11
-                37 40 50 65 42 80 10 183 -68 224 -45 23 -130 19 -170 -8z"
-            />
+                37 40 50 65 42 80 10 183 -68 224 -45 23 -130 19 -170 -8z" />
             <path
               d="M1800 2336 c-95 -27 -153 -67 -271 -185 -107 -107 -286 -317 -277
                 -326 2 -2 33 19 68 47 187 146 401 271 487 284 37 6 43 4 60 -22 28 -43 22
@@ -27,22 +25,19 @@
                 -18 48 -21 122 -6 146 15 24 -10 7 -47 -32 -74 -78 -107 -124 -133 -182 -46
                 -104 -28 -191 60 -285 155 -165 380 -197 585 -84 132 74 316 281 523 591 238
                 355 327 554 372 827 28 169 17 288 -29 342 -21 24 -32 28 -92 30 -38 1 -89 -4
-                -114 -11z"
-            />
+                -114 -11z" />
             <path
               d="M2076 2290 c5 -14 9 -95 8 -180 0 -136 -3 -165 -26 -240 -33 -111
                 -71 -206 -122 -305 -22 -44 -43 -84 -45 -90 -7 -19 100 90 134 135 71 96 125
                 221 140 320 2 14 6 44 10 68 3 23 9 42 13 42 18 0 73 -42 98 -75 41 -54 45
                 -131 10 -215 -14 -35 -24 -66 -22 -67 8 -8 74 95 91 139 56 151 -44 328 -269
-                473 l-29 19 9 -24z"
-            />
+                473 l-29 19 9 -24z" />
             <path
               d="M2230 1600 c-77 -16 -160 -52 -274 -120 -76 -45 -87 -56 -140 -136
                 -31 -48 -55 -88 -54 -89 2 -1 48 19 103 46 220 105 304 128 352 94 33 -23 39
                 -74 15 -127 -25 -56 -53 -84 -118 -114 -56 -26 -223 -49 -283 -38 -41 7 -38 3
                 34 -48 89 -62 149 -82 245 -83 75 0 93 4 152 32 72 34 156 105 194 164 57 91
-                72 242 31 320 -33 62 -93 102 -159 105 -29 2 -73 -1 -98 -6z"
-            />
+                72 242 31 320 -33 62 -93 102 -159 105 -29 2 -73 -1 -98 -6z" />
           </g>
         </svg>
       </a>
@@ -51,36 +46,36 @@
   </div>
   <div class="menu-option right">
     <p class="navRight">
-      <span>
-        <i
-          class="fa fa-adjust dark-theme-toggle"
-          aria-hidden="true"
-          title="Dark mode toggle"
-        ></i>
+      <span class="dark-theme-toggle">
+        {% svg /images/static/navigation/dark-theme.svg width=24 %}
         <span class="sr-only">Dark mode toggle</span>
       </span>
-      <a href="/search" title="Searc">
-        <i class="fa fa-search" aria-hidden="true"></i>
+      <a href="/search" title="Search">
+        {% svg /images/static/navigation/search.svg width=24 %}
         <span class="sr-only">Search</span>
       </a>
+      {% if page.url == '/blog/' %}
+      <a href="/feed.xml" title="RSS feed">
+        {% svg /images/static/navigation/rss.svg width=24 %}
+        <span class="sr-only">RSS feed</span>
+      </a>
+      {% else %}
       <a href="/blog" title="Blog">
-        <i class="fa fa-edit" aria-hidden="true"></i>
+        {% svg /images/static/navigation/blog.svg width=24 %}
         <span class="sr-only">Blog</span>
       </a>
-      <a
-        href="https://snort.social/p/npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3s9kudkyhn8qt28cxv"
-        title="Nostr"
-      >
-        <i class="fa fa-connectdevelop" aria-hidden="true"></i>
+      {% endif %}
+      <a href="{{ site.nostr_url }}" title="Nostr">
+        {% svg /images/static/navigation/nostr.svg width=24 %}
         <span class="sr-only">Nostr</span>
       </a>
 
-      <a href="https://twitter.com/bordalix" title="Twitter">
-        <i class="fa fa-twitter" aria-hidden="true"></i>
+      <a href="{{ site.twitter_url }}" title="Twitter">
+        {% svg /images/static/navigation/twitter.svg width=24 %}
         <span class="sr-only">Twitter</span>
       </a>
-      <a href="https://github.com/bordalix" title="Github">
-        <i class="fa fa-github" aria-hidden="true"></i>
+      <a href="{{ site.github_url }}" title="Github">
+        {% svg /images/static/navigation/github.svg width=24 %}
         <span class="sr-only">Github</span>
       </a>
     </p>

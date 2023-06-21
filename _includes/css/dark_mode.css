@@ -1,10 +1,10 @@
 body.dark-theme {
-  --box-opacity: .6;
+  --box-opacity: 0.6;
   --my-blue: #2280c3;
 }
 
 body.dark-theme img {
-  filter: brightness(.8) contrast(1.2);
+  filter: brightness(0.8) contrast(1.2);
 }
 
 body.dark-theme .timeline:before {
@@ -27,7 +27,6 @@ body.dark-theme .form-control {
   border-color: var(--darkgrey);
 }
 
-body.dark-theme p.social a,
 body.dark-theme .form-control,
 body.dark-theme .timeline > li .timeline-image,
 body.dark-theme div.graph_container,
@@ -49,7 +48,7 @@ body.dark-theme h6,
 body.dark-theme p,
 body.dark-theme .contact-info-block .ci-text,
 body.dark-theme nav.menu-top p a,
-body.dark-theme nav.menu-top p>span {
+body.dark-theme nav.menu-top p > span {
   color: #f5f5f5;
 }
 

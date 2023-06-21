@@ -113,41 +113,12 @@ p.social {
 }
 
 p.social a {
-  margin: 0 10px 0 0;
   color: #fff;
   display: inline-block;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  line-height: 2.5;
   font-size: 1rem;
-  text-align: center;
-  transition: all 0.2s ease-out;
-  border: solid 1px #ccc;
-}
-
-p.social a.nostr {
-  background-color: #9c00afaf;
-}
-
-p.social a.twitter {
-  background-color: #3cf;
-}
-
-p.social a.github {
-  background-color: #000;
-}
-
-p.social a.rss {
-  background-color: #e36315;
-}
-
-p.social a.email {
-  background-color: #4a7f45;
-}
-
-p.social a.stack-overflow {
-  background-color: #f48024;
+  height: 40px;
+  margin: 0 10px 0 0;
+  width: 40px;
 }
 
 p.subtitle {
@@ -159,8 +130,7 @@ p.subtitle span {
   cursor: pointer;
 }
 
-.container,
-.container-fluid {
+.container {
   margin: 0 auto;
 }
 
@@ -195,14 +165,15 @@ nav.menu-top p > span {
 }
 
 nav .menu-option {
-  width: 50%;
   float: left;
   position: relative;
   min-height: 1px;
+  width: 40%;
 }
 
 nav .menu-option.right {
   text-align: right;
+  width: 60%;
 }
 
 nav .menu-option.right p a,
@@ -334,16 +305,12 @@ a#downloadCV {
   margin: 20px auto 50px;
 }
 
-p.navRight {
-  font-size: 21px;
-}
-
 strong {
   font-weight: 700;
 }
 
 article.post {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 article.post h2 {

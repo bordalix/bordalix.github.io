@@ -23,22 +23,20 @@ layout: blog
     <nav class="menu-bottom">
       <!-- Left side -->
       {% if page.previous %}
-        <div class="post left">
-          <p>
-            <strong>« Previous post</strong><br/>
-            <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
-          </p>
-        </div>
+      <div class="post left">
+        <p><strong>« Previous post</strong></p>
+        <p><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></p>
+      </div>
       {% endif %}
 
       <!-- Right side -->
       {% if page.next %}
-        <div class="post right">
-          <p>
-            <strong>Next post »</strong><br/>
-            <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
-          </p>
-        </div>
+      <div class="post right">
+        <p><strong>Next post »</strong></p>
+        <p>
+          <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
+        </p>
+      </div>
       {% endif %}
     </nav>
   </article>

@@ -152,12 +152,11 @@ layout: main
         and work as a freelance software developer and consultant.
       </p>
       <p>
-        I <a href="https://github.com/bordalix/">code</a>,
-        <a href="https://joaobordalo.com/blog">blog</a>, advise and consult,
-        although not necessarily in that order. I also tweet as
-        <a href="https://twitter.com/bordalix">@bordalix</a>. When I'm doing
-        none of those things, I enjoy reading, working out, and playing with my
-        3 kids.
+        I <a href="{{ site.github_url }}">code</a>, <a href="/blog">blog</a>,
+        advise and consult, although not necessarily in that order. I also tweet
+        as <a href="{{ site.twitter_url }}">@bordalix</a>. When I'm doing none
+        of those things, I enjoy reading, working out, and playing with my 3
+        kids.
       </p>
     </div>
     <div class="text_column right">
@@ -166,35 +165,29 @@ layout: main
         forward to hearing from you.
       </p>
       <p class="social">
-        <a href="https://github.com/bordalix" title="GitHub" class="github">
-          <i class="fa fa-github" aria-hidden="true" aria-label="GitHub"></i>
-          <span class="sr-only">GitHub</span>
+        <a href="mailto:joao.bordalo@gmail.com" title="Email">
+          {% svg /images/static/navigation/email.svg width=24 %}
+          <span class="sr-only">Email</span>
         </a>
-        <a
-          href="https://stackoverflow.com/users/7006174/bordalix"
-          title="Stack Overflow"
-          class="stack-overflow">
-          <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+        <a href="{{ site.stackoverflow_url }}" title="Stack Overflow">
+          {% svg /images/static/navigation/stackoverflow.svg width=24 %}
           <span class="sr-only">Stack Overflow</span>
         </a>
-        <a
-          href="https://astral.ninja/npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3s9kudkyhn8qt28cxv"
-          title="Nostr"
-          class="nostr">
-          <i class="fa fa-connectdevelop" aria-hidden="true"></i>
-          <span class="sr-only">Nostr</span>
-        </a>
-        <a href="https://twitter.com/bordalix" title="Twitter" class="twitter">
-          <i class="fa fa-twitter" aria-hidden="true"></i>
-          <span class="sr-only">Twitter</span>
-        </a>
-        <a href="https://joaobordalo.com/blog" title="Blog" class="rss">
-          <i class="fa fa-edit" aria-hidden="true" aria-label="Blog"></i>
+        <a href="/blog" title="Blog">
+          {% svg /images/static/navigation/blog.svg width=24 %}
           <span class="sr-only">Blog</span>
         </a>
-        <a href="mailto:joao.bordalo@gmail.com" title="Email" class="email">
-          <i class="fa fa-envelope-o" aria-hidden="true" aria-label="Email"></i>
-          <span class="sr-only">Email</span>
+        <a href="{{ site.nostr_url }}" title="Nostr">
+          {% svg /images/static/navigation/nostr.svg width=24 %}
+          <span class="sr-only">Nostr</span>
+        </a>
+        <a href="{{ site.twitter_url }}" title="Twitter">
+          {% svg /images/static/navigation/twitter.svg width=24 %}
+          <span class="sr-only">Twitter</span>
+        </a>
+        <a href="{{ site.github_url }}" title="GitHub">
+          {% svg /images/static/navigation/github.svg width=24 %}
+          <span class="sr-only">GitHub</span>
         </a>
       </p>
     </div>

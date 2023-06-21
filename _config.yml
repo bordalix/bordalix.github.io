@@ -30,6 +30,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-timeago
   - jekyll-paginate
+  - jekyll-inline-svg
 
 excerpt_separator: <!--more-->
 
@@ -46,3 +47,8 @@ paginate_path: '/blog/page:num/'
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+github_url: https://github.com/bordalix
+nostr_url: https://snort.social/p/npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3s9kudkyhn8qt28cxv
+stackoverflow_url: https://stackoverflow.com/users/7006174/bordalix
+twitter_url: https://twitter.com/bordalix
