@@ -9,7 +9,7 @@
 .footer p {
   color: #ccc;
   padding: 20px 0;
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 2;
   margin-bottom: 0;
   font-weight: 700;
@@ -21,8 +21,7 @@
   float: left;
 }
 
-.footer_back_to_top p,
-nav.menu-bottom .project.right p {
+.footer_back_to_top p {
   text-align: right;
 }
 

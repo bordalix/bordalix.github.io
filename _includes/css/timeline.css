@@ -1,10 +1,11 @@
 .timeline {
-  position: relative;
   list-style: none;
+  margin: 1rem 0;
+  position: relative;
 }
 
 .timeline:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -44,15 +45,14 @@
 }
 
 .timeline > li .timeline-panel {
-  float: left;
+  float: ;
   width: 41%;
-  padding: 30px 20px 20px;
+  padding: 20px 30px;
   text-align: right;
   position: relative;
 }
 
 .timeline > li.timeline-inverted > .timeline-panel {
-  padding: 30px 20px 20px;
   float: right;
   text-align: left;
 }
@@ -68,13 +68,12 @@
 }
 
 @media (max-width: 767px) {
-
   section#experience {
     padding-bottom: 30px;
   }
 
   .timeline:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     bottom: 0;
@@ -97,7 +96,7 @@
 
   .timeline > li .timeline-image p {
     margin-top: 15px;
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1.1;
   }
 
@@ -105,11 +104,14 @@
     float: right;
     width: 100%;
     text-align: left;
-    padding-top: 0;
-    padding-left: 100px;
+    padding: 0 0 0 100px;
   }
 
   .timeline > li.timeline-inverted > .timeline-panel {
     padding: 0 20px 0 100px;
+  }
+
+  .timeline .timeline-heading h4 {
+    font-size: 1rem;
   }
 }

@@ -1,25 +1,21 @@
-.fa-check-circle-o:before { content: "\f05d"; }
-.fa-check-square-o:before { content: "\f046"; }
-.fa-external-link:before { content: "\f08e"; }
-.fa-info-circle:before { content: "\f05a"; }
-.fa-times-circle-o:before { content: "\f05c"; }
-
-nav.menu-bottom .project {
-  margin-top: 20px;
-  width: 50%;
-  float: left;
+.fa-check-circle-o:before {
+  content: '\f05d';
 }
-
-nav.menu-bottom .project p a {
-  padding: 0 1rem;
+.fa-check-square-o:before {
+  content: '\f046';
+}
+.fa-external-link:before {
+  content: '\f08e';
+}
+.fa-info-circle:before {
+  content: '\f05a';
+}
+.fa-times-circle-o:before {
+  content: '\f05c';
 }
 
 figcaption {
   font-weight: 300;
-}
-
-nav.menu-bottom .project p {
-  line-height: 1.5;
 }
 
 .portfolio .text_column.left {
@@ -48,7 +44,7 @@ span.skill {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #757575;
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 .text_column.left figure img {
@@ -56,7 +52,7 @@ span.skill {
 }
 
 figcaption {
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-style: italic;
   text-align: center;
 }
@@ -64,12 +60,6 @@ figcaption {
 section.grey {
   background-color: #f6f6f6;
   padding-bottom: 90px;
-}
-
-@media (max-width: 320px) {
-  nav.menu-bottom .project p a {
-    font-size: .875rem;
-  }
 }
 
 .technical-info-block {
