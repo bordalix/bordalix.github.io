@@ -30,7 +30,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-timeago
   - jekyll-paginate
-  - jekyll-inline-svg
 
 excerpt_separator: <!--more-->
 
