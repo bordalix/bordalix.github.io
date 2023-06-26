@@ -47,35 +47,35 @@
   <div class="menu-option right">
     <p class="navRight">
       <span class="dark-theme-toggle">
-        {% svg /images/static/navigation/dark-theme.svg width=24 %}
+        {% include /svg/dark-theme.svg %}
         <span class="sr-only">Dark mode toggle</span>
       </span>
       <a href="/search" title="Search">
-        {% svg /images/static/navigation/search.svg width=24 %}
+        {% include /svg/search.svg %}
         <span class="sr-only">Search</span>
       </a>
       {% if page.url == '/blog/' %}
       <a href="/feed.xml" title="RSS feed">
-        {% svg /images/static/navigation/rss.svg width=24 %}
+        {% include /svg/rss.svg %}
         <span class="sr-only">RSS feed</span>
       </a>
       {% else %}
       <a href="/blog" title="Blog">
-        {% svg /images/static/navigation/blog.svg width=24 %}
+        {% include /svg/blog.svg %}
         <span class="sr-only">Blog</span>
       </a>
       {% endif %}
       <a href="{{ site.nostr_url }}" title="Nostr">
-        {% svg /images/static/navigation/nostr.svg width=24 %}
+        {% include /svg/nostr.svg %}
         <span class="sr-only">Nostr</span>
       </a>
 
       <a href="{{ site.twitter_url }}" title="Twitter">
-        {% svg /images/static/navigation/twitter.svg width=24 %}
+        {% include /svg/twitter.svg %}
         <span class="sr-only">Twitter</span>
       </a>
       <a href="{{ site.github_url }}" title="Github">
-        {% svg /images/static/navigation/github.svg width=24 %}
+        {% include /svg/github.svg %}
         <span class="sr-only">Github</span>
       </a>
     </p>

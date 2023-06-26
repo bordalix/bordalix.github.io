@@ -7,7 +7,8 @@ layout: main
   <div class="container">
     <h1>
       Hello.<br />
-      I'm <span class="text-primary">João Bordalo</span>, a full stack
+      I'm
+      <span class="text-primary">João Bordalo</span>, a full stack
       <span class="text-primary">developer</span>
       living in Portugal.
     </h1>
@@ -158,7 +159,8 @@ layout: main
         and work as a freelance software developer and consultant.
       </p>
       <p>
-        I <a href="{{ site.github_url }}">code</a>, <a href="/blog">blog</a>,
+        I
+        <a href="{{ site.github_url }}">code</a>, <a href="/blog">blog</a>,
         advise and consult, although not necessarily in that order. I also tweet
         as <a href="{{ site.twitter_url }}">@bordalix</a>. When I'm doing none
         of those things, I enjoy reading, working out, and playing with my 3
@@ -172,27 +174,27 @@ layout: main
       </p>
       <p class="social">
         <a href="mailto:joao.bordalo@gmail.com" title="Email">
-          {% svg /images/static/navigation/email.svg width=24 %}
+          {% include /svg/email.svg %}
           <span class="sr-only">Email</span>
         </a>
         <a href="{{ site.stackoverflow_url }}" title="Stack Overflow">
-          {% svg /images/static/navigation/stackoverflow.svg width=24 %}
+          {% include /svg/stackoverflow.svg %}
           <span class="sr-only">Stack Overflow</span>
         </a>
         <a href="/blog" title="Blog">
-          {% svg /images/static/navigation/blog.svg width=24 %}
+          {% include /svg/blog.svg %}
           <span class="sr-only">Blog</span>
         </a>
         <a href="{{ site.nostr_url }}" title="Nostr">
-          {% svg /images/static/navigation/nostr.svg width=24 %}
+          {% include /svg/nostr.svg %}
           <span class="sr-only">Nostr</span>
         </a>
         <a href="{{ site.twitter_url }}" title="Twitter">
-          {% svg /images/static/navigation/twitter.svg width=24 %}
+          {% include /svg/twitter.svg %}
           <span class="sr-only">Twitter</span>
         </a>
         <a href="{{ site.github_url }}" title="GitHub">
-          {% svg /images/static/navigation/github.svg width=24 %}
+          {% include /svg/github.svg %}
           <span class="sr-only">GitHub</span>
         </a>
       </p>
@@ -262,23 +264,17 @@ layout: main
         the alternative methods listed below:
       </p>
       <div class="contact-info-block">
-        <div class="ci-icon">
-          {% svg /images/static/navigation/map.svg width=24 %}
-        </div>
+        <div class="ci-icon">{% include /svg/map.svg %}</div>
         <div class="ci-text">Azeitão, Portugal</div>
       </div>
       <div class="contact-info-block">
-        <div class="ci-icon">
-          {% svg /images/static/navigation/email.svg width=24 %}
-        </div>
+        <div class="ci-icon">{% include /svg/email.svg %}</div>
         <div class="ci-text">
           <a href="mailto:joao.bordalo@gmail.com">joao.bordalo@gmail.com</a>
         </div>
       </div>
       <div class="contact-info-block">
-        <div class="ci-icon">
-          {% svg /images/static/navigation/nostr.svg width=24 %}
-        </div>
+        <div class="ci-icon">{% include /svg/nostr.svg %}</div>
         <div class="ci-text">
           <a
             href="https://snort.social/p/npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3s9kudkyhn8qt28cxv">
@@ -287,9 +283,7 @@ layout: main
         </div>
       </div>
       <div class="contact-info-block">
-        <div class="ci-icon">
-          {% svg /images/static/navigation/lightning.svg width=24 %}
-        </div>
+        <div class="ci-icon">{% include /svg/lightning.svg %}</div>
         <div class="ci-text">
           <a href="https://getalby.com/p/bordalix">
             https://getalby.com/p/bordalix
