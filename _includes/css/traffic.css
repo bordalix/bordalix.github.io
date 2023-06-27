@@ -1,6 +1,9 @@
-
-.fa-external-link:before { content: "\f08e"; }
-.fa-warning:before { content: "\f071"; }
+.fa-external-link:before {
+  content: '\f08e';
+}
+.fa-warning:before {
+  content: '\f071';
+}
 
 div.cams {
   display: grid;
@@ -11,7 +14,8 @@ div.cams {
 div.cams img {
   margin: 0;
   width: 100%;
-  background: url('https://cdn.joaobordalo.com/images/static/traffic/placeholder.png') no-repeat scroll 0 0;
+  background: no-repeat center/100%
+    url('/images/static/traffic/placeholder.png');
 }
 div#incidents {
   padding-bottom: 60px;
