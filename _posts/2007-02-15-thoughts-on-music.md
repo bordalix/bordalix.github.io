@@ -32,6 +32,6 @@ title: 'Thoughts on music'
 
 <p>
   <a href="http://interaktiv.mccann.no/eng/piracy/">
-    <img src="https://cdn.joaobordalo.com/images/static/blog/music_piracy_norway.jpg">
+    <img src="https://joaobordalo.com/images/static/blog/music_piracy_norway.jpg">
   </a>
 </p>

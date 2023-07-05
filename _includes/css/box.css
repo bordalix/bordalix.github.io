@@ -13,91 +13,91 @@
   background-color: rgba(84, 106, 118, var(--box-opacity));
 }
 .no-js .box.wtst {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/wheretosurftoday.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/wheretosurftoday.png);
 }
 
 .box.iscore {
   background-color: rgba(136, 160, 168, var(--box-opacity));
 }
 .no-js .box.iscore {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/iscore.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/iscore.png);
 }
 
 .box.hatitude {
   background-color: rgba(219, 211, 201, var(--box-opacity));
 }
 .no-js .box.hatitude {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/hatitude.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/hatitude.png);
 }
 
 .box.cowork {
   background-color: rgba(188, 180, 221, var(--box-opacity));
 }
 .no-js .box.cowork {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/cowork.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/cowork.png);
 }
 
 .box.ethereum-roulette {
   background-color: rgba(180, 206, 179, var(--box-opacity));
 }
 .no-js .box.ethereum-roulette {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/ethroulette.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/ethroulette.png);
 }
 
 .box.batalhadosbitaites {
   background-color: rgba(255, 104, 132, var(--box-opacity));
 }
 .no-js .box.batalhadosbitaites {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/bdb.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/bdb.png);
 }
 
 .box.worldleague {
   background-color: rgba(134, 197, 223, var(--box-opacity));
 }
 .no-js .box.worldleague {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/worldleague.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/worldleague.png);
 }
 
 .box.appcexplorer {
   background-color: rgba(171, 220, 214, var(--box-opacity));
 }
 .no-js .box.appcexplorer {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/appcexplorer.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/appcexplorer.png);
 }
 
 .box.appcoins {
   background-color: rgba(255, 170, 72, var(--box-opacity));
 }
 .no-js .box.appcoins {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/appcoins.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/appcoins.png);
 }
 
 .box.dogoffleash {
   background-color: rgba(142, 214, 215, var(--box-opacity));
 }
 .no-js .box.dogoffleash {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/dogoffleash.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/dogoffleash.png);
 }
 
 .box.guiasporttv {
   background-color: rgba(166, 170, 237, var(--box-opacity));
 }
 .no-js .box.guiasporttv {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/guiasporttv.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/guiasporttv.png);
 }
 
 .box.bitcoinstats {
   background-color: rgba(192, 192, 192, var(--box-opacity));
 }
 .no-js .box.bitcoinstats {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/bitcoinstats.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/bitcoinstats.png);
 }
 
 .box.chesstr {
   background-color: rgba(167, 116, 82, var(--box-opacity));
 }
 .no-js .box.chesstr {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/chesstr.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/chesstr.png);
 }
 
 .box_text {
@@ -153,4 +153,3 @@
     font-size: 1rem;
   }
 }
-

@@ -11,4 +11,4 @@ title: 'A timeline of information history'
 
 <p>Click the image to jump to the website and try it for yourself:</p>
 
-<p><a href="http://www.mkbergman.com/?page_id=327"><img width="440" height="300" src="https://cdn.joaobordalo.com/images/static/blog/info_timeline.png"></a></p>
+<p><a href="http://www.mkbergman.com/?page_id=327"><img width="440" height="300" src="https://joaobordalo.com/images/static/blog/info_timeline.png"></a></p>

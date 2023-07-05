@@ -42,25 +42,25 @@ title: 'Apple results'
 
 <p>
   <a name="revenue_ev"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_revenue_evolution.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_revenue_evolution.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_revenue_evolution.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_revenue_evolution.png"></a>
   <a name="revenue_q"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_revenue_quarterly.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_revenue_quarterly.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_revenue_quarterly.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_revenue_quarterly.png"></a>
   <a name="netprofit_ev"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_netprofit_evolution.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_netprofit_evolution.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_netprofit_evolution.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_netprofit_evolution.png"></a>
   <a name="netprofit_q"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_netprofit_quarterly.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_netprofit_quarterly.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_netprofit_quarterly.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_netprofit_quarterly.png"></a>
   <a name="macsales_ev"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_macsales_evolution.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_macsales_evolution.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_macsales_evolution.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_macsales_evolution.png"></a>
   <a name="macsales_q"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_macsales_quarterly.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_macsales_quarterly.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_macsales_quarterly.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_macsales_quarterly.png"></a>
   <a name="ipodsales_ev"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_macsales_evolution.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_macsales_evolution.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_macsales_evolution.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_macsales_evolution.png"></a>
   <a name="ipodsales_q"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_ipodsales_quarterly.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_ipodsales_quarterly.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_ipodsales_quarterly.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_ipodsales_quarterly.png"></a>
   <a name="macsales_pl"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_macsales_productline.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_macsales_productline.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_macsales_productline.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_macsales_productline.png"></a>
   <a name="ipodsales_pl"></a>
-  <a href="https://cdn.joaobordalo.com/images/static/blog/apple_ipodsales_productline.png"><img width="400" height="200" src="https://cdn.joaobordalo.com/images/static/blog/apple_ipodsales_productline.png"></a>
+  <a href="https://joaobordalo.com/images/static/blog/apple_ipodsales_productline.png"><img width="400" height="200" src="https://joaobordalo.com/images/static/blog/apple_ipodsales_productline.png"></a>
 </p>
 
 <p>Source: <a href="http://www.apple.com/investor/">Apple Investor Relations</a> and <a href="http://www.apple-history.com/">apple-history.com</a></p>

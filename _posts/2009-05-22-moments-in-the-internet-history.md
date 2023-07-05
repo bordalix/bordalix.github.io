@@ -7,7 +7,7 @@ title: 'Moments in the Internet history'
 
 <p>A few days ago, a link fell in my mailbox, covering the <a href="http://www.builderau.com.au/program/web/soa/50-significant-moments-from-internet-history/0,339024632,339292301,00.htm">50 significant moments from the internet history</a>. While reading it, I thought how would be nice to have this information in one, read once, graphical timeline. And since I love to design timelines, I decided to get my hands dirty and create one:</p>
 
-<a href="https://cdn.joaobordalo.com/images/static/blog/topInternetHistory.png"><img width="440" src="https://cdn.joaobordalo.com/images/static/blog/topInternetHistory.png"></a>
+<a href="https://joaobordalo.com/images/static/blog/topInternetHistory.png"><img width="440" src="https://joaobordalo.com/images/static/blog/topInternetHistory.png"></a>
 
 <p><strong>tip:</strong> click the image above to see it in a larger version.</p>
 

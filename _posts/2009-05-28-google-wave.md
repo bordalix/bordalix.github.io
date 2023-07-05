@@ -11,6 +11,6 @@ title: 'Google Wave'
 
 <p>The <a href="http://www.webmonkey.com/blog/Google_Waves_Goodbye_to_E-Mail__Welcomes_Real-Time_Communication">Webmonkey blog post</a> also has a screenshot of the service - since some lucky souls are already beta testing it - which I proudly stole:</p>
 
-<a href="https://cdn.joaobordalo.com/images/static/blog/waveuismall.jpeg"><img width="440" src="https://cdn.joaobordalo.com/images/static/blog/waveuismall.jpeg"></a>
+<a href="https://joaobordalo.com/images/static/blog/waveuismall.jpeg"><img width="440" src="https://joaobordalo.com/images/static/blog/waveuismall.jpeg"></a>
 
 <p>That's a terrific productivity tool, instantaneous (latency of low milliseconds) and licensed as open source. It becomes now clear why Google isn't interested in Twitter.</p>

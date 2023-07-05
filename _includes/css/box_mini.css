@@ -13,28 +13,28 @@
   background-color: rgba(192, 192, 192, var(--box-opacity));
 }
 .no-js .box.bitcoinstats {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/bitcoinstats.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/bitcoinstats.png);
 }
 
 .box.chesstr {
   background-color: rgba(167, 116, 82, var(--box-opacity));
 }
 .no-js .box.chesstr {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/chesstr.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/chesstr.png);
 }
 
 .box.cowork {
   background-color: rgba(188, 180, 221, var(--box-opacity));
 }
 .no-js .box.cowork {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/cowork.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/cowork.png);
 }
 
 .box.wtst {
   background-color: rgba(84, 106, 118, var(--box-opacity));
 }
 .no-js .box.wtst {
-  background-image: url(https://cdn.joaobordalo.com/images/static/portfolio/wheretosurftoday.png);
+  background-image: url(https://joaobordalo.com/images/static/portfolio/wheretosurftoday.png);
 }
 
 .box_text {
@@ -90,4 +90,3 @@
     font-size: 1rem;
   }
 }
-

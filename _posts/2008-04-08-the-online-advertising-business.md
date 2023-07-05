@@ -11,4 +11,4 @@ title: 'The online advertising business'
 
 <p>Even considering that the UK market isn't the world market, it's a very good insight, which allows me to say <a href="http://excentric.pt/">we</a> are on the right track to growth. In this case, numbers speak for themselves:</p>
 
-<p><a href="http://www.emarketer.com/Article.aspx?id=1006118"><img src="https://cdn.joaobordalo.com/images/static/blog/uk_online_advertising.gif"></a></p>
+<p><a href="http://www.emarketer.com/Article.aspx?id=1006118"><img src="https://joaobordalo.com/images/static/blog/uk_online_advertising.gif"></a></p>

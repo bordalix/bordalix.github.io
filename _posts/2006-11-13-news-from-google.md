@@ -13,4 +13,4 @@ title: 'News from Google'
   <li><a href="http://blog.outer-court.com/archive/2006-11-10-n78.html">New Gmail Features</a> - There are a couple of new Gmail features being currently rolled out: dropdown menu at the top right; new icons; embarrassment-reducing message notifications; The details menu has been revamped; and a "forward all" feature to keep others up-to-date if they missed a conversation. A visual clue on the next picture (stolen from <a href="http://blog.outer-court.com/">Google Blogoscoped</a>).</li>
 </ul>
 
-<p><img width="440" height="240" src="https://cdn.joaobordalo.com/images/static/blog/gmail-new-reply-to.png"></p>
+<p><img width="440" height="240" src="https://joaobordalo.com/images/static/blog/gmail-new-reply-to.png"></p>

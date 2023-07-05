@@ -9,7 +9,7 @@ title: 'Select sound with sound'
 
 <p> What about using our sounds to select and manipulate sound? The following video shows an experiment where one can select parts of a music by singing along, grunting or even whistling:</p>
 
-<p><a href="http://web.media.mit.edu/~paris/Paris_Smaragdis/Paris_Audio_Demos_files/user-guide.mov"><img width="440" src="https://cdn.joaobordalo.com/images/static/blog/sound-guide-selection.png"></a></p>
+<p><a href="http://web.media.mit.edu/~paris/Paris_Smaragdis/Paris_Audio_Demos_files/user-guide.mov"><img width="440" src="https://joaobordalo.com/images/static/blog/sound-guide-selection.png"></a></p>
 
 <p>Yap, today my jaws dropped.</p>
 

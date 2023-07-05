@@ -3,7 +3,7 @@ category: articles
 date: 2016-05-11 13:54:53
 extended: true
 layout: post
-title: "Changing gears"
+title: 'Changing gears'
 ---
 
 <p>Almost 10 years ago, me and some friends created excentric, a digital marketing agency. It was a big adventure, with ups and downs, with some huge successes and some defeats. We were able to put together an amazing team of really talented people, who sticked together on the bad moments and were capable of partying like animals when the situation deserve it. Thank you guys, you are the best.</p>
@@ -15,7 +15,7 @@ title: "Changing gears"
 <p><strong>Changing gears</strong></p>
 <p>My wife and I decided that I should stop for some time. Our third kid was on his way (borned in late February), so it was better for us if I could stick around to help. In the meantime, I started to poke around with some side projects that were in the drawer, learn new skills, and start building stuff.</p>
 <p><strong>First of all, design the new resume</strong></p>
-<p>I started working with the Internet in 1996. In 20 years, I made a lot of different things, had a lot of different roles and learned a lot of different technologies and skills. In summary, it's a mess, and is hard to fit it into one single bucket. So I tried to solve it by putting my entire IT career in <a href="https://cdn.joaobordalo.com/images/static/blog/cv2016.png">a graphic</a>. It was a fun problem to crack, and as a bonus, I’ve learned a lot about vector images (the CV is fully scalable).</p>
+<p>I started working with the Internet in 1996. In 20 years, I made a lot of different things, had a lot of different roles and learned a lot of different technologies and skills. In summary, it's a mess, and is hard to fit it into one single bucket. So I tried to solve it by putting my entire IT career in <a href="https://joaobordalo.com/images/static/blog/cv2016.png">a graphic</a>. It was a fun problem to crack, and as a bonus, I’ve learned a lot about vector images (the CV is fully scalable).</p>
 <p><strong>My first (published) mobile app</strong></p>
 <p>Every day I had to go the office, I had to go by a bridge, the 25 de Abril bridge (in Lisbon). And every day was a lottery, I didn't knew how traffic would be. It could take me 32 minutes to get to the office, or it could take me 2 hours. And the unknown is a big source of stress for me.</p>
 <p>The company who runs the highway that ends on the bridge have traffic cams, but the website interface was awful and cumbersome (there's a new website, but some of the original problems persist). So I decided to make a mobile app, for personal use, which would get the images from that website, present them in order, in one single page. And I use it every day for years.</p>
@@ -32,4 +32,3 @@ title: "Changing gears"
 <p>People can gather in groups, and create private leagues, where the classifications (and other scores) are calculated considering only the members of the group. This is great for groups of friends and family to finally know who knows best about football. </p>
 <p>The regular season is ending, there are 2 more fixtures in the Portuguese League, and a handful of games in the UCL, but you still can join and have some fun at <a href="http://betli.ga/">http://betli.ga</a> </p>
 <p>Everything will be ready for the Euro, hope to see you there.</p>
-

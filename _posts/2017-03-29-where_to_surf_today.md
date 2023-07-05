@@ -3,7 +3,7 @@ category: articles
 date: 2017-03-29 16:25:32
 extended: true
 layout: post
-title: "Where to surf today"
+title: 'Where to surf today'
 ---
 
 <p><strong>The problem:</strong></p>
@@ -24,7 +24,7 @@ title: "Where to surf today"
 
 <p>That's why I made <a href="https://wheretosurftoday.com/">https://wheretosurftoday.com</a> some time ago.</p>
 
-<img alt="wheretosurftoday.com homepage screenshot" data-src="https://cdn.joaobordalo.com/images/static/blog/wtst_hp.png" width="480" style="border:1px solid #ddd">
+<img alt="wheretosurftoday.com homepage screenshot" data-src="https://joaobordalo.com/images/static/blog/wtst_hp.png" width="480" style="border:1px solid #ddd">
 <p class="is-graphic-legend">wheretosurftoday.com homepage</p>
 
 <p><strong>And how exactly it solves the problem?</strong></p>
@@ -43,7 +43,7 @@ title: "Where to surf today"
   <li>Navigate using the built in map;                                                        </li>
   <li>Hassle free, you don't need to sign up whatsoever, no ads;                              </li>
   <li>Easier to type domain, <a href="https://wtst.info">https://wtst.info</a>.               </li>
-</ul> 
+</ul>
 
 <p>
   There is also an <a href="https://play.google.com/store/apps/details?id=com.id1s3e5v51g2mink1kolsdq">Android app</a> available.
@@ -61,12 +61,11 @@ title: "Where to surf today"
   <li>Easy navigation to previous and next spot;                            </li>
 </ul>
 
-<img src="https://cdn.joaobordalo.com/images/static/blog/forecast.jpg" width="480" style="border:1px solid #ddd">
+<img src="https://joaobordalo.com/images/static/blog/forecast.jpg" width="480" style="border:1px solid #ddd">
 <p class="is-graphic-legend">Detailed forecast</p>
 
-<img src="https://cdn.joaobordalo.com/images/static/blog/beachcam.jpg" width="480" style="border:1px solid #ddd">
+<img src="https://joaobordalo.com/images/static/blog/beachcam.jpg" width="480" style="border:1px solid #ddd">
 <p class="is-graphic-legend">Beachcam and map pointers</p>
 
-<img src="https://cdn.joaobordalo.com/images/static/blog/nav.jpg" width="480" style="border:1px solid #ddd">
+<img src="https://joaobordalo.com/images/static/blog/nav.jpg" width="480" style="border:1px solid #ddd">
 <p class="is-graphic-legend">Navigation to previous and next spot</p>
-

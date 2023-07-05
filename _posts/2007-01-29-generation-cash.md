@@ -15,8 +15,8 @@ title: 'Generation Cash'
 
 <p>YouTube rivals are already following the trend, and YouTube must stay a competetive player, so it was just a matter of time. Here is an image of the Generation C(ash) pioneers:</p>
 
-<a href="https://cdn.joaobordalo.com/images/static/blog/gencash.png">
-  <img width="400" height="300" src="https://cdn.joaobordalo.com/images/static/blog/gencash.png">
+<a href="https://joaobordalo.com/images/static/blog/gencash.png">
+  <img width="400" height="300" src="https://joaobordalo.com/images/static/blog/gencash.png">
 </a>
 
 <p>By the way, shouldn't we be talking about <a href="http://fon.com">Fon</a> also?</p>

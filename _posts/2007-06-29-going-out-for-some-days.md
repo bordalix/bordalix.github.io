@@ -9,4 +9,4 @@ title: 'Going out for some days'
 
 <p>Or maybe not...</p>
 
-<p><a href="https://cdn.joaobordalo.com/images/static/blog/iphone_vacations.gif"><img src="https://cdn.joaobordalo.com/images/static/blog/iphone_vacations.gif"></a></p>
+<p><a href="https://joaobordalo.com/images/static/blog/iphone_vacations.gif"><img src="https://joaobordalo.com/images/static/blog/iphone_vacations.gif"></a></p>

@@ -11,7 +11,7 @@ title: 'Think to play'
 
 <p>The headset connects wirelessly to consoles and PCs, and is not available to consumers yet, but a private demonstration can be scheduled for developers at the <a href="http://www.gdconf.com/">2007 Game Developers Conference</a>.</p>
 
-<p><img src="https://cdn.joaobordalo.com/images/static/blog/projectepoc.jpg"></p>
+<p><img src="https://joaobordalo.com/images/static/blog/projectepoc.jpg"></p>
 
 <p>Image taken from <a href="http://www.emotiv.com/">Emotiv Systems</a> website.</p>
 
