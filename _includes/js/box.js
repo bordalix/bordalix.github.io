@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   // sets the background image based on supported format
   function setBackgroundImage(box, format) {
-    var url = 'https://joaobordalo.com/images/static/portfolio/'
+    var url = '/images/static/portfolio/'
     var src = box.getAttribute('data-bg-image')
     src = url + src + '.' + format
     box.style.backgroundImage = 'url(' + src + ')'

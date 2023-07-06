@@ -19,7 +19,7 @@ description: Hello, I'm João Bordalo, a full stack developer living in Portugal
 baseurl: '' # the subpath of your site, e.g. /blog
 url: 'https://joaobordalo.com'
 og_image: https://joaobordalo.com/images/static/logos/logo_circle.png
-cdn_url: https://joaobordalo.com/images/static
+cdn_url: /images/static
 
 # Build settings
 markdown: kramdown
