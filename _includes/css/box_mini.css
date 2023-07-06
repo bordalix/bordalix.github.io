@@ -23,11 +23,11 @@
   background-image: url(https://joaobordalo.com/images/static/portfolio/chesstr.png);
 }
 
-.box.cowork {
-  background-color: rgba(188, 180, 221, var(--box-opacity));
+.box.nostr-utils {
+  background-color: rgba(192, 192, 192, var(--box-opacity));
 }
-.no-js .box.cowork {
-  background-image: url(https://joaobordalo.com/images/static/portfolio/cowork.png);
+.no-js .box.nostr-utils {
+  background-image: url(https://joaobordalo.com/images/static/portfolio/nostr-utils.png);
 }
 
 .box.wtst {
