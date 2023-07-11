@@ -1,0 +1,26 @@
+#channels_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.channel {
+  border: 1px solid var(--my-blue);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 110px;
+}
+
+.channel p {
+  font-size: 0.72rem;
+  margin: 0;
+  text-align: center;
+}
+
+.channel img {
+  max-width: 60px;
+}

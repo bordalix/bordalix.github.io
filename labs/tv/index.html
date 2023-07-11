@@ -1,0 +1,25 @@
+---
+title: IPTV channels
+layout: main
+description: IPTV channels
+---
+  <style>
+    {% include css/tvguide.css %}
+  </style>
+<section id="main">
+  <div class="container">
+    <h2 class="heading">IPTV channels</h2>
+    <h3 class="lead">Only public and legal streams in m3u format</h3>
+    <template id="channel_template">
+      <div class="channel">
+        <p><img alt="channel logo" /></p>
+        <p><span></span></p>
+      </div>
+    </template>
+    <div id="channels_list"></div>
+    <p>Via <a href="https://m3upt.com/">https://m3upt.com/</a></p>
+  </div>
+</section>
+<script>
+  {% include js/tvguide.js %}
+</script>
