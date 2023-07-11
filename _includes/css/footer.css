@@ -1,9 +1,15 @@
 .footer {
   background-color: var(--dark);
+  display: flex;
   height: 88px;
-  position: absolute;
-  bottom: 0;
+  justify-content: space-between;
   width: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0;
 }
 
 .footer p {
@@ -15,17 +21,7 @@
   font-weight: 700;
 }
 
-.footer_back_to_top,
-.footer_copyright {
-  width: 50%;
-  float: left;
-}
-
-.footer_back_to_top p {
-  text-align: right;
-}
-
-.footer_back_to_top p span {
+.footer p span {
   cursor: pointer;
   color: #4da3e0;
 }
