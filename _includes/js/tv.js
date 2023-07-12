@@ -1,5 +1,4 @@
-let supportsHLS
-const content = document.getElementById('channels_list')
+let content, supportsHLS
 
 const checkHLS = () => {
   const video = document.createElement('video')
@@ -63,6 +62,7 @@ async function fetchM3U() {
 
 async function run() {
   supportsHLS = checkHLS()
+  content = document.getElementById('channels_list')
   const m3u_file = await fetchM3U()
   const channels = parseM3U(m3u_file)
   for (const channel of channels) addChannel(channel)

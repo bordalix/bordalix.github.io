@@ -1,25 +1,25 @@
 ---
-title: IPTV channels
+title: Radio stations
 layout: main
-description: IPTV channels
+description: Radio stations
 ---
   <style>
-    {% include css/tvguide.css %}
+    {% include css/radio.css %}
   </style>
 <section id="main">
   <div class="container">
-    <h2 class="heading">IPTV channels</h2>
+    <h2 class="heading">Radio stations</h2>
     <h3 class="lead">Only public and legal streams in m3u format</h3>
-    <template id="channel_template">
-      <div class="channel">
-        <p><img alt="channel logo" /></p>
+    <template id="station_template">
+      <div class="station">
+        <p><img alt="station logo" /></p>
         <p><span></span></p>
       </div>
     </template>
-    <div id="channels_list"></div>
+    <div id="stations_list"></div>
     <p>Via <a href="https://m3upt.com/">https://m3upt.com/</a></p>
   </div>
 </section>
 <script>
-  {% include js/tvguide.js %}
+  {% include js/radio.js %}
 </script>

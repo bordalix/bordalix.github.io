@@ -1,0 +1,26 @@
+#stations_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.station {
+  border: 1px solid var(--my-blue);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 100px;
+}
+
+.station p {
+  font-size: 0.72rem;
+  margin: 0;
+  text-align: center;
+}
+
+.station img {
+  max-width: 60px;
+}
