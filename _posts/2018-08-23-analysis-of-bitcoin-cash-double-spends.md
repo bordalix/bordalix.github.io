@@ -3,7 +3,8 @@ category: articles
 date: 2018-08-23 10:42:53
 extended: true
 layout: post
-title: "Analysis of Bitcoin Cash double spends"
+tags: [bitcoin]
+title: 'Analysis of Bitcoin Cash double spends'
 ---
 
 <p>
@@ -52,5 +53,3 @@ I decided to scrape it and get some numbers from it. The site in question is:</p
     parses the output.json file and delivers some stats
   </li>
 </ul>
-
-

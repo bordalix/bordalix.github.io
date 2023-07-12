@@ -3,7 +3,8 @@ category: articles
 date: 2020-03-02 11:09:38
 extended: true
 layout: post
-title: "Explain Bitcoin like I’m 10"
+tags: [bitcoin, eli5]
+title: 'Explain Bitcoin like I’m 10'
 ---
 
 <p>
@@ -188,5 +189,3 @@ title: "Explain Bitcoin like I’m 10"
   <strong>Can’t we ask him?</strong><br />
   Nopes. He disappeared shortly after announcing Bitcoin.
 </p>
-
-

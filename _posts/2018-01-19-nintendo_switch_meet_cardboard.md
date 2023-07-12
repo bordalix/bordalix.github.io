@@ -2,6 +2,7 @@
 category: articles
 date: 2018-01-19 10:55:04
 layout: post
+tags: [nintendo, switch]
 title: 'Nintendo Switch, meet cardboard'
 ---
 

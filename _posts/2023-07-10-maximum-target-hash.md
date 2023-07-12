@@ -3,6 +3,7 @@ category: articles
 date: 2023-07-10 11:27:38
 extended: true
 layout: post
+tags: [bitcoin, difficulty, pow]
 title: 'Maximum target hash'
 ---
 
