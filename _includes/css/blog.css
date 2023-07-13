@@ -33,3 +33,7 @@ td {
 li {
   margin-bottom: 12px;
 }
+
+ul {
+  margin: -0.5rem 0 2.5rem 0;
+}
