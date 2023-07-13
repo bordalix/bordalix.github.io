@@ -21,4 +21,6 @@ ANYONECANPAY, which **inputs** were committed to this signature:
 
 Using both flags in conjunction we get 6 possibilities:
 
-<img src="/images/static/blog/sighash.jpeg">
+<a href="/images/static/blog/sighash.jpeg">
+  <img class="has-border" src="/images/static/blog/sighash.jpeg">
+</a>

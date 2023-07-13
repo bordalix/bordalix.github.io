@@ -1,27 +1,31 @@
-.footer {
+footer {
   background-color: var(--dark);
   display: flex;
+  flex-direction: column;
   height: 88px;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-}
-
-.footer {
-  display: flex;
-  justify-content: space-between;
   padding-bottom: 0;
 }
 
-.footer p {
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+footer p {
   color: #ccc;
   padding: 20px 0;
   font-size: 0.875rem;
+  font-weight: 700;
   line-height: 2;
   margin-bottom: 0;
-  font-weight: 700;
+  padding: 0;
 }
 
-.footer p span {
+footer p span {
   cursor: pointer;
   color: #4da3e0;
 }

@@ -35,5 +35,10 @@ li {
 }
 
 ul {
-  margin: -0.5rem 0 2.5rem 0;
+  margin-top: -0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.has-border {
+  border: 1px solid #ddd;
 }
