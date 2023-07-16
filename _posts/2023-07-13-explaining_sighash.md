@@ -11,7 +11,7 @@ Each signature has two flags appended at the end:
 SIGHASH, which **outputs** were committed to this signature:
 
 - ALL (0x01) = all outputs
-- NONE (0x02) = none ouput
+- NONE (0x02) = none output
 - SINGLE (0x03) = only the output with same index as this input.
 
 ANYONECANPAY, which **inputs** were committed to this signature:
