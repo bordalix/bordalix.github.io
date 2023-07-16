@@ -6,6 +6,8 @@ footer {
   justify-content: center;
   width: 100%;
   padding-bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 footer .container {

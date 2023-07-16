@@ -10,17 +10,24 @@ layout: blog
       id="search-input"
       placeholder="Search posts, live results"
       class="form-control"
-      autofocus="autofocus"
-    />
+      autofocus="autofocus" />
   </p>
   <ul id="results-container"></ul>
 </section>
 
 <script src="/js/simple-jekyll-search.min.js"></script>
 <script>
-  SimpleJekyllSearch({
-    searchInput: document.getElementById('search-input'),
-    resultsContainer: document.getElementById('results-container'),
-    json: '/search.json',
-  });
+  document.onreadystatechange = () => {
+    const query = new URL(location.href).searchParams.get('q')
+    const searchInput = document.getElementById('search-input')
+    const sjs = SimpleJekyllSearch({
+      searchInput,
+      resultsContainer: document.getElementById('results-container'),
+      json: '/search.json',
+    })
+    if (query) {
+      searchInput.value = query
+      setTimeout(() => sjs.search(query), 500)
+    }
+  }
 </script>

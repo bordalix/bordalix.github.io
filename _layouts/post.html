@@ -15,9 +15,13 @@ layout: blog
       <a href="{{ page.url }}">{{ page.title }}</a>
     </h2>
     <p class="subtitle">
-      {{ page.date | timeago }} &middot;
+      <span class="timeago">{{ page.date }}</span> &middot;
       <span class="listen">listen</span>
       <span class="stop" style="display: none">stop</span>
+      {% if page.tags %} <br />
+      {% for tag in page.tags %}
+      <a href="/search?q={{tag}}">#{{tag}}</a>
+      {% endfor %}{% endif %}
     </p>
     <div class="content">{{ content }}</div>
     <nav class="menu-bottom">
