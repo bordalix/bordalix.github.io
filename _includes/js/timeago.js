@@ -46,7 +46,10 @@ function timeAgo(dateParam) {
     return null
   }
 
-  const date = typeof dateParam === 'object' ? dateParam : new Date(dateParam)
+  const date =
+    typeof dateParam === 'object'
+      ? dateParam
+      : new Date(dateParam.replace(/-/g, '/')) // firefox hack
   const DAY_IN_MS = 86400000 // 24 * 60 * 60 * 1000
   const today = new Date()
   const yesterday = new Date(today - DAY_IN_MS)
@@ -77,5 +80,5 @@ function timeAgo(dateParam) {
 
 document.addEventListener('DOMContentLoaded', function () {
   const dates = document.querySelectorAll('.timeago')
-  dates.forEach((date) => (date.textContent = timeAgo(date.textContent)))
+  dates.forEach((date) => (date.innerText = timeAgo(date.innerText)))
 })
