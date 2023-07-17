@@ -9,16 +9,13 @@
       {% include css/form.css %}
       {% include css/print.css %}
       {% include css/dark_mode.css %}
+      {% include css/blog.css %}
     </style>
     {% include html/fontawesome.html %}
   </head>
   <body id="home" class="no-js">
     <nav class="menu-top">{% include html/navigation.html %}</nav>
-    <main>
-      <div class="container">
-        <div class="inner-container">{{ content }}</div>
-      </div>
-    </main>
+    <main>{{ content }}</main>
     {% include html/footer.html %}
   </body>
   <script>
