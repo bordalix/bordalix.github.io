@@ -38,7 +38,7 @@ div#Fontes {
   width: 100%;
 }
 #covid .graph_container table {
-  font-size: .8rem;
+  font-size: 0.8rem;
   margin: 0 auto;
   width: 95%;
 }
@@ -84,7 +84,7 @@ footer {
 }
 
 a.btt {
-  cursor:pointer;
+  cursor: pointer;
   font-size: 13px;
   padding-left: 10px;
 }
@@ -98,10 +98,12 @@ a.btt {
 }
 
 p.tip {
-  background-color: #f7f7f7;
+  background-color: var(--white);
   border: solid #cccccc 1px;
   padding: 1rem;
   text-align: center;
 }
 
-p.tip i { color: var(--my-blue); }
+p.tip i {
+  color: var(--blue);
+}

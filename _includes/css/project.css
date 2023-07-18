@@ -32,7 +32,7 @@ figcaption {
 }
 
 pre {
-  background-color: #e6e6e6;
+  background-color: var(--lightgrey);
   margin: 0 0 24px;
 }
 
@@ -58,7 +58,7 @@ figcaption {
 }
 
 section.grey {
-  background-color: #f6f6f6;
+  background-color: var(--lightgrey);
   padding-bottom: 90px;
 }
 

@@ -87,7 +87,7 @@
 }
 
 .box.bitcoinstats {
-  background-color: rgba(192, 192, 192, var(--box-opacity));
+  background-color: rgba(140, 140, 140, var(--box-opacity));
 }
 .no-js .box.bitcoinstats {
   background-image: url(https://joaobordalo.com/images/static/portfolio/bitcoinstats.png);
@@ -120,7 +120,7 @@
 
 .box_text h3,
 .box_text p {
-  color: #fff;
+  color: var(--white);
   font-size: 1.25rem;
 }
 

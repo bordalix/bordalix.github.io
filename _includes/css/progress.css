@@ -4,7 +4,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #757575;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .progress,
@@ -15,7 +15,7 @@
 .progress {
   overflow: hidden;
   margin-bottom: 24px;
-  background-color: #f5f5f5;
+  background-color: var(--lightgrey);
   border-radius: 0;
   height: 24px;
 }
@@ -23,14 +23,14 @@
 .progress-bar {
   float: left;
   height: 100%;
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 1.7;
   text-align: center;
   transition: width 0.6s ease;
 }
 
 .progress-bar-skill1 {
-  background-color: #95c7ec;
+  background-color: var(--progress1);
   transition: width 2s ease;
   width: 60%;
 }
@@ -40,7 +40,7 @@
 }
 
 .progress-bar-skill2 {
-  background-color: #7fbce8;
+  background-color: var(--progress2);
   transition: width 2s ease;
   width: 70%;
 }
@@ -50,7 +50,7 @@
 }
 
 .progress-bar-skill3 {
-  background-color: #6ab1e4;
+  background-color: var(--progress3);
   transition: width 2s ease;
   width: 80%;
 }
@@ -60,7 +60,7 @@
 }
 
 .progress-bar-skill4 {
-  background-color: #55a6e0;
+  background-color: var(--progress4);
   transition: width 2s ease;
   width: 90%;
 }
@@ -70,7 +70,7 @@
 }
 
 .progress-bar-skill5 {
-  background-color: #409bdc;
+  background-color: var(--progress5);
   transition: width 2s ease;
   width: 80%;
 }
@@ -80,7 +80,7 @@
 }
 
 .progress-bar-skill6 {
-  background-color: var(--my-blue);
+  background-color: var(--progress6);
   transition: width 2s ease;
   width: 70%;
 }

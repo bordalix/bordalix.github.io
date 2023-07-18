@@ -9,7 +9,7 @@
   display: block;
   margin: 0;
   padding: 14px 10px 14px 0;
-  color: var(--my-blue);
+  color: var(--blue);
   font-size: 40px;
 }
 
@@ -23,7 +23,7 @@
   position: relative;
   padding-left: 2rem;
   font-size: 1rem;
-  color: #000;
+  color: var(--darkest);
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;

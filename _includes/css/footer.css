@@ -10,15 +10,8 @@ footer {
   bottom: 0;
 }
 
-footer .container {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  width: 100%;
-}
-
 footer p {
-  color: #ccc;
+  color: var(--lightgrey);
   padding: 20px 0;
   font-size: 0.875rem;
   font-weight: 700;

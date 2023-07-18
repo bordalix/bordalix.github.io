@@ -7,31 +7,31 @@
 			fill: none;
 		}
 
-		path.n1,
-		circle.n1 {
-			fill: black;
-		}
-
 		path.n2 {
-			fill: white;
-		}
-
-		.dark-theme path.n1 {
-			fill: black;
-		}
-
-		.dark-theme path.n2 {
 			fill: white;
 		}
 
 		p.social path.n1,
 		p.social circle.n1 {
-			fill: purple
+			fill: purple;
 		}
 
 		.dark-theme p.social path.n1,
 		.dark-theme p.social circle.n1 {
-			fill: var(--darkgrey)
+			fill: var(--darkgrey);
+		}
+
+		.ci-icon path.n1,
+		.ci-icon circle.n1 {
+			fill: var(--blue);
+		}
+
+		path.n1,
+		circle.n1,
+		.dark-theme path.n1,
+		.dark-theme .ci-icon path.n1,
+		.dark-theme .ci-icon circle.n1 {
+			fill: var(--dark);
 		}
 	</style>
 	<g>
