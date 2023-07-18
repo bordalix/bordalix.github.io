@@ -1,5 +1,10 @@
 let content, supportsHLS
 
+const alternativeLinks = {
+  'RTP 1': 'https://www.rtp.pt/play/direto/rtp1',
+  'RTP 2': 'https://www.rtp.pt/play/direto/rtp2',
+}
+
 const checkHLS = () => {
   const video = document.createElement('video')
   return Boolean(
@@ -13,16 +18,12 @@ const normalizeURL = (link) => {
   return supportsHLS ? link : hlsviewerurl + link
 }
 
-function openChannel(link) {
-  window.open(normalizeURL(link), '_blank')
-}
-
 function addChannel(channel) {
   const template = document.getElementById('channel_template')
   const element = template.content.firstElementChild.cloneNode(true)
   const span = element.querySelector('span')
   const img = element.querySelector('img')
-  element.onclick = () => openChannel(channel.link)
+  element.onclick = () => window.open(channel.link, '_blank')
   span.textContent = channel.name
   img.src = channel.logo
   content.appendChild(element)
@@ -44,7 +45,12 @@ function parseM3U(text) {
     } else {
       const matchLink = line.match(/(https*:\/\/.*)$/)
       if (matchLink && channel.name && channel.logo) {
-        channel.link = matchLink[1]
+        const alternate = alternativeLinks[channel.name]
+        if (alternate) {
+          channel.link = alternate
+        } else {
+          channel.link = normalizeURL(matchLink[1])
+        }
         channels.push(channel)
         channel = { link: '', logo: '', name: '' }
       }
