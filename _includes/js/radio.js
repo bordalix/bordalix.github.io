@@ -26,6 +26,7 @@ const checkHLS = () => {
 }
 
 const normalizeURL = (link) => {
+  if (!link.match(/m3u8/)) return link
   const hlsviewerurl = 'https://hlsviewer.pages.dev?url='
   return supportsHLS ? link : hlsviewerurl + link
 }
@@ -42,6 +43,7 @@ function addStation(station) {
   element.onclick = () => openStation(station.link)
   span.textContent = station.name
   img.src = station.logo
+  img.onerror = () => (img.src = '/images/static/icons/logo-placeholder.png')
   content.appendChild(element)
 }
 

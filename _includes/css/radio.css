@@ -1,18 +1,25 @@
 #stations_list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(8, 1fr);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+  #stations_list {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .station {
+  background-color: var(--grey);
   border: 1px solid var(--blue);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 20px;
   padding: 4px;
-  width: 100px;
+  width: 100%;
 }
 
 .station p {

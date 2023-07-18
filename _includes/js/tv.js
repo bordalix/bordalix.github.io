@@ -14,6 +14,7 @@ const checkHLS = () => {
 }
 
 const normalizeURL = (link) => {
+  if (!link.match(/m3u8/)) return link
   const hlsviewerurl = 'https://hlsviewer.pages.dev?url='
   return supportsHLS ? link : hlsviewerurl + link
 }
@@ -26,6 +27,7 @@ function addChannel(channel) {
   element.onclick = () => window.open(channel.link, '_blank')
   span.textContent = channel.name
   img.src = channel.logo
+  img.onerror = () => (img.src = '/images/static/icons/logo-placeholder.png')
   content.appendChild(element)
 }
 
@@ -51,6 +53,7 @@ function parseM3U(text) {
         } else {
           channel.link = normalizeURL(matchLink[1])
         }
+        if (!matchLink[1].match(/m3u8/)) console.log(channel)
         channels.push(channel)
         channel = { link: '', logo: '', name: '' }
       }
