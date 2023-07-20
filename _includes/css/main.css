@@ -4,6 +4,7 @@
   --darkgrey: #002b45;
   --box-opacity: 1;
   --blue: #1f75b2;
+  --purple: #800080;
   --white: #fff;
   --lightgrey: #f6f6f6;
   --grey: #9e9e9e;
@@ -245,10 +246,6 @@ nav img {
   border: 0;
 }
 
-.text-primary {
-  color: var(--blue);
-}
-
 .heading {
   text-align: left;
   margin-bottom: 40px;
@@ -378,4 +375,12 @@ div.flexed {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.gradient {
+  --tw-gradient-stops: var(--blue), var(--purple);
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
