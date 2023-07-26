@@ -195,8 +195,8 @@ nav p {
   line-height: 20px;
 }
 
-nav.menu-top p a,
-nav.menu-top p > span {
+nav.menu-top .navRight p a,
+nav.menu-top .navRight p > span {
   vertical-align: middle;
   color: var(--darkest);
   text-decoration: none;
