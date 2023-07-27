@@ -52,3 +52,41 @@ github_url: https://github.com/bordalix
 nostr_url: https://snort.social/p/npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3s9kudkyhn8qt28cxv
 stackoverflow_url: https://stackoverflow.com/users/7006174/bordalix
 twitter_url: https://twitter.com/bordalix
+
+skills:
+  - HTML:
+    name: 'HTML'
+    icon: 'html.svg'
+  - CSS:
+    name: 'CSS'
+    icon: 'css.svg'
+  - Javascript:
+    name: 'Javascript'
+    icon: 'js.svg'
+  - Typescript:
+    name: 'Typescript'
+    icon: 'ts.svg'
+  - React:
+    name: 'React'
+    icon: 'react.svg'
+  - Svelte:
+    name: 'Svelte'
+    icon: 'svelte.svg'
+  - Expo:
+    name: 'Expo'
+    icon: 'expo.svg'
+  - NextJS:
+    name: 'NextJS'
+    icon: 'nextjs.svg'
+  - PostgreSQL:
+    name: 'PostgreSQL'
+    icon: 'postgresql.svg'
+  - BitcoinJS:
+    name: 'Bitcoin'
+    icon: 'bitcoin.svg'
+  - Liquid:
+    name: 'Liquid'
+    icon: 'liquid.svg'
+  - Lightning:
+    name: 'Lightning'
+    icon: 'lightning.svg'

@@ -1,12 +1,15 @@
 :root {
+  --border-radius: 30px;
   --darkest: #000a0a;
   --dark: #000f1d;
   --darkgrey: #002b45;
+  --darkgrey-transparent: #002b4580;
   --box-opacity: 1;
   --blue: #1f75b2;
   --purple: #800080;
   --white: #fff;
   --lightgrey: #f6f6f6;
+  --lightgrey-transparent: #f6f6f680;
   --grey: #9e9e9e;
   --progress1: #95c7ec;
   --progress2: #7fbce8;
