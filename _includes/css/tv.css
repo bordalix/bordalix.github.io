@@ -5,21 +5,26 @@
   margin-bottom: 2rem;
 }
 
-@media (max-width: 767px) {
+@media(max-width: 767px) {
   #channels_list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 .channel {
-  background-color: var(--grey);
-  border: 1px solid var(--blue);
+  background-color: var(--lightgrey);
+  border: 1px solid var(--grey);
+  border-radius: 10px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 4px;
   width: 100%;
+}
+
+.channel:hover {
+  background-color: var(--grey);
 }
 
 .channel p {

@@ -3,13 +3,15 @@ title: Radio stations
 layout: main
 description: Radio stations
 ---
-  <style>
-    {% include css/radio.css %}
-  </style>
+
+<style>
+  {% include css/radio.css %}
+</style>
 <section id="main">
   <div class="container">
-    <h2 class="heading">Radio stations</h2>
-    <h3 class="lead">Only public and legal streams in m3u format</h3>
+    <h1 class="heading"><span class="gradient">Radio stations</span></h1>
+    <h2 class="lead">Only public and legal streams in m3u format</h2>
+    <p>Via <a href="https://m3upt.com/">https://m3upt.com/</a></p>
     <template id="station_template">
       <div class="station">
         <p><img alt="station logo" /></p>
@@ -17,7 +19,6 @@ description: Radio stations
       </div>
     </template>
     <div id="stations_list"></div>
-    <p>Via <a href="https://m3upt.com/">https://m3upt.com/</a></p>
   </div>
 </section>
 <script>
