@@ -1,6 +1,8 @@
 body.dark-theme {
   --box-opacity: 0.6;
-  --blue: #2280c3;
+  --blue: #629ec9;
+  --purple: #a64ca6;
+  --tw-gradient-stops: var(--blue), var(--purple);
 }
 
 body.dark-theme img {
@@ -25,6 +27,7 @@ body.dark-theme .progress {
 body.dark-theme .form-control {
   background-color: var(--darkgrey);
   border-color: var(--darkgrey);
+  color: #b5b5b5;
 }
 
 body.dark-theme .form-control,
@@ -47,8 +50,8 @@ body.dark-theme h5,
 body.dark-theme h6,
 body.dark-theme p,
 body.dark-theme .contact-info-block .ci-text,
-body.dark-theme nav.menu-top .navRight p a,
-body.dark-theme nav.menu-top .navRight p > span {
+body.dark-theme nav.menu-top .navRight a,
+body.dark-theme nav.menu-top .navRight > span {
   color: var(--lightgrey);
 }
 
@@ -62,23 +65,23 @@ body.dark-theme .progress-title {
 
 body.dark-theme .btn-primary {
   color: var(--lightgrey);
-  background-color: var(--blue);
-  border-color: var(--blue);
+  background-color: var(--darkblue);
+  border-color: var(--darkblue);
 }
 
 body.dark-theme .btn-primary.active,
 body.dark-theme .btn-primary:active,
 body.dark-theme .btn-primary:focus,
 body.dark-theme .btn-primary:hover {
-  background: var(--blue);
-  border-color: var(--blue);
+  background: var(--darkblue);
+  border-color: var(--darkblue);
 }
 
 body.dark-theme .text_column.left img {
   box-shadow: 6px 6px 6px #626262;
 }
 
-body.dark-theme .menu-option svg {
+body.dark-theme nav svg {
   fill: white;
 }
 

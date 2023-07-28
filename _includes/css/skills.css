@@ -1,5 +1,5 @@
 .skills-container {
-  --border: var(--grey);
+  --border: #ccc;
   --drop-x: 144.26004791259766px;
   --drop-y: 49.833282470703125px;
   --main: var(--lightgrey);
@@ -23,20 +23,16 @@
 }
 
 .dark-theme .skills-container {
+  --border: var(--darkgrey);
   --main: var(--darkgrey);
   --main-60: var(--darkgrey-transparent);
 }
 
-.skills-container > div {
-  background-color: white;
-  border-radius: var(--border-radius);
-}
-
-.skills-container div div {
+.skills-container div {
   background: linear-gradient(90deg,var(--main) 0%,var(--main) 60%,var(--main-60) 100%), no-repeat right 40% / 40% var(--bg-img);
   border: 1px solid var(--border);
   border-radius: var(--border-radius);
-  padding: 15px;
+  padding: 14px;
   transition-duration: 0.2s;
 }
 

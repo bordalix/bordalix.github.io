@@ -3,13 +3,14 @@
   --darkest: #000a0a;
   --dark: #000f1d;
   --darkgrey: #002b45;
-  --darkgrey-transparent: #002b4580;
+  --darkgrey-transparent: #002b4521;
   --box-opacity: 1;
   --blue: #1f75b2;
+  --darkblue: #1b69a0;
   --purple: #800080;
   --white: #fff;
   --lightgrey: #f6f6f6;
-  --lightgrey-transparent: #f6f6f680;
+  --lightgrey-transparent: #f6f6f621;
   --grey: #9e9e9e;
   --progress1: #95c7ec;
   --progress2: #7fbce8;
@@ -18,6 +19,12 @@
   --progress5: #409bdc;
   --progress6: #1f75b2;
   --tw-gradient-stops: var(--blue), var(--purple);
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #b5b5b5;
+  opacity: 1; /* Firefox */
 }
 
 html {
@@ -200,26 +207,6 @@ section.grey {
 
 nav p {
   line-height: 20px;
-}
-
-nav.menu-top .navRight p a,
-nav.menu-top .navRight p > span {
-  vertical-align: middle;
-  color: var(--darkest);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-nav .menu-option {
-  float: left;
-  position: relative;
-  min-height: 1px;
-  width: 40%;
-}
-
-nav .menu-option.right {
-  text-align: right;
-  width: 60%;
 }
 
 nav .post {

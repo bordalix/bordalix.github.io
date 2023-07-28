@@ -3,22 +3,20 @@ title: João Bordalo
 layout: main
 ---
 
-<style>
-  {% include css/skills.css %}
-</style>
 <section id="intro" tabindex="0">
   <div class="container">
     <h1>
       Hello.<br />
       I'm
       <span class="gradient">João Bordalo</span>, a full stack
-      <span class="gradient">bitcoiner</span> living in Portugal.
+      <span class="gradient">developer</span>
+      living in Portugal.
     </h1>
   </div>
 </section>
 <section id="portfolio" tabindex="0">
   <div class="container">
-    <h2 class="heading"><span class="gradient">Selected work</span></h2>
+    <h2 class="heading">Selected work</h2>
     <h3 class="lead nomargin">Some stuff I made recently</h3>
   </div>
   <p>
@@ -56,23 +54,102 @@ layout: main
 </section>
 <section id="skills" tabindex="0">
   <div class="container">
-    <h2 class="heading"><span class="gradient">Skills</span></h2>
+    <h2 class="heading">Skills</h2>
     <h3 class="lead">Jack of all trades</h3>
-    <div class="skills-container">
-      {% for skill in site.skills %}
-      <div>
-        <div style="--bg-img: url(/images/static/skills/{{skill.icon}})">
-          <p>{{skill.name}}</p>
+    <div class="text_column left">
+      <div class="skill-item">
+        <div class="progress-title">DevOps</div>
+        <div class="progress">
+          <div
+            role="progressbar"
+            aria-label="dev ops"
+            aria-valuenow="60"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            class="progress-bar progress-bar-skill1">
+            <span class="sr-only">60</span>
+          </div>
         </div>
       </div>
-      {% endfor %}
+      <div class="skill-item">
+        <div class="progress-title">Data modeling</div>
+        <div class="progress">
+          <div
+            role="progressbar"
+            aria-label="data modeling"
+            aria-valuenow="70"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            class="progress-bar progress-bar-skill2">
+            <span class="sr-only">70</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="progress-title">Business logic</div>
+        <div class="progress">
+          <div
+            role="progressbar"
+            aria-label="business logic"
+            aria-valuenow="80"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            class="progress-bar progress-bar-skill3">
+            <span class="sr-only">80</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text_column right">
+      <div class="skill-item">
+        <div class="progress-title">API layer / MVC</div>
+        <div class="progress">
+          <div
+            role="progressbar"
+            aria-label="api layer / mvc"
+            aria-valuenow="90"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            class="progress-bar progress-bar-skill4">
+            <span class="sr-only">90</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="progress-title">User interface</div>
+        <div class="progress">
+          <div
+            role="progressbar"
+            aria-label="user interface"
+            aria-valuenow="80"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            class="progress-bar progress-bar-skill5">
+            <span class="sr-only">80</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="progress-title">User experience</div>
+        <div class="progress">
+          <div
+            role="progressbar"
+            aria-label="user experience"
+            aria-valuenow="70"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            class="progress-bar progress-bar-skill6">
+            <span class="sr-only">70</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div style="clear: both"></div>
 </section>
 <section id="about" class="grey" tabindex="0">
   <div class="container">
-    <h2 class="heading"><span class="gradient">About me</span></h2>
+    <h2 class="heading">About me</h2>
     <h3 class="lead">Creative, doer, problem solver</h3>
     <div class="text_column left">
       <p>
@@ -127,7 +204,7 @@ layout: main
 </section>
 <section id="contact" tabindex="0">
   <div class="container">
-    <h2 class="heading"><span class="gradient">Contact</span></h2>
+    <h2 class="heading">Contact</h2>
     <h3 class="lead">Let's talk</h3>
     <div class="text_column left">
       <form
@@ -219,7 +296,7 @@ layout: main
 </section>
 <section id="experience" class="grey" tabindex="0">
   <div class="container">
-    <h2 class="heading"><span class="gradient">Experience</span></h2>
+    <h2 class="heading">Experience</h2>
     <h3 class="lead">20 years of experience</h3>
     <ul class="timeline">
       <li>
@@ -360,7 +437,7 @@ layout: main
 </section>
 <section id="resume" tabindex="0">
   <div class="container">
-    <h2 class="heading"><span class="gradient">Resume</span></h2>
+    <h2 class="heading">Resume</h2>
     <h3 class="lead">The full story</h3>
     <div class="text_column left">
       <p>

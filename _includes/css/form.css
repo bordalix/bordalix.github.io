@@ -29,10 +29,9 @@ label {
 }
 
 .form-control:focus {
-  border-color: var(--blue);
+  border-color: var(--darkblue);
   outline: 0;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-    0 0 8px rgba(43, 144, 217, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(43, 144, 217, 0.6);
 }
 
 .form-group {
@@ -48,7 +47,7 @@ textarea.form-control {
 }
 
 .btn {
-  border: 1px solid var(--blue);
+  border: 1px solid var(--darkblue);
   border-radius: 0;
   cursor: pointer;
   font-weight: 700;
@@ -61,9 +60,9 @@ textarea.form-control {
 }
 
 .btn-primary {
-  color: var(--blue);
+  color: var(--darkblue);
   background-color: var(--white);
-  border-color: var(--blue);
+  border-color: var(--darkblue);
 }
 
 .btn-primary.active,
@@ -87,21 +86,21 @@ fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary:focus,
 fieldset[disabled] .btn-primary:hover {
   background-color: var(--white);
-  border-color: var(--blue);
+  border-color: var(--darkblue);
 }
 
 .btn-primary.active,
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:hover {
-  background: var(--blue);
+  background: var(--darkblue);
   color: var(--white);
 }
 
 .btn-primary.active:hover {
   background-color: var(--white);
-  border-color: var(--blue);
-  color: var(--blue);
+  border-color: var(--darkblue);
+  color: var(--white);
 }
 
 .btn-block {

@@ -4,9 +4,11 @@ layout: blog
 
 <section style="padding-bottom: 0">
   <div class="container">
-    <h1 class="heading">
-      <a href="/blog"><span class="gradient">Blog</span></a>
-    </h1>
+    <a href="/blog">
+      <h1 class="heading">
+        <span>Blog</span>
+      </h1>
+    </a>
   </div>
 </section>
 <section style="padding-top: 0">
@@ -17,36 +19,41 @@ layout: blog
           <a href="{{ page.url }}">{{ page.title }}</a>
         </h2>
         <p class="subtitle">
-          <span class="timeago">{{ page.date }}</span> &middot;
+          <span class="timeago">{{ page.date }}</span>
+          &middot;
           <span class="listen">listen</span>
           <span class="stop" style="display: none">stop</span>
-          {% if page.tags %} <br />
-          {% for tag in page.tags %}
-          <a href="/search?q={{tag}}">#{{tag}}</a>
-          {% endfor %}{% endif %}
+          {% if page.tags %}
+            <br/>
+            {% for tag in page.tags %}
+              <a href="/search?q={{tag}}">#{{ tag }}</a>
+            {% endfor %}
+          {% endif %}
         </p>
         <div class="content">{{ content }}</div>
         <nav class="menu-bottom" style="padding-bottom: 100px">
           <!-- Left side -->
           {% if page.previous %}
-          <div class="post left">
-            <p><strong>« Previous post</strong></p>
-            <p>
-              <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
-            </p>
-          </div>
+            <div class="post left">
+              <p>
+                <strong>« Previous post</strong>
+              </p>
+              <p>
+                <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+              </p>
+            </div>
           {% endif %}
 
           <!-- Right side -->
           {% if page.next %}
-          <div class="post right">
-            <p><strong>Next post »</strong></p>
-            <p>
-              <a href="{{ page.next.url | relative_url }}"
-                >{{ page.next.title }}</a
-              >
-            </p>
-          </div>
+            <div class="post right">
+              <p>
+                <strong>Next post »</strong>
+              </p>
+              <p>
+                <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
+              </p>
+            </div>
           {% endif %}
         </nav>
       </article>
