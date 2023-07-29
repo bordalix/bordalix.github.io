@@ -16,8 +16,7 @@ nav.menu-bottom .post p:nth-child(2) {
 }
 
 div.placeholder {
-  background: url('https://joaobordalo.com/images/static/blog/placeholder.png')
-    no-repeat scroll 0 0;
+  background: url('https://joaobordalo.com/images/static/blog/placeholder.png') no-repeat scroll 0 0;
 }
 
 table {
@@ -30,9 +29,9 @@ td {
   padding: 10px;
 }
 
-ul {
-  margin-top: -0.5rem;
-  margin-bottom: 2.5rem;
+ul,
+ol {
+  margin: -0.5rem 0 2.5rem 1rem;
 }
 
 .has-border {

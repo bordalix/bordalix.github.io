@@ -79,7 +79,7 @@
     left: 35px;
     width: 2px;
     margin-left: -1.5px;
-    background-color: var(--lightgrey);
+    background-color: #eee;
   }
 
   .timeline > li {
