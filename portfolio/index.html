@@ -19,98 +19,15 @@ description: JB portfolio
     <h2 class="lead">Some stuff I made recently</h2>
   </div>
   <p>
-    <a href="/portfolio/appcexplorer.html">
-      <div class="box appcexplorer" data-bg-image="appcexplorer">
+    {% for project in site.portfolio %}
+      <a href="/portfolio/{{project.blob}}.html" aria-label="click to know more">
+      <div class="box {{project.blob}}" data-bg-image="{{project.blob}}">
         <div class="box_text">
-          <h3>APPC Explorer</h3>
+          <h3>{{project.name}}</h3>
         </div>
       </div>
     </a>
-    <a href="/portfolio/appcoins.html">
-      <div class="box appcoins" data-bg-image="appcoins">
-        <div class="box_text">
-          <h3>Appcoins</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/batalhadosbitaites.html">
-      <div class="box batalhadosbitaites" data-bg-image="bdb">
-        <div class="box_text">
-          <h3>Batalha dos bitaites</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/bitcoinstats.html">
-      <div class="box bitcoinstats" data-bg-image="bitcoinstats">
-        <div class="box_text">
-          <h3>Bitcoin stats</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/chesstr.html">
-      <div class="box chesstr" data-bg-image="chesstr">
-        <div class="box_text">
-          <h3>Chesstr</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/cowork.html">
-      <div class="box cowork" data-bg-image="cowork">
-        <div class="box_text">
-          <h3>CoWork Azeitão</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/dogoffleash.html">
-      <div class="box dogoffleash" data-bg-image="dogoffleash">
-        <div class="box_text">
-          <h3>Dog Off Leash</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/ethereum-roulette.html">
-      <div class="box ethereum-roulette" data-bg-image="ethroulette">
-        <div class="box_text">
-          <h3>Ethereum roulette</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/hatitude.html">
-      <div class="box hatitude" data-bg-image="hatitude">
-        <div class="box_text">
-          <h3>Hatitude</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/iscore.html">
-      <div class="box iscore" data-bg-image="iscore">
-        <div class="box_text">
-          <h3>iScore</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/nostr-utils.html">
-      <div class="box nostr-utils" data-bg-image="nostr-utils">
-        <div class="box_text">
-          <h3>Nostr utils</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/wheretosurftoday.com">
-      <div class="box wtst" data-bg-image="wheretosurftoday">
-        <div class="overlay"></div>
-        <div class="box_text">
-          <h3>Where to surf today</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/worldleague.html">
-      <div class="box worldleague" data-bg-image="worldleague">
-        <div class="box_text">
-          <h3>World league</h3>
-        </div>
-      </div>
-    </a>
+    {% endfor  %}
   </p>
   <div style="clear: both"></div>
 </section>

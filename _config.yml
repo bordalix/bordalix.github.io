@@ -53,6 +53,34 @@ nostr_url: https://snort.social/p/npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3
 stackoverflow_url: https://stackoverflow.com/users/7006174/bordalix
 twitter_url: https://twitter.com/bordalix
 
+portfolio:
+  - blob: appcexplorer
+    name: 'APPC Explorer'
+  - blob: appcoins
+    name: 'Appcoins'
+  - blob: batalhadosbitaites
+    name: 'Batalha dos Bitaites'
+  - blob: bitcoinstats
+    name: 'Bitcoinstats'
+  - blob: chesstr
+    name: 'Chesstr'
+  - blob: cowork
+    name: 'CoWork Azeitão'
+  - blob: dogoffleash
+    name: 'Dog off leash'
+  - blob: ethereum-roulette
+    name: 'Ethereum Roulette'
+  - blob: hatitude
+    name: 'Hatitude'
+  - blob: iscore
+    name: 'iScore'
+  - blob: nostr-utils
+    name: 'Nostr Utils'
+  - blob: wheretosurftoday
+    name: 'Where to surf today'
+  - blob: worldleague 
+    name: 'World league'
+
 skills:
   - HTML:
     name: 'HTML'
