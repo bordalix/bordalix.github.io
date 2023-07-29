@@ -21,8 +21,8 @@ ANYONECANPAY, which **inputs** were committed to this signature:
 
 Using both flags in conjunction we get 6 possibilities:
 
-<a href="/images/static/blog/sighash.jpeg" alt="sighash diagram" aria-label="Click to view diagram">
-  <img class="has-border" src="/images/static/blog/sighash.jpeg">
+<a href="/images/static/blog/sighash.jpeg">
+  <img class="has-border" src="/images/static/blog/sighash.jpeg" aria-label="sighash diagram">
 </a>
 
 **SIGHASH_DEFAULT:**
