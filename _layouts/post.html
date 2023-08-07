@@ -19,7 +19,7 @@ layout: blog
           <a href="{{ page.url }}">{{ page.title }}</a>
         </h2>
         <p class="subtitle">
-          <span class="timeago">{{ page.date }}</span>
+          <time datetime="{{ page.date }}" class="timeago">{{ page.date }}</time>
           &middot;
           <span class="listen">listen</span>
           <span class="stop" style="display: none">stop</span>
