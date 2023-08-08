@@ -151,12 +151,6 @@
     padding-top: 20px;
   }
   .box_text h3 {
-    font-size: 1.125rem;
-  }
-}
-
-@media(max-width: 320px) {
-  .box_text h3 {
     font-size: 0.8rem;
   }
 }

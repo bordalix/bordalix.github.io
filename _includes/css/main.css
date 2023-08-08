@@ -12,6 +12,7 @@
   --lightgrey: #f6f6f6;
   --lightgrey-transparent: #f6f6f621;
   --grey: #9e9e9e;
+  --other-grey: #f0f0f0;
   --progress1: #95c7ec;
   --progress2: #7fbce8;
   --progress3: #6ab1e4;
@@ -329,6 +330,10 @@ blockquote {
   font-weight: 300;
   line-height: 24px;
   margin-bottom: 24px;
+}
+
+.grey blockquote {
+  background-color: var(--other-grey);
 }
 
 div.pagination {
