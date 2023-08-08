@@ -4,18 +4,18 @@ layout: blog
 
 <section>
   <div class="container">
-    <div class="inner-container">
-      <h1 class="heading"><span>Search</span></h1>
-      <p class="control">
-        <input
-          type="search"
-          id="search-input"
-          placeholder="Search posts, live results"
-          class="form-control"
-          autofocus="autofocus" />
-      </p>
-      <ul id="results-container"></ul>
-    </div>
+    <h1 class="heading">
+      <span>Search</span>
+    </h1>
+    <p class="control">
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Search posts, live results"
+        class="form-control"
+        autofocus="autofocus" />
+    </p>
+    <ul id="results-container"></ul>
   </div>
 </section>
 
@@ -24,11 +24,7 @@ layout: blog
   document.onreadystatechange = () => {
     const query = new URL(location.href).searchParams.get('q')
     const searchInput = document.getElementById('search-input')
-    const sjs = SimpleJekyllSearch({
-      searchInput,
-      resultsContainer: document.getElementById('results-container'),
-      json: '/search.json',
-    })
+    const sjs = SimpleJekyllSearch({searchInput, resultsContainer: document.getElementById('results-container'), json: '/search.json'})
     if (query) {
       searchInput.value = query
       setTimeout(() => sjs.search(query), 500)

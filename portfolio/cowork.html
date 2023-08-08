@@ -3,20 +3,33 @@ title: CoWork Azeitão
 layout: main
 description: JB portfolio - CoWork Azeitão, a new work space in Azeitão
 og_image: https://joaobordalo.com/images/static/portfolio/cowork_r.png
+portfolio:
+  previous:
+    name: Chesstr
+    link: chesstr.html
+  next:
+    name: Dog off leash
+    link: dogoffleash.html
 ---
 
 <style>
   {% include css/box.css %}
   {% include css/project.css %}
-  .technical-info-block .ti-icon { color: #4b3782; }
+  .technical-info-block .ti-icon {
+    color: #4b3782;
+  }
 </style>
 <section>
   <div class="container">
-    <h1 class="heading"><span>CoWork Azeitão</span></h1>
+    <h1 class="heading">
+      <span>CoWork Azeitão</span>
+    </h1>
     <h2 class="lead">New work space in Azeitão</h2>
     <p>
-      <strong>Status:</strong> Live<br />
-      <strong>Client:</strong> CoWork Azeitão<br />
+      <strong>Status:</strong>
+      Live<br/>
+      <strong>Client:</strong>
+      CoWork Azeitão<br/>
     </p>
     <p>
       <i class="fa fa-external-link"></i>
@@ -25,15 +38,9 @@ og_image: https://joaobordalo.com/images/static/portfolio/cowork_r.png
     <div class="text_column left">
       <a href="http://coworkazeitao.ga?ref=picture">
         <picture>
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/cowork_r.webp"
-            type="image/webp" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/cowork_r.png"
-            type="image/png" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/cowork_r.avif"
-            type="image/avif" />
+          <source srcset="{{ site.cdn_url }}/portfolio/cowork_r.webp" type="image/webp" />
+          <source srcset="{{ site.cdn_url }}/portfolio/cowork_r.png" type="image/png" />
+          <source srcset="{{ site.cdn_url }}/portfolio/cowork_r.avif" type="image/avif" />
           <img
             width="480"
             height="360"
@@ -44,38 +51,49 @@ og_image: https://joaobordalo.com/images/static/portfolio/cowork_r.png
     </div>
     <div class="text_column right">
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">DevOps</span><br />
+          <span class="skill">DevOps</span><br/>
           Surge.sh
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-times-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-times-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Database</span><br />
+          <span class="skill">Database</span><br/>
           No DB, static site
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Business logic</span><br />
+          <span class="skill">Business logic</span><br/>
           Web presence and digital marketing
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-times-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-times-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
+          <span class="skill">API Layer / MVC</span><br/>
           None, static site
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-times-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-times-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
-          Design and UI by <a href="https://html5up.net/">HTML5 UP</a>
+          <span class="skill">Design / UI</span><br/>
+          Design and UI by
+          <a href="https://html5up.net/">HTML5 UP</a>
         </div>
       </div>
     </div>
@@ -83,20 +101,6 @@ og_image: https://joaobordalo.com/images/static/portfolio/cowork_r.png
   <div style="clear: both"></div>
 </section>
 
-<nav class="menu-bottom" style="padding-bottom: 90px">
-  <div class="container">
-    <div class="project left">
-      <p>
-        <strong>&laquo; Previous project</strong><br />
-        <a href="chesstr.html">Chesstr</a>
-      </p>
-    </div>
-    <div class="project right">
-      <p>
-        <strong>Next project &raquo;</strong><br />
-        <a href="dogoffleash.html">Dog Off Leash</a>
-      </p>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</nav>
+<div class="container">
+  {% include html/portfolio/navigation.html %}
+</div>

@@ -2,6 +2,7 @@
 category: articles
 date: 2010-02-16 02:40:10
 layout: post
+tags: [windows, phone]
 title: 'Windows Phone 7'
 ---
 

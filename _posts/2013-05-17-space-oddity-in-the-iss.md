@@ -2,6 +2,7 @@
 category: articles
 date: 2013-05-17 05:39:32
 layout: post
+tags: [space]
 title: 'Space Oddity in the ISS'
 ---
 

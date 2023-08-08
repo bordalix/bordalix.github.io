@@ -3,24 +3,37 @@ title: WTST
 layout: portfolio
 description: JB portfolio - Where to surf today, Find the best places to surf in Portugal, near your location, with todays's conditions
 og_image: https://joaobordalo.com/images/static/portfolio/wheretosurftoday_r.png
+portfolio:
+  previous:
+    name: Nostr utils
+    link: nostr-utils.html
+  next:
+    name: World league
+    link: worldleague.html
 ---
 
 <style>
   {% include css/box.css %}
   {% include css/project.css %}
-  .technical-info-block .ti-icon { color: #ec5d30; }
+  .technical-info-block .ti-icon {
+    color: #ec5d30;
+  }
 </style>
 
 <section>
   <div class="container">
-    <h1 class="heading"><span>Where to surf today</span></h1>
+    <h1 class="heading">
+      <span>Where to surf today</span>
+    </h1>
     <h2 class="lead">
       Find the best places to surf in Portugal, near your location, with
       todays's conditions
     </h2>
     <p>
-      <strong>Status:</strong> Live<br />
-      <strong>Client:</strong> Personal project<br />
+      <strong>Status:</strong>
+      Live<br/>
+      <strong>Client:</strong>
+      Personal project<br/>
     </p>
     <p>
       <i class="fa fa-external-link"></i>
@@ -29,15 +42,9 @@ og_image: https://joaobordalo.com/images/static/portfolio/wheretosurftoday_r.png
     <div class="text_column left">
       <a href="https://wheretosurftoday.com?ref=picture">
         <picture>
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.webp"
-            type="image/webp" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.png"
-            type="image/png" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.avif"
-            type="image/avif" />
+          <source srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.webp" type="image/webp" />
+          <source srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.png" type="image/png" />
+          <source srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.avif" type="image/avif" />
           <img
             width="480"
             height="360"
@@ -48,37 +55,47 @@ og_image: https://joaobordalo.com/images/static/portfolio/wheretosurftoday_r.png
     </div>
     <div class="text_column right">
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">DevOps</span><br />
+          <span class="skill">DevOps</span><br/>
           EC2, S3, Nginx
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Database</span><br />
+          <span class="skill">Database</span><br/>
           MongoDB
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Business logic</span><br />
+          <span class="skill">Business logic</span><br/>
           Algorithm to calculate surf score
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
+          <span class="skill">API Layer / MVC</span><br/>
           Meteor, Google Maps, Ruby scripts
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
+          <span class="skill">Design / UI</span><br/>
           Materialize CSS
         </div>
       </div>
@@ -87,29 +104,17 @@ og_image: https://joaobordalo.com/images/static/portfolio/wheretosurftoday_r.png
   <div style="clear: both"></div>
 </section>
 
-<nav class="menu-bottom">
-  <div class="container">
-    <div class="project left">
-      <p>
-        <strong>&laquo; Previous project</strong><br />
-        <a href="nostr-utils.html">Nostr utils</a>
-      </p>
-    </div>
-    <div class="project right">
-      <p>
-        <strong>Next project &raquo;</strong><br />
-        <a href="worldleague.html">World league</a>
-      </p>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</nav>
+<div class="container">
+  {% include html/portfolio/navigation.html %}
+</div>
 
 <section class="grey">
   <div class="container">
     <h3 class="lead">Full story</h3>
     <div class="text_column left">
-      <p><strong>The problem:</strong></p>
+      <p>
+        <strong>The problem:</strong>
+      </p>
       <p>
         Imagine you are in Portugal, you want to go surfing, but you don't know
         where the best waves are.
@@ -118,11 +123,13 @@ og_image: https://joaobordalo.com/images/static/portfolio/wheretosurftoday_r.png
       <p>
         Well, you open your surf guide, see what surf spots are near enough,
         search for a beachcam on that spot, and after some thorough evaluation,
-        you finally decide where to go. Now it's time to search for the spot on
-        Google Maps, and get some directions.
+                                                        you finally decide where to go. Now it's time to search for the spot on
+                                                        Google Maps, and get some directions.
       </p>
       <p>Wouldn't be great if there was a simpler way of doing all this?</p>
-      <p><strong>Well, there is.</strong></p>
+      <p>
+        <strong>Well, there is.</strong>
+      </p>
       <p>
         That's why I made
         <a href="https://wheretosurftoday.com">https://wheretosurftoday.com</a>
@@ -130,7 +137,9 @@ og_image: https://joaobordalo.com/images/static/portfolio/wheretosurftoday_r.png
       </p>
     </div>
     <div class="text_column right">
-      <p><strong>And how exactly it solves the problem?</strong></p>
+      <p>
+        <strong>And how exactly it solves the problem?</strong>
+      </p>
       <p>
         After you give authorization to the website to access your location, you
         will get:
@@ -151,10 +160,7 @@ og_image: https://joaobordalo.com/images/static/portfolio/wheretosurftoday_r.png
           <a href="https://wtst.info">https://wtst.info</a>
         </li>
         <li>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.id1s3e5v51g2mink1kolsdq"
-            >Android app</a
-          >
+          <a href="https://play.google.com/store/apps/details?id=com.id1s3e5v51g2mink1kolsdq">Android app</a>
           available
         </li>
       </ul>

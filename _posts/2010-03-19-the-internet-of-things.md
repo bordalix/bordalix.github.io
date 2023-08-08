@@ -2,6 +2,7 @@
 category: articles
 date: 2010-03-19 06:00:51
 layout: post
+tags: [internet, iot]
 title: 'The Internet of Things'
 ---
 

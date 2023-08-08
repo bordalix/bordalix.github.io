@@ -2,6 +2,7 @@
 category: articles
 date: 2011-04-11 06:08:11
 layout: post
+tags: [blackberry]
 title: 'My blackberry is not working'
 ---
 

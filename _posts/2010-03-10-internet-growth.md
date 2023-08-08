@@ -2,6 +2,7 @@
 category: articles
 date: 2010-03-10 06:07:50
 layout: post
+tags: [internet, history]
 title: 'Internet growth'
 ---
 

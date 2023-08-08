@@ -13,50 +13,11 @@ layout: blog
 </section>
 <section style="padding-top: 0">
   <div class="container">
-    <div class="inner-container">
-      <article class="post">
-        <h2>
-          <a href="{{ page.url }}">{{ page.title }}</a>
-        </h2>
-        <p class="subtitle">
-          <time datetime="{{ page.date }}" class="timeago">{{ page.date }}</time>
-          &middot;
-          <span class="listen">listen</span>
-          <span class="stop" style="display: none">stop</span>
-          {% if page.tags %}
-            <br/>
-            {% for tag in page.tags %}
-              <a href="/search?q={{tag}}">#{{ tag }}</a>
-            {% endfor %}
-          {% endif %}
-        </p>
-        <div class="content">{{ content }}</div>
-        <nav class="menu-bottom" style="padding-bottom: 8rem;">
-          <!-- Left side -->
-          {% if page.previous %}
-            <div class="post left">
-              <p>
-                <strong>« Previous post</strong>
-              </p>
-              <p>
-                <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
-              </p>
-            </div>
-          {% endif %}
-
-          <!-- Right side -->
-          {% if page.next %}
-            <div class="post right">
-              <p>
-                <strong>Next post »</strong>
-              </p>
-              <p>
-                <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
-              </p>
-            </div>
-          {% endif %}
-        </nav>
-      </article>
-    </div>
+    <article class="post">
+      {% assign foo = page %}
+      {% include html/post/header.html %}
+      <div class="content">{{ content }}</div>
+      {% include html/post/navigation.html %}
+    </article>
   </div>
 </section>

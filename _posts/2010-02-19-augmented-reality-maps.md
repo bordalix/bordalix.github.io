@@ -2,6 +2,7 @@
 category: articles
 date: 2010-02-19 03:02:11
 layout: post
+tags: [ar]
 title: 'Augmented reality maps'
 ---
 

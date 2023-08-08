@@ -2,6 +2,7 @@
 category: articles
 date: 2013-03-21 14:27:56
 layout: post
+tags: [internet]
 title: 'One minute in the Internet'
 ---
 

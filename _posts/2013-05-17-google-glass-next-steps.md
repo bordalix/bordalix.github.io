@@ -2,6 +2,7 @@
 category: articles
 date: 2013-05-17 05:45:59
 layout: post
+tags: [google]
 title: 'Google Glass next steps'
 ---
 

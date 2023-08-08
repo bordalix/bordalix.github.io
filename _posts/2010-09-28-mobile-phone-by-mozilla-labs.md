@@ -2,6 +2,7 @@
 category: articles
 date: 2010-09-28 10:55:36
 layout: post
+tags: [mozilla]
 title: 'Mobile phone by Mozilla Labs'
 ---
 

@@ -1,0 +1,123 @@
+<style>
+  .contact-info-block:last-child {
+    margin-bottom: 30px;
+  }
+
+  .contact-info-block {
+    position: relative;
+    text-align: left;
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0.5rem 0;
+    color: var(--blue);
+    font-size: 40px;
+  }
+
+  .contact-info-block .ci-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -27px;
+  }
+
+  .contact-info-block .ci-text {
+    position: relative;
+    padding-left: 2rem;
+    font-size: 1rem;
+    color: var(--darkest);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+</style>
+<div class="container">
+  <h2 class="heading">
+    <span>Contact</span>
+  </h2>
+  <h3 class="lead">Let's talk</h3>
+  <div class="text_column left">
+    <form
+      id="contact-form"
+      action="https://formspree.io/f/joao.bordalo@gmail.com"
+      method="post">
+      <div class="controls">
+        <div class="form-group">
+          <label for="name">Your name *</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+            required="required"
+            class="form-control"
+            autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Your email *</label>
+          <input
+            type="email"
+            name="_replyto"
+            id="email"
+            placeholder="Enter your email"
+            required="required"
+            class="form-control"
+            autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="message">Your message *</label>
+          <textarea
+            rows="4"
+            name="message"
+            id="message"
+            placeholder="Enter your message"
+            required="required"
+            class="form-control"></textarea>
+        </div>
+        <div class="button">
+          <input
+            type="submit"
+            value="Send message"
+            class="btn btn-primary btn-block" />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="text_column right">
+    <p></p>
+    <p>
+      I'm fluent in Portuguese, English and Spanish, and medium level on
+      French. I learned Esperanto some years ago, but it's really rusty.
+    </p>
+    <p>
+      If you prefer, you can just drop by and have a beer, or contact me using
+      the alternative methods listed below:
+    </p>
+    <div class="contact-info-block">
+      <div class="ci-icon">{% include /svg/map.svg %}</div>
+      <div class="ci-text">Azeitão, Portugal</div>
+    </div>
+    <div class="contact-info-block">
+      <div class="ci-icon">{% include /svg/email.svg %}</div>
+      <div class="ci-text">
+        <a href="mailto:joao.bordalo@gmail.com">joao.bordalo@gmail.com</a>
+      </div>
+    </div>
+    <div class="contact-info-block">
+      <div class="ci-icon">{% include /svg/nostr.svg %}</div>
+      <div class="ci-text">
+        <a href="https://snort.social/p/npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3s9kudkyhn8qt28cxv">
+          nostr:npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3s9kudkyhn8qt28cxv
+        </a>
+      </div>
+    </div>
+    <div class="contact-info-block">
+      <div class="ci-icon">{% include /svg/lightning.svg %}</div>
+      <div class="ci-text">
+        <a href="https://getalby.com/p/bordalix">
+          https://getalby.com/p/bordalix
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="clear: both"></div>

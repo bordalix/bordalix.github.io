@@ -2,6 +2,7 @@
 category: articles
 date: 2011-02-02 06:07:14
 layout: post
+tags: [google, microsoft]
 title: "Is Bing copying Google?"
 ---
 

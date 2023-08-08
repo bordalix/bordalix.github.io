@@ -2,6 +2,7 @@
 category: articles
 date: 2010-03-13 03:22:48
 layout: post
+tags: [games, history]
 title: 'The videogame history timeline'
 ---
 

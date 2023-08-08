@@ -2,6 +2,7 @@
 category: articles
 date: 2010-03-01 11:42:18
 layout: post
+tags: [games]
 title: 'Games, and the quest for reality'
 ---
 

@@ -2,6 +2,7 @@
 category: articles
 date: 2010-09-22 04:57:22
 layout: post
+tags: [books]
 title: 'The future of books'
 ---
 

@@ -1,0 +1,15 @@
+<p>&nbsp;</p>
+<div class="flexed" style="margin-bottom: 3rem;">
+  <p>
+    {% if page.portfolio.previous %}
+      <strong>« Previous</strong><br/>
+      <a href="{{ page.portfolio.previous.link }}">{{ page.portfolio.previous.name }}</a>
+    {% endif %}
+  </p>
+  <p style="text-align:right">
+    {% if page.portfolio.next %}
+      <strong>Next »</strong><br/>
+      <a href="{{ page.portfolio.next.link }}">{{ page.portfolio.next.name }}</a>
+    {% endif %}
+  </p>
+</div>

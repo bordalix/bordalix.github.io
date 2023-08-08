@@ -2,6 +2,7 @@
 category: articles
 date: 2015-01-21 13:40:15
 layout: post
+tags: [windows]
 title: 'Windows Holographic'
 ---
 

@@ -64,8 +64,8 @@ body.dark-theme .progress-title {
 }
 
 body.dark-theme .btn-primary {
-  color: var(--lightgrey);
-  background-color: var(--darkblue);
+  color: var(--darkblue);
+  background-color: var(--lightgrey);
   border-color: var(--darkblue);
 }
 
@@ -73,6 +73,7 @@ body.dark-theme .btn-primary.active,
 body.dark-theme .btn-primary:active,
 body.dark-theme .btn-primary:focus,
 body.dark-theme .btn-primary:hover {
+  color: var(--lightgrey);
   background: var(--darkblue);
   border-color: var(--darkblue);
 }

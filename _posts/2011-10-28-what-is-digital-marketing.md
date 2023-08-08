@@ -2,6 +2,7 @@
 category: articles
 date: 2011-10-28 05:56:08
 layout: post
+tags: [marketing]
 title: 'What is Digital Marketing?'
 ---
 

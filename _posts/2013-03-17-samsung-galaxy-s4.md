@@ -2,6 +2,7 @@
 category: articles
 date: 2013-03-17 04:47:12
 layout: post
+tags: [samsung]
 title: 'Samsung Galaxy S4'
 ---
 

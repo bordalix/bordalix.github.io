@@ -2,6 +2,7 @@
 category: articles
 date: 2013-02-21 09:01:53
 layout: post
+tags: [google, glass]
 title: 'Ok glass, post video to blog'
 ---
 

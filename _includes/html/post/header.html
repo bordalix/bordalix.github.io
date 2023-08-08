@@ -1,0 +1,46 @@
+<style>
+  div.metainfo {
+    border-bottom: 1px silver solid;
+    border-top: 1px silver solid;
+    color: silver;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0;
+  }
+  div.metainfo p {
+    margin: 0.3rem 0;
+  }
+  span.tag {
+    background-color: var(--tag-bgcolor);
+    border-radius: 4px;
+    font-size: 0.66rem;
+    padding: 0 0.3rem;
+  }
+  @media(max-width: 414px) {
+    div.metainfo {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<h2>
+  <a href="{{ foo.url }}">{{ foo.title }}</a>
+</h2>
+<div class="metainfo">
+  <p>
+    <time datetime="{{ foo.date }}" class="timeago">{{ foo.date }}</time>
+    &middot;
+    <span class="listen false-link">listen</span>
+    <span class="stop false-link" style="display: none">stop</span>
+    {% if foo.tags %}
+      <br/>
+      {% for tag in foo.tags %}
+        <a href="/search?q={{tag}}">
+          <span class="tag">#{{ tag }}</span>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </p>
+  {% include html/post/share.html %}
+</div>

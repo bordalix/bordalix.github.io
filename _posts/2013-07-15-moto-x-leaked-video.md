@@ -2,6 +2,7 @@
 category: articles
 date: 2013-07-15 09:46:17
 layout: post
+tags: [motorola]
 title: 'Moto X leaked video'
 ---
 

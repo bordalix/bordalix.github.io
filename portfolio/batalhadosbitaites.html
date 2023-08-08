@@ -3,33 +3,40 @@ title: Batalha dos bitaites
 layout: main
 description: JB portfolio - Batalha dos bitaites, World Cup 2018 tip game for journalists
 og_image: https://joaobordalo.com/images/static/portfolio/batalhadosbitaites_r.png
+portfolio:
+  previous:
+    name: Appcoins
+    link: appcoins.html
+  next:
+    name: Bitcoinstats
+    link: bitcoinstats.html
 ---
 
 <style>
   {% include css/box.css %}
   {% include css/project.css %}
-  .technical-info-block .ti-icon { color: #cd0027; }
+  .technical-info-block .ti-icon {
+    color: #cd0027;
+  }
 </style>
 
 <section>
   <div class="container">
-    <h1 class="heading"><span>Batalha dos bitaites</span></h1>
+    <h1 class="heading">
+      <span>Batalha dos bitaites</span>
+    </h1>
     <h2 class="lead">World Cup 2018 tip game for journalists</h2>
     <p>
-      <strong>Status:</strong> Defunct<br />
-      <strong>Client:</strong> Betclic Portugal<br />
+      <strong>Status:</strong>
+      Defunct<br/>
+      <strong>Client:</strong>
+      Betclic Portugal<br/>
     </p>
     <div class="text_column left">
       <picture>
-        <source
-          srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.webp"
-          type="image/webp" />
-        <source
-          srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.png"
-          type="image/png" />
-        <source
-          srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.avif"
-          type="image/avif" />
+        <source srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.webp" type="image/webp" />
+        <source srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.png" type="image/png" />
+        <source srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.avif" type="image/avif" />
         <img
           width="480"
           height="360"
@@ -39,37 +46,47 @@ og_image: https://joaobordalo.com/images/static/portfolio/batalhadosbitaites_r.p
     </div>
     <div class="text_column right">
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">DevOps</span><br />
+          <span class="skill">DevOps</span><br/>
           EC2, S3, Nginx
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Database</span><br />
+          <span class="skill">Database</span><br/>
           MongoDB
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Business logic</span><br />
+          <span class="skill">Business logic</span><br/>
           Tip results, get points, win prizes
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
+          <span class="skill">API Layer / MVC</span><br/>
           Meteor
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
+          <span class="skill">Design / UI</span><br/>
           FunnyHow / Materialize CSS
         </div>
       </div>
@@ -78,20 +95,6 @@ og_image: https://joaobordalo.com/images/static/portfolio/batalhadosbitaites_r.p
   <div style="clear: both"></div>
 </section>
 
-<nav class="menu-bottom" style="padding-bottom: 90px">
-  <div class="container">
-    <div class="project left">
-      <p>
-        <strong>&laquo; Previous project</strong><br />
-        <a href="appcoins.html">Appcoins</a>
-      </p>
-    </div>
-    <div class="project right">
-      <p>
-        <strong>Next project &raquo;</strong><br />
-        <a href="bitcoinstats.html">Bitcoinstats</a>
-      </p>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</nav>
+<div class="container">
+  {% include html/portfolio/navigation.html %}
+</div>

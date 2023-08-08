@@ -2,6 +2,7 @@
 category: articles
 date: 2010-02-26 02:28:10
 layout: post
+tags: [internet, stats]
 title: 'Internet statistics'
 ---
 

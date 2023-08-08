@@ -2,6 +2,7 @@
 category: articles
 date: 2011-10-28 08:55:15
 layout: post
+tags: [microsoft]
 title: 'Microsoft future vision (2011)'
 ---
 

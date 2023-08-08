@@ -4,5 +4,6 @@
     "*.html": "liquid",
     "*.js": "liquid-javascript",
     "*.css": "liquid-css"
-  }
+  },
+  "liquid.format.enable": true
 }

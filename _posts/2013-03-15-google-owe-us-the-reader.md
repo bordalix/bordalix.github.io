@@ -2,6 +2,7 @@
 category: articles
 date: 2013-03-15 07:21:10
 layout: post
+tags: [google, reader]
 title: 'Google owe us the Reader'
 ---
 

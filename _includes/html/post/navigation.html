@@ -1,0 +1,15 @@
+<p>&nbsp;</p>
+<div class="flexed">
+  <p>
+    {% if page.previous %}
+      <strong>« Previous</strong><br/>
+      <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+    {% endif %}
+  </p>
+  <p style="text-align:right">
+    {% if page.next %}
+      <strong>Next »</strong><br/>
+      <a href="{{ page.next.url }}">{{ page.next.title }}</a>
+    {% endif %}
+  </p>
+</div>

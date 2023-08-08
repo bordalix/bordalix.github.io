@@ -2,6 +2,7 @@
 category: articles
 date: 2010-09-28 09:58:51
 layout: post
+tags: [blackberry]
 title: 'Blackberry Playbook'
 ---
 

@@ -2,6 +2,7 @@
 category: articles
 date: 2011-02-28 05:09:29
 layout: post
+tags: [glass]
 title: 'A day full of glass'
 ---
 

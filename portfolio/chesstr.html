@@ -3,21 +3,34 @@ title: Chesstr
 layout: main
 description: JB portfolio - Chesstr
 og_image: https://joaobordalo.com/images/static/portfolio/chesstr_r.png
+portfolio:
+  previous:
+    name: Bitcoinstats
+    link: bitcoinstats.html
+  next:
+    name: CoWork Azeitão
+    link: cowork.html
 ---
 
 <style>
   {% include css/box.css %}
   {% include css/project.css %}
-  .technical-info-block .ti-icon { color: #a77452; }
+  .technical-info-block .ti-icon {
+    color: #a77452;
+  }
 </style>
 
 <section>
   <div class="container">
-    <h1 class="heading"><span>Chesstr</span></h1>
+    <h1 class="heading">
+      <span>Chesstr</span>
+    </h1>
     <h2 class="lead">Chessboard powered by Nostr</h2>
     <p>
-      <strong>Status:</strong> Live<br />
-      <strong>Client:</strong> Personal project<br />
+      <strong>Status:</strong>
+      Live<br/>
+      <strong>Client:</strong>
+      Personal project<br/>
     </p>
     <p>
       <i class="fa fa-external-link"></i>
@@ -26,15 +39,9 @@ og_image: https://joaobordalo.com/images/static/portfolio/chesstr_r.png
     <div class="text_column left">
       <a href="https://chesstr.pages.dev?ref=picture">
         <picture>
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/chesstr_r.webp"
-            type="image/webp" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/chesstr_r.png"
-            type="image/png" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/chesstr_r.avif"
-            type="image/avif" />
+          <source srcset="{{ site.cdn_url }}/portfolio/chesstr_r.webp" type="image/webp" />
+          <source srcset="{{ site.cdn_url }}/portfolio/chesstr_r.png" type="image/png" />
+          <source srcset="{{ site.cdn_url }}/portfolio/chesstr_r.avif" type="image/avif" />
           <img
             width="480"
             height="360"
@@ -45,37 +52,47 @@ og_image: https://joaobordalo.com/images/static/portfolio/chesstr_r.png
     </div>
     <div class="text_column right">
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">DevOps</span><br />
+          <span class="skill">DevOps</span><br/>
           Cloudflare Pages
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-times-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-times-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Database</span><br />
+          <span class="skill">Database</span><br/>
           None
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Business logic</span><br />
+          <span class="skill">Business logic</span><br/>
           Experimenting with Nostr
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
+          <span class="skill">API Layer / MVC</span><br/>
           Static website with vanilla javascript
         </div>
       </div>
       <div class="technical-info-block">
-        <div class="ti-icon"><i class="fa fa-check-circle-o"></i></div>
+        <div class="ti-icon">
+          <i class="fa fa-check-circle-o"></i>
+        </div>
         <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
+          <span class="skill">Design / UI</span><br/>
           chessboardjs
         </div>
       </div>
@@ -84,20 +101,6 @@ og_image: https://joaobordalo.com/images/static/portfolio/chesstr_r.png
   <div style="clear: both"></div>
 </section>
 
-<nav class="menu-bottom" style="padding-bottom: 90px">
-  <div class="container">
-    <div class="project left">
-      <p>
-        <strong>&laquo; Previous project</strong><br />
-        <a href="bitcoinstats.html">Bitcoin stats</a>
-      </p>
-    </div>
-    <div class="project right">
-      <p>
-        <strong>Next project &raquo;</strong><br />
-        <a href="cowork.html">CoWork Azeitão</a>
-      </p>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</nav>
+<div class="container">
+  {% include html/portfolio/navigation.html %}
+</div>

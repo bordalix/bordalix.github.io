@@ -6,15 +6,6 @@ object {
   margin-bottom: 24px;
 }
 
-nav.menu-bottom {
-  padding-bottom: 2rem;
-}
-
-nav.menu-bottom .post p:nth-child(2) {
-  margin-top: -1rem;
-  padding: 0;
-}
-
 div.placeholder {
   background: url('https://joaobordalo.com/images/static/blog/placeholder.png') no-repeat scroll 0 0;
 }
@@ -31,7 +22,7 @@ td {
 
 ul,
 ol {
-  margin: -0.5rem 0 2.5rem 1rem;
+  margin-left: 1rem;
 }
 
 .has-border {
