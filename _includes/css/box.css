@@ -157,6 +157,6 @@
 
 @media(max-width: 320px) {
   .box_text h3 {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }

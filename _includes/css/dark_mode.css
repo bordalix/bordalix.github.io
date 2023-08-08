@@ -33,7 +33,8 @@ body.dark-theme .form-control {
 body.dark-theme .form-control,
 body.dark-theme .timeline > li .timeline-image,
 body.dark-theme div.graph_container,
-body.dark-theme .text_column.left img {
+body.dark-theme .text_column.left img,
+body.dark-theme .text_column.left .img-container {
   border: solid 1px var(--darkest);
 }
 
@@ -78,7 +79,8 @@ body.dark-theme .btn-primary:hover {
   border-color: var(--darkblue);
 }
 
-body.dark-theme .text_column.left img {
+body.dark-theme .text_column.left img,
+body.dark-theme .text_column.left .img-container {
   box-shadow: 6px 6px 6px #626262;
 }
 

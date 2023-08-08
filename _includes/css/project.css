@@ -22,7 +22,8 @@ figcaption {
   padding-bottom: 2em;
 }
 
-.text_column.left img {
+.text_column.left img,
+.text_column.left .img-container {
   opacity: 1;
   height: auto;
   width: 100%;

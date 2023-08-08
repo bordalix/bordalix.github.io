@@ -137,6 +137,9 @@ p {
   h3.lead {
     font-size: 1.3rem;
   }
+  div.pagination p {
+    font-size: 0.8rem;
+  }
 }
 
 .left {
@@ -246,7 +249,8 @@ nav img {
   padding-right: 30px;
 }
 
-.text_column.left img {
+.text_column.left img,
+.text_column.left .img-container {
   margin-bottom: 30px;
 }
 
