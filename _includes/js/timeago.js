@@ -13,7 +13,7 @@ const MONTH_NAMES = [
   'December',
 ]
 
-function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
+function getFormattedDate(date, prefomattedDate = false) {
   const day = date.getDate()
   const month = MONTH_NAMES[date.getMonth()]
   const year = date.getFullYear()
@@ -31,13 +31,8 @@ function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
     return `${prefomattedDate} at ${hours}:${minutes}`
   }
 
-  if (hideYear) {
-    // 10. January at 10:20
-    return `${day} ${month} at ${hours}:${minutes}`
-  }
-
-  // 10. January 2017. at 10:20
-  return `${day} ${month} ${year} at ${hours}:${minutes}`
+  // 10. January 2017
+  return `${month} ${day}, ${year}`
 }
 
 // --- Main function
@@ -58,7 +53,6 @@ function timeAgo(dateParam) {
   const hours = Math.round(minutes / 60)
   const isToday = today.toDateString() === date.toDateString()
   const isYesterday = yesterday.toDateString() === date.toDateString()
-  const isThisYear = today.getFullYear() === date.getFullYear()
 
   if (seconds < 5) {
     return 'now'
@@ -74,8 +68,6 @@ function timeAgo(dateParam) {
     return getFormattedDate(date, 'Today') // Today at 10:20
   } else if (isYesterday) {
     return getFormattedDate(date, 'Yesterday') // Yesterday at 10:20
-  } else if (isThisYear) {
-    return getFormattedDate(date, false, true) // 10. January at 10:20
   }
 
   return getFormattedDate(date) // 10. January 2017. at 10:20

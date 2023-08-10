@@ -1,6 +1,11 @@
 ---
 layout: blog
 ---
+<style>
+  #results-container li span.timeago {
+    font-size: 0.7rem;
+  }
+</style>
 
 <section>
   <div class="container">
@@ -22,12 +27,16 @@ layout: blog
 <script src="/js/simple-jekyll-search.min.js"></script>
 <script>
   document.onreadystatechange = () => {
+    const json = '/search.json'
     const query = new URL(location.href).searchParams.get('q')
     const searchInput = document.getElementById('search-input')
-    const sjs = SimpleJekyllSearch({searchInput, resultsContainer: document.getElementById('results-container'), json: '/search.json'})
+    const resultsContainer = document.getElementById('results-container')
+    const searchResultTemplate = '<li><a href="{{ site.url }}{url}">{title}</a> &middot; <span class="timeago">{date}</span></li>'
+    const templateMiddleware = (prop, value) => { if (prop === 'date') return timeAgo(value) }
+    const sjs = SimpleJekyllSearch({json, resultsContainer, searchInput, searchResultTemplate, templateMiddleware})
     if (query) {
-      searchInput.value = query
-      setTimeout(() => sjs.search(query), 500)
+        searchInput.value = query
+        setTimeout(() => sjs.search(query), 500)
+      }
     }
-  }
 </script>
