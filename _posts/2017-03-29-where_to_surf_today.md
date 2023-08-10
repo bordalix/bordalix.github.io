@@ -4,7 +4,7 @@ date: 2017-03-29 16:25:32
 extended: true
 layout: post
 tags: [wtst]
-title: 'Where to surf today'
+title: "Where to surf today"
 ---
 
 <p><strong>The problem:</strong></p>
@@ -12,6 +12,8 @@ title: 'Where to surf today'
 <p>Imagine you are in Portugal, you want to go surfing, but you don't know where the best waves are.</p>
 
 <p>What do you do?</p>
+
+<!--more-->
 
 <p>
   Well, you open your surf guide, see what surf spots are near enough, search for a beachcam on that spot,
@@ -30,7 +32,6 @@ title: 'Where to surf today'
 
 <p><strong>And how exactly it solves the problem?</strong></p>
 
-<!--more-->
 <p>After you give authorization to the website to access your location, you will get:</p>
 
 <ul>

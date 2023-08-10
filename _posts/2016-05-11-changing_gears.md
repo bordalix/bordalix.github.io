@@ -3,15 +3,17 @@ category: articles
 date: 2016-05-11 13:54:53
 extended: true
 layout: post
-title: 'Changing gears'
+title: "Changing gears"
 ---
 
 <p>Almost 10 years ago, me and some friends created excentric, a digital marketing agency. It was a big adventure, with ups and downs, with some huge successes and some defeats. We were able to put together an amazing team of really talented people, who sticked together on the bad moments and were capable of partying like animals when the situation deserve it. Thank you guys, you are the best.</p>
+
+<!--more-->
+
 <p><strong>But my role on it is now over</strong></p>
 <p>excentric merged with Grey, a WPP agency, back in 2013 giving birth to <a href="http://excentricgrey.com/">excentricGrey</a>, and for me it was fun to get back to the multinational world. But I missed the hands on, get your hands dirty, you know, being a doer instead of an enabler. </p>
 <p>excentricGrey is now fully owned by WPP, and since the first of January I'm no longer part of the company.</p>
 
-<!--more-->
 <p><strong>Changing gears</strong></p>
 <p>My wife and I decided that I should stop for some time. Our third kid was on his way (borned in late February), so it was better for us if I could stick around to help. In the meantime, I started to poke around with some side projects that were in the drawer, learn new skills, and start building stuff.</p>
 <p><strong>First of all, design the new resume</strong></p>

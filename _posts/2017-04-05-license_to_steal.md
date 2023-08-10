@@ -1,14 +1,17 @@
 ---
 category: articles
 date: 2017-04-05 10:36:34
+extended: true
 layout: post
 tags: [apple, store, app, ip]
-title: 'License to steal'
+title: "License to steal"
 ---
 
 <p>Every now and then people ask me for iOS versions of my mobile apps.</p>
 
 <p>I don't build them, due to the following text in the <a href="https://developer.apple.com/programs/terms/apple_developer_agreement.pdf">Apple Developer Agreement</a>:</p>
+
+<!--more-->
 
 <blockquote>
 11. Apple Independent Development. Nothing in this Agreement will impair Apple’s right to

@@ -4,7 +4,7 @@ date: 2023-07-10 11:27:38
 extended: true
 layout: post
 tags: [bitcoin, difficulty, pow]
-title: 'Maximum target hash'
+title: "Maximum target hash"
 ---
 
 Do you know which Bitcoin constant is this?
@@ -15,11 +15,11 @@ Maybe in its hexadecimal format?
 
 0x00000000FFFF0000000000000000000000000000000000000000000000000000
 
+<!--more-->
+
 Yes, it's the maximum target hash.
 
 But what thus it means, and why this “weird” value?
-
-<!--more-->
 
 Bitcoin’s protocol wants blocks mined every 10 minutes (on average), but the number of miners doing it varies along the time. The protocol adjusts to this hash power variation by increasing or decreasing the difficulty to mine a block.
 

@@ -1,10 +1,19 @@
 ---
 category: articles
 date: 2023-07-13 11:27:38
+extended: true
 layout: post
 tags: [bitcoin, difficulty, pow]
-title: 'Explaining SIGHASH'
+title: "Explaining SIGHASH"
 ---
+
+Sighash, short for Signature Hash, is a concept within the Bitcoin protocol that determines which parts of a transaction are signed. It plays a crucial role in ensuring the security and integrity of the Bitcoin network.
+
+<!--more-->
+
+By using different Sighash types, users have control over which parts of a transaction are mutable and which are immutable when they sign it. This flexibility allows for various use cases, such as creating conditional transactions or enabling partial signatures for multi-signature transactions.
+
+Sighash types, such as SIGHASH_ALL, SIGHASH_NONE, SIGHASH_SINGLE, and others, define different signing schemes. These schemes specify which parts of a transaction are committed to, preventing tampering while still allowing different transaction formats.
 
 Each signature has two flags appended at the end:
 
