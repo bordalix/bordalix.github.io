@@ -37,14 +37,13 @@ function getFormattedDate(date, prefomattedDate = false) {
 
 // --- Main function
 function timeAgo(dateParam) {
-  if (!dateParam) {
-    return null
-  }
+  if (!dateParam) return ''
 
   const date =
     typeof dateParam === 'object'
       ? dateParam
       : new Date(dateParam.replace(/-/g, '/')) // firefox hack
+
   const DAY_IN_MS = 86400000 // 24 * 60 * 60 * 1000
   const today = new Date()
   const yesterday = new Date(today - DAY_IN_MS)
