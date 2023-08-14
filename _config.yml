@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: João Bordalo
 email: joao.bordalo@gmail.com
-description: Hello, I'm João Bordalo, a full stack developer living in Portugal. Here you can see some of my work, know my history or get my CV. Feel free to reach out.
+description: Hello, I'm João Bordalo, a full stack bitcoiner living in Portugal. Here you can see some of my work, know my history or get my CV. Feel free to reach out.
 baseurl: '' # the subpath of your site, e.g. /blog
 url: 'https://joaobordalo.com'
 og_image: https://joaobordalo.com/images/static/logos/logo_circle.png
@@ -78,7 +78,7 @@ portfolio:
     name: 'Nostr Utils'
   - blob: wheretosurftoday
     name: 'Where to surf today'
-  - blob: worldleague 
+  - blob: worldleague
     name: 'World league'
 
 skills:
