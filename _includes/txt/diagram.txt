@@ -1,0 +1,7 @@
+
+IN           | OUT     
+-------------+---------
+Alice  1 BTC | UTXO    
+Bob    2 BTC | multisig
+Carol  3 BTC | 4 of 4  
+Server 6 BTC |

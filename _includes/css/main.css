@@ -51,6 +51,9 @@ ul {
   list-style: disc;
   margin: 1rem 0 1rem 1rem;
 }
+ol {
+  margin: 1rem 0 1rem 1rem;
+}
 
 a,
 ins {

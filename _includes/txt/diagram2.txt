@@ -1,0 +1,20 @@
+
+
+      .~~~~~~~~~.                   .~~~~~~~~~.
+      : onchain :                   : virtual :
+      '~~~~~~~~~'                   '~~~~~~~~~'
+                           :
+TX1                        :
+                           :
+IN           | OUT         :    IN | OUT
+-------------+---------    :    ---+---------
+Alice  1 BTC | UTXO    o-------->* | Alice 1 BTC  multisig 2 of 2
+Bob    2 BTC | multisig    :       | Bob   1 BTC  multisig 2 of 2
+Carol  3 BTC | 4 of 4      :       | Carol 3 BTC  multisig 2 of 2
+Server 6 BTC |             :
+                           :         \_________/
+                                          |
+                                          v
+
+                                        VUTXOS (Virtual Utxos)
+    

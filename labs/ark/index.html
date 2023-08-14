@@ -1,0 +1,93 @@
+---
+title: Ark ELI5
+layout: main
+description: Explain ARK like I'm 5
+---
+
+<style>
+  svg,
+  ol {
+    margin-bottom: 2rem;
+  }
+</style>
+
+<script src="https://google.github.io/typograms/typograms.js"></script>
+
+<section>
+  <div class="container">
+    <h2 class="heading">
+      <span class="gradient">Explain ARK like I'm 5</span>
+    </h2>
+    <p>Every 5 seconds there's an onchain transaction:</p>
+    <script type="text/typogram">
+      {% include txt/diagram.txt %}
+    </script>
+    <p>
+      In this example, Alice, Bob and Carol are "lifting" BTC to Ark, and the
+      Server must add the exact same amount.
+    </p>
+    <p>
+      Note, this transaction can be constructed using a CoinJoin for improved
+      confidentiality, but it isn't mandatory.
+    </p>
+    <p>
+      The output is a UTXO locked by a multisig 4 of 4, where 4 is the number of
+      participants in the transaction.
+    </p>
+    <p>
+      The resulting UTXO is then used as input for a new transaction. This new
+      transaction doesn't need to go onchain, but Alice, Bob and Carol each have
+      a copy of it, and they can broadcast it to the network any time to recover
+      their BTC.
+    </p>
+    <script type="text/typogram">
+      {% include txt/diagram2.txt %}
+    </script>
+    <p>Now let's imagine Alice wants to send Eve 1 BTC using Ark:</p>
+    <ol>
+      <li>Alice asks Eve for an address (address E)</li>
+      <li>Alice informs Server she wants to pay 1 BTC to address E</li>
+      <li>Server prepares new transaction (TX2) and show it to Alice:</li>
+      <script type="text/typogram">
+        {% include txt/diagram3.txt %}
+      </script>
+      <li>
+        Alice looks at the locking script for this new UTXO and sees Eve's
+        public key on the multisig list. She understands that when TX2 confirms,
+        Eve will have 1 BTC on Ark
+      </li>
+      <li>
+        Alice proceeds by sending her VUTXO to the server, on the condition that
+        TX2 is confirmed:
+      </li>
+      <script type="text/typogram">
+        {% include txt/diagram4.txt %}
+      </script>
+      <li>
+        Server cannot cheat, if he wants to receive from Alice he needs to send
+        it to Eve, which means Alice can pay Eve atomically.
+      </li>
+    </ol>
+    <p><strong>"only if TX2 is confirmed"</strong></p>
+    <p>
+      This condition is not possible to implement today using Bitcoin script,
+      but we can implement it using a trick:
+    </p>
+    <ul>
+      <li>TX1 will have additional outputs, called connectors</li>
+      <li>This connectors have no financial value (dust limit)</li>
+      <li>
+        Alice will use one of this connectors as input to the new transaction
+      </li>
+      <li>Alice will sign is VUTXO with SIGHASH_ALL to commit to all inputs</li>
+    </ul>
+    <script type="text/typogram">
+      {% include txt/diagram5.txt %}
+    </script>
+    <p>
+      This way, the TX where Alice gives her VUTXO to the server is only valid
+      if TX2 is confirmed.
+    </p>
+    <p>To be continued...</p>
+  </div>
+</section>

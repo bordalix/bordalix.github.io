@@ -1,0 +1,16 @@
+
+
+      .~~~~~~~~~.                   .~~~~~~~~~.
+      : onchain :                   : virtual :
+      '~~~~~~~~~'                   '~~~~~~~~~'
+                           :
+TX1                        :
+                           :
+IN           | OUT         :    IN | OUT               IN | OUT
+-------------+---------    :    ---+---------          ---+--------
+Alice  1 BTC | UTXO    o-------->* | Alice 1 BTC o----->* | Server but only
+   "..."     | multisig    :       | "..."                | if tx2 confirmed
+   "..."     | 4 of 4      :       | "..."
+   "..."     |             :
+
+    
