@@ -19,15 +19,15 @@ description: Explain ARK like I'm 5
     </h2>
     <p>Every 5 seconds there's an onchain transaction:</p>
     <script type="text/typogram">
-      {% include txt/diagram.txt %}
+      {% include txt/ark/diagram.txt %}
     </script>
     <p>
-      In this example, Alice, Bob and Carol are "lifting" 1 BTC each to Ark, and
-      the Server must add the exact same amount.
+      In this example, Alice, Bob and Carol are "lifting" 1 BTC each to Ark.
     </p>
     <p>
       The output is a UTXO locked by a multisig 3 of 3, where 3 is the number of
-      participants in the transaction.
+      participants in the transaction. An alternative tapleaf allows the server
+      to spend it alone after 4 weeks.
     </p>
     <p>
       The resulting UTXO is then used as input for a new transaction. This new
@@ -36,7 +36,7 @@ description: Explain ARK like I'm 5
       their BTC.
     </p>
     <script type="text/typogram">
-      {% include txt/diagram2.txt %}
+      {% include txt/ark/diagram2.txt %}
     </script>
     <p>Now let's imagine Alice wants to send Eve 1 BTC using Ark:</p>
     <ol>
@@ -47,11 +47,11 @@ description: Explain ARK like I'm 5
         Alice:
       </li>
       <script type="text/typogram">
-        {% include txt/diagram3.txt %}
+        {% include txt/ark/diagram3.txt %}
       </script>
       <li>
         Alice looks at the locking script for this new UTXO and sees Eve's
-        public key on the multisig list.
+        public key on it
       </li>
       <li>
         Alice understands that when TX2 confirms, Eve will have 1 BTC on Ark
@@ -61,7 +61,7 @@ description: Explain ARK like I'm 5
         TX2 is confirmed:
       </li>
       <script type="text/typogram">
-        {% include txt/diagram4.txt %}
+        {% include txt/ark/diagram4.txt %}
       </script>
       <li>
         Server cannot cheat, if he wants to receive from Alice he needs to send
@@ -85,9 +85,10 @@ description: Explain ARK like I'm 5
       <li>
         Alice will sign her VUTXO with SIGHASH_ALL to commit to all inputs
       </li>
+      <li>The Server will sign the connector input</li>
     </ul>
     <script type="text/typogram">
-      {% include txt/diagram5.txt %}
+      {% include txt/ark/diagram5.txt %}
     </script>
     <p>
       This way, the TX where Alice gives her VUTXO to the server is only valid

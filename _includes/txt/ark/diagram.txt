@@ -1,0 +1,5 @@
+
+IN           | OUT     
+-------------+------              Ideally OP_CTV
+Server 3 BTC | UTXO ~~~~~~~~~~~>  multisig 3 of 3  
+             |                    pk(s) && 4 weeks
