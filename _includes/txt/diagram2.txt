@@ -8,10 +8,10 @@ TX1                        :
                            :
 IN           | OUT         :    IN | OUT
 -------------+---------    :    ---+---------
-Alice  1 BTC | UTXO    o-------->* | Alice 1 BTC  multisig 2 of 2
-Bob    2 BTC | multisig    :       | Bob   1 BTC  multisig 2 of 2
-Carol  3 BTC | 4 of 4      :       | Carol 3 BTC  multisig 2 of 2
-Server 6 BTC |             :
+Server 3 BTC | UTXO    o-------->* | Alice 1 BTC  ~~~~~~> | multisig 2 of 2
+             | multisig    :       | Bob   1 BTC  ~~~~~~> | with server and
+             | 3 of 3      :       | Carol 1 BTC  ~~~~~~> | respective user
+             |             :
                            :         \_________/
                                           |
                                           v

@@ -23,15 +23,11 @@ description: Explain ARK like I'm 5
       {% include txt/diagram.txt %}
     </script>
     <p>
-      In this example, Alice, Bob and Carol are "lifting" BTC to Ark, and the
-      Server must add the exact same amount.
+      In this example, Alice, Bob and Carol are "lifting" 1 BTC each to Ark, and
+      the Server must add the exact same amount.
     </p>
     <p>
-      Note, this transaction can be constructed using a CoinJoin for improved
-      confidentiality, but it isn't mandatory.
-    </p>
-    <p>
-      The output is a UTXO locked by a multisig 4 of 4, where 4 is the number of
+      The output is a UTXO locked by a multisig 3 of 3, where 3 is the number of
       participants in the transaction.
     </p>
     <p>
@@ -47,14 +43,19 @@ description: Explain ARK like I'm 5
     <ol>
       <li>Alice asks Eve for an address (address E)</li>
       <li>Alice informs Server she wants to pay 1 BTC to address E</li>
-      <li>Server prepares new transaction (TX2) and show it to Alice:</li>
+      <li>
+        Server (with help of E) prepares new transaction (TX2) and show it to
+        Alice:
+      </li>
       <script type="text/typogram">
         {% include txt/diagram3.txt %}
       </script>
       <li>
         Alice looks at the locking script for this new UTXO and sees Eve's
-        public key on the multisig list. She understands that when TX2 confirms,
-        Eve will have 1 BTC on Ark
+        public key on the multisig list.
+      </li>
+      <li>
+        Alice understands that when TX2 confirms, Eve will have 1 BTC on Ark
       </li>
       <li>
         Alice proceeds by sending her VUTXO to the server, on the condition that
@@ -65,7 +66,7 @@ description: Explain ARK like I'm 5
       </script>
       <li>
         Server cannot cheat, if he wants to receive from Alice he needs to send
-        it to Eve, which means Alice can pay Eve atomically.
+        it to Eve, which means Alice is paying Eve atomically.
       </li>
     </ol>
     <p><strong>"only if TX2 is confirmed"</strong></p>
@@ -74,8 +75,11 @@ description: Explain ARK like I'm 5
       but we can implement it using a trick:
     </p>
     <ul>
-      <li>TX1 will have additional outputs, called connectors</li>
+      <li>
+        TX1 will have additional outputs, called <strong>connectors</strong>
+      </li>
       <li>This connectors have no financial value (dust limit)</li>
+      <li>Connectors are singlesig spendable by the Server</li>
       <li>
         Alice will use one of this connectors as input to the new transaction
       </li>
