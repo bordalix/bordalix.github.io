@@ -1,9 +1,9 @@
 {
   "prettier.bracketSameLine": true,
   "files.associations": {
-    "*.html": "liquid",
+    "*.html": "jekyll",
     "*.js": "liquid-javascript",
     "*.css": "liquid-css"
   },
-  "liquid.format.enable": true
+  "liquid.format.enable": false
 }

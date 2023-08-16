@@ -3,11 +3,11 @@
       .~~~~~~~~~.                   .~~~~~~~~~.
       : onchain :                   : virtual :
       '~~~~~~~~~'                   '~~~~~~~~~'
-                           :
-TX2                        :
-                           :
-IN           | OUT         :    IN | OUT
--------------+---------    :    ---+---------
-Server 1 BTC | UTXO    o-------->* | Eve 1 BTC 
-             |             :       | 
-                           :
+                            :
+Pool Tx 2                   :
+                            :
+IN          | OUT           :   IN | OUT
+------------+------------   :   ---+---------
+Server UTXO | Shared UTXO o----->* | Eve 1 BTC 
+   "..."    | Change        :      | 
+            |               :

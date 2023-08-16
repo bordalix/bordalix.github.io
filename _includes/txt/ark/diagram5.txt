@@ -3,26 +3,26 @@
       .~~~~~~~~~.                   .~~~~~~~~~.
       : onchain :                   : virtual :
       '~~~~~~~~~'                   '~~~~~~~~~'
-                           :
-TX1                        :
-                           :
-IN           | OUT         :    IN | OUT               IN | OUT
--------------+---------    :    ---+---------          ---+--------
-Server 3 BTC | UTXO    o-------->* | Alice 1 BTC o----->* | Server but only
-             |       ig    :       |                    * | if tx2 confirmed
-             |             :       |                    ^ |
-                           :                            |
-                           :                            |
-                           :                            |
-                           :                            |
-TX2                        :                            |
-                           :                            |
-IN           | OUT         :    IN | OUT                |
--------------+---------    :    ---+---------           |
-Server 1 BTC | UTXO    o-------->* | Eve 1 BTC          |
-             | Connector   :       |                    |
-             |     o       :       |                    |
-                    \      :                            |
-                     \     :                            |
-                      \                                 |
-                       '--------------------------------.
+                            :
+Pool Tx 1                   :
+                            :
+IN          | OUT           :   IN | OUT               IN | OUT
+------------+------------   :   ---+---------          ---+--------
+Server UTXO | Shared UTXO o----->* | Alice 1 BTC o----->* | Server but only
+            |               :      |                    * | if tx2 confirmed
+            |               :      |                    ^ |
+                            :                           |
+                            :                           |
+                            :                           |
+                            :                           |
+Pool Tx 2                   :                           |
+                            :                           |
+IN          | OUT           :   IN | OUT                |
+------------+------------   :   ---+---------           |
+Server UXTO | Shared UTXO o----->* | Eve 1 BTC          |
+            | Change        :      |                    |
+            | Connector o   :      |                    |
+                         \  :                           |
+                          \                             |
+                           \                            |
+                            '---------------------------.

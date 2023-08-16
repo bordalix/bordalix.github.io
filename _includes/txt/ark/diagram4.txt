@@ -3,14 +3,14 @@
       .~~~~~~~~~.                   .~~~~~~~~~.
       : onchain :                   : virtual :
       '~~~~~~~~~'                   '~~~~~~~~~'
-                           :
-TX1                        :
-                           :
-IN           | OUT         :    IN | OUT               IN | OUT
--------------+---------    :    ---+---------          ---+--------
-Server 3 BTC | UTXO    o-------->* | Alice 1 BTC o----->* | Server but only
-             |             :       |                      | if tx2 confirmed
-             |             :       |                      |
-                           :
+                            :
+Pool Tx 1                   :
+                            :
+IN          | OUT           :   IN | OUT               IN | OUT
+------------+------------   :   ---+---------          ---+--------
+Server UTXO | Shared UTXO o----->* | Alice 1 BTC o----->* | Server but only
+   "..."    | Change        :      |                      | if tx2 confirmed
+            |               :      |                      |
+                            :
 
     
