@@ -8,7 +8,27 @@ description: Explain ARK like I'm 5
   .ark svg {
     margin-bottom: 2rem;
   }
+  .ark .tech {
+    display: none;
+    background-color: var(--lightgrey);
+    margin: 0 -1rem 1rem -1rem;
+    padding: 1rem;
+  }
+  .ark a {
+    cursor: pointer;
+  }
+  .ark h3 {
+    margin: 2em 0 1em 0;
+  }
 </style>
+
+<script>
+  function toggleVisibility(selector) {
+    const element = document.querySelector(selector)
+    const display = element.style.display
+    element.style.display = display === 'block' ? 'none' : 'block'
+  }
+</script>
 
 <script src="https://google.github.io/typograms/typograms.js"></script>
 
@@ -17,86 +37,104 @@ description: Explain ARK like I'm 5
     <h2 class="heading">
       <span class="gradient">Explain ARK like I'm 5</span>
     </h2>
-    <p>Every 5 seconds there's an onchain transaction:</p>
-    <script type="text/typogram">
-      {% include txt/ark/diagram.txt %}
-    </script>
+    <h3>Lifting</h3>
     <p>
-      In this example, Alice, Bob and Carol are "lifting" 1 BTC each to Ark.
-    </p>
-    <p>
-      The output is a UTXO locked by a multisig 4 of 4, where 4 is the number of
-      participants in the transaction. An alternative tapleaf allows the Server
-      to spend it alone after 4 weeks.
-    </p>
-    <p>
-      The resulting UTXO is then used as input for a new transaction. This new
-      transaction doesn't need to go onchain, but Alice, Bob and Carol each have
-      a copy of it, and they can broadcast it to the network any time to recover
-      their BTC.
+      In this example, Alice, Bob and Carol are "lifting" 1 BTC each to Ark:
     </p>
     <script type="text/typogram">
-      {% include txt/ark/diagram2.txt %}
+      {% include txt/ark/graph1.txt %}
     </script>
+    <p>
+      <a onclick="toggleVisibility('#dd1')">Deep dive</a>
+    </p>
+    <div class="tech" id="dd1">
+      <p>Every 5 seconds there's an onchain transaction:</p>
+      <script type="text/typogram">
+        {% include txt/ark/diagram.txt %}
+      </script>
+      <p>
+        The output is a UTXO locked by a multisig 4 of 4, where 4 is the number
+        of participants in the transaction. An alternative tapleaf allows the
+        Server to spend it alone after 4 weeks.
+      </p>
+      <p>
+        The resulting UTXO is then used as input for a new transaction. This new
+        transaction doesn't need to go onchain, but Alice, Bob and Carol each
+        have a copy of it, and they can broadcast it to the network any time to
+        recover their BTC.
+      </p>
+      <script type="text/typogram">
+        {% include txt/ark/diagram2.txt %}
+      </script>
+    </div>
+    <h3>Payment</h3>
     <p>Now let's imagine Alice wants to send Eve 1 BTC using Ark:</p>
-    <ol>
-      <li>Alice asks Eve for an address (address E)</li>
-      <li>Alice informs Server she wants to pay 1 BTC to address E</li>
-      <li>
-        Server (with help of E) prepares new transaction (TX2) and show it to
-        Alice:
-      </li>
-      <script type="text/typogram">
-        {% include txt/ark/diagram3.txt %}
-      </script>
-      <li>
-        Alice looks at the locking script for this new UTXO and sees Eve's
-        public key on it
-      </li>
-      <li>
-        Alice understands that when TX2 confirms, Eve will have 1 BTC on Ark
-      </li>
-      <li>
-        Alice proceeds by sending her VUTXO to the server, on the condition that
-        TX2 is confirmed:
-      </li>
-      <script type="text/typogram">
-        {% include txt/ark/diagram4.txt %}
-      </script>
-      <li>
-        Server cannot cheat, if he wants to receive from Alice he needs to send
-        it to Eve, which means Alice is paying Eve atomically.
-      </li>
-    </ol>
-    <p>
-      <strong>"only if TX2 is confirmed"</strong>
-    </p>
-    <p>
-      This condition is not possible to implement today using Bitcoin script,
-      but we can implement it using a trick:
-    </p>
-    <ul>
-      <li>
-        TX1 will have additional outputs, called
-        <strong>connectors</strong>
-      </li>
-      <li>This connectors have no financial value (dust limit)</li>
-      <li>Connectors are singlesig spendable by the Server</li>
-      <li>
-        Alice will use one of this connectors as input to the new transaction
-      </li>
-      <li>
-        Alice will sign her VUTXO with SIGHASH_ALL to commit to all inputs
-      </li>
-      <li>The Server will sign the connector input</li>
-    </ul>
     <script type="text/typogram">
-      {% include txt/ark/diagram5.txt %}
+      {% include txt/ark/graph2.txt %}
     </script>
     <p>
-      This way, the TX where Alice gives her VUTXO to the server is only valid
-      if TX2 is confirmed.
+      <a onclick="toggleVisibility('#dd2')">Deep dive</a>
     </p>
+    <div class="tech" id="dd2">
+      <ol>
+        <li>Alice asks Eve for an address (address E)</li>
+        <li>Alice informs Server she wants to pay 1 BTC to address E</li>
+        <li>
+          Server (with help of E) prepares new transaction (TX2) and show it to
+          Alice:
+        </li>
+        <script type="text/typogram">
+          {% include txt/ark/diagram3.txt %}
+        </script>
+        <li>
+          Alice looks at the locking script for this new UTXO and sees Eve's
+          public key on it
+        </li>
+        <li>
+          Alice understands that when TX2 confirms, Eve will have 1 BTC on Ark
+        </li>
+        <li>
+          Alice proceeds by sending her VUTXO to the server, on the condition
+          that TX2 is confirmed:
+        </li>
+        <script type="text/typogram">
+          {% include txt/ark/diagram4.txt %}
+        </script>
+        <li>
+          Server cannot cheat, if he wants to receive from Alice he needs to
+          send it to Eve, which means Alice is paying Eve atomically.
+        </li>
+      </ol>
+      <p>
+        <strong>"only if TX2 is confirmed"</strong>
+      </p>
+      <p>
+        This condition is not possible to implement today using Bitcoin script,
+        but we can implement it using a trick:
+      </p>
+      <ul>
+        <li>
+          TX1 will have additional outputs, called
+          <strong>connectors</strong>
+        </li>
+        <li>This connectors have no financial value (dust limit)</li>
+        <li>Connectors are singlesig spendable by the Server</li>
+        <li>
+          Alice will use one of this connectors as input to the new transaction
+        </li>
+        <li>
+          Alice will sign her VUTXO with SIGHASH_ALL to commit to all inputs
+        </li>
+        <li>The Server will sign the connector input</li>
+      </ul>
+      <script type="text/typogram">
+        {% include txt/ark/diagram5.txt %}
+      </script>
+      <p>
+        This way, the TX where Alice gives her VUTXO to the server is only valid
+        if TX2 is confirmed.
+      </p>
+    </div>
     <p>To be continued...</p>
     <p>Sources:</p>
     <ul>
@@ -115,6 +153,12 @@ description: Explain ARK like I'm 5
         <a
           href="https://bitguide.substack.com/p/ark-bitcoins-new-layer-2-protocol"
           >https://bitguide.substack.com/p/ark-bitcoins-new-layer-2-protocol</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://gist.github.com/RubenSomsen/a394beb1dea9e47e981216768e007454#confirmation-times"
+          >https://gist.github.com/RubenSomsen/a394beb1dea9e47e981216768e007454#confirmation-times</a
         >
       </li>
     </ul>
