@@ -8,7 +8,7 @@ Pool Tx 1                   :
                             :
 IN          | OUT           :   IN | OUT               IN | OUT
 ------------+------------   :   ---+---------          ---+--------
-Server UTXO | Shared UTXO o----->* | Alice 1 BTC o----->* | Server but only
+ASP    UTXO | Shared UTXO o----->* | Alice 1 BTC o----->* | ASP but only
    "..."    | Change        :      |                      | if tx2 confirmed
             |               :      |                      |
                             :

@@ -20,6 +20,9 @@ description: Explain ARK like I'm 5
   .ark h3 {
     margin: 2em 0 1em 0;
   }
+  .ark ol li {
+    margin-bottom: 1rem;
+  }
 </style>
 
 <script>
@@ -37,7 +40,33 @@ description: Explain ARK like I'm 5
     <h2 class="heading">
       <span class="gradient">Explain ARK like I'm 5</span>
     </h2>
+    <h3>ELI5</h3>
+    <ul>
+      <li>
+        Alice sends money to the bank and in return receives a check from the
+        bank that she can redeem anytime anywhere (not only on this bank).
+      </li>
+      <li>
+        If Alice wants to pay Bob using Ark, she can ask the bank to pay Bob,
+        and in return she will endorse their check back to the bank.
+      </li>
+      <li>
+        The bank can only redeem Alice's check if it shows proof of payment to
+        Bob.
+      </li>
+      <li>
+        Bob receives a check from the bank that he can redeem anytime anywhere.
+      </li>
+    </ul>
     <h3>Lifting</h3>
+    <p>
+      The first step is for Alice to lift her coins. This is an atomic swap
+      where she will give up a UTXO (+ fees) to receive a vUTXO from the ASP at
+      the same time. The ASP makes a special transaction, called pool
+      transaction (Pool TX), where it mixes UTXOs from many users (among other
+      things) and creates a shared UTXO as well as many off-chain vUTXOs for
+      each of those users including one for Alice.
+    </p>
     <p>
       In this example, Alice, Bob and Carol are "lifting" 1 BTC each to Ark:
     </p>
@@ -55,7 +84,7 @@ description: Explain ARK like I'm 5
       <p>
         The output is a UTXO locked by a multisig 4 of 4, where 4 is the number
         of participants in the transaction. An alternative tapleaf allows the
-        Server to spend it alone after 4 weeks.
+        ASP to spend it alone after 4 weeks.
       </p>
       <p>
         The resulting UTXO is then used as input for a new transaction. This new
@@ -68,19 +97,33 @@ description: Explain ARK like I'm 5
       </script>
     </div>
     <h3>Payment</h3>
+    <p>
+      Alice then instructs the ASP to take her vUTXO and pay Bob. She will only
+      need to know Bob's address. This payment is also atomic and private. The
+      ASP does not know which vUTXO belongs to which user and blindly mixes them
+      to produce another anonymous vUTXO set. Ark's magic occurs in the fact
+      that the post-mix vUTXOs can only be claimed by the intended recipients
+      even though the ASP has no idea who owns them. Put another way, the ASP is
+      simply coordinating blind coinjoin rounds. Bob does not have to be online
+      to receive the funds, can claim them at any time, transfer them to others,
+      or move them on-chain.
+    </p>
     <p>Now let's imagine Alice wants to send Eve 1 BTC using Ark:</p>
     <script type="text/typogram">
       {% include txt/ark/graph2.txt %}
     </script>
+    <p>
+      Alice forfeits its vUTXO to the ASP and in return Bob receives a vUTXO
+    </p>
     <p>
       <a onclick="toggleVisibility('#dd2')">Deep dive</a>
     </p>
     <div class="tech" id="dd2">
       <ol>
         <li>Alice asks Eve for an address (address E)</li>
-        <li>Alice informs Server she wants to pay 1 BTC to address E</li>
+        <li>Alice informs ASP she wants to pay 1 BTC to address E</li>
         <li>
-          Server (with help of E) prepares new transaction (TX2) and show it to
+          ASP (with help of E) prepares new transaction (TX2) and show it to
           Alice:
         </li>
         <script type="text/typogram">
@@ -94,15 +137,15 @@ description: Explain ARK like I'm 5
           Alice understands that when TX2 confirms, Eve will have 1 BTC on Ark
         </li>
         <li>
-          Alice proceeds by sending her VUTXO to the server, on the condition
+          Alice proceeds by sending her vUTXO to the server, on the condition
           that TX2 is confirmed:
         </li>
         <script type="text/typogram">
           {% include txt/ark/diagram4.txt %}
         </script>
         <li>
-          Server cannot cheat, if he wants to receive from Alice he needs to
-          send it to Eve, which means Alice is paying Eve atomically.
+          ASP cannot cheat, if he wants to receive from Alice he needs to send
+          it to Eve, which means Alice is paying Eve atomically.
         </li>
       </ol>
       <p>
@@ -118,20 +161,20 @@ description: Explain ARK like I'm 5
           <strong>connectors</strong>
         </li>
         <li>This connectors have no financial value (dust limit)</li>
-        <li>Connectors are singlesig spendable by the Server</li>
+        <li>Connectors are singlesig spendable by the ASP</li>
         <li>
           Alice will use one of this connectors as input to the new transaction
         </li>
         <li>
-          Alice will sign her VUTXO with SIGHASH_ALL to commit to all inputs
+          Alice will sign her vUTXO with SIGHASH_ALL to commit to all inputs
         </li>
-        <li>The Server will sign the connector input</li>
+        <li>The ASP will sign the connector input</li>
       </ul>
       <script type="text/typogram">
         {% include txt/ark/diagram5.txt %}
       </script>
       <p>
-        This way, the TX where Alice gives her VUTXO to the server is only valid
+        This way, the TX where Alice gives her vUTXO to the server is only valid
         if TX2 is confirmed.
       </p>
     </div>

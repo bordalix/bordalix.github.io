@@ -8,7 +8,7 @@ Pool Tx 1                   :
                             :
 IN          | OUT           :    IN | OUT
 ------------+---------      :    ---+---------
-Server UTXO | Shared UTXO o------>* | Alice 1 BTC  ~~~~~~> | multisig 2 of 2
+ASP    UTXO | Shared UTXO o------>* | Alice 1 BTC  ~~~~~~> | multisig 2 of 2
    "..."    | Change        :       | Bob   1 BTC  ~~~~~~> | with server and
             |               :       | Carol 1 BTC  ~~~~~~> | respective user
             |               :
@@ -16,5 +16,5 @@ Server UTXO | Shared UTXO o------>* | Alice 1 BTC  ~~~~~~> | multisig 2 of 2
                                           |
                                           v
 
-                                        VUTXOS (Virtual Utxos)
+                                        vUTXOS (Virtual Utxos)
     
