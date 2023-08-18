@@ -11,6 +11,6 @@ title: 'Project Natal for XBOX 360'
 
 <iframe title="Project Natal for XBOX 360" width="480" height="300" data-src="//www.youtube.com/embed/oACt9R9z37U" frameborder="0" allowfullscreen></iframe>
 
-<p><br />Natal is the portuguese word for Christmas, does it means it will be available in Christmas? If so, Santa, I know is a bit early to ask for presents, but unless otherwise, this is what I want.</p>
+<p><br >Natal is the portuguese word for Christmas, does it means it will be available in Christmas? If so, Santa, I know is a bit early to ask for presents, but unless otherwise, this is what I want.</p>
 
 <p><strong>Update 4 hours later:</strong> <a href="http://procrastineering.blogspot.com/2009/06/project-natal.html">Johnny Chung Lee</a> has some technical insights of this project in his blog.</p>

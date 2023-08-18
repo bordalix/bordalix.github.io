@@ -13,11 +13,11 @@ title: 'Siftables, the toy blocks that think'
 
 <object width="446" height="326">
   <param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf"/>
-  <param name="allowFullScreen" value="true" />
-  <param name="wmode" value="transparent" />
-  <param name="bgColor" value="#ffffff" />
-  <param name="flashvars" value="vu=http://video.ted.com/talks/embed/DavidMerrill_2009-embed_high.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/DavidMerrill-2009.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=457" />
-  <embed src="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" pluginspace="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" bgColor="#ffffff" width="446" height="326" allowFullScreen="true" flashvars="vu=http://video.ted.com/talks/embed/DavidMerrill_2009-embed_high.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/DavidMerrill-2009.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=457" />
+  <param name="allowFullScreen" value="true" >
+  <param name="wmode" value="transparent" >
+  <param name="bgColor" value="#ffffff" >
+  <param name="flashvars" value="vu=http://video.ted.com/talks/embed/DavidMerrill_2009-embed_high.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/DavidMerrill-2009.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=457" >
+  <embed src="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" pluginspace="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" bgColor="#ffffff" width="446" height="326" allowFullScreen="true" flashvars="vu=http://video.ted.com/talks/embed/DavidMerrill_2009-embed_high.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/DavidMerrill-2009.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=457" >
 </object>
 
 <p>RSS readers should click <a href="//joaobordalo.com/articles/2009/03/04/siftables-the-toy-blocks-that-think">here</a> to watch the video.</p>

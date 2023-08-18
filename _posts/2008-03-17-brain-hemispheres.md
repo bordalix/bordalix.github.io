@@ -11,11 +11,11 @@ title: 'Brain hemispheres'
 
 <p>It's a very strong, emotional story, explaining the differences between our right and left brain hemispheres, told in the first person.</p>
 
-<object width="446" height="326"><param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" />
+<object width="446" height="326"><param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" >
 
-  <param name="allowFullScreen" value="true" />
-  <param name="wmode" value="transparent" />
-  <param name="bgColor" value="#ffffff" /> <param name="flashvars" value="vu=http://video.ted.com/talks/embed/JillBolteTaylor_2008-embed_high.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/JillBolteTaylor-2008.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=229" />
+  <param name="allowFullScreen" value="true" >
+  <param name="wmode" value="transparent" >
+  <param name="bgColor" value="#ffffff" > <param name="flashvars" value="vu=http://video.ted.com/talks/embed/JillBolteTaylor_2008-embed_high.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/JillBolteTaylor-2008.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=229" >
 
-<embed src="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" pluginspace="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" bgColor="#ffffff" width="446" height="326" allowFullScreen="true" flashvars="vu=http://video.ted.com/talks/embed/JillBolteTaylor_2008-embed_high.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/JillBolteTaylor-2008.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=229" />
+<embed src="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" pluginspace="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" bgColor="#ffffff" width="446" height="326" allowFullScreen="true" flashvars="vu=http://video.ted.com/talks/embed/JillBolteTaylor_2008-embed_high.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/JillBolteTaylor-2008.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=229" >
 </object>

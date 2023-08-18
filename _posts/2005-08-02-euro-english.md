@@ -15,7 +15,7 @@ title: 'Euro english'
 
 <p>There will be growing publik enthusiasm in the sekond year when the troublesome "ph" will be replaced with "f". This will make words like fotograf 20% shorter.</p>
 
-<p>In the 3rd year, publik akseptanse of the new spelling kan be expekted to reach the stage where more komplikated changes are possible. Governments will enkourage the removal of double letters which have always ben a deterent to akurate speling. Also, al wil agre that the horibl mes of the silent "e" in the languag is disgrasful and it should go away.<br /><br />By the 4th yer people wil be reseptiv to steps such as replasing "th" with "z" and "w" with "v".</p>
+<p>In the 3rd year, publik akseptanse of the new spelling kan be expekted to reach the stage where more komplikated changes are possible. Governments will enkourage the removal of double letters which have always ben a deterent to akurate speling. Also, al wil agre that the horibl mes of the silent "e" in the languag is disgrasful and it should go away.<br ><br >By the 4th yer people wil be reseptiv to steps such as replasing "th" with "z" and "w" with "v".</p>
 
 <p>During ze fifz yer, ze unesesary "o" kan be dropd from vords kontaining "ou" and after ziz fifz yer, ve vil hav a reil sensibl riten styl.</p>
 

@@ -9,4 +9,4 @@ title: 'Sony responds to project Natal'
 
 <iframe title="Sony responds to project Natal" width="480" height="300" data-src="//www.youtube.com/embed/bgLN7uOj8Jg" frameborder="0" allowfullscreen></iframe>
 
-<p><br />Millimetric precision, almost instant response, and above all, a live demo with the technology, not an environment controlled, video manipulated demo like Microsoft did. So, Santa, wait up for my Christmas request, will you?</p>
+<p><br >Millimetric precision, almost instant response, and above all, a live demo with the technology, not an environment controlled, video manipulated demo like Microsoft did. So, Santa, wait up for my Christmas request, will you?</p>

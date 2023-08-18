@@ -12,42 +12,42 @@ title: 'Superbot, the amazing robot'
 <!--more-->
 <p><strong>Rolling</strong></p>
 
-<embed src="//www.youtube.com/v/eOX6W2kFiEc" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/eOX6W2kFiEc" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Swimming</strong></p>
 
-<embed src="//www.youtube.com/v/3sCrQnnEGuA" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/3sCrQnnEGuA" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Sidewinder Slither</strong></p>
 
-<embed src="//www.youtube.com/v/uqqcuwEgT2w" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/uqqcuwEgT2w" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Caterpillar Crawl</strong></p>
 
-<embed src="//www.youtube.com/v/_qHpPVpH614" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/_qHpPVpH614" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Walking</strong></p>
 
-<embed src="//www.youtube.com/v/5m_hufTX-Ns" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/5m_hufTX-Ns" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Climbing across a rope</strong></p>
 
-<embed src="//www.youtube.com/v/F6Hxrw8YK8c" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/F6Hxrw8YK8c" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Climbing up sand</strong></p>
 
-<embed src="//www.youtube.com/v/NLEUCpODJH0" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/NLEUCpODJH0" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Climbing up a river bank</strong></p>
 
-<embed src="//www.youtube.com/v/2lCtIFUqG6I" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/2lCtIFUqG6I" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Finding its dislocated friend</strong></p>
 
-<embed src="//www.youtube.com/v/kBfyAR77ceI" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/kBfyAR77ceI" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p><strong>Morph demonstration</strong></p>
 
-<embed src="//www.youtube.com/v/rfT0hbewv-4" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" />
+<embed src="//www.youtube.com/v/rfT0hbewv-4" width="325" height="267" type="application/x-shockwave-flash" wmode="transparent" >
 
 <p>RSS readers should click <a href="//joaobordalo.com/articles/2007/04/04/superbot-the-amazing-robot">here</a> to watch the movies.</p>

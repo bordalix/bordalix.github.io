@@ -28,22 +28,30 @@ portfolio:
     <h2 class="lead">European roulette PoC deployed to the ropsten network</h2>
     <p>
       <strong>Status:</strong>
-      Live<br/>
+      Live<br />
       <strong>Client:</strong>
-      Personal project<br/>
+      Personal project<br />
     </p>
     <p>
       <i class="fa fa-external-link"></i>
-      <a href="http://ethroulette.ga">http://ethroulette.ga</a><br/>
+      <a href="http://ethroulette.ga">http://ethroulette.ga</a><br />
       <i class="fa fa-github"></i>
-      <a href="https://github.com/bordalix/ethereum-roulette">https://github.com/bordalix/ethereum-roulette</a>
+      <a href="https://github.com/bordalix/ethereum-roulette"
+        >https://github.com/bordalix/ethereum-roulette</a
+      >
     </p>
     <div class="text_column left">
       <a href="http://ethereum-roulette.ga?ref=picture">
         <picture>
-          <source srcset="{{ site.cdn_url }}/portfolio/ethereum-roulette_r.webp" type="image/webp" />
-          <source srcset="{{ site.cdn_url }}/portfolio/ethereum-roulette_r.png" type="image/png" />
-          <source srcset="{{ site.cdn_url }}/portfolio/ethereum-roulette_r.avif" type="image/avif" />
+          <source
+            srcset="{{ site.cdn_url }}/portfolio/ethereum-roulette_r.webp"
+            type="image/webp" />
+          <source
+            srcset="{{ site.cdn_url }}/portfolio/ethereum-roulette_r.png"
+            type="image/png" />
+          <source
+            srcset="{{ site.cdn_url }}/portfolio/ethereum-roulette_r.avif"
+            type="image/avif" />
           <img
             width="480"
             height="360"
@@ -58,7 +66,7 @@ portfolio:
           <i class="fa fa-check-circle-o"></i>
         </div>
         <div class="ti-text">
-          <span class="skill">DevOps</span><br/>
+          <span class="skill">DevOps</span><br />
           Nginx, AWS
         </div>
       </div>
@@ -67,7 +75,7 @@ portfolio:
           <i class="fa fa-check-circle-o"></i>
         </div>
         <div class="ti-text">
-          <span class="skill">Database</span><br/>
+          <span class="skill">Database</span><br />
           Ethereum blockchain
         </div>
       </div>
@@ -76,7 +84,7 @@ portfolio:
           <i class="fa fa-check-circle-o"></i>
         </div>
         <div class="ti-text">
-          <span class="skill">Business logic</span><br/>
+          <span class="skill">Business logic</span><br />
           Ethereum smart contract
         </div>
       </div>
@@ -85,7 +93,7 @@ portfolio:
           <i class="fa fa-check-circle-o"></i>
         </div>
         <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br/>
+          <span class="skill">API Layer / MVC</span><br />
           Metamask, web3js
         </div>
       </div>
@@ -94,7 +102,7 @@ portfolio:
           <i class="fa fa-check-circle-o"></i>
         </div>
         <div class="ti-text">
-          <span class="skill">Design / UI</span><br/>
+          <span class="skill">Design / UI</span><br />
           Bootstrap
         </div>
       </div>
@@ -103,9 +111,7 @@ portfolio:
   <div style="clear: both"></div>
 </section>
 
-<div class="container">
-  {% include html/portfolio/navigation.html %}
-</div>
+<div class="container">{% include html/portfolio/navigation.html %}</div>
 
 <section class="grey">
   <div class="container">
@@ -115,10 +121,16 @@ portfolio:
         <strong>Motivation</strong>
       </p>
       <p>
-        I decided to learn more about developing smart contracts, and since I learn by building stuff, so I decided to implement a casino roulette, with the business logic being implemented in Solidity, the language of choice to develop smart contracts in the Ethereum blockchain.
+        I decided to learn more about developing smart contracts, and since I
+        learn by building stuff, so I decided to implement a casino roulette,
+        with the business logic being implemented in Solidity, the language of
+        choice to develop smart contracts in the Ethereum blockchain.
       </p>
       <p>
-        The frontend is a regular html page, with the web3 javascript library, which makes it possible to interact with the Ethereum blockchain via javascript. The web3 library is injected in the page by the Chrome extension Metamask.
+        The frontend is a regular html page, with the web3 javascript library,
+        which makes it possible to interact with the Ethereum blockchain via
+        javascript. The web3 library is injected in the page by the Chrome
+        extension Metamask.
       </p>
       <p>
         <strong>How to play</strong>
@@ -126,13 +138,14 @@ portfolio:
       <p>
         You’ll need to have the
         <a href="https://metamask.io/">Metamask</a>
-        Chrome extension installed,
-        have an account on the ropsten network, have some ether and
+        Chrome extension installed, have an account on the ropsten network, have
+        some ether and
         <a href="http://ethereum-roulette.ga">access the dapp</a>
       </p>
       <p>
         Every bet has a fixed amount of 0.01 ether (around €6) and you can bet
-        by clicking on the board. The roulette just accepts a bet when has sufficient funds to pay for it and every other active bet.
+        by clicking on the board. The roulette just accepts a bet when has
+        sufficient funds to pay for it and every other active bet.
       </p>
       <p>Different people can be playing at the same time.</p>
       <p>
@@ -141,7 +154,8 @@ portfolio:
       </p>
       <p>
         When a player wins a bet, the payout is credited on his personal
-        account. The player can, at any moment, click the “Cash out” button and receive their winnings.
+        account. The player can, at any moment, click the “Cash out” button and
+        receive their winnings.
       </p>
     </div>
     <div class="text_column right">
@@ -153,7 +167,8 @@ portfolio:
           Ganache: you can download a self-contained prebuilt Ganache binary for
           your platform of choice using the "Download" button on the
           <a href="http://truffleframework.com/ganache/">Ganache website</a>.
-          After, run it and keep it running, this will deploy a private Ethereum network on your machine, port 7545
+          After, run it and keep it running, this will deploy a private Ethereum
+          network on your machine, port 7545
         </li>
         <li>
           npm: follow
@@ -162,8 +177,7 @@ portfolio:
         </li>
         <li>
           <a href="https://metamask.io/">Metamask</a>
-          Chrome extension installed
-          and running
+          Chrome extension installed and running
         </li>
       </ul>
       <p>

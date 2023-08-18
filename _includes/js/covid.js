@@ -2121,8 +2121,8 @@ const charts = {
       credits: { text: 'Dados DGS + Pordata + SNS' },
       tooltip: {
         formatter: function () {
-          return `<b>${this.point.name}</b><br />
-                  <b>${this.x}</b> hab/km<sup>2</sup><br />
+          return `<b>${this.point.name}</b><br >
+                  <b>${this.x}</b> hab/km<sup>2</sup><br >
                   <b>${this.y.toFixed(2)}%</b> da população`
         },
       },
@@ -2169,8 +2169,8 @@ const charts = {
       credits: { text: 'Dados DGS + Pordata + SNS' },
       tooltip: {
         formatter: function () {
-          return `<b>${this.point.name}</b><br />
-                  <b>${this.x}</b> hab/km<sup>2</sup><br />
+          return `<b>${this.point.name}</b><br >
+                  <b>${this.x}</b> hab/km<sup>2</sup><br >
                   <b>${this.y.toFixed(2)}%</b> da população`
         },
       },
@@ -2831,21 +2831,21 @@ const utils = {
         addTo('loading', 'A aceder aos dados DGS via VOST... ')
         break
       case 5:
-        addTo('loading', 'Feito<br />A aceder aos dados de mortalidade... ')
+        addTo('loading', 'Feito<br >A aceder aos dados de mortalidade... ')
         break
       case 4:
-        addTo('loading', 'Feito<br />A aceder aos dados de amostras... ')
+        addTo('loading', 'Feito<br >A aceder aos dados de amostras... ')
         break
       case 3:
-        addTo('loading', 'Feito<br />A aceder aos dados de vacinação... ')
+        addTo('loading', 'Feito<br >A aceder aos dados de vacinação... ')
         break
       case 2:
-        addTo('loading', 'Feito<br />Mostrar tabela com os dados do dia... ')
+        addTo('loading', 'Feito<br >Mostrar tabela com os dados do dia... ')
         break
       case 1:
         addTo(
           'loading',
-          'Feito<br />A chamar o estagiário para desenhar os gráficos... '
+          'Feito<br >A chamar o estagiário para desenhar os gráficos... '
         )
         break
       case 0:
@@ -2857,7 +2857,7 @@ const utils = {
   renderTOC() {
     state.toc.push({ anchor: 'Fontes', label: 'Fontes' })
     const html =
-      'Index: <br />' +
+      'Index: <br >' +
       state.toc
         .map((item) => `<a href="#${item.anchor}">${item.label}</a>`)
         .join(' &middot; ')

@@ -5,7 +5,7 @@
     color: silver;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     padding: 0;
   }
   div.metainfo p {
@@ -18,11 +18,6 @@
     font-size: 0.66rem;
     padding: 0 0.3rem;
   }
-  @media(max-width: 414px) {
-    div.metainfo {
-      flex-direction: column;
-    }
-  }
 </style>
 
 <h2>
@@ -34,14 +29,15 @@
     &middot;
     <span class="listen false-link">listen</span>
     <span class="stop false-link" style="display: none">stop</span>
-    {% if foo.tags %}
-      <br/>
-      {% for tag in foo.tags %}
-        <a href="/search?q={{tag}}">
-          <span class="tag">#{{ tag }}</span>
-        </a>
-      {% endfor %}
-    {% endif %}
   </p>
   {% include html/post/share.html %}
 </div>
+{% if foo.tags %}
+<p>
+  {% for tag in foo.tags %}
+  <a href="/search?q={{tag}}">
+    <span class="tag">#{{ tag }}</span>
+  </a>
+  {% endfor %}
+</p>
+{% endif %}
