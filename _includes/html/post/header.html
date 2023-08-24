@@ -33,7 +33,7 @@
   {% include html/post/share.html %}
 </div>
 {% if foo.tags %}
-<p>
+<p style="text-align: right">
   {% for tag in foo.tags %}
   <a href="/search?q={{tag}}">
     <span class="tag">#{{ tag }}</span>
