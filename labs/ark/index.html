@@ -8,6 +8,13 @@ description: Explain ARK like I'm 5
   .ark svg {
     margin-bottom: 2rem;
   }
+  .dark-theme .ark svg,
+  .dark-theme .ark svg polygon {
+    fill: white;
+  }
+  .dark-theme .ark svg line.part {
+    stroke: white;
+  }
   .ark .hidden {
     display: none;
     padding-top: 1rem;
@@ -16,6 +23,9 @@ description: Explain ARK like I'm 5
     background-color: var(--lightgrey);
     margin: 0 -1rem 1rem -1rem;
     padding: 1rem;
+  }
+  .dark-theme .ark .tech {
+    background-color: var(--darkgrey);
   }
   .ark a {
     cursor: pointer;
