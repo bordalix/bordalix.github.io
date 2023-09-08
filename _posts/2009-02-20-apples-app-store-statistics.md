@@ -2,6 +2,7 @@
 category: articles
 date: 2009-02-20 08:53:56
 layout: post
+tags: [apple]
 title: "Apple's App Store statistics"
 ---
 

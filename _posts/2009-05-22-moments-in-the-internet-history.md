@@ -2,6 +2,7 @@
 category: articles
 date: 2009-05-22 05:11:05
 layout: post
+tags: [internet, history]
 title: 'Moments in the Internet history'
 ---
 

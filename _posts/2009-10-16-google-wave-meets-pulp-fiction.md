@@ -2,6 +2,7 @@
 category: articles
 date: 2009-10-16 06:30:52
 layout: post
+tags: [google, wave]
 title: 'Google Wave meets Pulp Fiction'
 ---
 

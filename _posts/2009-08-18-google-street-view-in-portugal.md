@@ -2,6 +2,7 @@
 category: articles
 date: 2009-08-18 11:05:19
 layout: post
+tags: [google]
 title: 'Google Street View in Portugal'
 ---
 

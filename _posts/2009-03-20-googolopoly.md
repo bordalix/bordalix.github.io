@@ -2,6 +2,7 @@
 category: articles
 date: 2009-03-20 10:42:14
 layout: post
+tags: [google]
 title: 'Googolopoly'
 ---
 

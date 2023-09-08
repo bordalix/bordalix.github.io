@@ -2,6 +2,7 @@
 category: articles
 date: 2009-06-02 06:36:20
 layout: post
+tags: [xbox]
 title: 'Project Natal for XBOX 360'
 ---
 

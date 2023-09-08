@@ -2,6 +2,7 @@
 category: articles
 date: 2009-08-12 03:29:29
 layout: post
+tags: [microsoft]
 title: "Microsoft can't sell Word anymore"
 ---
 

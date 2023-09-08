@@ -2,6 +2,7 @@
 category: articles
 date: 2009-01-19 10:46:08
 layout: post
+tags: [history, marketing]
 title: 'A short history of marketing'
 ---
 

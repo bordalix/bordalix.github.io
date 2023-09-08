@@ -2,6 +2,7 @@
 category: articles
 date: 2009-05-22 04:55:04
 layout: post
+tags: [history]
 title: 'The history of information'
 ---
 

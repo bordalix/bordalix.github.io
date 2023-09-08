@@ -2,6 +2,7 @@
 category: articles
 date: 2009-03-01 18:30:33
 layout: post
+tags: [twitter]
 title: 'Why twitter?'
 ---
 

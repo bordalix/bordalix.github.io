@@ -2,6 +2,7 @@
 category: articles
 date: 2009-05-28 13:27:39
 layout: post
+tags: [google, wave]
 title: 'Google Wave'
 ---
 

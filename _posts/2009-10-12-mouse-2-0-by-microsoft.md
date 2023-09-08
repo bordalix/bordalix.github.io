@@ -2,6 +2,7 @@
 category: articles
 date: 2009-10-12 02:26:37
 layout: post
+tags: [microsoft]
 title: 'Mouse 2.0 by Microsoft'
 ---
 

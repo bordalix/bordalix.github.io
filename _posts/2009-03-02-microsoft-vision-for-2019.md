@@ -2,6 +2,7 @@
 category: articles
 date: 2009-03-02 06:16:56
 layout: post
+tags: [microsoft]
 title: 'Microsoft vision for 2019'
 ---
 

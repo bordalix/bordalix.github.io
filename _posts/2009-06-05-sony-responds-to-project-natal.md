@@ -2,6 +2,7 @@
 category: articles
 date: 2009-06-05 06:18:44
 layout: post
+tags: [sony]
 title: 'Sony responds to project Natal'
 ---
 
