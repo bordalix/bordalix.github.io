@@ -33,8 +33,18 @@ description: Explain ARK like I'm 5
   .ark h3 {
     margin: 2em 0 1em 0;
   }
+  .ark h4 {
+    font-size: 1.2rem;
+  }
   .ark ol li {
     margin-bottom: 1rem;
+  }
+  .ark code {
+    background-color: #ddd;
+    padding: 0 4px;
+  }
+  .dark-theme .ark code {
+    background-color: #1b69a0;
   }
 </style>
 
@@ -73,7 +83,7 @@ description: Explain ARK like I'm 5
       Tx), where it mixes UTXOs from many users (among other things) and creates a shared UTXO as well as many off-chain
       vUTXOs for each of those users including one for Alice.
     </p>
-    <p>In this example, Alice, Bob and Carol are "lifting" 1 BTC each to Ark:</p>
+    <p>In this example, Alice, Bob, Carol and Dave are "lifting" 1 BTC each to Ark:</p>
     <script type="text/typogram">
       {% include txt/ark/onboarding.txt %}
     </script>
@@ -90,16 +100,16 @@ description: Explain ARK like I'm 5
         </p>
         <p>The output is a UTXO locked by 2 taproot leaves:</p>
         <ul>
-          <li>a multisig 4 of 4, where 4 is the number of participants in the transaction.</li>
-          <li>the other leaf allows the ASP to spend it alone after 4 weeks.</li>
+          <li>A multisig 4 of 4, where 4 is the number of participants in the transaction.</li>
+          <li>The other leaf allows the ASP to spend it alone after 4 weeks.</li>
         </ul>
         <p>
           In order to be trustless, before signing the pool tx Alice needs a way to unilaterally get their funds back.
-          To achieve this, the ASP builds and signs a binary tree of transactions and share them with each participant.
+          To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each participant.
           Each leaf on this tree represents a vUTXO.
         </p>
         <p>
-          In the example below, Alice will receive <strong>tx1 => tx2 => tx4</strong> that she can broadcast anytime to
+          In the example below, Alice will receive <code>tx1 => tx2 => tx4</code> that she can broadcast anytime to
           receive their funds back:
         </p>
         <script type="text/typogram">
@@ -108,8 +118,8 @@ description: Explain ARK like I'm 5
         <p>Notes:</p>
         <ul>
           <li>
-            Since <strong>tx1 => tx2 => tx4</strong> have no fees, Alice will need to add an extra tx to pay for all the
-            fees (see <a href="https://bitcoinops.org/en/topics/cpfp/" target="_blank">CPFP</a>).
+            Since <code>tx1 => tx2 => tx4</code> have no fees, Alice will need to add an extra transaction to pay for
+            all the fees (see <a href="https://bitcoinops.org/en/topics/cpfp/" target="_blank">CPFP</a>).
           </li>
           <li>
             The number of transactions on this branches will be equal to log2(n) + 1, where n = number of participants
@@ -130,33 +140,33 @@ description: Explain ARK like I'm 5
       coordinating blind coinjoin rounds. Bob does not have to be online to receive the funds, can claim them at any
       time, transfer them to others, or move them on-chain.
     </p>
-    <p>Now let's imagine Alice wants to send Dave 1 BTC using Ark:</p>
+    <p>Now let's imagine Alice wants to send Eve 1 BTC using Ark:</p>
     <script type="text/typogram">
-      {% include txt/ark/payment.txt %}
+      {% include txt/ark/payment1.txt %}
     </script>
     <p>Alice forfeits its vUTXO to the ASP and in return Bob receives a vUTXO</p>
     <div class="tech">
       <a onclick="toggleVisibility('#dd2')">Deep dive</a>
       <div class="hidden" id="dd2">
         <ol>
-          <li>Alice asks Dave for an address (address D)</li>
-          <li>Alice informs ASP she wants to pay 1 BTC to address D</li>
-          <li>ASP (with help of Dave) prepares new transaction (Pool Tx 2) and show it to Alice:</li>
+          <li>Alice asks Eve for an address (address E)</li>
+          <li>Alice informs ASP she wants to pay 1 BTC to address E</li>
+          <li>ASP (with help of Eve) prepares new transaction (Pool Tx 2) and show it to Alice:</li>
           <script type="text/typogram">
             {% include txt/ark/pool_tx2.txt %}
           </script>
-          <li>Alice looks at the locking script for this new UTXO and sees Daves's public key on it</li>
-          <li>Alice understands that when Pool Tx 2 confirms, Dave will have 1 BTC on Ark</li>
+          <li>Alice looks at the locking script for this new UTXO and sees Eve's public key on it</li>
+          <li>Alice understands that when Pool Tx 2 confirms, Eve will have 1 BTC on Ark</li>
           <li>Alice proceeds by sending her vUTXO to the server, on the condition that Pool Tx 2 is confirmed:</li>
           <script type="text/typogram">
-            {% include txt/ark/diagram4.txt %}
+            {% include txt/ark/payment2.txt %}
           </script>
           <li>
-            ASP cannot cheat, if he wants to receive from Alice he needs to send it to Dave, which means Alice is paying
-            Dave atomically.
+            ASP cannot cheat, if he wants to receive from Alice he needs to send it to Eve, which means Alice is paying
+            Eve atomically.
           </li>
         </ol>
-        <p><strong>"only if Pool Tx 2 is confirmed"</strong></p>
+        <p><strong>"Only if Pool Tx 2 is confirmed"</strong></p>
         <p>
           This condition is not possible to implement today using Bitcoin script, but we can implement it using a trick:
         </p>
@@ -172,11 +182,18 @@ description: Explain ARK like I'm 5
           <li>The ASP will sign the connector input</li>
         </ul>
         <script type="text/typogram">
-          {% include txt/ark/diagram5.txt %}
+          {% include txt/ark/connector.txt %}
         </script>
         <p>This way, the Tx where Alice gives her vUTXO to the server is only valid if Pool Tx 2 is confirmed.</p>
       </div>
     </div>
+    <h3>Exiting Ark</h3>
+    <p>Time will fill up this space</p>
+    <h3>Adversarial scenarios</h3>
+    <p>What happens when one of the intervinients try to cheat others?</p>
+    <h4>ASP is evil</h4>
+    <h4>Alice is evil</h4>
+    <h4>Bob is evil</h4>
     <p>To be continued...</p>
     <p>Sources:</p>
     <ul>

@@ -1,5 +1,4 @@
 
-
       .~~~~~~~~~.                   .~~~~~~~~~.
       : onchain :                   : virtual :
       '~~~~~~~~~'                   '~~~~~~~~~'
@@ -8,9 +7,7 @@ Pool Tx 1                   :
                             :
 IN          | OUT           :   IN | OUT               IN | OUT
 ------------+------------   :   ---+---------          ---+--------
-ASP    UTXO | Shared UTXO o----->* | Alice 1 BTC o----->* | ASP but only
-   "..."    | Change        :      |                      | if pool tx 2 confirmed
+Alice  UTXO | Shared UTXO o----->* | Alice 1 BTC o----->* | ASP but only if
+   "..."    |               :      |                      | pool tx 2 confirmed
             |               :      |                      |
                             :
-
-    

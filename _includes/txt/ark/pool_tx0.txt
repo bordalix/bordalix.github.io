@@ -3,7 +3,7 @@ Pool Tx 1
 
 IN          | OUT     
 ------------+------              Ideally OP_CTV
-ASP    UTXO | Shared UTXO  ~~~>  multisig 4-of-4 or
-Alice  UTXO |                    pk(asp) && 4 weeks
-Bob    UTXO |
+Alice  UTXO | Shared UTXO  ~~~>  multisig 4-of-4 or
+Bob    UTXO |                    pk(asp) && 4 weeks
 Carol  UTXO |
+Dave   UTXO |

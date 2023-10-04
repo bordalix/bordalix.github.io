@@ -1,13 +1,13 @@
 
 Pool Tx 1
 
-IN          | OUT     
-------------+------              
-ASP    UTXO | Shared UTXO -+  
-Alice  UTXO |              |  
-Bob    UTXO |              |
+IN          | OUT                                  Legend
+------------+------                                * = input
+Alice  UTXO | Shared UTXO -+                       o = output
+Bob    UTXO |              |  
 Carol  UTXO |              |
-                           |                                On chain
+Dave   UTXO |              |
+                           |                                 Onchain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                            |    tx1                          Virtual
                          '-+-------'
@@ -27,6 +27,6 @@ Carol  UTXO |              |
                 |   |                              |    |
   +-------------+   +                 +------------+    |
 '-|-------'       '-|-------'       '-|-------'       '-|-------'
-| *  Alice|       | *    Bob|       | *  Carol|       | *    ASP|
+| *  Alice|       | *    Bob|       | *  Carol|       | *   Dave|
 '---------'       '---------'       '---------'       '---------'
        tx4               tx5               tx6               tx7
