@@ -1,7 +1,7 @@
 
 
       .~~~~~~~~~.           .~~~~~~~~~.
-      : onchain :           : virtual :
+      :  psbt   :           : virtual :
       '~~~~~~~~~'           '~~~~~~~~~'
                          :
 Pool Tx 2                :

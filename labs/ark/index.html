@@ -16,7 +16,7 @@ description: Explain ARK like I'm 5
     stroke: white;
   }
   .ark .hidden {
-    /* display: none; */
+    display: none;
     padding-top: 1rem;
   }
   .ark .tech {
@@ -97,26 +97,26 @@ description: Explain ARK like I'm 5
         </script>
         <p>The commitment output is a UTXO locked by 2 taproot leaves:</p>
         <ul>
-          <li>A multisig n-of-n, where n is the number of participants in the transaction.</li>
-          <li>The other leaf allows the ASP to spend it alone after 4 weeks.</li>
+          <li>A multisig <em>n-of-n</em>, where n is the number of participants in the transaction.</li>
+          <li>The other leaf, <em>pk(ASP) && older(4 weeks)</em>, allows the ASP to spend it alone after 4 weeks.</li>
         </ul>
         <p>
           In order to be trustless, before signing the pool tx Alice needs a way to unilaterally get their funds back.
           To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each participant.
-          Each leaf on this tree represents a VTXO.
         </p>
+        <p>Each leaf on this tree represents a VTXO:</p>
         <script type="text/typogram">
           {% include txt/ark/redeem_tx.txt %}
         </script>
         <p>
-          In the example above, Alice's VTXO will be <em>tx1 => tx2 => tx4</em> that she can broadcast anytime to
-          receive their funds back.
+          In the example above, Alice's VTXO will be <em>tx1:1 => tx2:1 => tx4</em> that she can broadcast anytime to
+          receive their funds back. For comparison, Bob's VTXO will be <em>tx1:1 => tx2:0 => tx5</em>.
         </p>
         <p>Notes:</p>
         <ul>
           <li>
-            Since <em>tx1 => tx2 => tx4</em> (the VTXO) have no fees, Alice will need to add an extra transaction to pay
-            for all the fees (see <a href="https://bitcoinops.org/en/topics/cpfp/" target="_blank">CPFP</a>).
+            Since <em>tx1:1 => tx2:1 => tx4</em> (the VTXO) have no fees, Alice will need to add an extra transaction to
+            pay for all the fees (see <a href="https://bitcoinops.org/en/topics/cpfp/" target="_blank">CPFP</a>).
           </li>
           <li>
             The number of transactions on this branches will be equal to <em>log2(n) + 1</em>, where n = number of
@@ -135,48 +135,48 @@ description: Explain ARK like I'm 5
           VTXO. Users can unilaterally redeem a VTXO for an on-chain utxo without asking for ASP cooperation.
         </p>
         <ol>
-          <li>Frank sends 0.01 BTC to <em>pk(F) && (older(4weeks) || pk(ASP))</em> (aka funding address)</li>
+          <li>Frank sends 0.01 BTC to <em>pk(F) && (older(4weeks) || pk(ASP))</em> (aka funding address):</li>
           <script type="text/typogram">
             {% include txt/ark/funding1.txt %}
           </script>
-          <li>Frank creates an unsigned PSBT and adds as input the output of the previous transaction</li>
+          <li>Frank creates an unsigned PSBT and adds as input the output of funding transaction:</li>
           <script type="text/typogram">
             {% include txt/ark/funding2.txt %}
           </script>
-          <li>Frank passes this PSBT to the ASP</li>
-          <li>ASP places one input to PSBT, the "connector output" from the next pool transaction</li>
+          <li>Frank passes this PSBT to the ASP;</li>
+          <li>ASP places one input to PSBT, the "connector output" from the next pool transaction:</li>
           <script type="text/typogram">
             {% include txt/ark/funding4.txt %}
           </script>
-          <li>ASP places one output to PSBT, a singlesig output that sweeps all money to itself <em>pk(ASP)</em></li>
+          <li>ASP places one output to PSBT, <em>pk(ASP)</em>, a singlesig output that sweeps all money to itself:</li>
           <script type="text/typogram">
             {% include txt/ark/funding5.txt %}
           </script>
           <li>
-            ASP passes PSBT to Bob. Server and Bob sign the PSBT and keep this transaction private. This transaction is
-            not valid yet, since the connector's outpoint context does not exist yet
+            ASP passes PSBT to Bob and both sign the PSBT and keep this transaction private. This transaction is not
+            valid yet, since the connector's outpoint context does not exist yet;
           </li>
-          <li>ASP signs its pool transaction and broadcasts it</li>
+          <li>ASP signs the pool transaction and broadcast it:</li>
           <script type="text/typogram">
             {% include txt/ark/funding7.txt %}
           </script>
           <li>
-            ASP can now claim 0.01 BTC from lifting transaction by revealing the descendant transaction of connectors
-            output. The ASP should claim this before four weeks
+            ASP can now claim 0.01 BTC from the funding transaction by revealing the descendant transaction of
+            connectors output. The ASP should claim this before four weeks:
           </li>
           <script type="text/typogram">
             {% include txt/ark/funding8.txt %}
           </script>
           <li>
-            Frank now has a 0.01 BTC worth UTXO representation as a descendant of the commitment output (a VTXO). He
-            will not able to use it before the funding transaction is confirmed
+            Frank now has a 0.01 BTC worth UTXO representation as a descendant of the commitment output (a VTXO). To
+            avoid double spending, he will not able to use it before the funding transaction is confirmed:
           </li>
           <script type="text/typogram">
             {% include txt/ark/funding9.txt %}
           </script>
         </ol>
         <p>
-          So far, Alice polluted onchain by funding an address, and ASP by claiming funds from that address. Further
+          So far, Alice polluted onchain by funding an address, and the ASP by claiming funds from that address. Further
           steps from here will be footprint minimal.
         </p>
       </div>
@@ -200,17 +200,17 @@ description: Explain ARK like I'm 5
       <a onclick="toggleVisibility('#dd2')">Deep dive</a>
       <div class="hidden" id="dd2">
         <ol>
-          <li>Alice asks Oscar for an address (address O)</li>
-          <li>Alice informs ASP she wants to pay 0.01 BTC to address O</li>
+          <li>Alice asks Oscar for an address (address O);</li>
+          <li>Alice informs ASP she wants to pay 0.01 BTC to address O;</li>
           <li>ASP (with help of Oscar) prepares new transaction (Pool Tx 2) and show it to Alice:</li>
           <script type="text/typogram">
-            {% include txt/ark/pool_tx2.txt %}
+            {% include txt/ark/payment3.txt %}
           </script>
-          <li>Alice looks at the locking script for this new UTXO and sees Oscar's public key on it</li>
-          <li>Alice understands that when Pool Tx 2 confirms, Oscar will have 0.01 BTC on Ark</li>
+          <li>Alice looks at the locking script for this new UTXO and sees Oscar's public key on it;</li>
+          <li>Alice understands that when Pool Tx 2 confirms, Oscar will have 0.01 BTC on Ark;</li>
           <li>Alice proceeds by sending her VTXO to the server, on the condition that Pool Tx 2 is confirmed:</li>
           <script type="text/typogram">
-            {% include txt/ark/payment2.txt %}
+            {% include txt/ark/payment6.txt %}
           </script>
           <li>
             ASP cannot cheat, if he wants to receive from Alice he needs to send it to Oscar, which means Alice is
