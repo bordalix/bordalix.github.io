@@ -1,9 +1,8 @@
 
 Pool Tx 1
 
-IN          | OUT     
-------------+------              Ideally OP_CTV
-Alice  UTXO | Shared UTXO  ~~~>  multisig 4-of-4 or
-Bob    UTXO |                    pk(asp) && 4 weeks
-Carol  UTXO |
-Dave   UTXO |
+IN       | OUT     
+---------+------              
+ASP UTXO | Commitment ~~> n-of-n || (pk(asp) && older(4 weeks))
+         | Connector ~~~> pk(asp)
+         | Change ~~~~~~> pk(asp)

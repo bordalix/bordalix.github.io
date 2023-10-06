@@ -5,9 +5,9 @@
                             :
 Pool Tx 1                   :
                             :
-IN          | OUT           :   IN | OUT               IN | OUT
-------------+------------   :   ---+---------          ---+--------
-Alice  UTXO | Shared UTXO o----->* | Alice 1 BTC o----->* | ASP but only if
-   "..."    |               :      |                      | pool tx 2 confirmed
-            |               :      |                      |
+IN          | OUT           :   IN | OUT              IN | OUT
+------------+------------   :   ---+---------         ---+--------
+Alice  UTXO | Commitment  o----->* | Alice VTXO o----->* | ASP but only if
+   "..."    |               :      |                     | pool tx 2 confirmed
+            |               :      |                     |
                             :

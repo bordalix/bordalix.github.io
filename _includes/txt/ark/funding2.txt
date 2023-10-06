@@ -1,0 +1,14 @@
+
+
+      .~~~~~~~~~.                 .~~~~~~~~~.     
+      : onchain :                 :  psbt   :     
+      '~~~~~~~~~'                 '~~~~~~~~~'      
+                         
+Funding transaction            :
+                               :
+IN         | OUT               :  IN | OUT            
+-----------+----------------   :  ---+------
+Frank UTXO | Funding address o---->* |    
+           |                   :     |                
+                               :
+                         

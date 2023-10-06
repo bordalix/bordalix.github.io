@@ -6,23 +6,23 @@
                             :
 Pool Tx 1                   :
                             :
-IN          | OUT           :   IN | OUT               IN | OUT
-------------+------------   :   ---+---------          ---+--------
-Alice  UTXO | Shared UTXO o----->* | Alice 1 BTC o----->* | ASP but only
-Bob    UTXO |               :      |                    * | if pool tx 2 confirmed
-Carol  UTXO |               :      |                    ^ |
-Dave   UTXO |               :                           |
-                            :                           |
-                            :                           |
-                            :                           |
-Pool Tx 2                   :                           |
-                            :                           |
-IN          | OUT           :   IN | OUT                |
-------------+------------   :   ---+---------           |
-ASP    UXTO | Shared UTXO o----->* | Eve 1 BTC          |
-            | Change        :      |                    |
-            | Connector o   :      |                    |
-                         \  :                           |
-                          \                             |
-                           \                            |
-                            '---------------------------.
+IN          | OUT           :   IN | OUT              IN | OUT
+------------+------------   :   ---+---------         ---+--------
+Alice  UTXO | Commitment  o----->* | Alice VTXO o----->* | ASP but only
+Bob    UTXO |               :      |                   * | if pool tx 2 confirmed
+Carol  UTXO |               :      |                   ^ |
+Dave   UTXO |               :                          |
+                            :                          |
+                            :                          |
+                            :                          |
+Pool Tx 2                   :                          |
+                            :                          |
+IN          | OUT           :   IN | OUT               |
+------------+------------   :   ---+---------          |
+ASP    UXTO | Commitment  o----->* | Frank VTXO        |
+            | Change        :      |                   |
+            | Connector o   :      |                   |
+                         \  :                          |
+                          \                            |
+                           \                           |
+                            '--------------------------+

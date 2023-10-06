@@ -1,0 +1,24 @@
+
+
+      .~~~~~~~~~.                 .~~~~~~~~~.     
+      : onchain :                 :  psbt   :     
+      '~~~~~~~~~'                 '~~~~~~~~~'     
+                         
+Funding transaction            :
+                               :
+IN         | OUT               :  IN | OUT       
+-----------+----------------   :  ---+------
+Frank UTXO | Funding address o---->* | ASP Sweep ~~~> pk(ASP)   
+           |                   :   * |           
+                               :   ^
+                               :   |
+                               :   |
+                               :   |                         
+Pool transaction               :   |
+                               :   |
+IN       | OUT                 :   |
+---------+------------         :   |
+ASP UXTO | Commitment          :   |
+         | Change              :   |
+         | Connector o-------------+  
+                               :                                
