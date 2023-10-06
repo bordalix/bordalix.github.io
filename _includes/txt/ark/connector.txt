@@ -1,0 +1,30 @@
+
+
+      .~~~~~~~~~.                   .~~~~~~~~~.
+      : onchain :                   : virtual :
+      '~~~~~~~~~'                   '~~~~~~~~~'
+                            :
+Pool Tx 1                   :
+                            :
+IN          | OUT           :   IN | OUT              IN | OUT
+------------+------------   :   ---+---------         ---+--------
+Alice  UTXO | Commitment  o----->* | Alice VTXO o----->* | ASP but only if
+Bob    UTXO |               :      |                   * | pool tx 2 confirmed
+Carol  UTXO |               :      |                   ^ |
+Dave   UTXO |               :                          |
+                            :                          |
+      .~~~~~~~~~.           :                          | 
+      :  psbt   :           :                          | 
+      '~~~~~~~~~'           :                          | 
+                            :                          |
+Pool Tx 2                   :                          |
+                            :                          |
+IN          | OUT           :   IN | OUT               |
+------------+------------   :   ---+---------          |
+ASP    UXTO | Commitment  o----->* | Oscar VTXO        |
+            | Change        :      |                   |
+            | Connector o   :      |                   |
+                         \  :                          |
+                          \                            |
+                           \                           |
+                            '--------------------------+

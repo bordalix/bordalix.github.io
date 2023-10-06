@@ -1,0 +1,34 @@
+
+
+      .~~~~~~~~~.                
+      : onchain :                
+      '~~~~~~~~~'                
+                         
+Funding transaction           
+                              
+IN         | OUT              
+-----------+------------------       
+Frank UTXO | Funding address o       
+           |                 |       
+                             |       
+      .~~~~~~~~~.            |       
+      : mempool :            |       
+      '~~~~~~~~~'            |       
+                             |                   
+Pool transaction             |       
+                             |       
+IN       | OUT               |       
+---------+------------       |       
+ASP UXTO | Commitment        |       
+         | Change            |       
+         | Connector o       |       
+                     |       |         
+  +------------------+       |         
+  | +------------------------+             
+  | |                                
+  | |  Claim transaction
+  | |  
+  | |  IN | OUT       
+  | |  ---+------
+  | +-->* | ASP Sweep ~~~> pk(ASP) 
+  +---->* |           

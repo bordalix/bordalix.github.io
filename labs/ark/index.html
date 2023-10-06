@@ -33,8 +33,12 @@ description: Explain ARK like I'm 5
   .ark h3 {
     margin: 2em 0 1em 0;
   }
-  .ark ol li {
-    margin-bottom: 1rem;
+  .ark h4 {
+    font-size: 1.2rem;
+  }
+  .ark em {
+    color: var(--orange);
+    padding: 0 4px;
   }
 </style>
 
@@ -53,6 +57,7 @@ description: Explain ARK like I'm 5
     <h2 class="heading">
       <span class="gradient">Explain ARK like I'm 5</span>
     </h2>
+
     <h3>ELI5</h3>
     <ul>
       <li>
@@ -66,96 +71,183 @@ description: Explain ARK like I'm 5
       <li>The bank can only redeem Alice's check if it shows proof of payment to Bob.</li>
       <li>Bob receives a check from the bank that he can redeem anytime anywhere.</li>
     </ul>
-    <h3>Lifting</h3>
+
+    <h3>Onboarding</h3>
     <p>
       The first step is for Alice to lift her coins. This is an atomic swap where she will give up a UTXO (+ fees) to
-      receive a vUTXO from the ASP at the same time. The ASP makes a special transaction, called pool transaction (Pool
-      TX), where it mixes UTXOs from many users (among other things) and creates a shared UTXO as well as many off-chain
-      vUTXOs for each of those users including one for Alice.
+      receive a virtual UTXO (aka VTXO) from the ASP at the same time. The ASP makes a special transaction, called pool
+      transaction (aka Pool Tx), where it mixes UTXOs from many users (among other things) and creates a shared UTXO as
+      well as many off-chain VTXOs for each of those users including one for Alice.
     </p>
-    <p>In this example, Alice, Bob and Carol are "lifting" 1 BTC each to Ark:</p>
+    <p>In this example, Alice, Bob, Carol and Dave are "lifting" 0.01 BTC each to Ark:</p>
     <script type="text/typogram">
-      {% include txt/ark/graph1.txt %}
+      {% include txt/ark/onboarding.txt %}
     </script>
+
     <div class="tech">
       <a onclick="toggleVisibility('#dd1')">Deep dive</a>
       <div class="hidden" id="dd1">
-        <p>Every 5 seconds there's an onchain transaction:</p>
-        <script type="text/typogram">
-          {% include txt/ark/diagram.txt %}
-        </script>
+        <p><strong>Pool transaction</strong></p>
         <p>
-          The output is a UTXO locked by a multisig 4 of 4, where 4 is the number of participants in the transaction. An
-          alternative tapleaf allows the ASP to spend it alone after 4 weeks.
-        </p>
-        <p>
-          The resulting UTXO is then used as input for a new transaction. This new transaction doesn't need to go
-          onchain, but Alice, Bob and Carol each have a copy of it, and they can broadcast it to the network any time to
-          recover their BTC.
+          The ASP places one (or more) input(s) to its pool transaction to supply funds to the commitment output,
+          connectors output, change output, and transaction fees.
         </p>
         <script type="text/typogram">
-          {% include txt/ark/diagram2.txt %}
+          {% include txt/ark/pool_tx0.txt %}
         </script>
+        <p>The commitment output is a UTXO locked by 2 taproot leaves:</p>
+        <ul>
+          <li>A multisig <em>n-of-n</em>, where n is the number of participants in the transaction.</li>
+          <li>The other leaf, <em>pk(ASP) && older(4 weeks)</em>, allows the ASP to spend it alone after 4 weeks.</li>
+        </ul>
+        <p>
+          In order to be trustless, before signing the pool tx Alice needs a way to unilaterally get their funds back.
+          To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each participant.
+        </p>
+        <p>Each leaf on this tree represents a VTXO:</p>
+        <script type="text/typogram">
+          {% include txt/ark/redeem_tx.txt %}
+        </script>
+        <p>
+          In the example above, Alice's VTXO will be <em>tx1:1 => tx2:1 => tx4</em> that she can broadcast anytime to
+          receive their funds back. For comparison, Bob's VTXO will be <em>tx1:1 => tx2:0 => tx5</em>.
+        </p>
+        <p>Notes:</p>
+        <ul>
+          <li>
+            Since <em>tx1:1 => tx2:1 => tx4</em> (the VTXO) have no fees, Alice will need to add an extra transaction to
+            pay for all the fees (see <a href="https://bitcoinops.org/en/topics/cpfp/" target="_blank">CPFP</a>).
+          </li>
+          <li>
+            The number of transactions on this branches will be equal to <em>log2(n) + 1</em>, where n = number of
+            participants
+          </li>
+        </ul>
+        <p>For clarity, VTXOs will be represented like this:</p>
+        <script type="text/typogram">
+          {% include txt/ark/pool_tx1.txt %}
+        </script>
+
+        <p><strong>Lifting</strong></p>
+        <p>
+          Frank now wants to enter the Ark, so he must use a process called lifting, which is an atomic two-way peg
+          mechanism that doesn't require trust. Lifting lets users lift their on-chain utxos off the chain for a 1:1
+          VTXO. Users can unilaterally redeem a VTXO for an on-chain utxo without asking for ASP cooperation.
+        </p>
+        <ol>
+          <li>Frank sends 0.01 BTC to <em>pk(F) && (older(4weeks) || pk(ASP))</em> (aka funding address):</li>
+          <script type="text/typogram">
+            {% include txt/ark/funding1.txt %}
+          </script>
+          <li>Frank creates an unsigned PSBT and adds as input the output of funding transaction:</li>
+          <script type="text/typogram">
+            {% include txt/ark/funding2.txt %}
+          </script>
+          <li>Frank passes this PSBT to the ASP;</li>
+          <li>ASP places one input to PSBT, the "connector output" from the next pool transaction:</li>
+          <script type="text/typogram">
+            {% include txt/ark/funding4.txt %}
+          </script>
+          <li>ASP places one output to PSBT, <em>pk(ASP)</em>, a singlesig output that sweeps all money to itself:</li>
+          <script type="text/typogram">
+            {% include txt/ark/funding5.txt %}
+          </script>
+          <li>
+            ASP passes PSBT to Bob and both sign the PSBT and keep this transaction private. This transaction is not
+            valid yet, since the connector's outpoint context does not exist yet;
+          </li>
+          <li>ASP signs the pool transaction and broadcast it:</li>
+          <script type="text/typogram">
+            {% include txt/ark/funding7.txt %}
+          </script>
+          <li>
+            ASP can now claim 0.01 BTC from the funding transaction by revealing the descendant transaction of
+            connectors output. The ASP should claim this before four weeks:
+          </li>
+          <script type="text/typogram">
+            {% include txt/ark/funding8.txt %}
+          </script>
+          <li>
+            Frank now has a 0.01 BTC worth UTXO representation as a descendant of the commitment output (a VTXO). To
+            avoid double spending, he will not able to use it before the funding transaction is confirmed:
+          </li>
+          <script type="text/typogram">
+            {% include txt/ark/funding9.txt %}
+          </script>
+        </ol>
+        <p>
+          So far, Alice polluted onchain by funding an address, and the ASP by claiming funds from that address. Further
+          steps from here will be footprint minimal.
+        </p>
       </div>
     </div>
+
     <h3>Payment</h3>
     <p>
-      Alice then instructs the ASP to take her vUTXO and pay Bob. She will only need to know Bob's address. This payment
-      is also atomic and private. The ASP does not know which vUTXO belongs to which user and blindly mixes them to
-      produce another anonymous vUTXO set. Ark's magic occurs in the fact that the post-mix vUTXOs can only be claimed
+      Alice then instructs the ASP to take her VTXO and pay Oscar. She will only need to know Oscar's address. This
+      payment is also atomic and private. The ASP does not know which VTXO belongs to which user and blindly mixes them
+      to produce another anonymous VTXO set. Ark's magic occurs in the fact that the post-mix VTXOs can only be claimed
       by the intended recipients even though the ASP has no idea who owns them. Put another way, the ASP is simply
-      coordinating blind coinjoin rounds. Bob does not have to be online to receive the funds, can claim them at any
-      time, transfer them to others, or move them on-chain.
+      coordinating blind coinjoin rounds. Oscar does not have to be online to receive the funds, can claim them at any
+      time, transfer them to others, or move them onchain.
     </p>
-    <p>Now let's imagine Alice wants to send Eve 1 BTC using Ark:</p>
+    <p>Now let's imagine Alice wants to send Oscar 0.01 BTC using Ark:</p>
     <script type="text/typogram">
-      {% include txt/ark/graph2.txt %}
+      {% include txt/ark/payment1.txt %}
     </script>
-    <p>Alice forfeits its vUTXO to the ASP and in return Bob receives a vUTXO</p>
+    <p>Alice forfeits its VTXO to the ASP and in return Oscar receives a VTXO</p>
     <div class="tech">
       <a onclick="toggleVisibility('#dd2')">Deep dive</a>
       <div class="hidden" id="dd2">
         <ol>
-          <li>Alice asks Eve for an address (address E)</li>
-          <li>Alice informs ASP she wants to pay 1 BTC to address E</li>
-          <li>ASP (with help of Eve) prepares new transaction (TX2) and show it to Alice:</li>
+          <li>Alice asks Oscar for an address (address O);</li>
+          <li>Alice informs ASP she wants to pay 0.01 BTC to address O;</li>
+          <li>ASP (with help of Oscar) prepares new transaction (Pool Tx 2) and show it to Alice:</li>
           <script type="text/typogram">
-            {% include txt/ark/diagram3.txt %}
+            {% include txt/ark/payment3.txt %}
           </script>
-          <li>Alice looks at the locking script for this new UTXO and sees Eve's public key on it</li>
-          <li>Alice understands that when TX2 confirms, Eve will have 1 BTC on Ark</li>
-          <li>Alice proceeds by sending her vUTXO to the server, on the condition that TX2 is confirmed:</li>
+          <li>Alice looks at the locking script for this new UTXO and sees Oscar's public key on it;</li>
+          <li>Alice understands that when Pool Tx 2 confirms, Oscar will have 0.01 BTC on Ark;</li>
+          <li>Alice proceeds by sending her VTXO to the server, on the condition that Pool Tx 2 is confirmed:</li>
           <script type="text/typogram">
-            {% include txt/ark/diagram4.txt %}
+            {% include txt/ark/payment6.txt %}
           </script>
           <li>
-            ASP cannot cheat, if he wants to receive from Alice he needs to send it to Eve, which means Alice is paying
-            Eve atomically.
+            ASP cannot cheat, if he wants to receive from Alice he needs to send it to Oscar, which means Alice is
+            paying Oscar atomically.
           </li>
         </ol>
-        <p>
-          <strong>"only if TX2 is confirmed"</strong>
-        </p>
+        <p><strong>"Only if Pool Tx 2 is confirmed"</strong></p>
         <p>
           This condition is not possible to implement today using Bitcoin script, but we can implement it using a trick:
         </p>
         <ul>
           <li>
-            TX1 will have additional outputs, called
+            Pool Tx 1 will have additional outputs, called
             <strong>connectors</strong>
           </li>
           <li>This connectors have no financial value (dust limit)</li>
           <li>Connectors are singlesig spendable by the ASP</li>
           <li>Alice will use one of this connectors as input to the new transaction</li>
-          <li>Alice will sign her vUTXO with SIGHASH_ALL to commit to all inputs</li>
+          <li>Alice will sign her VTXO with SIGHASH_ALL to commit to all inputs</li>
           <li>The ASP will sign the connector input</li>
         </ul>
         <script type="text/typogram">
-          {% include txt/ark/diagram5.txt %}
+          {% include txt/ark/connector.txt %}
         </script>
-        <p>This way, the TX where Alice gives her vUTXO to the server is only valid if TX2 is confirmed.</p>
+        <p>This way, the Tx where Alice gives her VTXO to the server is only valid if Pool Tx 2 is confirmed.</p>
       </div>
     </div>
+    <h3>Exiting Ark</h3>
+    <p>Time will fill up this space</p>
+    <h3>Adversarial scenarios</h3>
+    <p>What happens when one of the intervinients try to cheat others?</p>
+    <h4>ASP is evil</h4>
+    <p>Time will fill up this space</p>
+    <h4>Alice is evil</h4>
+    <p>Time will fill up this space</p>
+    <h4>Frank is evil</h4>
+    <p>Time will fill up this space</p>
     <p>To be continued...</p>
     <p>Sources:</p>
     <ul>

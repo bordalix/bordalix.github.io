@@ -1,0 +1,13 @@
+
+      .~~~~~~~~~.                   .~~~~~~~~~.
+      : onchain :                   : virtual :
+      '~~~~~~~~~'                   '~~~~~~~~~'
+                            :
+Pool Tx 1                   :
+                            :
+IN          | OUT           :   IN | OUT              IN | OUT
+------------+------------   :   ---+---------         ---+--------
+Alice  UTXO | Commitment  o----->* | Alice VTXO o----->* | ASP but only if
+   "..."    |               :      |                     | pool tx 2 confirmed
+            |               :      |                     |
+                            :
