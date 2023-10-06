@@ -146,11 +146,11 @@ description: Explain ARK like I'm 5
           <li>Frank passes this PSBT to the ASP</li>
           <li>ASP places one input to PSBT, the "connector output" from the next pool transaction</li>
           <script type="text/typogram">
-            {% include txt/ark/funding3.txt %}
+            {% include txt/ark/funding4.txt %}
           </script>
           <li>ASP places one output to PSBT, a singlesig output that sweeps all money to itself <em>pk(ASP)</em></li>
           <script type="text/typogram">
-            {% include txt/ark/funding4.txt %}
+            {% include txt/ark/funding5.txt %}
           </script>
           <li>
             ASP passes PSBT to Bob. Server and Bob sign the PSBT and keep this transaction private. This transaction is
@@ -158,21 +158,21 @@ description: Explain ARK like I'm 5
           </li>
           <li>ASP signs its pool transaction and broadcasts it</li>
           <script type="text/typogram">
-            {% include txt/ark/funding5.txt %}
+            {% include txt/ark/funding7.txt %}
           </script>
           <li>
             ASP can now claim 0.01 BTC from lifting transaction by revealing the descendant transaction of connectors
             output. The ASP should claim this before four weeks
           </li>
           <script type="text/typogram">
-            {% include txt/ark/funding6.txt %}
+            {% include txt/ark/funding8.txt %}
           </script>
           <li>
             Frank now has a 0.01 BTC worth UTXO representation as a descendant of the commitment output (a VTXO). He
             will not able to use it before the funding transaction is confirmed
           </li>
           <script type="text/typogram">
-            {% include txt/ark/funding7.txt %}
+            {% include txt/ark/funding9.txt %}
           </script>
         </ol>
         <p>

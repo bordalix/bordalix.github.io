@@ -1,0 +1,31 @@
+
+
+      .~~~~~~~~~.                     .~~~~~~~~~.             
+      : onchain :                     : virtual :             
+      '~~~~~~~~~'                     '~~~~~~~~~'             
+                         
+Funding transaction               :
+                                  :
+IN         | OUT                  :
+-----------+----------------      :
+Frank UTXO | Funding address o    :
+           |                 |    :
+                             |    :       
+                             |    :
+Pool transaction             |    :
+                             |    :
+IN       | OUT               |    :   IN | OUT
+---------+------------       |    :   ---+---------
+ASP UXTO | Commitment o--------------->* | Frank VTXO 
+         | Change            |    :      | 
+         | Connector o       |    :      |  
+                     |       |    :      | 
++--------------------+       |    :
+| +--------------------------+    :  
+| |                               :
+| |  Claim transaction            :
+| |                               :
+| |  IN | OUT                     :
+| |  ---+------                   :
+| +-->* | ASP Sweep ~~~> pk(ASP)  :
++---->* |                         :

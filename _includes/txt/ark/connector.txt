@@ -8,8 +8,8 @@ Pool Tx 1                   :
                             :
 IN          | OUT           :   IN | OUT              IN | OUT
 ------------+------------   :   ---+---------         ---+--------
-Alice  UTXO | Commitment  o----->* | Alice VTXO o----->* | ASP but only
-Bob    UTXO |               :      |                   * | if pool tx 2 confirmed
+Alice  UTXO | Commitment  o----->* | Alice VTXO o----->* | ASP but only if
+Bob    UTXO |               :      |                   * | pool tx 2 confirmed
 Carol  UTXO |               :      |                   ^ |
 Dave   UTXO |               :                          |
                             :                          |
@@ -19,7 +19,7 @@ Pool Tx 2                   :                          |
                             :                          |
 IN          | OUT           :   IN | OUT               |
 ------------+------------   :   ---+---------          |
-ASP    UXTO | Commitment  o----->* | Frank VTXO        |
+ASP    UXTO | Commitment  o----->* | Oscar VTXO        |
             | Change        :      |                   |
             | Connector o   :      |                   |
                          \  :                          |

@@ -1,31 +1,25 @@
 
 
-      .~~~~~~~~~.                     .~~~~~~~~~.             
-      : onchain :                     : virtual :             
-      '~~~~~~~~~'                     '~~~~~~~~~'             
+      .~~~~~~~~~.                 .~~~~~~~~~.     
+      : onchain :                 :  psbt   :     
+      '~~~~~~~~~'                 '~~~~~~~~~'     
                          
-Funding transaction               :
-                                  :
-IN         | OUT                  :
------------+----------------      :
-Frank UTXO | Funding address o    :
-           |                 |    :
-                             |    :       
-                             |    :
-Pool transaction             |    :
-                             |    :
-IN       | OUT               |    :   IN | OUT
----------+------------       |    :   ---+---------
-ASP UXTO | Commitment o--------------->* | Frank VTXO 
-         | Change            |    :      | 
-         | Connector o       |    :      |  
-                     |       |    :      | 
-+--------------------+       |    :
-| +--------------------------+    :  
-| |                               :
-| |  Claim transaction            :
-| |                               :
-| |  IN | OUT                     :
-| |  ---+------                   :
-| +-->* | ASP Sweep ~~~> pk(ASP)  :
-+---->* |                         :
+Funding transaction            :
+                               :
+IN         | OUT               :  IN | OUT       
+-----------+----------------   :  ---+------
+Frank UTXO | Funding address o---->* | ASP Sweep ~~~> pk(ASP)   
+           |                   :   * |           
+                               :   ^
+      .~~~~~~~~~.              :   |       
+      : mempool :              :   |       
+      '~~~~~~~~~'              :   |   
+                               :   |                         
+Pool transaction               :   |
+                               :   |
+IN       | OUT                 :   |
+---------+------------         :   |
+ASP UXTO | Commitment          :   |
+         | Change              :   |
+         | Connector o-------------+  
+                               :                                
