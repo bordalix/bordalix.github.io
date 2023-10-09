@@ -16,7 +16,7 @@ Pool transaction             |    :
                              |    :
 IN       | OUT               |    :   IN | OUT
 ---------+------------       |    :   ---+---------
-ASP UXTO | Commitment o--------------->* | Frank VTXO 
+ASP UTXO | Commitment o--------------->* | Frank VTXO 
          | Change            |    :      | 
          | Connector o       |    :      |  
                      |       |    :      | 

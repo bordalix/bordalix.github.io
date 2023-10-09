@@ -21,7 +21,7 @@ Pool Tx 2                :                          |
                          :                          |
 IN       | OUT           :   IN | OUT               |
 ---------+------------   :   ---+---------          |
-ASP UXTO | Commitment  o----->* | Oscar VTXO        |
+ASP UTXO | Commitment  o----->* | Oscar VTXO        |
          | Change        :      |                   |
          | Connector o   :      |                   |
                       \  :                          |

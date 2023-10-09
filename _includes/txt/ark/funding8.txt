@@ -19,7 +19,7 @@ Pool transaction             |
                              |       
 IN       | OUT               |       
 ---------+------------       |       
-ASP UXTO | Commitment        |       
+ASP UTXO | Commitment        |       
          | Change            |       
          | Connector o       |       
                      |       |         

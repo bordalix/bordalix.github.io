@@ -18,7 +18,7 @@ Frank UTXO | Funding address o---->* | ASP Sweep ~~~> pk(ASP)
                                :                            |
                                :   IN       | OUT           |
                                :   ---------+------------   |
-                               :   ASP UXTO | Commitment    |
+                               :   ASP UTXO | Commitment    |
                                :            | Change        |
                                :            | Connector o---+
                                :                                
