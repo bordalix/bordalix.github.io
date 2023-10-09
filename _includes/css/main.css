@@ -370,3 +370,7 @@ pre {
   color: var(--blue);
   cursor: pointer;
 }
+
+summary {
+  margin-bottom: 1rem;
+}

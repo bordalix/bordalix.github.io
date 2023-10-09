@@ -179,6 +179,19 @@ description: Explain ARK like I'm 5
           So far, Frank polluted onchain by funding an address, and the ASP by claiming funds from that address. Further
           steps from here will be footprint minimal.
         </p>
+        <details>
+          <summary>Adversarial scenarios</summary>
+          <ul>
+            <li>
+              <strong>Franks send 0.01 BTC but ASP never responds</strong><br />
+              Franks will be able to get his funds back in 4 weeks
+            </li>
+            <li>
+              <strong>Server never broadcasts pool transaction</strong><br />
+              Franks will be able to get his funds back in 4 weeks
+            </li>
+          </ul>
+        </details>
       </div>
     </div>
 
@@ -221,31 +234,28 @@ description: Explain ARK like I'm 5
           This condition is not possible to implement today using Bitcoin script, but we can implement it using a trick:
         </p>
         <ul>
-          <li>
-            Pool Tx 1 will have additional outputs, called
-            <strong>connectors</strong>
-          </li>
+          <li>Pool Tx 1 will have additional outputs, called <em>connectors</em></li>
           <li>This connectors have no financial value (dust limit)</li>
-          <li>Connectors are singlesig spendable by the ASP</li>
+          <li>Connectors are singlesig spendable by the ASP (<em>pk(ASP)</em>)</li>
           <li>Alice will use one of this connectors as input to the new transaction</li>
-          <li>Alice will sign her VTXO with SIGHASH_ALL to commit to all inputs</li>
+          <li>Alice will sign her VTXO with <em>SIGHASH_ALL</em> to commit to all inputs</li>
           <li>The ASP will sign the connector input</li>
         </ul>
         <script type="text/typogram">
           {% include txt/ark/connector.txt %}
         </script>
-        <p>This way, the Tx where Alice gives her VTXO to the server is only valid if Pool Tx 2 is confirmed.</p>
+        <p>
+          This way, the transaction where Alice gives her VTXO to the server is only valid if Pool Tx 2 is confirmed.
+        </p>
+        <details>
+          <summary>Adversarial scenarios</summary>
+          <ul>
+            <li>Time will fill up this space</li>
+          </ul>
+        </details>
       </div>
     </div>
     <h3>Exiting Ark</h3>
-    <p>Time will fill up this space</p>
-    <h3>Adversarial scenarios</h3>
-    <p>What happens when one of the intervinients try to cheat others?</p>
-    <h4>ASP is evil</h4>
-    <p>Time will fill up this space</p>
-    <h4>Alice is evil</h4>
-    <p>Time will fill up this space</p>
-    <h4>Frank is evil</h4>
     <p>Time will fill up this space</p>
     <p>To be continued...</p>
     <p>Sources:</p>
