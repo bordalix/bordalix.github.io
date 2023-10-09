@@ -1,12 +1,10 @@
 
 Pool Tx 1
 
-IN          | OUT                                  Legend
-------------+------                                * = input
-Alice  UTXO | Commitment  -+                       o = output
-Bob    UTXO |              |  
-Carol  UTXO |              |
-Dave   UTXO |              |
+IN        | OUT                                  Legend
+----------+------                                * = input
+ASP  UTXO | Commitment  ---+                     o = output
+          |                |  
                            |                                 Onchain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                            |    tx1                          Virtual
