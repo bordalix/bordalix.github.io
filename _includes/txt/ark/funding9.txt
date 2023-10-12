@@ -12,7 +12,7 @@ Frank UTXO | Funding address o    :
            |                 |    :
                              |    :       
                              |    :
-Pool transaction             |    :
+Next pool transaction        |    :
                              |    :
 IN       | OUT               |    :   IN | OUT
 ---------+------------       |    :   ---+---------

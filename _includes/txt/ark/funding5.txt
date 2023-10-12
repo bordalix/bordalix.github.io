@@ -14,7 +14,7 @@ Frank UTXO | Funding address o---->* | ASP Sweep ~~~> pk(ASP)
                                :   |
                                :   +------------------------+
                                :                            |
-                               :   Pool transaction         |
+                               :   Next pool transaction    |
                                :                            |
                                :   IN       | OUT           |
                                :   ---------+------------   |

@@ -15,7 +15,7 @@ Frank UTXO | Funding address o
       : mempool :            |       
       '~~~~~~~~~'            |       
                              |                   
-Pool transaction             |       
+Next pool transaction        |       
                              |       
 IN       | OUT               |       
 ---------+------------       |       
