@@ -72,6 +72,22 @@ description: Explain ARK like I'm 5
       <li>Bob receives a check from the bank that he can redeem anytime anywhere.</li>
     </ul>
 
+    <h3>TL/DR</h3>
+    <ul>
+      <li>Ark implements <em>VTXOs</em>, and all value exchanged inside Ark uses <em>VTXOs</em>.</li>
+      <li>
+        <em>VTXOs</em> are outpoints from hidden transaction, which can be broadcasted to mainchain to became
+        <em>UTXOs</em>, or sent to the ASP in exchange for other <em>VTXOs</em>.
+      </li>
+      <li>
+        Spending and receiving <em>VTXOs</em> doesn't touch the chain, which allows for an infinite exchange of value
+        inside Ark with a minimal chain footprint.
+      </li>
+      <li>
+        Ark it is a complete trustless solution because users can, at anytime, exit the Ark without ASP's permission.
+      </li>
+    </ul>
+
     <h3>Onboarding</h3>
     <p>
       The first step is for Alice to lift her coins. This is an atomic swap where she will give up a UTXO (+ fees) to
