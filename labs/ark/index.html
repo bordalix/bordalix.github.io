@@ -179,7 +179,8 @@ description: Explain ARK like I'm 5
           </script>
           <li>
             ASP can now claim 0.01 BTC from the funding transaction by revealing the descendant transaction of
-            connectors output. The ASP should claim this before four weeks:
+            connectors output. The ASP should claim this before four weeks or else could double spend it. Don't forget
+            the funding transaction is locked to: <em>pk(F) && (older(4weeks) || pk(ASP))</em>.
           </li>
           <script type="text/typogram">
             {% include txt/ark/lifting8.txt %}
