@@ -17,10 +17,10 @@ Next pool transaction        |    :
 IN       | OUT               |    :   IN | OUT
 ---------+------------       |    :   ---+---------
 ASP UTXO | Commitment o--------------->* | Frank VTXO 
-         | Change            |    :      | 
-         | Connector o       |    :      |  
-                     |       |    :      | 
-+--------------------+       |    :
+         | Connectors o      |    :      | 
+         | Change     |      |    :      |  
+                      |      |    :      | 
++---------------------+      |    :
 | +--------------------------+    :  
 | |                               :
 | |  Claim transaction            :

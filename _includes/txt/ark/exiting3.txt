@@ -1,0 +1,14 @@
+
+
+      .~~~~~~~~~.      
+      :  psbt   :      
+      '~~~~~~~~~'      
+                    
+Pool Tx 3              
+                    
+IN       | OUT         
+---------+------------ 
+ASP UTXO | Commitment
+         | Connectors
+         | Change  
+         | Alice            

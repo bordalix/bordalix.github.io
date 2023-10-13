@@ -20,10 +20,10 @@ Next pool transaction        |
 IN       | OUT               |       
 ---------+------------       |       
 ASP UTXO | Commitment        |       
-         | Change            |       
-         | Connector o       |       
-                     |       |         
-  +------------------+       |         
+         | Connectors o      |       
+         | Change     |      |       
+                      |      |         
+  +-------------------+      |         
   | +------------------------+             
   | |                                
   | |  Claim transaction

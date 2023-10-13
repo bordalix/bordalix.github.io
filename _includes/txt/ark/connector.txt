@@ -9,7 +9,7 @@ Pool Tx 1                :
 IN       | OUT           :   IN | OUT              IN | OUT
 ---------+------------   :   ---+---------         ---+--------
 ASP UTXO | Commitment  o----->* | Alice VTXO o----->* | ASP but only if
-         |               :      |                   * | pool tx 2 confirmed
+         |   "..."       :      |                   * | pool tx 2 confirmed
          |               :      |                   ^ |
          |               :                          |
                          :                          |
@@ -22,9 +22,9 @@ Pool Tx 2                :                          |
 IN       | OUT           :   IN | OUT               |
 ---------+------------   :   ---+---------          |
 ASP UTXO | Commitment  o----->* | Oscar VTXO        |
-         | Change        :      |                   |
-         | Connector o   :      |                   |
-                      \  :                          |
-                       \                            |
-                        \                           |
-                         '--------------------------+
+         | Connectors o  :      |                   |
+         | Change     |  :      |                   |
+                      |  :                          |
+                      |                             |
+                      |                             |
+                      +-----------------------------+

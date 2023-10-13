@@ -1,0 +1,26 @@
+
+
+      .~~~~~~~~~.                   .~~~~~~~~~.
+      : onchain :                   : virtual :
+      '~~~~~~~~~'                   '~~~~~~~~~'
+                         :
+Pool Tx 1                :
+                         :
+IN       | OUT           :   IN | OUT              IN | OUT
+---------+------------   :   ---+---------         ---+--------
+ASP UTXO | Commitment  o----->* | Alice VTXO o----->* | ASP but only if
+         |   "..."       :      |                   * | pool tx 3 confirmed
+         |               :      |                   ^ |
+                         :                          |
+      .~~~~~~~~~.        :                          |       
+      : mempool :        :                          |       
+      '~~~~~~~~~'        :                          |   
+                         :                          |                         
+Pool transaction 3       :                          |
+                         :                          |
+IN       | OUT           :                          |
+---------+------------   :                          |
+ASP UTXO | Commitment    :                          |
+         | Connector o------------------------------+
+         | Change        : 
+         | Alice         :                                

@@ -8,7 +8,7 @@ Funding transaction            :
                                :
 IN         | OUT               :  IN | OUT       
 -----------+----------------   :  ---+------
-Frank UTXO | Funding address o---->* | ASP Sweep ~~~> pk(ASP)   
+Frank UTXO | Funding address o---->* |    
            |                   :   * |           
                                :   ^
                                :   |
@@ -19,6 +19,6 @@ Frank UTXO | Funding address o---->* | ASP Sweep ~~~> pk(ASP)
                                :   IN       | OUT           |
                                :   ---------+------------   |
                                :   ASP UTXO | Commitment    |
-                               :            | Change        |
-                               :            | Connector o---+
+                               :            | Connectors o--+ 
+                               :            | Change 
                                :                                

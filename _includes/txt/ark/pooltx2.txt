@@ -4,7 +4,8 @@ Pool Tx 1
 IN        | OUT                                  Legend
 ----------+------                                * = input
 ASP  UTXO | Commitment  ---+                     o = output
-          |                |  
+          |   "..."        |  
+          |                |
                            |                                 Onchain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                            |    tx1                          Virtual

@@ -4,5 +4,5 @@ Pool Tx 1
 IN       | OUT     
 ---------+------              
 ASP UTXO | Commitment ~~> n-of-n || (pk(asp) && older(4 weeks))
-         | Connector ~~~> pk(asp)
+         | Connectors ~~> pk(asp)
          | Change ~~~~~~> pk(asp)
