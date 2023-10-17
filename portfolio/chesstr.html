@@ -12,14 +12,6 @@ portfolio:
     link: cowork.html
 ---
 
-<style>
-  {% include css/box.css %}
-  {% include css/project.css %}
-  .technical-info-block .ti-icon {
-    color: #a77452;
-  }
-</style>
-
 <section>
   <div class="container">
     <h1 class="heading">
@@ -39,15 +31,9 @@ portfolio:
     <div class="text_column left">
       <a href="https://chesstr.pages.dev?ref=picture">
         <picture>
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/chesstr_r.webp"
-            type="image/webp" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/chesstr_r.png"
-            type="image/png" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/chesstr_r.avif"
-            type="image/avif" />
+          <source srcset="{{ site.cdn_url }}/portfolio/chesstr_r.webp" type="image/webp" />
+          <source srcset="{{ site.cdn_url }}/portfolio/chesstr_r.png" type="image/png" />
+          <source srcset="{{ site.cdn_url }}/portfolio/chesstr_r.avif" type="image/avif" />
           <img
             width="480"
             height="360"
@@ -108,3 +94,11 @@ portfolio:
 </section>
 
 <div class="container">{% include html/portfolio/navigation.html %}</div>
+
+<style>
+  {% include css/box.css %}
+  {% include css/project.css %}
+  .technical-info-block .ti-icon {
+    color: #a77452;
+  }
+</style>

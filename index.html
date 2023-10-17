@@ -12,6 +12,28 @@ layout: main
       <span class="gradient">bitcoiner</span>
       living in Portugal.
     </h1>
+    <p class="social">
+      <a href="{{ site.stackoverflow_url }}" title="Stack Overflow">
+        {% include /svg/stackoverflow.svg %}
+        <span class="sr-only">Stack Overflow</span>
+      </a>
+      <a href="/blog" title="Blog">
+        {% include /svg/blog.svg %}
+        <span class="sr-only">Blog</span>
+      </a>
+      <a href="{{ site.nostr_url }}" title="Nostr">
+        {% include /svg/nostr.svg %}
+        <span class="sr-only">Nostr</span>
+      </a>
+      <a href="{{ site.twitter_url }}" title="Twitter">
+        {% include /svg/twitter.svg %}
+        <span class="sr-only">Twitter</span>
+      </a>
+      <a href="{{ site.github_url }}" title="GitHub">
+        {% include /svg/github.svg %}
+        <span class="sr-only">GitHub</span>
+      </a>
+    </p>
   </div>
 </section>
 <section id="portfolio" tabindex="0">
@@ -53,140 +75,159 @@ layout: main
     </a>
   </div>
   <div style="clear: both"></div>
+  <p style="text-align: center; margin-top: 2rem">
+    <a class="btn btn-primary" href="/portfolio">More on Portfolio</a>
+  </p>
 </section>
 <section id="skills" tabindex="0">{% include html/skills.html %}</section>
-<section id="about" class="grey" tabindex="0">
+<section id="opensource" tabindex="0">
   <div class="container">
     <h2 class="heading">
-      <span>About me</span>
+      <span>Open source</span>
     </h2>
-    <h3 class="lead">Creative, doer, problem solver</h3>
-    <div class="text_column left">
-      <p>
-        My name is João Bordalo. I'm 45 years old and live in beautiful Azeitão,
-        Portugal. I studied Computer Science at
-        <a href="https://www.uminho.pt/EN">University of Minho</a>
-        and work as a freelance software developer and consultant.
-      </p>
-      <p>
-        I
-        <a href="{{ site.github_url }}">code</a>, <a href="/blog">blog</a>,
-        advise and consult, although not necessarily in that order. I also tweet
-        as <a href="{{ site.twitter_url }}">@bordalix</a>. When I'm doing none
-        of those things, I enjoy reading, working out, and playing with my 3
-        kids.
-      </p>
-    </div>
-    <div class="text_column right">
-      <p>
-        If you're looking for a full stack developer, let's get in touch! I look
-        forward to hearing from you.
-      </p>
-      <p class="social">
-        <a href="mailto:joao.bordalo@gmail.com" title="Email">
-          {% include /svg/email.svg %}
-          <span class="sr-only">Email</span>
-        </a>
-        <a href="{{ site.stackoverflow_url }}" title="Stack Overflow">
-          {% include /svg/stackoverflow.svg %}
-          <span class="sr-only">Stack Overflow</span>
-        </a>
-        <a href="/blog" title="Blog">
-          {% include /svg/blog.svg %}
-          <span class="sr-only">Blog</span>
-        </a>
-        <a href="{{ site.nostr_url }}" title="Nostr">
-          {% include /svg/nostr.svg %}
-          <span class="sr-only">Nostr</span>
-        </a>
-        <a href="{{ site.twitter_url }}" title="Twitter">
-          {% include /svg/twitter.svg %}
-          <span class="sr-only">Twitter</span>
-        </a>
-        <a href="{{ site.github_url }}" title="GitHub">
-          {% include /svg/github.svg %}
-          <span class="sr-only">GitHub</span>
-        </a>
-      </p>
-    </div>
+    <p>
+      Open source plays a tremendous part in my engineering journey. This is my primary way of learning and I'm truly
+      humbled to have influenced so many people with my projects. Here are just a few of them:
+    </p>
+  </div>
+  <div>
+    <a href="/portfolio/bitcoinstats.html" aria-label="Bitcoin stats">
+      <div class="box bitcoinstats" data-bg-image="bitcoinstats">
+        <div class="box_text">
+          <h3>Bitcoin stats</h3>
+        </div>
+      </div>
+    </a>
+    <a href="/portfolio/chesstr.html" aria-label="Chesstr">
+      <div class="box chesstr" data-bg-image="chesstr">
+        <div class="box_text">
+          <h3>Chesstr</h3>
+        </div>
+      </div>
+    </a>
+    <a href="/portfolio/nostr-utils.html" aria-label="Nostr utils">
+      <div class="box nostr-utils" data-bg-image="nostr-utils">
+        <div class="box_text">
+          <h3>Nostr utils</h3>
+        </div>
+      </div>
+    </a>
+    <a href="/portfolio/wheretosurftoday.html" aria-label="Where to surf today">
+      <div class="box wheretosurftoday" data-bg-image="wheretosurftoday">
+        <div class="overlay"></div>
+        <div class="box_text">
+          <h3>Where to surf today</h3>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div style="clear: both"></div>
+  <p style="text-align: center; margin-top: 2rem">
+    <a class="btn btn-primary" href="https://github.com/bordalix">More on GitHub</a>
+  </p>
+</section>
+<section id="about" tabindex="0">
+  <div class="container">
+    <h2 class="heading">
+      <span>Contact</span>
+    </h2>
+    <h3 class="lead">Get in touch</h3>
+    <form id="contact-form" action="https://formspree.io/f/joao.bordalo@gmail.com" method="post">
+      <div class="controls">
+        <div class="text_column left">
+          <div class="form-group">
+            <label for="name">Your name *</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Enter your name"
+              required="required"
+              class="form-control"
+              autocomplete="name" />
+          </div>
+        </div>
+        <div class="text_column right">
+          <div class="form-group">
+            <label for="email">Your email *</label>
+            <input
+              type="email"
+              name="_replyto"
+              id="email"
+              placeholder="Enter your email"
+              required="required"
+              class="form-control"
+              autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Your message *</label>
+          <textarea
+            rows="4"
+            name="message"
+            id="message"
+            placeholder="Enter your message"
+            required="required"
+            class="form-control"></textarea>
+        </div>
+        <p style="text-align: center; margin-top: 2rem">
+          <input type="submit" value="Send message2" class="btn btn-primary" />
+        </p>
+      </div>
+    </form>
   </div>
   <div style="clear: both"></div>
 </section>
-<section id="contact" tabindex="0">{% include html/contact.html %}</section>
-<section id="experience" class="grey" tabindex="0">
-  {% include html/experience.html %}
-</section>
+<section id="experience" tabindex="0">{% include html/experience.html %}</section>
 <section id="resume" tabindex="0">
   <div class="container">
     <h2 class="heading">
       <span>Resume</span>
     </h2>
     <h3 class="lead">The full story</h3>
-    <div class="text_column left">
-      <p>
-        Back in 1992, while at my Informatics and Systems Engineering course at
-        the Minho University, I had the first contact with the Internet. At that
-        time, Internet was nothing else than a few email addresses, some FTP
-        sites, the Usenet and a couple of archaic search engines - the World
-        Wide Web was still to be publicly available. But it was enough to get me
-        hooked.
-      </p>
-      <p>
-        I started my working experience in 1996 working for Telenet, one of the
-        first ISP in Portugal, which was later bought by IP Global (also an
-        ISP), which later was acquired by Sonae (the biggest non-financial group
-        in Portugal) giving birth to Novis, a telco company. During this period,
-        I developed strong technical knowledges in Internet access technologies
-        and services, learn several open-source programming languages and
-        developed my design, usability and accessibility skills.
-      </p>
-      <p>
-        In 1999, the SonaeCom group decided to spin off Clix, the portal and
-        future ISP brand for the the group telecommunications arm. In 2002, I
-        accept the invitation to become Clix technical director, where I
-        developed my management and strategic skills, and helped the company to
-        develop the second biggest portal in Portugal, as to search and
-        implement innovative access products, such as wireless broadband and TV
-        over IP technologies.
-      </p>
-    </div>
-    <div class="text_column right">
-      <p>
-        Early 2006, I decided to exit the Sonae group and formed my own company,
-        Excentric, focusing on digital media and advertising, which became
-        financial healthy in 6 months, with significant growth and development
-        in new business areas.
-      </p>
-      <p>
-        In 2013, Excentric merged with Grey Lisboa (a WPP company), giving birth
-        to ExcentricGrey, a full service advertising agency, where I had the
-        role of partner. At the end of 2015, WPP bought the remaining stake in
-        the company, and I decided it was time to begin a new chapter in my
-        professional life.
-      </p>
-      <p>
-        Almost 10 years doing management roles kept me away from getting my
-        hands dirty, and I felt I needed to re-learn the new skills of the
-        trade. So, in 2016 I decided to take a break, and spent the entire year
-        experimenting with stuff like Dockers, Meteor, MongoDB, Blockchain,
-        Artificial Intelligence and Machine Learning.
-      </p>
-      <p>
-        In 2017, I spent the entire year advising a Venture Builder fund on new
-        technologies and startup evaluation. I also developed several website
-        and applications for customers, and consulted a few customers on
-        innovation and disruptive technologies.
-      </p>
-      <p>And now, here I am, looking for new opportunities.</p>
-    </div>
+    <p>
+      Back in 1992, while at my Informatics and Systems Engineering course at the Minho University, I had the first
+      contact with the Internet. At that time, Internet was nothing else than a few email addresses, some FTP sites, the
+      Usenet and a couple of archaic search engines - the World Wide Web was still to be publicly available. But it was
+      enough to get me hooked.
+    </p>
+    <p>
+      I started my working experience in 1996 working for Telenet, one of the first ISP in Portugal, which was later
+      bought by IP Global (also an ISP), which later was acquired by Sonae (the biggest non-financial group in Portugal)
+      giving birth to Novis, a telco company. During this period, I developed strong technical knowledges in Internet
+      access technologies and services, learn several open-source programming languages and developed my design,
+      usability and accessibility skills.
+    </p>
+    <p>
+      In 1999, the SonaeCom group decided to spin off Clix, the portal and future ISP brand for the the group
+      telecommunications arm. In 2002, I accept the invitation to become Clix technical director, where I developed my
+      management and strategic skills, and helped the company to develop the second biggest portal in Portugal, as to
+      search and implement innovative access products, such as wireless broadband and TV over IP technologies.
+    </p>
+    <p>
+      Early 2006, I decided to exit the Sonae group and formed my own company, Excentric, focusing on digital media and
+      advertising, which became financial healthy in 6 months, with significant growth and development in new business
+      areas.
+    </p>
+    <p>
+      In 2013, Excentric merged with Grey Lisboa (a WPP company), giving birth to ExcentricGrey, a full service
+      advertising agency, where I had the role of partner. At the end of 2015, WPP bought the remaining stake in the
+      company, and I decided it was time to begin a new chapter in my professional life.
+    </p>
+    <p>
+      Almost 10 years doing management roles kept me away from getting my hands dirty, and I felt I needed to re-learn
+      the new skills of the trade. So, in 2016 I decided to take a break, and spent the entire year experimenting with
+      stuff like Dockers, Meteor, MongoDB, Blockchain, Artificial Intelligence and Machine Learning.
+    </p>
+    <p>
+      In 2017, I spent the entire year advising a Venture Builder fund on new technologies and startup evaluation. I
+      also developed several website and applications for customers, and consulted a few customers on innovation and
+      disruptive technologies.
+    </p>
+    <p>And now, here I am, looking for new opportunities.</p>
   </div>
   <div style="clear: both"></div>
   <div class="center" style="margin-bottom: 5rem">
-    <a
-      id="downloadCV"
-      class="btn btn-primary btn-block"
-      href="{{ site.cdn_url }}/cv/cv2020.pdf">
-      Download my CV
-    </a>
+    <a id="downloadCV" class="btn btn-primary btn-block" href="{{ site.cdn_url }}/cv/cv2020.pdf"> Download my CV </a>
   </div>
 </section>
