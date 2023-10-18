@@ -1,0 +1,60 @@
+<section id="skills" tabindex="0">
+  <div class="container">
+    <h2 class="heading">
+      <span>Skills</span>
+    </h2>
+    <h3 class="lead">Jack of all trades</h3>
+    <div class="skills-container">
+      {% for skill in site.skills %}
+      <div style="--bg-img: url(/images/static/skills/{{skill.icon}})">
+        <p>{{ skill.name }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div style="clear: both"></div>
+  <style>
+    .skills-container {
+      --border: #ccc;
+      --drop-x: 144.26004791259766px;
+      --drop-y: 49.833282470703125px;
+      --main: var(--lightgrey);
+      --main-60: var(--lightgrey-transparent);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 10px;
+      row-gap: 10px;
+    }
+
+    @media (max-width: 767px) {
+      .skills-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 440px) {
+      .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .dark-theme .skills-container {
+      --border: var(--darkgrey);
+      --main: var(--darkgrey);
+      --main-60: var(--darkgrey-transparent);
+    }
+
+    .skills-container div {
+      background: linear-gradient(90deg, var(--main) 0%, var(--main) 60%, var(--main-60) 100%),
+        no-repeat right 40% / 40% var(--bg-img);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      padding: 14px;
+      transition-duration: 0.2s;
+    }
+
+    .skills-container p {
+      margin: 0;
+    }
+  </style>
+</section>

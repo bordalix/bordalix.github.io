@@ -2,20 +2,18 @@
 layout: blog
 ---
 
-<section style="padding-bottom: 0">
-  <div class="container">
-    <a href="/blog">
-      <h1 class="heading">
-        <span>Blog</span>
-      </h1>
-    </a>
-  </div>
-</section>
-<section style="padding-top: 0">
+<div class="container">
+  <a href="/blog">
+    <h1 class="heading">
+      <span>Blog</span>
+    </h1>
+  </a>
+</div>
+<div></div>
+<section>
   <div class="container">
     <article class="post">
-      {% assign foo = page %}
-      {% include html/post/header.html %}
+      {% assign foo = page %} {% include html/post/header.html %}
       <div class="content">{{ content }}</div>
       {% include html/post/navigation.html %}
     </article>

@@ -62,6 +62,8 @@ portfolio:
     name: 'Batalha dos Bitaites'
   - blob: bitcoinstats
     name: 'Bitcoinstats'
+  - blob: catappult
+    name: 'Catappult'
   - blob: chesstr
     name: 'Chesstr'
   - blob: cowork
@@ -70,12 +72,16 @@ portfolio:
     name: 'Dog off leash'
   - blob: ethereum-roulette
     name: 'Ethereum Roulette'
+  - blob: fuji
+    name: 'Fuji Money'
   - blob: hatitude
     name: 'Hatitude'
   - blob: iscore
     name: 'iScore'
   - blob: nostr-utils
     name: 'Nostr Utils'
+  - blob: tdex
+    name: 'TDEX'
   - blob: wheretosurftoday
     name: 'Where to surf today'
   - blob: worldleague

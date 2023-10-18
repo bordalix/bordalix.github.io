@@ -20,7 +20,7 @@ body.dark-theme .timeline > li .timeline-image {
 }
 
 body.dark-theme section.grey,
-body.dark-theme section:nth-child(even):not(#portfolio),
+body.dark-theme section:nth-child(even),
 body.dark-theme .progress {
   background-color: var(--darkgrey);
 }

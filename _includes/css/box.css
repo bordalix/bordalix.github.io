@@ -107,6 +107,27 @@
   background-image: url('https://joaobordalo.com/images/static/portfolio/nostr-utils.png');
 }
 
+.box.catappult {
+  background-color: rgba(122, 76, 165, var(--box-opacity));
+}
+.no-js .box.catappult {
+  background-image: url('https://joaobordalo.com/images/static/portfolio/catappult.png');
+}
+
+.box.fuji {
+  background-color: rgba(187, 153, 210, var(--box-opacity));
+}
+.no-js .box.fuji {
+  background-image: url('https://joaobordalo.com/images/static/portfolio/fuji.png');
+}
+
+.box.tdex {
+  background-color: rgba(204, 138, 135, var(--box-opacity));
+}
+.no-js .box.tdex {
+  background-image: url('https://joaobordalo.com/images/static/portfolio/tdex.png');
+}
+
 .box_text {
   text-align: center;
   position: absolute;
@@ -124,7 +145,7 @@
   font-size: 1.25rem;
 }
 
-@media(min-width: 1200px) {
+@media (min-width: 1200px) {
   .box_text {
     padding-top: 30px;
   }
@@ -133,7 +154,7 @@
   }
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .box {
     width: 50%;
     padding-top: 50%;
@@ -146,7 +167,7 @@
   }
 }
 
-@media(max-width: 414px) {
+@media (max-width: 414px) {
   .box_text {
     padding-top: 20px;
   }
