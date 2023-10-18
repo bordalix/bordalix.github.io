@@ -4,54 +4,6 @@ layout: main
 description: Explain ARK like I'm 5
 ---
 
-<style>
-  .ark svg {
-    margin-bottom: 2rem;
-  }
-  .dark-theme .ark svg,
-  .dark-theme .ark svg polygon {
-    fill: white;
-  }
-  .dark-theme .ark svg line.part {
-    stroke: white;
-  }
-  .ark .hidden {
-    display: none;
-    padding-top: 1rem;
-  }
-  .ark .tech {
-    background-color: var(--lightgrey);
-    margin: 0 -1rem 1rem -1rem;
-    padding: 1rem;
-  }
-  .dark-theme .ark .tech {
-    background-color: var(--darkgrey);
-  }
-  .ark a {
-    cursor: pointer;
-  }
-  .ark h3 {
-    margin: 2em 0 1em 0;
-  }
-  .ark h4 {
-    font-size: 1.2rem;
-  }
-  .ark em {
-    color: var(--orange);
-    padding: 0 4px;
-  }
-</style>
-
-<script>
-  function toggleVisibility(selector) {
-    const element = document.querySelector(selector)
-    const display = element.style.display
-    element.style.display = display === 'block' ? 'none' : 'block'
-  }
-</script>
-
-<script src="https://google.github.io/typograms/typograms.js"></script>
-
 <section class="ark">
   <div class="container">
     <h2 class="heading">
@@ -373,3 +325,51 @@ description: Explain ARK like I'm 5
     </ul>
   </div>
 </section>
+
+<style>
+  .ark svg {
+    margin-bottom: 2rem;
+  }
+  .dark-theme .ark svg,
+  .dark-theme .ark svg polygon {
+    fill: white;
+  }
+  .dark-theme .ark svg line.part {
+    stroke: white;
+  }
+  .ark .hidden {
+    display: none;
+    padding-top: 1rem;
+  }
+  .ark .tech {
+    background-color: var(--lightgrey);
+    margin: 0 -1rem 1rem -1rem;
+    padding: 1rem;
+  }
+  .dark-theme .ark .tech {
+    background-color: var(--darkgrey);
+  }
+  .ark a {
+    cursor: pointer;
+  }
+  .ark h3 {
+    margin: 2em 0 1em 0;
+  }
+  .ark h4 {
+    font-size: 1.2rem;
+  }
+  .ark em {
+    color: var(--orange);
+    padding: 0 4px;
+  }
+</style>
+
+<script>
+  function toggleVisibility(selector) {
+    const element = document.querySelector(selector)
+    const display = element.style.display
+    element.style.display = display === 'block' ? 'none' : 'block'
+  }
+</script>
+
+<script src="https://google.github.io/typograms/typograms.js"></script>

@@ -181,7 +181,7 @@ p.subtitle span:not(:first-child) {
   padding: 2rem;
 }
 
-section:nth-child(even):not(#portfolio) {
+section:nth-child(even) {
   background-color: var(--lightgrey);
 }
 
@@ -261,23 +261,6 @@ nav img {
 @media (min-width: 1200px) {
   .container {
     max-width: 1020px;
-  }
-
-  h1 {
-    line-height: 1.15;
-    font-size: 4.375rem;
-    margin: 0 0 24px;
-  }
-
-  h2 {
-    font-size: 3.75rem;
-    line-height: 1.2;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    line-height: 1.33;
-    margin: 0 0 60px;
   }
 }
 
