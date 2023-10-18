@@ -124,8 +124,9 @@ description: Explain ARK like I'm 5
           <li>The other leaf, <em>pk(ASP) && older(4 weeks)</em>, allows the ASP to spend it alone after 4 weeks.</li>
         </ul>
         <p>
-          In order to be trustless, before signing the pool tx Alice needs a way to unilaterally get their funds back.
-          To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each participant.
+          In order to be trustless, before signing the pool transaction Alice needs a way to unilaterally get their
+          funds back. To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each
+          participant.
         </p>
         <p>Each leaf on this tree represents a VTXO:</p>
         <script type="text/typogram">
@@ -210,11 +211,16 @@ description: Explain ARK like I'm 5
           <ul>
             <li>
               <strong>Franks send 0.01 BTC but ASP never responds</strong><br />
-              Franks will be able to get his funds back in 4 weeks
+              Franks will be able to get his funds back in 4 weeks<br /><br />
             </li>
             <li>
-              <strong>Server never broadcasts pool transaction</strong><br />
-              Franks will be able to get his funds back in 4 weeks
+              <strong>ASP never broadcasts pool transaction</strong><br />
+              Franks will be able to get his funds back in 4 weeks<br /><br />
+            </li>
+            <li>
+              <strong>ASP doesn't wait for confirmation of funding address before broadcasting pool tx</strong><br />
+              Franks will double spend his original UTXO, making the funding transaction invalid and them spending the
+              VTXO, thus stealing the ASP<br /><br />
             </li>
           </ul>
         </details>
@@ -247,7 +253,7 @@ description: Explain ARK like I'm 5
           <li>Alice looks at the locking script for this new UTXO and sees Oscar's public key on it</li>
           <li>Alice understands that when Pool Tx 2 confirms, Oscar will have 0.01 BTC on Ark</li>
           <li>
-            Alice proceeds by signing a PSBT that sends her VTXO to the server, on the condition that Pool Tx 2 is
+            Alice proceeds by signing a PSBT that sends her VTXO to the ASP, on the condition that Pool Tx 2 is
             confirmed. We will call this the forfeit transaction:
           </li>
           <script type="text/typogram">
@@ -273,13 +279,18 @@ description: Explain ARK like I'm 5
         <script type="text/typogram">
           {% include txt/ark/connector.txt %}
         </script>
-        <p>
-          This way, the transaction where Alice gives her VTXO to the server is only valid if Pool Tx 2 is confirmed.
-        </p>
+        <p>This way, the transaction where Alice gives her VTXO to the ASP is only valid if Pool Tx 2 is confirmed.</p>
         <details>
           <summary>Adversarial scenarios</summary>
           <ul>
-            <li>Time will fill up this space</li>
+            <li>
+              <strong>Alice doesn't sign the forfeit transaction</strong><br />
+              The ASP doesn't include Oscar's VTXO on the next pool transaction<br /><br />
+            </li>
+            <li>
+              <strong>ASP never broadcasts the next pool transaction</strong><br />
+              ASP forfeit transaction becomes invalid, which means Alice still has full control of her VTXO<br /><br />
+            </li>
           </ul>
         </details>
       </div>
@@ -307,7 +318,7 @@ description: Explain ARK like I'm 5
           </script>
           <li>Alice sees extra output paying 0.01 BTC to her address</li>
           <li>Alice understands that when Pool Tx 3 confirms, she will have 0.01 BTC onchain</li>
-          <li>Alice proceeds by sending her VTXO to the server, on the condition that Pool Tx 3 is confirmed:</li>
+          <li>Alice proceeds by sending her VTXO to the ASP, on the condition that Pool Tx 3 is confirmed:</li>
           <script type="text/typogram">
             {% include txt/ark/exiting6.txt %}
           </script>
@@ -323,14 +334,21 @@ description: Explain ARK like I'm 5
         <p>Alice can leave the Ark anytime by broadcasting her redeem transaction.</p>
         <p>The cost of this broadcast depends on several factors:</p>
         <ul>
-          <li>How many tx are in Alice's branch?</li>
+          <li>How many transactions are on Alice's branch?</li>
           <li>How much is mempool fees (sats/vbyte) at the moment?</li>
-          <li>Did anyone leaved already making some of Alice's tx already confirmed?</li>
+          <li>Did anyone leaved already, making some of Alice's transactions already confirmed?</li>
         </ul>
         <details>
           <summary>Adversarial scenarios</summary>
           <ul>
-            <li>Time will fill up this space</li>
+            <li>
+              <strong>Alice doesn't sign the forfeit transaction</strong><br />
+              The ASP doesn't include Alice's UTXO as output on the next pool transaction<br /><br />
+            </li>
+            <li>
+              <strong>ASP never broadcasts the next pool transaction</strong><br />
+              ASP forfeit transaction becomes invalid, which means Alice still has full control of her VTXO<br /><br />
+            </li>
           </ul>
         </details>
       </div>
