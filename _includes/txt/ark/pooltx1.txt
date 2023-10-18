@@ -3,6 +3,6 @@ Pool Tx 1
 
 IN       | OUT     
 ---------+------              
-ASP UTXO | Commitment ~~> n-of-n || (pk(asp) && older(4 weeks))
+ASP UTXO | Shared UTXO ~> n-of-n || (pk(asp) && older(4 weeks))
          | Connectors ~~> pk(asp)
          | Change ~~~~~~> pk(asp)

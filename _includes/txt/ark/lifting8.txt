@@ -19,14 +19,14 @@ Next pool transaction        |
                              |       
 IN       | OUT               |       
 ---------+------------       |       
-ASP UTXO | Commitment        |       
+ASP UTXO | Shared UTXO       |       
          | Connectors o      |       
          | Change     |      |       
                       |      |         
   +-------------------+      |         
   | +------------------------+             
   | |                                
-  | |  Claim transaction
+  | |  Sweep transaction
   | |  
   | |  IN | OUT       
   | |  ---+------

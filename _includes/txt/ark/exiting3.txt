@@ -8,7 +8,7 @@ Pool Tx 3
                     
 IN       | OUT         
 ---------+------------ 
-ASP UTXO | Commitment
+ASP UTXO | Shared UTXO
          | Connectors
          | Change  
          | Alice            

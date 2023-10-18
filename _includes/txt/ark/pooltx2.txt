@@ -3,7 +3,7 @@ Pool Tx 1
 
 IN        | OUT                                  Legend
 ----------+------                                * = input
-ASP  UTXO | Commitment  ---+                     o = output
+ASP  UTXO | Shared UTXO ---+                     o = output
           |   "..."        |  
           |                |
                            |                                 Onchain
