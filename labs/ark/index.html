@@ -95,7 +95,7 @@ description: Explain ARK like I'm 5
       The first step is for Alice to lift her coins. This is an <u>atomic</u> swap where she will give up a UTXO (+
       fees) to receive a virtual UTXO (aka VTXO) from the ASP at the same time. The ASP makes a special transaction,
       called pool transaction (aka Pool Tx), where it mixes UTXOs from many users (among other things) and creates a
-      shared UTXO as well as many off-chain VTXOs for each of those users including one for Alice.
+      shared UTXO as well as many offchain VTXOs for each of those users including one for Alice.
     </p>
     <p>In this example, Alice, Bob, Carol and Dave are "lifting" 0.01 BTC each to Ark:</p>
     <script type="text/typogram">
@@ -155,8 +155,8 @@ description: Explain ARK like I'm 5
         <p><strong>Lifting</strong></p>
         <p>
           Frank now wants to enter the Ark, so he must use a process called lifting, which is an atomic two-way peg
-          mechanism that doesn't require trust. Lifting lets users lift their on-chain utxos off the chain for a 1:1
-          VTXO. Users can unilaterally redeem a VTXO for an on-chain utxo without asking for ASP cooperation.
+          mechanism that doesn't require trust. Lifting lets users lift their onchain utxos off the chain for a 1:1
+          VTXO. Users can unilaterally redeem a VTXO for an onchain utxo without asking for ASP cooperation.
         </p>
         <ol>
           <li>Frank sends 0.01 BTC to <em>pk(F) && (older(4 weeks) || pk(ASP))</em> (aka funding address):</li>
@@ -240,6 +240,15 @@ description: Explain ARK like I'm 5
       {% include txt/ark/payment0.txt %}
     </script>
     <p>Alice forfeits its VTXO to the ASP and in return Oscar receives a VTXO</p>
+    <p>In order to be trustless:</p>
+    <ul>
+      <li>Alice sending funds to ASP and the ASP creating the VTXO for Oscar needs to be atomic</li>
+      <li>
+        The ASP needs to have an insurance that Alice will not try to double spend her VTXO after it funds Oscar's VTXO,
+        so it demands a signed transaction (the forfeit transaction) from Alice. This forfeit transaction spends from
+        Alice's VTXO and it will be broadcasted only if Alice tries to double spend her VTXO
+      </li>
+    </ul>
     <div class="tech">
       <a onclick="toggleVisibility('#dd2')">🔎 Deep dive on Ark payments</a>
       <div class="hidden" id="dd2">
@@ -304,7 +313,18 @@ description: Explain ARK like I'm 5
     <script type="text/typogram">
       {% include txt/ark/exiting0.txt %}
     </script>
-    <p>Alice could also unilaterally exit, i.e. without ASP's cooperation by broadcasting her redeem transaction.</p>
+    <p>
+      Alice could also unilaterally exit, i.e. without ASP's cooperation, by redeeming hers VTXO for an onchain utxo.
+    </p>
+    <p>In order to be trustless:</p>
+    <ul>
+      <li>Alice sending the VTXO to ASP and the ASP sending funds to Alice must be atomic</li>
+      <li>
+        The ASP needs to have an insurance that Alice will not try to double spend her VTXO after it funds Alice's UTXO,
+        so it demands a signed transaction (the forfeit transaction) from Alice. This forfeit transaction spends from
+        Alice's VTXO and it will be broadcasted only if Alice tries to double spend her VTXO
+      </li>
+    </ul>
     <div class="tech">
       <a onclick="toggleVisibility('#dd3')">🔎 Deep dive on exiting the Ark</a>
       <div class="hidden" id="dd3">
@@ -331,7 +351,7 @@ description: Explain ARK like I'm 5
           </script>
         </ol>
         <p><strong>Unilateral exit</strong></p>
-        <p>Alice can leave the Ark anytime by broadcasting her redeem transaction.</p>
+        <p>Alice can leave the Ark anytime by redeeming hers VTXO for an onchain UTXO.</p>
         <p>The cost of this broadcast depends on several factors:</p>
         <ul>
           <li>How many transactions are on Alice's branch?</li>
