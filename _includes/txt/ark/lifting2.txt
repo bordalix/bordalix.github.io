@@ -4,7 +4,7 @@
       : onchain :                 :  psbt   :     
       '~~~~~~~~~'                 '~~~~~~~~~'      
                          
-Funding transaction            :
+Funding transaction            :  Sweep transaction
                                :
 IN         | OUT               :  IN | OUT            
 -----------+----------------   :  ---+------

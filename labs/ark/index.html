@@ -85,34 +85,40 @@ description: Explain ARK like I'm 5
         inside Ark with a minimal chain footprint.
       </li>
       <li>
-        Ark is a completely trustless solution because users can, at any time, exit the Ark without ASP's permission.
+        Ark is a completely <u>trustless</u> solution: users don't need ASP's permission to get their money back from
+        the Ark, and the ASP doesn't need to trust users
       </li>
     </ul>
 
     <h3>Onboarding</h3>
     <p>
-      The first step is for Alice to lift her coins. This is an atomic swap where she will give up a UTXO (+ fees) to
-      receive a virtual UTXO (aka VTXO) from the ASP at the same time. The ASP makes a special transaction, called pool
-      transaction (aka Pool Tx), where it mixes UTXOs from many users (among other things) and creates a shared UTXO as
-      well as many off-chain VTXOs for each of those users including one for Alice.
+      The first step is for Alice to lift her coins. This is an <u>atomic</u> swap where she will give up a UTXO (+
+      fees) to receive a virtual UTXO (aka VTXO) from the ASP at the same time. The ASP makes a special transaction,
+      called pool transaction (aka Pool Tx), where it mixes UTXOs from many users (among other things) and creates a
+      shared UTXO as well as many off-chain VTXOs for each of those users including one for Alice.
     </p>
     <p>In this example, Alice, Bob, Carol and Dave are "lifting" 0.01 BTC each to Ark:</p>
     <script type="text/typogram">
       {% include txt/ark/onboarding.txt %}
     </script>
+    <p>In order to be trustless:</p>
+    <ul>
+      <li>Alice sending funds to ASP and the ASP creating the VTXO needs to be atomic</li>
+      <li>Alice needs a way to exit the Ark without ASP's permission</li>
+    </ul>
 
     <div class="tech">
-      <a onclick="toggleVisibility('#dd1')">&#9654; Deep dive on onboarding Ark</a>
+      <a onclick="toggleVisibility('#dd1')">🔎 Deep dive on onboarding Ark</a>
       <div class="hidden" id="dd1">
         <p><strong>Pool transaction</strong></p>
         <p>
-          The ASP places one (or more) input(s) to its pool transaction to supply funds to the commitment output,
+          The ASP places one (or more) input(s) to its pool transaction to supply funds to the shared UTXO output,
           connectors output, change output, and transaction fees.
         </p>
         <script type="text/typogram">
           {% include txt/ark/pooltx1.txt %}
         </script>
-        <p>The commitment output is a UTXO locked by 2 taproot leaves:</p>
+        <p>The shared UTXO output is a UTXO locked by 2 taproot leaves:</p>
         <ul>
           <li>A multisig <em>n-of-n</em>, where n is the number of participants in the transaction.</li>
           <li>The other leaf, <em>pk(ASP) && older(4 weeks)</em>, allows the ASP to spend it alone after 4 weeks.</li>
@@ -156,7 +162,10 @@ description: Explain ARK like I'm 5
           <script type="text/typogram">
             {% include txt/ark/lifting1.txt %}
           </script>
-          <li>Frank creates an unsigned PSBT and adds as input the output of funding transaction:</li>
+          <li>
+            Frank creates an PSBT and adds as input the output of funding transaction. We will call this transaction the
+            sweep transaction, since it will allow the ASP to sweep the funds:
+          </li>
           <script type="text/typogram">
             {% include txt/ark/lifting2.txt %}
           </script>
@@ -170,7 +179,7 @@ description: Explain ARK like I'm 5
             {% include txt/ark/lifting5.txt %}
           </script>
           <li>
-            ASP passes PSBT to Bob and both sign the PSBT and keep this transaction private. This transaction is not
+            ASP passes PSBT to Frank and both sign the PSBT and keep this transaction private. This transaction is not
             valid yet, since the connector's outpoint context does not exist yet;
           </li>
           <li>ASP signs the pool transaction and broadcast it:</li>
@@ -179,24 +188,23 @@ description: Explain ARK like I'm 5
           </script>
           <li>
             ASP can now claim 0.01 BTC from the funding transaction by revealing the descendant transaction of
-            connectors output. The ASP should claim this before four weeks or else could double spend it. Don't forget
-            the funding transaction is locked to: <em>pk(F) && (older(4weeks) || pk(ASP))</em>.
+            connectors output. The ASP should claim this before four weeks or else Frank could double spend it. Don't
+            forget the funding transaction is locked to: <em>pk(F) && (older(4weeks) || pk(ASP))</em>.
           </li>
           <script type="text/typogram">
             {% include txt/ark/lifting8.txt %}
           </script>
           <li>
-            Frank now has a 0.01 BTC worth UTXO representation as a descendant of the commitment output (a VTXO). To
-            avoid double spending, he will not able to use it before the funding transaction is confirmed:
+            Frank now has a 0.01 BTC worth UTXO representation as a descendant of the shared UTXO output (a VTXO). To
+            avoid double spending, the ASP will not allow Frank to use its <em>VTXO</em> before the funding transaction
+            is confirmed:
           </li>
           <script type="text/typogram">
             {% include txt/ark/lifting9.txt %}
           </script>
         </ol>
-        <p>
-          So far, Frank polluted onchain by funding an address, and the ASP by claiming funds from that address. Further
-          steps from here will be footprint minimal.
-        </p>
+        <p>So far, Frank polluted onchain by funding an address, and the ASP by claiming funds from that address.</p>
+        <p>Further steps from here will be footprint minimal.</p>
         <details>
           <summary>Adversarial scenarios</summary>
           <ul>
@@ -227,7 +235,7 @@ description: Explain ARK like I'm 5
     </script>
     <p>Alice forfeits its VTXO to the ASP and in return Oscar receives a VTXO</p>
     <div class="tech">
-      <a onclick="toggleVisibility('#dd2')">&#9654; Deep dive on Ark payments</a>
+      <a onclick="toggleVisibility('#dd2')">🔎 Deep dive on Ark payments</a>
       <div class="hidden" id="dd2">
         <ol>
           <li>Alice asks Oscar for an address (address O)</li>
@@ -238,7 +246,10 @@ description: Explain ARK like I'm 5
           </script>
           <li>Alice looks at the locking script for this new UTXO and sees Oscar's public key on it</li>
           <li>Alice understands that when Pool Tx 2 confirms, Oscar will have 0.01 BTC on Ark</li>
-          <li>Alice proceeds by sending her VTXO to the server, on the condition that Pool Tx 2 is confirmed:</li>
+          <li>
+            Alice proceeds by signing a PSBT that sends her VTXO to the server, on the condition that Pool Tx 2 is
+            confirmed. We will call this the forfeit transaction:
+          </li>
           <script type="text/typogram">
             {% include txt/ark/payment6.txt %}
           </script>
@@ -284,7 +295,7 @@ description: Explain ARK like I'm 5
     </script>
     <p>Alice could also unilaterally exit, i.e. without ASP's cooperation by broadcasting her redeem transaction.</p>
     <div class="tech">
-      <a onclick="toggleVisibility('#dd3')">&#9654; Deep dive on exiting the Ark</a>
+      <a onclick="toggleVisibility('#dd3')">🔎 Deep dive on exiting the Ark</a>
       <div class="hidden" id="dd3">
         <p><strong>Collaborative exit</strong></p>
         <ol>
