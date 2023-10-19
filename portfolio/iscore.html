@@ -10,94 +10,22 @@ portfolio:
   next:
     name: Nostr utils
     link: nostr-utils.html
+project:
+  description: You don't bet, but you pick on football games and win prizes.
+  status: Defunct
+  client: Personal project
+  image: iscore_r
+  link: https://www.youtube.com/watch?v=U6nbrzGZQCk
+  link_desc: YouTube video
+techsheet:
+  devops: EC2, S3, Nginx
+  datalayer: MongoDB
+  purpose: Sport tip competition
+  framework: MeteorJS, Sportradar API, Ruby scripts
+  design: Bulma CSS
 ---
 
-<style>
-  {% include css/box.css %}
-  {% include css/project.css %}
-  .technical-info-block .ti-icon {
-    color: #25b3b3;
-  }
-</style>
-
-<section>
-  <div class="container">
-    <h1 class="heading">
-      <span>iScore</span>
-    </h1>
-    <h2 class="lead">You don't bet, but you pick on football games and win prizes.</h2>
-    <p>
-      <strong>Status:</strong>
-      Defunct<br />
-      <strong>Client:</strong>
-      Personal project<br />
-    </p>
-    <p>
-      <i class="fa fa-external-link"></i>
-      <a href="https://www.youtube.com/watch?v=U6nbrzGZQCk">YouTube video</a>
-    </p>
-    <div class="text_column left">
-      <a href="https://www.youtube.com/watch?v=U6nbrzGZQCk&ref=picture">
-        <picture>
-          <source srcset="{{ site.cdn_url }}/portfolio/iscore_r.webp" type="image/webp" />
-          <source srcset="{{ site.cdn_url }}/portfolio/iscore_r.png" type="image/png" />
-          <source srcset="{{ site.cdn_url }}/portfolio/iscore_r.avif" type="image/avif" />
-          <img width="480" height="360" src="{{ site.cdn_url }}/portfolio/iscore_r.png" alt="iScore video screenshot" />
-        </picture>
-      </a>
-    </div>
-    <div class="text_column right">
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">DevOps</span><br />
-          EC2, S3, Nginx
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Database</span><br />
-          MongoDB
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Business logic</span><br />
-          Competition algorithm
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
-          Meteor, Sportradar API, Ruby scripts
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
-          Bulma CSS
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</section>
-
-<div class="container">{% include html/portfolio/navigation.html %}</div>
+{% include html/portfolio/project.html %}
 
 <section>
   <div class="container">

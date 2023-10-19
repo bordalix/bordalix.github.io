@@ -10,91 +10,18 @@ portfolio:
   next:
     name: Guia SportTV
     link: guiasporttv.html
+project:
+  description: Non custodial Bitcoin-backed stablecoin
+  status: Active
+  client: Fuji Money
+  image: fuji_r
+  link: https://app.fuji.money
+techsheet:
+  devops: Vercel
+  datalayer: Liquid blockchain
+  purpose: Stable coin
+  framework: Marina, Liquid, Boltz
+  design: Bulma CSS
 ---
 
-<section>
-  <div class="container">
-    <h1 class="heading">
-      <span>Fuji</span>
-    </h1>
-    <h2 class="lead">Chessboard powered by Nostr</h2>
-    <p>
-      <strong>Status:</strong>
-      Live<br />
-      <strong>Client:</strong>
-      Personal project<br />
-    </p>
-    <p>
-      <i class="fa fa-external-link"></i>
-      <a href="https://fuji.pages.dev">https://fuji.pages.dev</a>
-    </p>
-    <div class="text_column left">
-      <a href="https://fuji.pages.dev?ref=picture">
-        <picture>
-          <source srcset="{{ site.cdn_url }}/portfolio/fuji_r.webp" type="image/webp" />
-          <source srcset="{{ site.cdn_url }}/portfolio/fuji_r.png" type="image/png" />
-          <source srcset="{{ site.cdn_url }}/portfolio/fuji_r.avif" type="image/avif" />
-          <img width="480" height="360" src="{{ site.cdn_url }}/portfolio/fuji_r.png" alt="fuji website screenshot" />
-        </picture>
-      </a>
-    </div>
-    <div class="text_column right">
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">DevOps</span><br />
-          Cloudflare Pages
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-times-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Database</span><br />
-          None
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Business logic</span><br />
-          Experimenting with Nostr
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
-          Static website with vanilla javascript
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
-          chessboardjs
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</section>
-
-<div class="container">{% include html/portfolio/navigation.html %}</div>
-
-<style>
-  {% include css/box.css %}
-  {% include css/project.css %}
-  .technical-info-block .ti-icon {
-    color: #a77452;
-  }
-</style>
+{% include html/portfolio/project.html %}

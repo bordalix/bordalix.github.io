@@ -10,95 +10,17 @@ portfolio:
   next:
     name: APPC Explorer
     link: appcexplorer.html
+project:
+  description: Win bonuses based on your daily winnings
+  status: Defunct
+  client: Sportsbet.io
+  image: worldleague_r
+techsheet:
+  devops: EC2, S3, Nginx
+  datalayer: MongoDB
+  purpose: Tip results, get points, win prizes
+  framework: MeteorJS
+  design: Do Design / Materialize CSS
 ---
 
-<style>
-  {% include css/box.css %}
-  {% include css/project.css %}
-  .technical-info-block .ti-icon {
-    color: #2b7fa2;
-  }
-</style>
-
-<section>
-  <div class="container">
-    <h1 class="heading">
-      <span>World league</span>
-    </h1>
-    <h2 class="lead">Win bonuses based on your daily winnings</h2>
-    <p>
-      <strong>Status:</strong>
-      Defunct<br />
-      <strong>Client:</strong>
-      Sportsbet.io<br />
-    </p>
-    <div class="text_column left">
-      <picture>
-        <source
-          srcset="{{ site.cdn_url }}/portfolio/worldleague_r.webp"
-          type="image/webp" />
-        <source
-          srcset="{{ site.cdn_url }}/portfolio/worldleague_r.png"
-          type="image/png" />
-        <source
-          srcset="{{ site.cdn_url }}/portfolio/worldleague_r.avif"
-          type="image/avif" />
-        <img
-          width="480"
-          height="360"
-          src="{{ site.cdn_url }}/portfolio/worldleague_r.png"
-          alt="World league website screenshot" />
-      </picture>
-    </div>
-    <div class="text_column right">
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">DevOps</span><br />
-          EC2, S3, Nginx
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Database</span><br />
-          MongoDB
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Business logic</span><br />
-          Tip results, get points, win prizes
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
-          Meteor
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
-          Do Design / Materialize CSS
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</section>
-
-<div class="container">{% include html/portfolio/navigation.html %}</div>
+{% include html/portfolio/project.html %}

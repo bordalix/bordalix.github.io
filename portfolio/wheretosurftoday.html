@@ -10,149 +10,68 @@ portfolio:
   next:
     name: World league
     link: worldleague.html
+project:
+  description: Find the best places to surf in Portugal, near your location, with todays's conditions
+  status: Active
+  client: Personal project
+  link: https://wheretosurftoday.com
+  image: wheretosurftoday_r
+techsheet:
+  devops: EC2, S3, Nginx
+  datalayer: Mongo
+  purpose: Algorithm to calculate surf score
+  framework: MeteorJS
+  design: Materialize CSS
 ---
 
-<style>
-  {% include css/box.css %}
-  {% include css/project.css %}
-  .technical-info-block .ti-icon {
-    color: #ec5d30;
-  }
-</style>
-
-<section>
-  <div class="container">
-    <h1 class="heading">
-      <span>Where to surf today</span>
-    </h1>
-    <h2 class="lead">Find the best places to surf in Portugal, near your location, with todays's conditions</h2>
-    <p>
-      <strong>Status:</strong>
-      Live<br />
-      <strong>Client:</strong>
-      Personal project<br />
-    </p>
-    <p>
-      <i class="fa fa-external-link"></i>
-      <a href="https://wheretosurftoday.com">https://wheretosurftoday.com</a>
-    </p>
-    <div class="text_column left">
-      <a href="https://wheretosurftoday.com?ref=picture">
-        <picture>
-          <source srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.webp" type="image/webp" />
-          <source srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.png" type="image/png" />
-          <source srcset="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.avif" type="image/avif" />
-          <img
-            width="480"
-            height="360"
-            src="{{ site.cdn_url }}/portfolio/wheretosurftoday_r.png"
-            alt="Where to surf today website screenshot" />
-        </picture>
-      </a>
-    </div>
-    <div class="text_column right">
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">DevOps</span><br />
-          EC2, S3, Nginx
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Database</span><br />
-          MongoDB
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Business logic</span><br />
-          Algorithm to calculate surf score
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
-          Meteor, Google Maps, Ruby scripts
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
-          Materialize CSS
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</section>
-
-<div class="container">{% include html/portfolio/navigation.html %}</div>
+{% include html/portfolio/project.html %}
 
 <section>
   <div class="container">
     <h3 class="lead">Full story</h3>
-    <div class="text_column left">
-      <p>
-        <strong>The problem:</strong>
-      </p>
-      <p>Imagine you are in Portugal, you want to go surfing, but you don't know where the best waves are.</p>
-      <p>What do you do?</p>
-      <p>
-        Well, you open your surf guide, see what surf spots are near enough, search for a beachcam on that spot, and
-        after some thorough evaluation, you finally decide where to go. Now it's time to search for the spot on Google
-        Maps, and get some directions.
-      </p>
-      <p>Wouldn't be great if there was a simpler way of doing all this?</p>
-      <p>
-        <strong>Well, there is.</strong>
-      </p>
-      <p>
-        That's why I made
-        <a href="https://wheretosurftoday.com">https://wheretosurftoday.com</a>
-        some time ago.
-      </p>
-    </div>
-    <div class="text_column right">
-      <p>
-        <strong>And how exactly it solves the problem?</strong>
-      </p>
-      <p>After you give authorization to the website to access your location, you will get:</p>
-      <ul>
-        <li>133 spots covering all the portuguese coast</li>
-        <li>Access to the beachcam link</li>
-        <li>Specific information about the spot</li>
-        <li>Direct links to Google Maps</li>
-        <li>Every spot has its own forecast</li>
-        <li>Forecast in 3 hours slots</li>
-        <li>Surf score for each spot and slot</li>
-        <li>Search based on geolocation</li>
-        <li>Navigate using the built in map</li>
-        <li>No sign up, no ads, no data gathering</li>
-        <li>
-          Easier to type domain,
-          <a href="https://wtst.info">https://wtst.info</a>
-        </li>
-        <li>
-          <a href="https://play.google.com/store/apps/details?id=com.id1s3e5v51g2mink1kolsdq">Android app</a>
-          available
-        </li>
-      </ul>
-    </div>
+    <p>
+      <strong>The problem:</strong>
+    </p>
+    <p>Imagine you are in Portugal, you want to go surfing, but you don't know where the best waves are.</p>
+    <p>What do you do?</p>
+    <p>
+      Well, you open your surf guide, see what surf spots are near enough, search for a beachcam on that spot, and after
+      some thorough evaluation, you finally decide where to go. Now it's time to search for the spot on Google Maps, and
+      get some directions.
+    </p>
+    <p>Wouldn't be great if there was a simpler way of doing all this?</p>
+    <p>
+      <strong>Well, there is.</strong>
+    </p>
+    <p>
+      That's why I made
+      <a href="https://wheretosurftoday.com">https://wheretosurftoday.com</a>
+      some time ago.
+    </p>
+    <p>
+      <strong>And how exactly it solves the problem?</strong>
+    </p>
+    <p>After you give authorization to the website to access your location, you will get:</p>
+    <ul>
+      <li>133 spots covering all the portuguese coast</li>
+      <li>Access to the beachcam link</li>
+      <li>Specific information about the spot</li>
+      <li>Direct links to Google Maps</li>
+      <li>Every spot has its own forecast</li>
+      <li>Forecast in 3 hours slots</li>
+      <li>Surf score for each spot and slot</li>
+      <li>Search based on geolocation</li>
+      <li>Navigate using the built in map</li>
+      <li>No sign up, no ads, no data gathering</li>
+      <li>
+        Easier to type domain,
+        <a href="https://wtst.info">https://wtst.info</a>
+      </li>
+      <li>
+        <a href="https://play.google.com/store/apps/details?id=com.id1s3e5v51g2mink1kolsdq">Android app</a>
+        available
+      </li>
+    </ul>
   </div>
   <div style="clear: both"></div>
 </section>

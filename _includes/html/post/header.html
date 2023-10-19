@@ -12,17 +12,24 @@
     font-size: 0.9rem;
     margin: 0.3rem 0;
   }
-  span.tag {
+  a.tag:hover {
+    text-decoration: none;
+  }
+  a.tag span {
     background-color: var(--tag-bgcolor);
     border-radius: 4px;
     font-size: 0.66rem;
     padding: 0 0.3rem;
   }
+  a.tag span:hover {
+    background-color: var(--blue);
+    color: var(--white);
+  }
 </style>
 
-<h2>
+<h3>
   <a href="{{ foo.url }}">{{ foo.title }}</a>
-</h2>
+</h3>
 <div class="metainfo">
   <p>
     <time datetime="{{ foo.date }}" class="timeago">{{ foo.date }}</time>
@@ -35,8 +42,8 @@
 {% if foo.tags %}
 <p style="text-align: right">
   {% for tag in foo.tags %}
-  <a href="/search?q={{tag}}">
-    <span class="tag">#{{ tag }}</span>
+  <a class="tag" href="/search?q={{tag}}">
+    <span>#{{ tag }}</span>
   </a>
   {% endfor %}
 </p>

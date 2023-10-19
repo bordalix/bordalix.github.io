@@ -58,11 +58,6 @@ figcaption {
   text-align: center;
 }
 
-section.grey {
-  background-color: var(--lightgrey);
-  padding-bottom: 90px;
-}
-
 .technical-info-block {
   position: relative;
   text-align: left;

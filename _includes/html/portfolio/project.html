@@ -1,0 +1,46 @@
+<style>
+  {% include css/project2.css %}
+</style>
+
+<section class="project">
+  <div class="container">
+    <h1 class="heading">
+      <span>{{ page.title }}</span>
+    </h1>
+    <h2 class="lead">{{ page.project.description }}</h2>
+    <p>
+      <strong>Status:</strong> {{ page.project.status }}<br />
+      <strong>Client:</strong> {{ page.project.client }}<br />
+    </p>
+    {% if page.project.link %}
+    <p>
+      <i class="fa fa-external-link"></i>
+      <a href="{{ page.project.link }}">
+        {% if page.project.link_desc %} {{ page.project.link_desc }} {% else %} {{ page.project.link }} {% endif %}
+      </a>
+    </p>
+    {% endif %}
+    <div class="text_column left">
+      <picture>
+        <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.webp" type="image/webp" />
+        <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.png" type="image/png" />
+        <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.avif" type="image/avif" />
+        <img
+          width="480"
+          height="360"
+          src="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.png"
+          alt="{{ page.title }} website screenshot" />
+      </picture>
+    </div>
+    <div class="text_column right">
+      <p><span>DevOps</span><br />{{ page.techsheet.devops }}</p>
+      <p><span>Data layer</span><br />{{ page.techsheet.datalayer }}</p>
+      <p><span>Business logic</span><br />{{ page.techsheet.purpose }}</p>
+      <p><span>API layer / MVC</span><br />{{ page.techsheet.framework }}</p>
+      <p><span>Design</span><br />{{ page.techsheet.design }}</p>
+    </div>
+  </div>
+  <div style="clear: both"></div>
+</section>
+
+<div class="container">{% include html/portfolio/navigation.html %}</div>

@@ -10,101 +10,17 @@ portfolio:
   next:
     name: Dog off leash
     link: dogoffleash.html
+project:
+  description: New cowork space in Azeitão
+  status: Defunct
+  client: CoWork Azeitão
+  image: cowork_r
+techsheet:
+  devops: Surge.sh
+  datalayer: None
+  purpose: Web presence and digital marketing
+  framework: Static website with vanilla javascript
+  design: HTML5 UP
 ---
 
-<style>
-  {% include css/box.css %}
-  {% include css/project.css %}
-  .technical-info-block .ti-icon {
-    color: #4b3782;
-  }
-</style>
-<section>
-  <div class="container">
-    <h1 class="heading">
-      <span>CoWork Azeitão</span>
-    </h1>
-    <h2 class="lead">New work space in Azeitão</h2>
-    <p>
-      <strong>Status:</strong>
-      Live<br />
-      <strong>Client:</strong>
-      CoWork Azeitão<br />
-    </p>
-    <p>
-      <i class="fa fa-external-link"></i>
-      <a href="http://coworkazeitao.ga">http://coworkazeitao.ga</a>
-    </p>
-    <div class="text_column left">
-      <a href="http://coworkazeitao.ga?ref=picture">
-        <picture>
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/cowork_r.webp"
-            type="image/webp" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/cowork_r.png"
-            type="image/png" />
-          <source
-            srcset="{{ site.cdn_url }}/portfolio/cowork_r.avif"
-            type="image/avif" />
-          <img
-            width="480"
-            height="360"
-            src="{{ site.cdn_url }}/portfolio/cowork_r.png"
-            alt="CoWork Azeitão website screenshot" />
-        </picture>
-      </a>
-    </div>
-    <div class="text_column right">
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">DevOps</span><br />
-          Surge.sh
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-times-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Database</span><br />
-          No DB, static site
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Business logic</span><br />
-          Web presence and digital marketing
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-times-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
-          None, static site
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-times-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
-          Design and UI by
-          <a href="https://html5up.net/">HTML5 UP</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</section>
-
-<div class="container">{% include html/portfolio/navigation.html %}</div>
+{% include html/portfolio/project.html %}

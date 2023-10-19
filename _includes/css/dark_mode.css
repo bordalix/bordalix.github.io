@@ -45,7 +45,8 @@ body.dark-theme h6,
 body.dark-theme p,
 body.dark-theme .contact-info-block .ci-text,
 body.dark-theme nav.menu-top .navRight a,
-body.dark-theme nav.menu-top .navRight > span {
+body.dark-theme nav.menu-top .navRight > span,
+body.dark-theme article.post h3 a {
   color: var(--lightgrey);
 }
 
@@ -79,4 +80,8 @@ body.dark-theme nav svg {
 body.dark-theme blockquote {
   background-color: var(--darkgrey);
   border-left: 5px solid #eee;
+}
+
+body.dark-theme div.metainfo p {
+  color: silver;
 }

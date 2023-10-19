@@ -8,91 +8,19 @@ portfolio:
     name: Appcoins
     link: appcoins.html
   next:
-    name: Catappult
-    link: catappult.html
+    name: Bitcoin stats
+    link: bitcoinstats.html
+project:
+  description: World Cup 2018 tip game for journalists
+  status: Defunct
+  client: Betclic Portugal
+  image: batalhadosbitaites_r
+techsheet:
+  devops: EC2, S3, Nginx
+  datalayer: MongoDB
+  purpose: Tip results, get points, win prizes
+  framework: MeteorJS
+  design: FunnyHow / Materialize CSS
 ---
 
-<style>
-  {% include css/box.css %}
-  {% include css/project.css %}
-  .technical-info-block .ti-icon {
-    color: #cd0027;
-  }
-</style>
-
-<section>
-  <div class="container">
-    <h1 class="heading">
-      <span>Batalha dos bitaites</span>
-    </h1>
-    <h2 class="lead">World Cup 2018 tip game for journalists</h2>
-    <p>
-      <strong>Status:</strong>
-      Defunct<br />
-      <strong>Client:</strong>
-      Betclic Portugal<br />
-    </p>
-    <div class="text_column left">
-      <picture>
-        <source srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.webp" type="image/webp" />
-        <source srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.png" type="image/png" />
-        <source srcset="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.avif" type="image/avif" />
-        <img
-          width="480"
-          height="360"
-          src="{{ site.cdn_url }}/portfolio/batalhadosbitaites_r.png"
-          alt="Batalha dos bitaites website screenshot" />
-      </picture>
-    </div>
-    <div class="text_column right">
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">DevOps</span><br />
-          EC2, S3, Nginx
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Database</span><br />
-          MongoDB
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Business logic</span><br />
-          Tip results, get points, win prizes
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
-          Meteor
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
-          FunnyHow / Materialize CSS
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</section>
-
-<div class="container">{% include html/portfolio/navigation.html %}</div>
+{% include html/portfolio/project.html %}

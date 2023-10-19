@@ -10,95 +10,17 @@ portfolio:
   next:
     name: TDEX
     link: tdex.html
+project:
+  description: Utils to use with Nostr
+  status: Active
+  client: Personal project
+  image: nostr-utils_r
+techsheet:
+  devops: Cloudflare Pages
+  datalayer: Nostr
+  purpose: Experimenting with Nostr
+  framework: Static website with vanilla javascript
+  design: Less is more
 ---
 
-<style>
-  {% include css/box.css %}
-  {% include css/project.css %}
-  .technical-info-block .ti-icon {
-    color: #c0c0c0;
-  }
-</style>
-
-<section>
-  <div class="container">
-    <h1 class="heading">
-      <span>Nostr utils</span>
-    </h1>
-    <h2 class="lead">Utils to use with Nostr</h2>
-    <p>
-      <strong>Status:</strong>
-      Live<br />
-      <strong>Client:</strong>
-      Personal project<br />
-    </p>
-    <p>
-      <i class="fa fa-external-link"></i>
-      <a href="https://nostr-utils.pages.dev">https://nostr-utils.pages.dev</a>
-    </p>
-    <div class="text_column left">
-      <a href="https://nostr-utils.pages.dev?ref=picture">
-        <picture>
-          <source srcset="{{ site.cdn_url }}/portfolio/nostr-utils_r.webp" type="image/webp" />
-          <source srcset="{{ site.cdn_url }}/portfolio/nostr-utils_r.png" type="image/png" />
-          <source srcset="{{ site.cdn_url }}/portfolio/nostr-utils_r.avif" type="image/avif" />
-          <img
-            width="480"
-            height="360"
-            src="{{ site.cdn_url }}/portfolio/nostr-utils_r.png"
-            alt="nostr-utils website screenshot" />
-        </picture>
-      </a>
-    </div>
-    <div class="text_column right">
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">DevOps</span><br />
-          Cloudflare Pages
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-times-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Database</span><br />
-          None
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Business logic</span><br />
-          Experimenting with Nostr
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">API Layer / MVC</span><br />
-          Static website with vanilla javascript
-        </div>
-      </div>
-      <div class="technical-info-block">
-        <div class="ti-icon">
-          <i class="fa fa-check-circle-o"></i>
-        </div>
-        <div class="ti-text">
-          <span class="skill">Design / UI</span><br />
-          Less is more
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="clear: both"></div>
-</section>
-
-<div class="container">{% include html/portfolio/navigation.html %}</div>
+{% include html/portfolio/project.html %}
