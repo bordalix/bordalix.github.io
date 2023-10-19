@@ -1,4 +1,5 @@
 :root {
+  --black: #000;
   --blue: #1f75b2;
   --border-radius: 30px;
   --box-opacity: 1;
@@ -43,6 +44,10 @@ body {
   color: var(--darkest);
   min-height: 100vh;
   position: relative;
+}
+
+main {
+  padding-bottom: 3rem;
 }
 
 input,
@@ -155,15 +160,20 @@ p.social {
   display: flex;
   justify-content: space-between;
   margin: 3rem auto 0;
-  max-width: 240px;
+  max-width: 300px;
 }
 
 p.social a {
   color: var(--white);
   display: inline-block;
-  font-size: 1rem;
+  font-size: 2rem;
   height: 2rem;
   width: 2rem;
+}
+
+p.social a svg {
+  height: auto;
+  width: 100%;
 }
 
 p.subtitle {
@@ -181,12 +191,12 @@ p.subtitle span:not(:first-child) {
   padding: 2rem;
 }
 
-section:nth-child(even) {
+section2:nth-child(even) {
   background-color: var(--lightgrey);
 }
 
 section {
-  padding: 3rem 0;
+  margin: 4rem 0;
 }
 
 nav p {
@@ -223,19 +233,16 @@ nav img {
 .heading {
   text-align: left;
   margin-bottom: 40px;
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--darkest);
 }
 
 .heading:after {
   content: ' ';
   display: block;
-  width: 100px;
+  width: 200px;
   height: 2px;
   margin: 20px 0;
-  background: var(--blue);
+  background-image: linear-gradient(to right, var(--darkest), var(--lightgrey));
 }
 
 .text_column {
@@ -288,12 +295,6 @@ nav img {
 }
 .dark-theme-toggle {
   cursor: pointer;
-}
-
-a#downloadCV {
-  text-align: center;
-  max-width: 300px;
-  margin: 20px auto 50px;
 }
 
 strong {
@@ -350,4 +351,8 @@ pre {
 
 summary {
   margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
 }

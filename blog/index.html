@@ -3,16 +3,11 @@ layout: blog
 ---
 
 <div class="container">
-  <a href="/blog">
-    <h1 class="heading">
-      <span>Blog</span>
-    </h1>
-  </a>
-</div>
-<div></div>
-{% for post in paginator.posts %} {% assign mod = forloop.index | modulo: 2 %}
-<section>
-  <div class="container">
+  <h1 class="heading">
+    <span>Blog</span>
+  </h1>
+  {% for post in paginator.posts %} {% assign mod = forloop.index | modulo: 2 %}
+  <section>
     <article class="post">
       {% assign foo = post %} {% include html/post/header.html %}
       <div class="content">{{ post.excerpt }}</div>
@@ -20,9 +15,9 @@ layout: blog
       <a href="{{ post.url }}">Read more...</a>
       {% endif %}
     </article>
-  </div>
-</section>
-{% endfor %}
+  </section>
+  {% endfor %}
+</div>
 <section>
   <div class="container">
     <!-- Pagination links -->
