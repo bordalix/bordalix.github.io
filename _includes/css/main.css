@@ -118,6 +118,10 @@ h4 {
   font-size: 1.2rem;
 }
 
+h5 {
+  margin-bottom: 1rem;
+}
+
 h2.lead,
 h3.lead {
   font-size: 1.2rem;
