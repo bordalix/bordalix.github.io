@@ -1,0 +1,12 @@
+
+      .~~~~~~~~~.           .~~~~~~~~~.
+      :  psbt   :           : virtual :
+      '~~~~~~~~~'           '~~~~~~~~~'
+                         :
+Next pool transaction    :
+                         :
+IN       | OUT           :   IN | OUT
+---------+------------   :   ---+-----------
+ASP UTXO | Shared UTXO o----->* | Frank VTXO
+         | Connectors    :      | 
+         | Change

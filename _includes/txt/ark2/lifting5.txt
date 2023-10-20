@@ -1,22 +1,22 @@
 
- .~~~~~~~~. 
- :  psbt  : 
- '~~~~~~~~' 
+ .~~~~~~~~~.                  .~~~~~~~~. 
+ : onchain :                  :  psbt  : 
+ '~~~~~~~~~'                  '~~~~~~~~' 
    
-  Funding tx                  Redeem tx                 Forfeit tx              
+  Funding transaction         Redeem transaction          Forfeit transaction              
                                                                                             
-  IN   | OUT                  IN | OUT                  IN | OUT            
-  -----+----------------      ---+----------------      ---+----------------  
-  UTXO |"(Frank + ASP) or"o--->* |"(Frank + ASP) or"o--->* | ASP     
-       |"(ASP in 1 month)"       |"(ASP in 1 month)" +-->* |                
-                                                     |
-                                                     |
-                                                     |
-  Next pool transaction                              |
-                                                     |
-  IN       | OUT                                     |
-  ---------+------------                             |
-  ASP UTXO | Shared UTXO                             |
-           | Connectors o----------------------------+
-           | Change
+  IN   | OUT                  IN | OUT                    IN | OUT            
+  -----+----------------      ---+----------------        ---+----------------  
+  UTXO |"(Frank + ASP) or"o--->* |"(Frank + ASP) or"o----->* | ASP but only if next    
+       |"(ASP in 1 month)"       |"(Frank in 1 month)" +-->* | pool tx is confirmed               
+                                                       |
+                                                       |
+                                                       |
+                              Next pool transaction    |
+                                                       |
+                              IN       | OUT           |
+                              ---------+------------   |
+                              ASP UTXO | Shared UTXO   |
+                                       | Connectors o--+
+                                       | Change
                              

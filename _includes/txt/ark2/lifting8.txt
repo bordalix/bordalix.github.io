@@ -3,7 +3,7 @@
  : onchain : 
  '~~~~~~~~~' 
    
-  Funding tx                  Sweep tx                
+  Funding transaction         Claim transaction                
                                                                 
   IN   | OUT                  IN | OUT              
   -----+----------------      ---+----------------  
