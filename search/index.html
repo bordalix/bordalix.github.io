@@ -31,7 +31,7 @@ layout: blog
     const searchInput = document.getElementById('search-input')
     const resultsContainer = document.getElementById('results-container')
     const searchResultTemplate =
-      '<li><a href="{{ site.url }}{url}">{title}</a> &middot; <span>{category}</span> <span class="timeago">{date}</span></li>'
+      '<li><a href="{url}">{title}</a> &middot; <span>{category}</span> <span class="timeago">{date}</span></li>'
     const templateMiddleware = (prop, value) => {
       if (prop === 'date') {
         const ago = timeAgo(value)

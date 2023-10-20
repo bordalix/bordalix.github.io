@@ -14,8 +14,12 @@ figcaption {
   content: '\f08e';
 }
 
-.project .text_column.left img,
-.project .text_column.left .img-container {
+.fa-info-circle:before {
+  content: '\f05a';
+}
+
+.text_column.left img,
+.text_column.left .img-container {
   opacity: 1;
   height: auto;
   width: 100%;
@@ -34,4 +38,18 @@ figcaption {
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.container.fullstory {
+  margin-bottom: 1rem;
+}
+
+.container.fullstory img,
+.container.fullstory .img-container {
+  opacity: 1;
+  height: auto;
+  width: 100%;
+  box-shadow: 6px 6px 6px #ddd;
+  transition: opacity 0.3s;
+  border: 1px solid #ddd;
 }

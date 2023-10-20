@@ -56,7 +56,7 @@ body.dark-theme figcaption {
 
 body.dark-theme .btn {
   color: var(--white);
-  background-color: #2e2e2e;
+  background: var(--darkgrey);
   border-color: var(--grey);
 }
 
@@ -65,7 +65,7 @@ body.dark-theme .btn:active,
 body.dark-theme .btn:focus,
 body.dark-theme .btn:hover {
   color: var(--lightgrey);
-  background: var(--darkgrey);
+  background-color: #2e2e2e;
 }
 
 body.dark-theme .text_column.left img,

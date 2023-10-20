@@ -4,8 +4,7 @@ layout: main
 ---
 
 <style>
-  {% include css/box.css %}
-   .whitepaper {
+  .whitepaper {
     --border: #ccc;
     --drop-x: 144.26004791259766px;
     --drop-y: 49.833282470703125px;
@@ -14,15 +13,16 @@ layout: main
     margin-bottom: 2rem;
   }
   .whitepaper div {
-    background: linear-gradient(90deg,var(--main) 0%,var(--main) 60%,var(--main-60) 100%), no-repeat right 40% / 40% var(--bg-img);
+    background: linear-gradient(90deg, var(--main) 0%, var(--main) 60%, var(--main-60) 100%),
+      no-repeat right 40% / 40% var(--bg-img);
     border: 1px solid var(--border);
     border-radius: var(--border-radius);
     display: inline-block;
-    padding: .42rem 5rem .42rem 1rem;
+    padding: 0.42rem 5rem 0.42rem 1rem;
     transition-duration: 0.2s;
   }
   .whitepaper p {
-    margin: 0
+    margin: 0;
   }
   .dark-theme .whitepaper {
     --border: var(--darkgrey);
@@ -31,35 +31,29 @@ layout: main
   }
 </style>
 
-<section id="bitcoin">
-  <div class="container">
-    <h1 class="heading">
-      <span>Bitcoin</span>
-    </h1>
-    <a href="/bitcoin.pdf" target="_blank">
-      <div class="whitepaper">
-        <div style="--bg-img: url(/images/static/skills/pdf.svg)">
-          <p>Whitepaper</p>
-        </div>
+<div class="container">
+  <h1 class="heading">
+    <span>Bitcoin</span>
+  </h1>
+  <a href="/bitcoin.pdf" target="_blank">
+    <div class="whitepaper">
+      <div style="--bg-img: url(/images/static/skills/pdf.svg)">
+        <p>Whitepaper</p>
       </div>
-    </a>
-    <div class="text_column left">
-      <p>Explainers</p>
-      <ul>
-        <li><a href="/labs/ark">Ark</a> (WIP)</li>
-        <li><a href="/articles/2020/03/02/explain-bitcoin-like-I-am-10.html">Bitcoin</a></li>
-        <li>Covenants</li>
-        <li>Layer 2 solutions</li>
-        <li><a href="/articles/2023/07/10/maximum-target-hash.html">Maximum target hash</a></li>
-        <li><a href="/articles/2023/07/13/explaining_sighash.html">SIGHASH</a></li>
-      </ul>
     </div>
-    <div class="text_column right">
-      <p>Resources</p>
-      <ul>
-        <li><a href="https://www.lopp.net/bitcoin-information.html">Lopp's Bitcoin Information & Resources</a></li>
-        <li><a href="https://whybitcoinonly.com/">Why Bitcoin Only</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
+  </a>
+  <h3>Explainers</h3>
+  <ul>
+    <li><a href="/labs/ark">Ark</a> (WIP)</li>
+    <li><a href="/articles/2020/03/02/explain-bitcoin-like-I-am-10.html">Bitcoin</a></li>
+    <li>Covenants</li>
+    <li>Layer 2 solutions</li>
+    <li><a href="/articles/2023/07/10/maximum-target-hash.html">Maximum target hash</a></li>
+    <li><a href="/articles/2023/07/13/explaining_sighash.html">SIGHASH</a></li>
+  </ul>
+  <h3>Resources</h3>
+  <ul>
+    <li><a href="https://www.lopp.net/bitcoin-information.html">Lopp's Bitcoin Information & Resources</a></li>
+    <li><a href="https://whybitcoinonly.com/">Why Bitcoin Only</a></li>
+  </ul>
+</div>

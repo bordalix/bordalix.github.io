@@ -5,29 +5,28 @@ description: JB portfolio
 ---
 
 <style>
-  {% include css/box.css %}
-  {% include css/project.css %}
+  {% include css/project2.css %}
 </style>
 
 <script>
   {% include js/box.js %}
 </script>
 
-<section style="padding-bottom: 190px">
+<section>
   <div class="container">
     <h1 class="heading"><span>Portfolio</span></h1>
     <h2 class="lead">Some stuff I made recently</h2>
   </div>
   <p>
     {% for project in site.portfolio %}
-      <a href="/portfolio/{{project.blob}}.html" aria-label="click to know more">
+    <a href="/portfolio/{{project.blob}}.html" aria-label="click to know more">
       <div class="box {{project.blob}}" data-bg-image="{{project.blob}}">
         <div class="box_text">
           <h3>{{project.name}}</h3>
         </div>
       </div>
     </a>
-    {% endfor  %}
+    {% endfor %}
   </p>
   <div style="clear: both"></div>
 </section>
