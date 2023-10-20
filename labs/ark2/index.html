@@ -16,7 +16,7 @@ description: Explain ARK like I'm 5
     stroke: white;
   }
   .ark .hidden {
-    display: none;
+    display: block;
     padding-top: 1rem;
   }
   .ark .tech {
@@ -102,7 +102,7 @@ description: Explain ARK like I'm 5
     </p>
     <p>In this example, Alice, Bob, Carol and Dave are "lifting" 0.01 BTC each to Ark:</p>
     <script type="text/typogram">
-      {% include txt/ark/onboarding.txt %}
+      {% include txt/ark2/onboarding.txt %}
     </script>
     <p>In order to be trustless:</p>
     <ul>
@@ -119,7 +119,7 @@ description: Explain ARK like I'm 5
           connectors output, change output, and transaction fees.
         </p>
         <script type="text/typogram">
-          {% include txt/ark/pooltx1.txt %}
+          {% include txt/ark2/pooltx1.txt %}
         </script>
         <p>The shared UTXO output is a UTXO locked by 2 taproot leaves:</p>
         <ul>
@@ -133,7 +133,7 @@ description: Explain ARK like I'm 5
         </p>
         <p>Each leaf on this tree represents a VTXO:</p>
         <script type="text/typogram">
-          {% include txt/ark/pooltx2.txt %}
+          {% include txt/ark2/pooltx2.txt %}
         </script>
         <p>
           In the example above, Alice's VTXO will be <em>tx1:1 => tx2:1 => tx4</em> that she can broadcast anytime to
@@ -152,7 +152,7 @@ description: Explain ARK like I'm 5
         </ul>
         <p>For clarity, VTXOs will be represented like this:</p>
         <script type="text/typogram">
-          {% include txt/ark/pooltx3.txt %}
+          {% include txt/ark2/pooltx3.txt %}
         </script>
 
         <p><strong>Lifting</strong></p>
@@ -163,65 +163,60 @@ description: Explain ARK like I'm 5
         </p>
         <ol>
           <!-- #1 -->
-          <li>Frank sends 0.01 BTC to <em>pk(F) && (older(4 weeks) || pk(ASP))</em> (aka funding address):</li>
+          <li>
+            Frank creates a <strong>Funding transaction</strong>:
+            <ul>
+              <li>add any segwit output as an input (must be segwit)</li>
+              <li>add output locked by <em>(Frank + ASP) or (ASP in 1 month)</em></li>
+              <li>send it to ASP, not signed</li>
+            </ul>
+          </li>
           <script type="text/typogram">
-            {% include txt/ark/lifting1.txt %}
+            {% include txt/ark2/lifting1.txt %}
           </script>
 
           <!-- #2 -->
           <li>
-            Frank creates an PSBT and adds as input the output of funding transaction. We will call this transaction the
-            sweep transaction, since it will allow the ASP to sweep the funds:
+            Frank receives a <strong>Redeem transaction</strong> from the ASP:
+            <ul>
+              <li>spends Funding transaction (1.) via <em>Frank + ASP</em></li>
+              <li>has output locked to <em>(Frank + ASP) or (ASP in 1 month)</em></li>
+              <li>Frank signs and sends it to the ASP</li>
+            </ul>
           </li>
           <script type="text/typogram">
-            {% include txt/ark/lifting2.txt %}
+            {% include txt/ark2/lifting2.txt %}
           </script>
 
           <!-- #3 -->
-          <li>Frank passes this PSBT to the ASP</li>
+          <li>Frank signs and broadcasts Funding transaction (1.)</li>
 
           <!-- #4 -->
-          <li>ASP places one input to PSBT, the "connector output" from the next pool transaction:</li>
-          <script type="text/typogram">
-            {% include txt/ark/lifting4.txt %}
-          </script>
+          <li>ASP (with Frank) prepares next <strong>Pool transaction</strong></li>
 
           <!-- #5 -->
-          <li>ASP places one output to PSBT, <em>pk(ASP)</em>, a singlesig output that sweeps all money to itself:</li>
+          <li>
+            Frank creates a <strong>Forfeit transaction</strong>:
+            <ul>
+              <li>spends from Redeem transaction (2.) via <em>Frank + ASP</em></li>
+              <li>adds connector output from Pool transaction (4.) as input</li>
+              <li>signs and sends it to the ASP</li>
+            </ul>
+          </li>
           <script type="text/typogram">
-            {% include txt/ark/lifting5.txt %}
+            {% include txt/ark2/lifting5.txt %}
           </script>
 
           <!-- #6 -->
-          <li>
-            ASP passes PSBT to Frank and both sign the PSBT and keep this transaction private. This transaction is not
-            valid yet, since the connector's outpoint context does not exist yet;
-          </li>
+          <li>ASP broadcasts Pool transaction (4.)</li>
 
           <!-- #7 -->
-          <li>ASP signs the pool transaction and broadcast it:</li>
-          <script type="text/typogram">
-            {% include txt/ark/lifting7.txt %}
-          </script>
+          <li>Frank has now a VTXO</li>
 
           <!-- #8 -->
-          <li>
-            ASP can now claim 0.01 BTC from the funding transaction by revealing the descendant transaction of
-            connectors output. The ASP should claim this before four weeks or else Frank could double spend it. Don't
-            forget the funding transaction is locked to: <em>pk(F) && (older(4weeks) || pk(ASP))</em>.
-          </li>
+          <li>After 1 month ASP spends Funding transaction (1.) via <em>ASP in 1 month</em></li>
           <script type="text/typogram">
-            {% include txt/ark/lifting8.txt %}
-          </script>
-
-          <!-- #9 -->
-          <li>
-            Frank now has a 0.01 BTC worth UTXO representation as a descendant of the shared UTXO output (a VTXO). To
-            avoid double spending, the ASP will not allow Frank to use its <em>VTXO</em> before the funding transaction
-            is confirmed:
-          </li>
-          <script type="text/typogram">
-            {% include txt/ark/lifting9.txt %}
+            {% include txt/ark2/lifting8.txt %}
           </script>
         </ol>
         <p>So far, Frank polluted onchain by funding an address, and the ASP by claiming funds from that address.</p>
@@ -257,7 +252,7 @@ description: Explain ARK like I'm 5
     </p>
     <p>Now let's imagine Alice wants to send Oscar 0.01 BTC using Ark:</p>
     <script type="text/typogram">
-      {% include txt/ark/payment0.txt %}
+      {% include txt/ark2/payment0.txt %}
     </script>
     <p>Alice forfeits its VTXO to the ASP and in return Oscar receives a VTXO</p>
     <p>In order to be trustless:</p>
@@ -277,7 +272,7 @@ description: Explain ARK like I'm 5
           <li>Alice informs ASP she wants to pay 0.01 BTC to address O</li>
           <li>ASP (with help of Oscar) prepares new transaction (Pool Tx 2) and show it to Alice:</li>
           <script type="text/typogram">
-            {% include txt/ark/payment3.txt %}
+            {% include txt/ark2/payment3.txt %}
           </script>
           <li>Alice looks at the locking script for this new UTXO and sees Oscar's public key on it</li>
           <li>Alice understands that when Pool Tx 2 confirms, Oscar will have 0.01 BTC on Ark</li>
@@ -286,7 +281,7 @@ description: Explain ARK like I'm 5
             confirmed. We will call this the forfeit transaction:
           </li>
           <script type="text/typogram">
-            {% include txt/ark/payment6.txt %}
+            {% include txt/ark2/payment6.txt %}
           </script>
           <li>
             ASP cannot cheat, if he wants to receive from Alice he needs to send it to Oscar, which means Alice is
@@ -306,7 +301,7 @@ description: Explain ARK like I'm 5
           <li>The ASP will sign the connector input</li>
         </ul>
         <script type="text/typogram">
-          {% include txt/ark/connector.txt %}
+          {% include txt/ark2/connector.txt %}
         </script>
         <p>This way, the transaction where Alice gives her VTXO to the ASP is only valid if Pool Tx 2 is confirmed.</p>
         <details>
@@ -331,7 +326,7 @@ description: Explain ARK like I'm 5
       transaction.
     </p>
     <script type="text/typogram">
-      {% include txt/ark/exiting0.txt %}
+      {% include txt/ark2/exiting0.txt %}
     </script>
     <p>
       Alice could also unilaterally exit, i.e. without ASP's cooperation, by redeeming hers VTXO for an onchain utxo.
@@ -354,20 +349,20 @@ description: Explain ARK like I'm 5
           <li>Alice informs ASP she wants to pay 0.01 BTC onchain to address A</li>
           <li>ASP (with help of Alice) prepares new transaction (Pool Tx 3) and show it to Alice:</li>
           <script type="text/typogram">
-            {% include txt/ark/exiting3.txt %}
+            {% include txt/ark2/exiting3.txt %}
           </script>
           <li>Alice sees extra output paying 0.01 BTC to her address</li>
           <li>Alice understands that when Pool Tx 3 confirms, she will have 0.01 BTC onchain</li>
           <li>Alice proceeds by sending her VTXO to the ASP, on the condition that Pool Tx 3 is confirmed:</li>
           <script type="text/typogram">
-            {% include txt/ark/exiting6.txt %}
+            {% include txt/ark2/exiting6.txt %}
           </script>
           <li>
             ASP cannot cheat, if he wants to receive the <em>VTXO</em> from Alice he needs to send it onchain to Alice,
             which means Alice is exiting the Ark atomically.
           </li>
           <script type="text/typogram">
-            {% include txt/ark/exiting7.txt %}
+            {% include txt/ark2/exiting7.txt %}
           </script>
         </ol>
         <p><strong>Unilateral exit</strong></p>

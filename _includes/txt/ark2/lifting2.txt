@@ -1,0 +1,11 @@
+  
+ .~~~~~~~~. 
+ :  psbt  : 
+ '~~~~~~~~' 
+   
+  Funding tx                  Redeem tx               
+                                                                   
+  IN   | OUT                  IN | OUT          
+  -----+----------------      ---+----------------  
+  UTXO |"(Frank + ASP) or"o--->* |"(Frank + ASP) or"       
+       |"(ASP in 1 month)"       |"(ASP in 1 month)"                 

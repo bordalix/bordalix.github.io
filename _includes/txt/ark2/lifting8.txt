@@ -1,0 +1,13 @@
+
+ .~~~~~~~~~. 
+ : onchain : 
+ '~~~~~~~~~' 
+   
+  Funding tx                  Sweep tx                
+                                                                
+  IN   | OUT                  IN | OUT              
+  -----+----------------      ---+----------------  
+  UTXO |"(Frank + ASP) or"       | ASP
+       |"(ASP in 1 month)"o--->* |
+                                                    
+ 
