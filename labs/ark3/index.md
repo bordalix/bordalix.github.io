@@ -1,7 +1,9 @@
 ---
+title: Ark explainer
+layout: page
+description: Ark explainer
 category: pages
 date: 2023-10-24 03:27:04
-layout: page
 ---
 
 ## Ark explainer
@@ -59,7 +61,7 @@ Represents a binary tree of transactions
 | ------------- | ----------------------------------- |
 | Shared output | (Alice + ASP) or (Alice in 1 month) |
 
-Note: In an optimistic scenario, transactions marked with a **\*** should never hit onchain.
+**Note:** In an optimistic scenario, transactions marked with a **\*** should never hit onchain.
 
 ### Timeline
 
@@ -68,17 +70,17 @@ Note: In an optimistic scenario, transactions marked with a **\*** should never 
 1. Alice creates a [funding tx](#funding-transaction):
    - add any segwit output as an input (must be segwit)
    - add output locked by `(Alice + ASP) or (ASP in 1 month)`
-   - send it to ASP, not signed
+   - send it to ASP, **not signed**
 2. Alice receives a [redeem tx](#redeem-transaction-) from the ASP:
    - spends funding tx (1) via `Alice + ASP`
    - has one output locked by `(Alice + ASP) or (ASP in 1 month)`
-   - signs and send it to the ASP
 3. Alice signs and broadcasts funding tx (1)
+   - Alice can have funds back in 1 month with [redeem tx](#redeem-transaction-)
 4. ASP (with Alice) prepares next [pool tx](#pool-transaction-aka-ark-transaction)
 5. Alice creates a [forfeit tx](#forfeit-transaction-):
    - spends from redeem tx (2) via `Alice + ASP`
    - adds connector output from pool tx (4) as input
-   - signs and sends it to the ASP
+   - Alice signs and sends it to the ASP
 6. ASP broadcasts [pool tx](#pool-transaction-aka-ark-transaction) (4)
 7. Alice has now a [VTXO](#vtxo)
 8. After 1 month ASP spends funding tx (1) via `ASP in 1 month`
@@ -107,3 +109,18 @@ Note: In an optimistic scenario, transactions marked with a **\*** should never 
 4. ASP broadcasts [pool tx](#pool-transaction-aka-ark-transaction)
 5. Alice has now a new UTXO
 6. For at most 4 weeks, Alice will be able to double spend her’s [VTXO](#vtxo), but if she does it, the ASP will have time to grab the funds from the [VTXO](#vtxo) to itself using the [forfeit tx](#forfeit-transaction-)
+
+<style>
+  ol > li {
+   margin: 1rem 0 0 0;
+  }
+  li > ul {
+   margin-top: 0;
+  }
+  h3 {
+   margin: 2rem 0 1rem 0;
+  }
+  h5 {
+   margin-top: 2rem;
+  }
+</style>
