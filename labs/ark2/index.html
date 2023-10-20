@@ -185,7 +185,7 @@ description: Explain ARK like I'm 5
             Frank receives a <u>signed</u> <strong>Redeem transaction</strong> from the ASP:
             <ul>
               <li>spends <strong>Funding transaction</strong> (1) via <em>Frank + ASP</em></li>
-              <li>has output locked to <em>(Frank + ASP) or (Frank in 1 month)</em></li>
+              <li>has output locked to <em>(Frank + ASP) or (Frank in 24h)</em></li>
             </ul>
           </li>
           <script type="text/typogram">
@@ -197,8 +197,9 @@ description: Explain ARK like I'm 5
             Frank <u>signs</u> and broadcasts <strong>Funding transaction</strong> (1)
             <ul>
               <li>
-                Frank can leave with <strong>Redeem transaction</strong> (2) spending
-                <em>Frank in 1 month</em>
+                Is now safe for Frank to broadcast his funding transaction because now he can leave anytime with
+                <strong>Redeem transaction</strong> (2) spending <em>Frank in 24h</em>, i.e. Frank will be able to get
+                his funds back in 24 hours.
               </li>
             </ul>
           </li>
@@ -226,10 +227,21 @@ description: Explain ARK like I'm 5
           <li>ASP broadcasts <strong>Pool transaction</strong> (4)</li>
 
           <!-- #7 -->
-          <li>Frank has now a VTXO</li>
+          <li>
+            Frank has now a <strong>VTXO</strong>
+            <ul>
+              <li>A <strong>VTXO</strong> is very similar to a <strong>Redeem transaction</strong></li>
+            </ul>
+          </li>
+          <script type="text/typogram">
+            {% include txt/ark2/lifting7.txt %}
+          </script>
 
           <!-- #8 -->
-          <li>After 1 month ASP spends <strong>Funding transaction</strong> (1) via <em>ASP in 1 month</em></li>
+          <li>
+            After 1 month ASP claims Frank's funds spending <strong>Funding transaction</strong> (1) via
+            <em>ASP in 1 month</em>
+          </li>
           <script type="text/typogram">
             {% include txt/ark2/lifting8.txt %}
           </script>
@@ -241,11 +253,11 @@ description: Explain ARK like I'm 5
         <ul>
           <li>
             Frank broadcasts <strong>Funding transaction</strong> (1) but ASP never responds:<br />
-            Frank broadcasts <strong>Redeem transaction</strong> (2) and get his funds back in 1 month<br /><br />
+            Frank broadcasts <strong>Redeem transaction</strong> (2) and get his funds back in 24 hours<br /><br />
           </li>
           <li>
             Frank broadcasts <strong>Redeem transaction</strong> (2) after <strong>Pool transaction</strong> (3):<br />
-            ASP broadcasts <strong>Forfeit transaction</strong> (5) and gets Frank funds back<br /><br />
+            ASP broadcasts <strong>Forfeit transaction</strong> (5) and claims Frank's funds<br /><br />
           </li>
           <li>
             ASP doesn't wait for confirmation of <strong>Funding transaction</strong> (1) before broadcasting

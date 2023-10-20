@@ -8,7 +8,7 @@
   IN   | OUT                  IN | OUT                    IN | OUT            
   -----+----------------      ---+----------------        ---+----------------  
   UTXO |"(Frank + ASP) or"o--->* |"(Frank + ASP) or"o----->* | ASP but only if next    
-       |"(ASP in 1 month)"       |"(Frank in 1 month)" +-->* | pool tx is confirmed               
+       |"(ASP in 1 month)"       |"(Frank in 24h)"     +-->* | pool tx is confirmed               
                                                        |
                                                        |
                                                        |

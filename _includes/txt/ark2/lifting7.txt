@@ -1,0 +1,12 @@
+
+ .~~~~~~~~. 
+ :  psbt  : 
+ '~~~~~~-~' 
+   
+  VTXO                
+                          
+  IN                    | OUT        
+  ----------------------+----------------
+  Output from last leaf |"(Frank + ASP) or"    
+  shared output tx tree |"(Frank in 24h)"            
+                         
