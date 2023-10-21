@@ -1,5 +1,5 @@
 pre {
-  background-color: var(--lightgrey);
+  background-color: var(--white);
   margin: 0 0 24px;
 }
 
@@ -23,33 +23,75 @@ figcaption {
   opacity: 1;
   height: auto;
   width: 100%;
-  box-shadow: 6px 6px 6px #ddd;
+  box-shadow: 6px 6px 6px var(--grey);
   transition: opacity 0.3s;
-  border: 1px solid #ddd;
+  border: 1px solid var(--grey);
 }
 
-.project .text_column.right p {
-  line-height: 1;
+.project .columns {
+  display: grid;
+  column-gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 3rem;
 }
 
-.project .text_column.right p span {
-  color: var(--grey);
+.project .columns div {
+  margin-bottom: 2rem;
+}
+
+.project .columns p {
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.project .columns p span {
+  color: var(--egg);
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
-.container.fullstory {
+.project .text_column.right p {
+  line-height: 1;
+  margin-bottom: 0.7rem;
+}
+
+.project .text_column.right p span {
+  color: var(--egg);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.fullstory {
+  background-color: var(--cream);
+}
+
+.fullstory .container {
   margin-bottom: 1rem;
 }
 
-.container.fullstory img,
-.container.fullstory .img-container {
+.project img,
+.fullstory img,
+.fullstory .img-container {
   opacity: 1;
   height: auto;
   width: 100%;
-  box-shadow: 6px 6px 6px #ddd;
+  box-shadow: 6px 6px 6px var(--grey);
   transition: opacity 0.3s;
-  border: 1px solid #ddd;
+  border: 1px solid var(--grey);
+}
+
+@media (min-width: 1200px) {
+  .project .columns p {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .project .columns {
+    grid-template-columns: 1fr;
+  }
 }

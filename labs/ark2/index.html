@@ -8,24 +8,22 @@ description: Explain ARK like I'm 5
   .ark svg {
     margin-bottom: 2rem;
   }
-  .dark-theme .ark svg,
-  .dark-theme .ark svg polygon {
-    fill: white;
+  .ark svg,
+  .ark svg polygon {
+    fill: var(--black);
   }
-  .dark-theme .ark svg line.part {
-    stroke: white;
+  .ark svg line.part {
+    stroke: var(--black);
   }
   .ark .hidden {
     display: none;
     padding-top: 1rem;
   }
   .ark .tech {
-    background-color: var(--lightgrey);
+    background-color: var(--cream);
+    border: 1px solid var(--black);
     margin: 0 -1rem 1rem -1rem;
     padding: 1rem;
-  }
-  .dark-theme .ark .tech {
-    background-color: var(--darkgrey);
   }
   .ark a {
     cursor: pointer;
@@ -35,10 +33,6 @@ description: Explain ARK like I'm 5
   }
   .ark h4 {
     font-size: 1.2rem;
-  }
-  .ark em {
-    color: var(--orange);
-    padding: 0 4px;
   }
   .ark ol > li {
     margin-bottom: 1rem;
@@ -57,9 +51,9 @@ description: Explain ARK like I'm 5
 
 <section class="ark">
   <div class="container">
-    <h2 class="heading">
-      <span class="gradient">Explain ARK like I'm 5</span>
-    </h2>
+    <h1 class="heading">
+      <span>Ark explainer</span>
+    </h1>
 
     <h3>ELI5</h3>
     <ul>
@@ -78,14 +72,14 @@ description: Explain ARK like I'm 5
     <h3>TL/DR</h3>
     <ul>
       <li>There are two parties involved in Ark: users and the Ark Service Provide (ASP) aka Server.</li>
-      <li>Ark implements <em>VTXOs</em>, and all values exchanged inside Ark use <em>VTXOs</em>.</li>
+      <li>Ark implements <strong>VTXOs</strong>, and all values exchanged inside Ark use <strong>VTXOs</strong>.</li>
       <li>
-        <em>VTXOs</em> are outpoints from hidden transactions, that can be broadcasted to mainchain to become
-        <em>UTXOs</em>, or sent to the ASP in exchange for other <em>VTXOs</em>.
+        <strong>VTXOs</strong> are outpoints from hidden transactions, that can be broadcasted to mainchain to become
+        <em>UTXOs</em>, or sent to the ASP in exchange for other <strong>VTXOs</strong>.
       </li>
       <li>
-        Spending and receiving <em>VTXOs</em> doesn't touch the chain, which allows for an infinite exchange of value
-        inside Ark with a minimal chain footprint.
+        Spending and receiving <strong>VTXOs</strong> doesn't touch the chain, which allows for an infinite exchange of
+        value inside Ark with a minimal chain footprint.
       </li>
       <li>
         Ark is a completely <u>trustless</u> solution: users don't need ASP's permission to get their money back from

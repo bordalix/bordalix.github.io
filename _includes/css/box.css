@@ -141,8 +141,8 @@
 
 .box_text h3,
 .box_text p {
-  color: var(--white);
-  font-size: 1.25rem;
+  color: var(--my_white);
+  font-size: 1rem;
 }
 
 @media (min-width: 1200px) {

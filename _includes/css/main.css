@@ -1,29 +1,39 @@
 :root {
-  --black: #000;
-  --blue: #1f75b2;
+  --my_black: rgb(10, 9, 8);
+  --my_white: rgb(245, 244, 243);
+}
+
+body {
+  --black: var(--my_black);
+  --blue: rgb(59, 75, 89);
+  --blue-transparent: rgba(59, 75, 89, 0);
+  --brown: rgb(191, 160, 122);
+  --cream: rgb(237, 235, 233);
+  --cream-transparent: rgba(237, 235, 233, 0);
+  --cyan: rgb(82, 105, 124);
+  --egg: rgb(211, 206, 201);
+  --green: rgb(115, 107, 30);
+  --grey: rgb(219, 215, 211);
+  --orange: rgb(204, 99, 36);
+  --red: rgb(175, 46, 27);
+  --white: var(--my_white);
+
   --border-radius: 30px;
   --box-opacity: 1;
-  --dark: #000f1d;
-  --darkblue: #1b69a0;
-  --darkest: #000a0a;
-  --darkgrey: #002b45;
-  --darkgrey-transparent: #002b4521;
-  --footer-blue: #55a3e2;
-  --grey: #9e9e9e;
-  --lightgrey: #f6f6f6;
-  --lightgrey-transparent: #f6f6f621;
-  --purple: #800080;
-  --orange: #dd9a14;
-  --other-grey: #f0f0f0;
-  --progress1: #95c7ec;
-  --progress2: #7fbce8;
-  --progress3: #6ab1e4;
-  --progress4: #55a6e0;
-  --progress5: #409bdc;
-  --progress6: #1f75b2;
-  --tag-bgcolor: #ddd;
-  --tw-gradient-stops: var(--blue), var(--purple);
-  --white: #fff;
+}
+
+/* for dark theme, we just invert the colors */
+body.dark-theme {
+  --black: rgb(245, 244, 243); /* white */
+  --blue: rgb(237, 235, 233); /* cream */
+  --blue-transparent: rgba(237, 235, 233, 0);
+  --cream: rgb(59, 75, 89); /* blue */
+  --cream-transparent: rgba(59, 75, 89, 0);
+  --cyan: rgb(211, 206, 201); /* egg */
+  --egg: rgb(82, 105, 124); /* cyan */
+  --green: rgb(193, 179, 50); /* lime */
+  --lime: rgb(115, 107, 30); /* green */
+  --white: rgb(10, 9, 8); /* black */
 }
 
 ::placeholder {
@@ -37,11 +47,12 @@ html {
 }
 
 body {
+  background-color: var(--white);
+  color: var(--black);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
     Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   letter-spacing: 0;
   line-height: 1.5;
-  color: var(--darkest);
   min-height: 100vh;
   position: relative;
 }
@@ -73,7 +84,7 @@ ins {
 }
 
 a {
-  color: var(--blue);
+  color: var(--orange);
   outline: 0;
 }
 
@@ -90,7 +101,7 @@ h5,
 h6 {
   font-weight: 700;
   line-height: 1.2;
-  color: var(--darkest);
+  color: var(--black);
 }
 
 h1 {
@@ -231,7 +242,7 @@ nav img {
 .heading {
   text-align: left;
   margin-bottom: 40px;
-  color: var(--darkest);
+  color: var(--black);
 }
 
 .heading:after {
@@ -240,7 +251,7 @@ nav img {
   width: 200px;
   height: 2px;
   margin: 20px 0;
-  background-image: linear-gradient(to right, var(--darkest), var(--lightgrey));
+  background-image: linear-gradient(to right, var(--black), var(--white));
 }
 
 .text_column {
@@ -304,21 +315,17 @@ article.post h3 {
 }
 
 article.post h3 a {
-  color: var(--darkest);
+  color: var(--black);
   text-decoration: none;
 }
 
 blockquote {
-  background-color: var(--lightgrey);
-  border-left: 5px solid #dbdbdb;
+  background-color: var(--cream);
+  border-left: 5px solid var(--grey);
   padding: 1.25em 1.5em;
   font-weight: 300;
   line-height: 24px;
   margin-bottom: 24px;
-}
-
-.grey blockquote {
-  background-color: var(--other-grey);
 }
 
 div.pagination {
@@ -329,27 +336,19 @@ div.pagination {
 }
 
 pre {
-  background-color: var(--lightgrey);
+  background-color: var(--white);
   margin: 0 0 24px;
   padding: 10px;
+}
+
+.highlight {
+  color: var(--orange);
 }
 
 .flexed {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-.gradient {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.false-link {
-  color: var(--blue);
-  cursor: pointer;
 }
 
 summary {
@@ -364,10 +363,10 @@ table {
   margin-bottom: 2rem;
 }
 td {
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--black);
 }
 th {
-  background-color: #eee;
+  background-color: var(--cream);
 }
 td,
 th {
@@ -375,9 +374,17 @@ th {
 }
 td:first-child,
 th:first-child {
-  border-right: 1px solid #333;
+  border-right: 1px solid var(--black);
 }
 
+em,
 .highlighter-rouge {
-  color: orange;
+  background-color: var(--egg);
+  color: var(--green);
+  padding: 0.1rem;
+}
+
+.false-link {
+  color: var(--orange);
+  cursor: pointer;
 }

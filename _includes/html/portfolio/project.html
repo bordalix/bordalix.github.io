@@ -19,26 +19,27 @@
     </a>
   </p>
   {% endif %}
-  <div class="text_column left">
-    <picture>
-      <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.webp" type="image/webp" />
-      <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.png" type="image/png" />
-      <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.avif" type="image/avif" />
-      <img
-        width="480"
-        height="360"
-        src="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.png"
-        alt="{{ page.title }} website screenshot" />
-    </picture>
+  <div class="columns">
+    <div>
+      <picture>
+        <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.webp" type="image/webp" />
+        <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.png" type="image/png" />
+        <source srcset="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.avif" type="image/avif" />
+        <img
+          width="480"
+          height="360"
+          src="{{ site.cdn_url }}/portfolio/{{ page.project.image }}.png"
+          alt="{{ page.title }} website screenshot" />
+      </picture>
+    </div>
+    <div>
+      <p><span>DevOps</span><br />{{ page.techsheet.devops }}</p>
+      <p><span>Data layer</span><br />{{ page.techsheet.datalayer }}</p>
+      <p><span>Business logic</span><br />{{ page.techsheet.purpose }}</p>
+      <p><span>API layer / MVC</span><br />{{ page.techsheet.framework }}</p>
+      <p><span>Design</span><br />{{ page.techsheet.design }}</p>
+    </div>
   </div>
-  <div class="text_column right">
-    <p><span>DevOps</span><br />{{ page.techsheet.devops }}</p>
-    <p><span>Data layer</span><br />{{ page.techsheet.datalayer }}</p>
-    <p><span>Business logic</span><br />{{ page.techsheet.purpose }}</p>
-    <p><span>API layer / MVC</span><br />{{ page.techsheet.framework }}</p>
-    <p><span>Design</span><br />{{ page.techsheet.design }}</p>
-  </div>
-</div>
-<div style="clear: both"></div>
 
-<div class="container">{% include html/portfolio/navigation.html %}</div>
+  {% include html/portfolio/navigation.html %}
+</div>

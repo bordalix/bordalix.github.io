@@ -5,15 +5,15 @@
   margin-bottom: 2rem;
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   #stations_list {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 .station {
-  background-color: var(--lightgrey);
-  border: 1px solid var(--grey);
+  background-color: var(--cream);
+  border: 1px solid var(--black);
   border-radius: 10px;
   cursor: pointer;
   display: flex;

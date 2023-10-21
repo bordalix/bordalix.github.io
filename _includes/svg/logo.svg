@@ -8,7 +8,7 @@
   class="logo">
   <style>
     .logo path {
-        fill: var(--darkest)
+        fill: var(--black)
     }
     body.dark-theme .logo path {
       fill: white
