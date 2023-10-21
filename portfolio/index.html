@@ -5,7 +5,7 @@ description: JB portfolio
 ---
 
 <style>
-  {% include css/project2.css %}
+  {% include css/project.css %}
 </style>
 
 <script>
@@ -19,7 +19,7 @@ description: JB portfolio
   </div>
   <p>
     {% for project in site.portfolio %}
-    <a href="/portfolio/{{project.blob}}.html" aria-label="click to know more">
+    <a href="/portfolio/{{project.blob}}.html" aria-label="{{project.name}}">
       <div class="box {{project.blob}}" data-bg-image="{{project.blob}}">
         <div class="box_text">
           <h3>{{project.name}}</h3>

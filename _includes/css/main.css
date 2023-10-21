@@ -13,7 +13,7 @@ body {
   --cyan: rgb(82, 105, 124);
   --egg: rgb(211, 206, 201);
   --green: rgb(115, 107, 30);
-  --grey: rgb(219, 215, 211);
+  --grey: rgb(147, 136, 125);
   --orange: rgb(204, 99, 36);
   --red: rgb(175, 46, 27);
   --white: var(--my_white);
@@ -38,7 +38,7 @@ body.dark-theme {
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #b5b5b5;
+  color: var(--grey);
   opacity: 1; /* Firefox */
 }
 
@@ -141,8 +141,9 @@ h3.lead {
   margin-bottom: 60px;
 }
 
-h3.lead.nomargin {
+.container.nobottom {
   margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 li {
@@ -154,12 +155,6 @@ p {
   font-size: 1rem;
   font-weight: 400;
   margin: 0 0 24px;
-}
-
-@media (max-width: 320px) {
-  html {
-    font-size: 12px;
-  }
 }
 
 .left {
@@ -190,7 +185,7 @@ p.social a svg {
 }
 
 p.subtitle {
-  color: #666;
+  color: var(--grey);
 }
 
 p.subtitle span:not(:first-child) {
@@ -198,14 +193,8 @@ p.subtitle span:not(:first-child) {
   cursor: pointer;
 }
 
-.container {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
 section {
-  margin: 4rem 0;
+  margin: 3rem 0;
 }
 
 nav p {
@@ -226,6 +215,17 @@ nav img {
   width: 24px;
   height: 24px;
   vertical-align: middle;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.container.nobottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .sr-only {
@@ -281,6 +281,9 @@ nav img {
 }
 
 @media (max-width: 767px) {
+  html {
+    font-size: 16px;
+  }
   .container {
     padding: 1rem;
   }
@@ -296,6 +299,12 @@ nav img {
 
   .text_column.right {
     padding-left: 0;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 12px;
   }
 }
 

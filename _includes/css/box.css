@@ -149,9 +149,6 @@
   .box_text {
     padding-top: 30px;
   }
-  .box_text h3 {
-    font-size: 1.25rem;
-  }
 }
 
 @media (max-width: 767px) {
@@ -162,16 +159,10 @@
   .box_text {
     padding-top: 50px;
   }
-  .box_text h3 {
-    font-size: 1.5rem;
-  }
 }
 
 @media (max-width: 414px) {
   .box_text {
     padding-top: 20px;
-  }
-  .box_text h3 {
-    font-size: 0.8rem;
   }
 }

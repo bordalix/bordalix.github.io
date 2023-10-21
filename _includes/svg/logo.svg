@@ -7,12 +7,7 @@
   preserveAspectRatio="xMidYMid meet"
   class="logo">
   <style>
-    .logo path {
-        fill: var(--black)
-    }
-    body.dark-theme .logo path {
-      fill: white
-    }
+    .logo path { fill: var(--black); }
   </style>
   <g transform="translate(0,300) scale(0.1,-0.1)">
     <path

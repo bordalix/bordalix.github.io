@@ -1,10 +1,11 @@
 <section id="contact" tabindex="0">
-  <div class="container">
-    <h2 class="heading">
-      <span>Contact</span>
-    </h2>
-    <h3 class="lead">Get in touch</h3>
-    <form id="contact-form" action="https://formspree.io/f/joao.bordalo@gmail.com" method="post">
+  <form id="contact-form" action="https://formspree.io/f/joao.bordalo@gmail.com" method="post">
+    <div class="container nobottom">
+      <h2 class="heading">
+        <span>Contact</span>
+      </h2>
+      <h3 class="lead">Get in touch</h3>
+
       <div class="controls">
         <div class="text_column left">
           <div class="form-group">
@@ -42,11 +43,10 @@
             required="required"
             class="form-control"></textarea>
         </div>
-        <p style="text-align: center; margin-top: 2rem">
-          <input type="submit" value="Send message" class="btn" />
-        </p>
       </div>
-    </form>
-  </div>
-  <div style="clear: both"></div>
+    </div>
+    <p class="btn-container">
+      <input type="submit" value="Send message" class="btn" />
+    </p>
+  </form>
 </section>
