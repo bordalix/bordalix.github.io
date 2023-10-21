@@ -1,0 +1,22 @@
+
+ .~~~~~~~~~.                  .~~~~~~~~. 
+ : onchain :                  :  psbt  : 
+ '~~~~~~~~~'                  '~~~~~~~~' 
+   
+  Funding transaction         Redeem transaction          Forfeit transaction              
+                                                                                            
+  IN   | OUT                  IN | OUT                    IN | OUT            
+  -----+----------------      ---+----------------        ---+----------------  
+  UTXO |"(Frank + ASP) or"o--->* |"(Frank + ASP) or"o----->* | ASP but only if next    
+       |"(ASP in 1 month)"       |"(Frank in 24h)"     +-->* | pool tx is confirmed               
+                                                       |
+                                                       |
+                                                       |
+                              Next pool transaction    |
+                                                       |
+                              IN       | OUT           |
+                              ---------+------------   |
+                              ASP UTXO | Shared UTXO   |
+                                       | Connectors o--+
+                                       | Change
+                             

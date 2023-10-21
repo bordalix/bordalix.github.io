@@ -1,0 +1,12 @@
+
+ .~~~~~~~~. 
+ :  psbt  : 
+ '~~~~~~~~' 
+   
+  Funding transaction                
+                          
+  IN   | OUT        
+  -----+----------------
+  UTXO |"(Frank + ASP) or"    
+       |"(ASP in 1 month)"            
+                         

@@ -359,3 +359,25 @@ summary {
 .text-center {
   text-align: center;
 }
+
+table {
+  margin-bottom: 2rem;
+}
+td {
+  border-top: 1px solid #333;
+}
+th {
+  background-color: #eee;
+}
+td,
+th {
+  padding: 0.5rem;
+}
+td:first-child,
+th:first-child {
+  border-right: 1px solid #333;
+}
+
+.highlighter-rouge {
+  color: orange;
+}

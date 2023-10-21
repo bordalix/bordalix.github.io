@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include html/metadata.html %}
+    <style>
+      {% include css/reset.css %}
+      {% include css/main.css %}
+      {% include css/box.css %}
+      {% include css/form.css %}
+      {% include css/print.css %}
+      {% include css/dark_mode.css %}
+    </style>
+    {% include html/fontawesome.html %}
+  </head>
+  <body id="home" class="no-js">
+    {% include html/navigation.html %}
+    <main>
+      <div class="container" style="padding-bottom: 6rem">{{ content }}</div>
+    </main>
+    {% include html/footer.html %}
+    <script>
+      {% include js/box.js %}
+      {% include js/dark_mode.js %}
+      {% include js/lazyloading.js %}
+      {% include js/unregister_service_worker.js %}
+    </script>
+  </body>
+</html>
