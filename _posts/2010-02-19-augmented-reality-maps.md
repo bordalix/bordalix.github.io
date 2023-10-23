@@ -8,8 +8,9 @@ title: 'Augmented reality maps'
 
 <p>The 2010 edition of TED is now over, and some really interesting videos are already popping out. In this one, Blaise Aguera y Arcas demos some new features in Bing Maps, and it's mind blowing:</p>
 
-<!--copy and paste-->
+{% include html/post/novideo.html %}
 
+<!--
 <object width="446" height="326"><param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" >
 
 <param name="allowFullScreen" value="true" >
@@ -23,3 +24,4 @@ title: 'Augmented reality maps'
 <p>Maybe is time for Google to bring back the Rasmussen brothers to Google Maps.</p>
 
 <p>RSS readers may need to click <a href="//joaobordalo.com/articles/2010/02/19/augmented-reality-maps">here</a> to see the video.</p>
+-->

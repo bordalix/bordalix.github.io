@@ -11,6 +11,9 @@ title: 'Siftables, the toy blocks that think'
 
 <p>Watch the video and start thinking about the possibilities:</p>
 
+{% include html/post/novideo.html %}
+
+<!--
 <object width="446" height="326">
   <param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf"/>
   <param name="allowFullScreen" value="true" >
@@ -21,3 +24,4 @@ title: 'Siftables, the toy blocks that think'
 </object>
 
 <p>RSS readers should click <a href="//joaobordalo.com/articles/2009/03/04/siftables-the-toy-blocks-that-think">here</a> to watch the video.</p>
+-->

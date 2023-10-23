@@ -10,6 +10,9 @@ title: 'Games, and the quest for reality'
 
 <p>Via <a href="http://wiki.alcidesfonseca.com/superduperdudes/">SuperDuperDudes</a>.<p>Watch the video (29 minutes well worthy):</p>
 
+{% include html/post/novideo.html %}
+
+<!--
 <object classId="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="480" height="418" id="VideoPlayerLg44277"><param name="movie" value="http://g4tv.com/lv3/44277" >
 
 <param name="allowScriptAccess" value="always" >
@@ -17,3 +20,4 @@ title: 'Games, and the quest for reality'
 
 <embed src="http://g4tv.com/lv3/44277" type="application/x-shockwave-flash" name="VideoPlayer" width="480" height="382" allowScriptAccess="always" allowFullScreen="true" >
 </object><p>RSS readers may need to click <a href="//joaobordalo.com/articles/2010/03/01/games-and-the-quest-for-reality">here</a> to see the video.</p>
+-->

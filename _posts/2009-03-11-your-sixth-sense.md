@@ -7,8 +7,11 @@ title: 'Your Sixth Sense'
 
 <p>Are we in the future already and someone forgot to tell me? The following video from TED demos a device, named Sixth Sense, which takes us to the future, today. The Sixth Sense device does not use any breakthrough technology (actually you can try to build one for 350 USD), but the interaction and functionalities on it made me wonder. I want one of these:</p>
 
-<object width="446" height="326"><param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" >
+{% include html/post/novideo.html %}
 
+<!--
+<object width="446" height="326">
+  <param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" >
   <param name="allowFullScreen" value="true" >
   <param name="wmode" value="transparent" >
   <param name="bgColor" value="#ffffff" >
@@ -17,3 +20,4 @@ title: 'Your Sixth Sense'
 </object>
 
 <p>RSS readers should click <a href="//joaobordalo.com/articles/2009/03/11/your-sixth-sense">here</a> to watch the video.</p>
+-->

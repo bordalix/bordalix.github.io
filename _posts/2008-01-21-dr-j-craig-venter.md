@@ -11,6 +11,10 @@ title: 'Dr. J. Craig Venter'
 
 <p><strong>Update Jan 22:</strong> Excellent <a href="//joaobordalo.com/articles/2008/01/21/dr-j-craig-venter#comments">comment</a> by <a href="http://logorreia.blogspot.com/">Nuno Mendes</a>.</p>
 
+{% include html/post/novideo.html %}
+
+<!--
 <embed id="VideoPlayback" type="application/x-shockwave-flash" src="http://video.google.com/googleplayer.swf?docId=4893602463025557866&hl=en" flashvars="" >
+-->
 
 <p>RSS readers should click <a href="//joaobordalo.com/articles/2008/01/21/dr-j-craig-venter">here</a> to watch the video.</p>
