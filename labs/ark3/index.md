@@ -79,6 +79,9 @@ date: 2023-10-24 03:27:04
    - signed by the ASP, spends Funding transaction (1) via `Alice + ASP`
    - has one output locked by `(Alice + ASP) or (Alice in 24 hours)`
 3. Alice signs and broadcasts Funding transaction (1)
+   - Is now safe for Alice to broadcast this funding transaction because now she can leave anytime with
+     [Redeem transaction](#redeem-transaction-) (2) spending `Alice in 24h`, i.e. Alice will be able to get
+     her funds back in 24 hours.
 4. ASP (with Alice) prepares next [Pool transaction](#pool-transaction-aka-ark-transaction)
 5. Alice creates a [Forfeit transaction](#forfeit-transaction-):
    - spends from Redeem transaction (2) via `Alice + ASP`
