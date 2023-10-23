@@ -5,7 +5,7 @@
    
   Bob -> Charlie                
                           
-  IN   | OUT        
-  -----+----------------
-  UTXO | Charlie            
-       | Connector                  
+  IN       | OUT        
+  ---------+------------
+  Bob UTXO | Charlie            
+           | Connector                  

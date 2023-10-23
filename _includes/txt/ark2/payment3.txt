@@ -8,5 +8,5 @@ Pool Tx 2                :
                          :
 IN       | OUT           :   IN | OUT
 ---------+------------   :   ---+-----------
-ASP UTXO | Shared UTXO o----->* | Oscar VTXO
+ASP UTXO | Shared UTXO o----->* | Bob VTXO
          |   "..."       :      | 

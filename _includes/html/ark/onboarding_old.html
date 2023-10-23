@@ -1,0 +1,136 @@
+<h3>Onboarding</h3>
+<p>
+  The first step is for Alice to lift her coins. This is an <u>atomic</u> swap where she will give up a UTXO (+ fees) to
+  receive a virtual UTXO (aka VTXO) from the ASP at the same time. The ASP makes a special transaction, called pool
+  transaction (aka Pool Tx), where it mixes UTXOs from many users (among other things) and creates a shared UTXO as well
+  as many offchain VTXOs for each of those users including one for Alice.
+</p>
+<p>In this example, Alice, Bob, Carol and Dave are "lifting" 0.01 BTC each to Ark:</p>
+<script type="text/typogram">
+  {% include txt/ark/onboarding.txt %}
+</script>
+<p>In order to be trustless:</p>
+<ul>
+  <li>Alice sending funds to ASP and the ASP creating the VTXO needs to be atomic</li>
+  <li>Alice needs a way to exit the Ark without ASP's permission</li>
+</ul>
+
+<div class="tech">
+  <a onclick="toggleVisibility('#dd1')">🔎 Deep dive on onboarding Ark</a>
+  <div class="hidden" id="dd1">
+    <p><strong>Pool transaction</strong></p>
+    <p>
+      The ASP places one (or more) input(s) to its pool transaction to supply funds to the shared UTXO output,
+      connectors output, change output, and transaction fees.
+    </p>
+    <script type="text/typogram">
+      {% include txt/ark/pooltx1.txt %}
+    </script>
+    <p>The shared UTXO output is a UTXO locked by 2 taproot leaves:</p>
+    <ul>
+      <li>A multisig <em>n-of-n</em>, where n is the number of participants in the transaction.</li>
+      <li>The other leaf, <em>pk(ASP) && older(4 weeks)</em>, allows the ASP to spend it alone after 4 weeks.</li>
+    </ul>
+    <p>
+      In order to be trustless, before signing the pool transaction Alice needs a way to unilaterally get their funds
+      back. To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each
+      participant.
+    </p>
+    <p>Each leaf on this tree represents a VTXO:</p>
+    <script type="text/typogram">
+      {% include txt/ark/pooltx2.txt %}
+    </script>
+    <p>
+      In the example above, Alice's VTXO will be <em>tx1:1 => tx2:1 => tx4</em> that she can broadcast anytime to
+      receive their funds back. For comparison, Bob's VTXO will be <em>tx1:1 => tx2:0 => tx5</em>.
+    </p>
+    <p>Notes:</p>
+    <ul>
+      <li>
+        Since <em>tx1:1 => tx2:1 => tx4</em> (the VTXO) have no fees, Alice will need to add an extra transaction to pay
+        for all the fees (see <a href="https://bitcoinops.org/en/topics/cpfp/" target="_blank">CPFP</a>).
+      </li>
+      <li>
+        The number of transactions on this branches will be equal to <em>log2(n) + 1</em>, where n = number of
+        participants
+      </li>
+    </ul>
+    <p>For clarity, VTXOs will be represented like this:</p>
+    <script type="text/typogram">
+      {% include txt/ark/pooltx3.txt %}
+    </script>
+
+    <p><strong>Lifting</strong></p>
+    <p>
+      Frank now wants to enter the Ark, so he must use a process called lifting, which is an atomic two-way peg
+      mechanism that doesn't require trust. Lifting lets users lift their onchain utxos off the chain for a 1:1 VTXO.
+      Users can unilaterally redeem a VTXO for an onchain utxo without asking for ASP cooperation.
+    </p>
+    <ol>
+      <li>Frank sends 0.01 BTC to <em>pk(F) && (older(4 weeks) || pk(ASP))</em> (aka funding address):</li>
+      <script type="text/typogram">
+        {% include txt/ark/lifting1.txt %}
+      </script>
+      <li>
+        Frank creates an PSBT and adds as input the output of funding transaction. We will call this transaction the
+        sweep transaction, since it will allow the ASP to sweep the funds:
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark/lifting2.txt %}
+      </script>
+      <li>Frank passes this PSBT to the ASP</li>
+      <li>ASP places one input to PSBT, the "connector output" from the next pool transaction:</li>
+      <script type="text/typogram">
+        {% include txt/ark/lifting4.txt %}
+      </script>
+      <li>ASP places one output to PSBT, <em>pk(ASP)</em>, a singlesig output that sweeps all money to itself:</li>
+      <script type="text/typogram">
+        {% include txt/ark/lifting5.txt %}
+      </script>
+      <li>
+        ASP passes PSBT to Frank and both sign the PSBT and keep this transaction private. This transaction is not valid
+        yet, since the connector's outpoint context does not exist yet;
+      </li>
+      <li>ASP signs the pool transaction and broadcast it:</li>
+      <script type="text/typogram">
+        {% include txt/ark/lifting7.txt %}
+      </script>
+      <li>
+        ASP can now claim 0.01 BTC from the funding transaction by revealing the descendant transaction of connectors
+        output. The ASP should claim this before four weeks or else Frank could double spend it. Don't forget the
+        funding transaction is locked to: <em>pk(F) && (older(4weeks) || pk(ASP))</em>.
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark/lifting8.txt %}
+      </script>
+      <li>
+        Frank now has a 0.01 BTC worth UTXO representation as a descendant of the shared UTXO output (a VTXO). To avoid
+        double spending, the ASP will not allow Frank to use its <em>VTXO</em> before the funding transaction is
+        confirmed:
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark/lifting9.txt %}
+      </script>
+    </ol>
+    <p>So far, Frank polluted onchain by funding an address, and the ASP by claiming funds from that address.</p>
+    <p>Further steps from here will be footprint minimal.</p>
+    <details>
+      <summary>Adversarial scenarios</summary>
+      <ul>
+        <li>
+          <strong>Franks send 0.01 BTC but ASP never responds</strong><br />
+          Franks will be able to get his funds back in 4 weeks<br /><br />
+        </li>
+        <li>
+          <strong>ASP never broadcasts pool transaction</strong><br />
+          Franks will be able to get his funds back in 4 weeks<br /><br />
+        </li>
+        <li>
+          <strong>ASP doesn't wait for confirmation of funding address before broadcasting pool tx</strong><br />
+          Franks will double spend his original UTXO, making the funding transaction invalid and them spending the VTXO,
+          thus stealing the ASP<br /><br />
+        </li>
+      </ul>
+    </details>
+  </div>
+</div>

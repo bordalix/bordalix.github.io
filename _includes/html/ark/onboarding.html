@@ -1,0 +1,175 @@
+<h3>Onboarding</h3>
+<p>
+  The first step is for Alice to lift her coins. This is an <u>atomic</u> swap where she will give up a UTXO (+ fees) to
+  receive a <strong>VTXO</strong> from the ASP at the same time. This <strong>VTXO</strong> will be inside the next
+  <strong>Pool transaction</strong>.
+</p>
+<p>In this example, Alice, Bob, Carol and Dave are "lifting" UTXOs to Ark:</p>
+<script type="text/typogram">
+  {% include txt/ark2/onboarding.txt %}
+</script>
+<p>In order to be trustless:</p>
+<ul>
+  <li>Alice sending funds to ASP and the ASP creating the VTXO needs to be an atomic operation:</li>
+  <li>This atomicity is achieved using <strong>Anchored transactions</strong></li>
+  <li>Alice needs a way to exit the Ark without ASP's permission</li>
+</ul>
+
+<div class="tech">
+  <a onclick="toggleVisibility('#al1')">🔎 Deep dive on Anchored transactions</a>
+  <div class="hidden" id="al1">
+    <p><strong>Example</strong></p>
+    <p>
+      Alice wants to send sats to Charlie via Bob, which means she will send sats to Bob but only if she is sure Bob
+      will send them to Charlie
+    </p>
+    <ol>
+      <!-- #1 -->
+      <li>
+        Bob prepares payment to Charlie (<em>B => C</em>)
+        <ul>
+          <li>adds Bob's UTXO as input</li>
+          <li>adds Charlie address as output</li>
+          <li>adds extra output (aka connector), with minimum value possible</li>
+          <li>doesn't sign it, shows transaction to Alice</li>
+        </ul>
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark2/anchor1.txt %}
+      </script>
+      <!-- #2 -->
+      <li>
+        Alice prepares payment to Bob (<em>A => B</em>)
+        <ul>
+          <li>adds Alice's UTXO as input</li>
+          <li>adds connector output from <em>B => C</em> as input</li>
+          <li>signs (commiting all inputs with SIGHASH_ALL) and sends to Bob</li>
+        </ul>
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark2/anchor2.txt %}
+      </script>
+      <!-- #3 -->
+      <li>
+        Bob broadcasts
+        <ul>
+          <li>signs and broadcasts <em>B => C</em></li>
+          <li>broadcasts <em>A => B</em></li>
+        </ul>
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark2/anchor3.txt %}
+      </script>
+    </ol>
+    <p>Payment of <em>A => B</em> is <strong>anchored</strong> to payment <em>B => C</em></p>
+  </div>
+</div>
+
+<div class="tech">
+  <a onclick="toggleVisibility('#dd1')">🔎 Deep dive on Onboarding Ark</a>
+  <div class="hidden" id="dd1">
+    <p><strong>Onboarding</strong></p>
+    <p>
+      Alice now wants to enter the Ark, so he must use a process called lifting, which is an atomic two-way peg
+      mechanism that doesn't require trust. Lifting lets users lift their onchain UTXOs off the chain for a 1:1 VTXO.
+      Users can unilaterally redeem a VTXO for an onchain UTXO without asking for ASP cooperation.
+    </p>
+    <ol>
+      <!-- #1 -->
+      <li>
+        Alice creates a <strong>Funding transaction</strong>:
+        <ul>
+          <li>adds any segwit output as an input (<u>must be segwit</u>)</li>
+          <li>adds output locked by <em>(Alice + ASP) or (ASP in 1 month)</em></li>
+          <li>sends it to ASP, <u>not signed</u></li>
+        </ul>
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark2/lifting1.txt %}
+      </script>
+
+      <!-- #2 -->
+      <li>
+        Alice receives a <u>signed</u> <strong>Redeem transaction</strong> from the ASP:
+        <ul>
+          <li>spends <strong>Funding transaction</strong> (1) via <em>Alice + ASP</em></li>
+          <li>has output locked to <em>(Alice + ASP) or (Alice in 24h)</em></li>
+        </ul>
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark2/lifting2.txt %}
+      </script>
+
+      <!-- #3 -->
+      <li>
+        Alice <u>signs</u> and broadcasts <strong>Funding transaction</strong> (1)
+        <ul>
+          <li>
+            Is now safe for Alice to broadcast his funding transaction because now she can leave anytime with
+            <strong>Redeem transaction</strong> (2) spending <em>Alice in 24h</em>, i.e. Alice will be able to get her
+            funds back in 24 hours.
+          </li>
+        </ul>
+      </li>
+
+      <!-- #4 -->
+      <li>ASP (with Alice) prepares next <strong>Pool transaction</strong></li>
+      <script type="text/typogram">
+        {% include txt/ark2/lifting4.txt %}
+      </script>
+
+      <!-- #5 -->
+      <li>
+        Alice creates a <strong>Forfeit transaction</strong>:
+        <ul>
+          <li>spends from <strong>Redeem transaction</strong> (2) via <em>Alice + ASP</em></li>
+          <li>adds connector output from <strong>Pool transaction</strong> (4) as input</li>
+          <li><u>signs</u> (commits all inputs with SIGHASH_ALL) and sends it to the ASP</li>
+        </ul>
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark2/lifting5.txt %}
+      </script>
+
+      <!-- #6 -->
+      <li>ASP broadcasts <strong>Pool transaction</strong> (4)</li>
+
+      <!-- #7 -->
+      <li>
+        Alice has now a VTXO
+        <ul>
+          <li>A VTXO is very similar to a <strong>Redeem transaction</strong></li>
+        </ul>
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark2/lifting7.txt %}
+      </script>
+
+      <!-- #8 -->
+      <li>After 1 month ASP spends Funding transaction (1) via <em>ASP in 1 month</em></li>
+      <script type="text/typogram">
+        {% include txt/ark2/lifting8.txt %}
+      </script>
+    </ol>
+    <p>So far, Alice polluted onchain by funding an address, and the ASP by claiming funds from that address.</p>
+    <p>Further steps from here will be footprint minimal.</p>
+
+    <p><strong>Adversarial scenarios</strong></p>
+    <ul>
+      <li>
+        Alice broadcasts <strong>Funding transaction</strong> (1) but ASP never responds:<br />
+        Alice broadcasts <strong>Redeem transaction</strong> (2) and get his funds back in 24 hours<br /><br />
+      </li>
+      <li>
+        Alice broadcasts <strong>Redeem transaction</strong> (2) after <strong>Pool transaction</strong> (3):<br />
+        ASP broadcasts <strong>Forfeit transaction</strong> (5) and claims Alice's funds<br /><br />
+      </li>
+      <li>
+        ASP doesn't wait for confirmation of <strong>Funding transaction</strong> (1) before broadcasting
+        <strong>Pool transaction</strong> (4):<br />
+        Alice will double spend his original UTXO, making the funding transaction invalid and them spending the VTXO,
+        thus stealing the ASP<br /><br />
+      </li>
+    </ul>
+  </div>
+</div>

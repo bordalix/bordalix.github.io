@@ -6,7 +6,9 @@ category: pages
 date: 2023-10-24 03:27:04
 ---
 
-## Ark explainer
+# Ark explainer
+
+[View full length version](./)
 
 ### Transactions
 
