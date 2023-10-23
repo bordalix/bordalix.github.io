@@ -1,0 +1,11 @@
+
+ .~~~~~~~~. 
+ :  psbt  : 
+ '~~~~~~~~' 
+   
+  Bob -> Charlie           Alice -> Bob                 
+                                                    
+  IN   | OUT               IN   | OUT         
+  -----+---------------    -----+---------------- 
+  UTXO | Charlie           UTXO | Bob             
+       | Connector o------->*   | Connector                   

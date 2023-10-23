@@ -7,6 +7,6 @@
                           
   IN   | OUT        
   -----+----------------
-  UTXO |"(Frank + ASP) or"    
+  UTXO |"(Alice + ASP) or"    
        |"(ASP in 1 month)"            
                          

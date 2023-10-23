@@ -1,8 +1,8 @@
 
 Pool Tx 1
 
-IN       | OUT     
+IN       | OUT            Locking script
 ---------+------              
-ASP UTXO | Shared UTXO ~> n-of-n || (pk(asp) && older(4 weeks))
-         | Connectors ~~> pk(asp)
-         | Change ~~~~~~> pk(asp)
+ASP UTXO | Shared UTXO ~> n-of-n || (ASP in 1 month)
+         | Connectors ~~> ASP
+         | Change ~~~~~~> ASP

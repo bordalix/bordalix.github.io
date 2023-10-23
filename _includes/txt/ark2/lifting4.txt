@@ -7,6 +7,6 @@ Next pool transaction    :
                          :
 IN       | OUT           :   IN | OUT
 ---------+------------   :   ---+-----------
-ASP UTXO | Shared UTXO o----->* | Frank VTXO
+ASP UTXO | Shared UTXO o----->* | Alice VTXO
          | Connectors    :      | 
          | Change

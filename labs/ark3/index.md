@@ -72,7 +72,7 @@ date: 2023-10-24 03:27:04
 ##### Boarding the Ark
 
 1. Alice creates a [Funding transaction](#funding-transaction):
-   - adds any segwit output as an input (<u>must be segwit</u>)
+   - adds any segwit output as an input (must be segwit)
    - adds output locked by `(Alice + ASP) or (ASP in 1 month)`
    - sends it to ASP, not signed
 2. Alice receives a [Redeem transaction](#redeem-transaction-) from the ASP:
