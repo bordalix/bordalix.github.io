@@ -1,4 +1,4 @@
-<h3>Exiting the Ark</h3>
+<h2 id="exit">Exiting the Ark</h2>
 <p>
   When Alice wants to exit the Ark, she arranje with the ASP to have an output (<em>Alice</em>) on the next Pool
   transaction.
@@ -19,7 +19,7 @@
 <div class="tech">
   <a onclick="toggleVisibility('#dd3')">🔎 Deep dive on exiting the Ark</a>
   <div class="hidden" id="dd3">
-    <h4>Collaborative exit</h4>
+    <h3>Collaborative exit</h3>
     <ol>
       <li>Alice generates new onchain address A</li>
       <li>Alice informs ASP she wants to pay 0.01 BTC onchain to address A</li>
@@ -41,7 +41,7 @@
         {% include txt/ark/exiting7.txt %}
       </script>
     </ol>
-    <h4>Unilateral exit</h4>
+    <h3>Unilateral exit</h3>
     <p>Alice can leave the Ark anytime by redeeming hers VTXO for an onchain UTXO.</p>
     <p>The cost of this broadcast depends on several factors:</p>
     <ul>
@@ -49,7 +49,7 @@
       <li>How much is mempool fees (sats/vbyte) at the moment?</li>
       <li>Did anyone leaved already, making some of Alice's transactions already confirmed?</li>
     </ul>
-    <h4>Adversarial scenarios</h4>
+    <h3>Adversarial scenarios</h3>
     <ul>
       <li>
         Alice doesn't sign the <strong>Forfeit transaction</strong><br />

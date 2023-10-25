@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% include html/metadata.html %}
+    {% include html/common/metadata.html %}
     <style>
       {% include css/reset.css %}
       {% include css/main.css %}
@@ -9,12 +9,12 @@
       {% include css/form.css %}
       {% include css/print.css %}
     </style>
-    {% include html/fontawesome.html %}
+    {% include html/common/fontawesome.html %}
   </head>
   <body id="home" class="no-js">
-    {% include html/navigation.html %}
+    {% include html/common/navigation.html %}
     <main>{{ content }}</main>
-    {% include html/footer.html %}
+    {% include html/common/footer.html %}
     <script>
       {% include js/box.js %}
       {% include js/dark_mode.js %}

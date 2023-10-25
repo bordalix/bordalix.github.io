@@ -1,4 +1,4 @@
-<h3>Onboarding</h3>
+<h2 id="onboarding">Onboarding</h2>
 <p>
   The first step is for Alice to lift her coins. This is an <u>atomic</u> swap where she will give up a UTXO (+ fees) to
   receive a <strong>VTXO</strong> from the ASP at the same time. This <strong>VTXO</strong> will be inside the next
@@ -18,7 +18,7 @@
 <div class="tech">
   <a onclick="toggleVisibility('#al1')">🔎 Deep dive on Anchored transactions</a>
   <div class="hidden" id="al1">
-    <h4>Example</h4>
+    <h3>Example</h3>
     <p>
       Alice wants to send sats to Charlie via Bob, which means she will send sats to Bob but only if she is sure Bob
       will send them to Charlie
@@ -68,7 +68,7 @@
 <div class="tech">
   <a onclick="toggleVisibility('#dd1')">🔎 Deep dive on Onboarding Ark</a>
   <div class="hidden" id="dd1">
-    <h4>Onboarding</h4>
+    <h3>Onboarding</h3>
     <p>
       Alice now wants to enter the Ark, so he must use a process called lifting, which is an atomic two-way peg
       mechanism that doesn't require trust. Lifting lets users lift their onchain UTXOs off the chain for a 1:1 VTXO.
@@ -154,7 +154,7 @@
     <p>So far, Alice polluted onchain by funding an address, and the ASP by claiming funds from that address.</p>
     <p>Further steps from here will be footprint minimal.</p>
 
-    <h4>Adversarial scenarios</h4>
+    <h3>Adversarial scenarios</h3>
     <ul>
       <li>
         Alice broadcasts <strong>Funding transaction</strong> (1) but ASP never responds:<br />

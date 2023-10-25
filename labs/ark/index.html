@@ -22,25 +22,24 @@ description: Ark explainer
   .ark .tech {
     background-color: var(--cream);
     border: 1px solid var(--black);
-    margin: 0 -1rem 1rem -1rem;
+    margin: 1rem -1rem 1rem -1rem;
     padding: 1rem;
   }
   .ark a {
     cursor: pointer;
   }
-  .ark h3 {
+  .ark h2 {
     margin: 3em 0 1em 0;
   }
-  .ark h4 {
+  .ark h3 {
     font-size: 1rem;
     margin: 2em 0 1em 0;
-    color: var(--grey);
   }
   .ark ol > li {
     margin-bottom: 1rem;
   }
-  .ark li > ul {
-    margin-top: 0;
+  .ark ul {
+    margin: 0 0 0 1rem;
   }
 </style>
 
@@ -50,6 +49,15 @@ description: Ark explainer
     const display = element.style.display
     element.style.display = display === 'block' ? 'none' : 'block'
   }
+  document.addEventListener('DOMContentLoaded', function () {
+    const div = document.getElementById('toc')
+    if (!div) return
+    let content = '<ul>'
+    for (const title of document.getElementsByTagName('h2')) {
+      content += `<li><a href="#${title.id}">${title.innerText}</a></li>`
+    }
+    div.innerHTML = content + '</ul>'
+  })
 </script>
 
 <script src="https://google.github.io/typograms/typograms.js"></script>
@@ -57,6 +65,7 @@ description: Ark explainer
 <div class="container ark">
   <h1>{{ page.title }}</h1>
   <p><a href="./short">View short version</a></p>
+  <div id="toc"></div>
 
   {% include html/ark/eli5.html %} {% include html/ark/tldr.html %} {% include html/ark/pool.html %} {% include
   html/ark/onboarding.html %} {% include html/ark/payments.html %} {% include html/ark/exit.html %} {% include

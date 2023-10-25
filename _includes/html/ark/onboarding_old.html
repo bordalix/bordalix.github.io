@@ -1,4 +1,4 @@
-<h3>Onboarding</h3>
+<h2>Onboarding</h2>
 <p>
   The first step is for Alice to lift her coins. This is an <u>atomic</u> swap where she will give up a UTXO (+ fees) to
   receive a virtual UTXO (aka VTXO) from the ASP at the same time. The ASP makes a special transaction, called pool
@@ -18,7 +18,7 @@
 <div class="tech">
   <a onclick="toggleVisibility('#dd1')">🔎 Deep dive on onboarding Ark</a>
   <div class="hidden" id="dd1">
-    <h4>Pool transaction</h4>
+    <h3>Pool transaction</h3>
     <p>
       The ASP places one (or more) input(s) to its pool transaction to supply funds to the shared UTXO output,
       connectors output, change output, and transaction fees.
@@ -60,7 +60,7 @@
       {% include txt/ark/pooltx3.txt %}
     </script>
 
-    <h4>Lifting</h4>
+    <h3>Lifting</h3>
     <p>
       Frank now wants to enter the Ark, so he must use a process called lifting, which is an atomic two-way peg
       mechanism that doesn't require trust. Lifting lets users lift their onchain utxos off the chain for a 1:1 VTXO.

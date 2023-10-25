@@ -1,4 +1,4 @@
-<h3>Pool transaction</h3>
+<h2 id="pool">Pool transaction</h2>
 <p>
   The ASP makes a special transaction, called <strong>Pool transaction</strong>, where it mixes UTXOs from many users
   (among other things) and creates a <strong>Shared UTXO</strong> as well as many offchain <strong>VTXOs</strong> for
@@ -8,7 +8,7 @@
 <div class="tech">
   <a onclick="toggleVisibility('#dd0')">🔎 Deep dive on Pool transactions</a>
   <div class="hidden" id="dd0">
-    <h4>Pool transaction</h4>
+    <h3>Pool transaction</h3>
     <p>
       The ASP places one (or more) input(s) to its pool transaction to supply funds to the shared UTXO, connectors
       output, change output, and transaction fees.
@@ -16,7 +16,7 @@
     <script type="text/typogram">
       {% include txt/ark/pooltx1.txt %}
     </script>
-    <h4>Shared output (aka Shared UTXO)</h4>
+    <h3>Shared output (aka Shared UTXO)</h3>
     <p>The shared UTXO is locked by 2 taproot leaves:</p>
     <ul>
       <li>A multisig <em>n-of-n</em>, where n is the number of participants in the transaction.</li>

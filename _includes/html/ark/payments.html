@@ -1,4 +1,4 @@
-<h3>Payment</h3>
+<h2 id="payments">Payments</h2>
 <p>
   Alice then instructs the ASP to take her VTXO and pay Bob. She will only need to know Bob's address. This payment is
   also atomic and private. The ASP does not know which VTXO belongs to which user and blindly mixes them to produce
@@ -44,7 +44,7 @@
         atomically.
       </li>
     </ol>
-    <h4>"Only if Pool Tx 2 is confirmed"</h4>
+    <h3>"Only if Pool Tx 2 is confirmed"</h3>
     <p>
       This condition is not possible to implement today using Bitcoin script, but we can implement it using
       <strong>anchored transactions</strong>:
@@ -61,7 +61,7 @@
       {% include txt/ark/payment7.txt %}
     </script>
     <p>This way, the transaction where Alice gives her VTXO to the ASP is only valid if Pool Tx 2 is confirmed.</p>
-    <h4>Adversarial scenarios</h4>
+    <h3>Adversarial scenarios</h3>
     <ul>
       <li>
         Alice doesn't sign the <strong>Forfeit transaction</strong><br />
