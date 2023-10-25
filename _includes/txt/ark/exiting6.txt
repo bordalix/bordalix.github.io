@@ -1,7 +1,7 @@
 
-      .~~~~~~~~~.                   .~~~~~~~~~.
-      : onchain :                   : virtual :
-      '~~~~~~~~~'                   '~~~~~~~~~'
+.~~~~~~~~~.                  .~~~~~~~~~.
+: onchain :                  : virtual :
+'~~~~~~~~~'                  '~~~~~~~~~'
                          :
 Pool Tx 1                :                         Forfeit transaction
                          :

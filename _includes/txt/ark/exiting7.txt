@@ -1,8 +1,8 @@
 
 
-      .~~~~~~~~~.                   .~~~~~~~~~.
-      : onchain :                   : virtual :
-      '~~~~~~~~~'                   '~~~~~~~~~'
+.~~~~~~~~~.                  .~~~~~~~~~.
+: onchain :                  : virtual :
+'~~~~~~~~~'                  '~~~~~~~~~'
                          :
 Pool Tx 1                :                         Forfeit transaction
                          :
@@ -12,9 +12,9 @@ ASP UTXO | Shared UTXO o----->* | Alice VTXO o----->* | ASP but only if
          |   "..."       :      |                   * | pool tx 3 confirmed
          |               :      |                   ^ |
                          :                          |
-      .~~~~~~~~~.        :                          |       
-      : mempool :        :                          |       
-      '~~~~~~~~~'        :                          |   
+.~~~~~~~~~.              :                          |       
+: mempool :              :                          |       
+'~~~~~~~~~'              :                          |   
                          :                          |                         
 Pool transaction 3       :                          |
                          :                          |

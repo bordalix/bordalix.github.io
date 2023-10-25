@@ -1,14 +1,11 @@
-
-
-      .~~~~~~~~~.                 .~~~~~~~~~.     
-      : onchain :                 :  psbt   :     
-      '~~~~~~~~~'                 '~~~~~~~~~'      
-                         
-Funding transaction            :  Sweep transaction
-                               :
-IN         | OUT               :  IN | OUT            
------------+----------------   :  ---+------
-Frank UTXO | Funding address o---->* |    
-           |                   :     |                
-                               :
-                         
+  
+ .~~~~~~~~. 
+ :  psbt  : 
+ '~~~~~~~~' 
+   
+  Funding transaction         Redeem transaction               
+                                                                   
+  IN   | OUT                  IN | OUT          
+  -----+----------------      ---+----------------  
+  UTXO |"(Alice + ASP) or"o--->* |"(Alice + ASP) or"       
+       |"(ASP in 1 month)"       |"(Alice in 24h)"                 

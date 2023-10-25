@@ -1,24 +1,22 @@
 
-
-      .~~~~~~~~~.                 .~~~~~~~~~.     
-      : onchain :                 :  psbt   :     
-      '~~~~~~~~~'                 '~~~~~~~~~'     
-                         
-Funding transaction            :  Sweep transaction
-                               :
-IN         | OUT               :  IN | OUT       
------------+----------------   :  ---+------
-Frank UTXO | Funding address o---->* | ASP Sweep ~~~> pk(ASP)   
-           |                   :   * |           
-                               :   ^
-                               :   |
-                               :   +------------------------+
-                               :                            |
-                               :   Next pool transaction    |
-                               :                            |
-                               :   IN       | OUT           |
-                               :   ---------+------------   |
-                               :   ASP UTXO | Shared UTXO   |
-                               :            | Connectors o--+
-                               :            | Change
-                               :                                
+ .~~~~~~~~~.                     .~~~~~~~~. 
+ : onchain :                     :  psbt  : 
+ '~~~~~~~~~'                     '~~~~~~~~' 
+      
+  Funding transaction        :   Redeem transaction        Forfeit transaction              
+                             :                                                               
+  IN   | OUT                 :   IN | OUT                  IN | OUT            
+  -----+----------------     :   ---+----------------      ---+----------------  
+  UTXO |"(Alice + ASP) or"o--:--->* |"(Alice + ASP) or"o--->* | ASP but only if next    
+       |"(ASP in 1 month)"   :      |"(Alice in 24h)"    +->* | pool tx is confirmed               
+                             :                           |
+                             :                           |
+                             :                           |
+                             :   Next pool transaction   |
+                             :                           |
+                             :   IN       | OUT          |
+                             :   ---------+------------  |
+                             :   ASP UTXO | Shared UTXO  |
+                             :            | Connectors o-+
+                             :            | Change
+                             

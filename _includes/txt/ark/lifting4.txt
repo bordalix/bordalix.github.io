@@ -1,24 +1,13 @@
 
-
-      .~~~~~~~~~.                 .~~~~~~~~~.     
-      : onchain :                 :  psbt   :     
-      '~~~~~~~~~'                 '~~~~~~~~~'     
-                         
-Funding transaction            :  Sweep transaction
-                               :
-IN         | OUT               :  IN | OUT       
------------+----------------   :  ---+------
-Frank UTXO | Funding address o---->* |    
-           |                   :   * |           
-                               :   ^
-                               :   |
-                               :   +------------------------+
-                               :                            |
-                               :   Next pool transaction    |
-                               :                            |
-                               :   IN       | OUT           |
-                               :   ---------+------------   |
-                               :   ASP UTXO | Shared UTXO   |
-                               :            | Connectors o--+ 
-                               :            | Change 
-                               :                                
+.~~~~~~~~~.                 .~~~~~~~~~.
+:  psbt   :                 : virtual :
+'~~~~~~~~~'                 '~~~~~~~~~'
+                         :
+Next pool transaction    :
+                         :
+IN       | OUT           :   IN | OUT
+---------+------------   :   ---+-----------
+ASP UTXO | Shared UTXO o-:--->* | Alice VTXO
+         | Connectors    :      | 
+         | Change        :
+         

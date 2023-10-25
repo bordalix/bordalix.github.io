@@ -4,7 +4,7 @@
   transaction.
 </p>
 <script type="text/typogram">
-  {% include txt/ark2/exiting0.txt %}
+  {% include txt/ark/exiting0.txt %}
 </script>
 <p>Alice could also unilaterally exit, i.e. without ASP's cooperation, by redeeming hers VTXO for an onchain UTXO.</p>
 <p>In order to be trustless:</p>
@@ -19,29 +19,29 @@
 <div class="tech">
   <a onclick="toggleVisibility('#dd3')">🔎 Deep dive on exiting the Ark</a>
   <div class="hidden" id="dd3">
-    <p><strong>Collaborative exit</strong></p>
+    <h4>Collaborative exit</h4>
     <ol>
       <li>Alice generates new onchain address A</li>
       <li>Alice informs ASP she wants to pay 0.01 BTC onchain to address A</li>
       <li>ASP (with help of Alice) prepares new transaction (Pool Tx 3) and show it to Alice:</li>
       <script type="text/typogram">
-        {% include txt/ark2/exiting3.txt %}
+        {% include txt/ark/exiting3.txt %}
       </script>
       <li>Alice sees extra output paying 0.01 BTC to her address</li>
       <li>Alice understands that when Pool Tx 3 confirms, she will have 0.01 BTC onchain</li>
       <li>Alice proceeds by sending her VTXO to the ASP, on the condition that Pool Tx 3 is confirmed:</li>
       <script type="text/typogram">
-        {% include txt/ark2/exiting6.txt %}
+        {% include txt/ark/exiting6.txt %}
       </script>
       <li>
         ASP cannot cheat, if he wants to receive the VTXO from Alice he needs to send it onchain to Alice, which means
         Alice is exiting the Ark atomically.
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/exiting7.txt %}
+        {% include txt/ark/exiting7.txt %}
       </script>
     </ol>
-    <p><strong>Unilateral exit</strong></p>
+    <h4>Unilateral exit</h4>
     <p>Alice can leave the Ark anytime by redeeming hers VTXO for an onchain UTXO.</p>
     <p>The cost of this broadcast depends on several factors:</p>
     <ul>
@@ -49,11 +49,11 @@
       <li>How much is mempool fees (sats/vbyte) at the moment?</li>
       <li>Did anyone leaved already, making some of Alice's transactions already confirmed?</li>
     </ul>
-    <p><strong>Adversarial scenarios</strong></p>
+    <h4>Adversarial scenarios</h4>
     <ul>
       <li>
         Alice doesn't sign the <strong>Forfeit transaction</strong><br />
-        The ASP doesn't include Bob's VTXO on the next pool transaction<br /><br />
+        The ASP doesn't include Alice's UTXO on the next pool transaction<br /><br />
       </li>
       <li>
         ASP never broadcasts the next <strong>Pool transaction</strong><br />

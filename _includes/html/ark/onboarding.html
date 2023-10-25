@@ -6,7 +6,7 @@
 </p>
 <p>In this example, Alice, Bob, Carol and Dave are "lifting" UTXOs to Ark:</p>
 <script type="text/typogram">
-  {% include txt/ark2/onboarding.txt %}
+  {% include txt/ark/onboarding.txt %}
 </script>
 <p>In order to be trustless:</p>
 <ul>
@@ -18,7 +18,7 @@
 <div class="tech">
   <a onclick="toggleVisibility('#al1')">🔎 Deep dive on Anchored transactions</a>
   <div class="hidden" id="al1">
-    <p><strong>Example</strong></p>
+    <h4>Example</h4>
     <p>
       Alice wants to send sats to Charlie via Bob, which means she will send sats to Bob but only if she is sure Bob
       will send them to Charlie
@@ -35,7 +35,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/anchor1.txt %}
+        {% include txt/ark/anchor1.txt %}
       </script>
       <!-- #2 -->
       <li>
@@ -47,7 +47,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/anchor2.txt %}
+        {% include txt/ark/anchor2.txt %}
       </script>
       <!-- #3 -->
       <li>
@@ -58,7 +58,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/anchor3.txt %}
+        {% include txt/ark/anchor3.txt %}
       </script>
     </ol>
     <p>Payment of <em>A => B</em> is <strong>anchored</strong> to payment <em>B => C</em></p>
@@ -68,7 +68,7 @@
 <div class="tech">
   <a onclick="toggleVisibility('#dd1')">🔎 Deep dive on Onboarding Ark</a>
   <div class="hidden" id="dd1">
-    <p><strong>Onboarding</strong></p>
+    <h4>Onboarding</h4>
     <p>
       Alice now wants to enter the Ark, so he must use a process called lifting, which is an atomic two-way peg
       mechanism that doesn't require trust. Lifting lets users lift their onchain UTXOs off the chain for a 1:1 VTXO.
@@ -85,7 +85,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/lifting1.txt %}
+        {% include txt/ark/lifting1.txt %}
       </script>
 
       <!-- #2 -->
@@ -97,7 +97,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/lifting2.txt %}
+        {% include txt/ark/lifting2.txt %}
       </script>
 
       <!-- #3 -->
@@ -115,7 +115,7 @@
       <!-- #4 -->
       <li>ASP (with Alice) prepares next <strong>Pool transaction</strong></li>
       <script type="text/typogram">
-        {% include txt/ark2/lifting4.txt %}
+        {% include txt/ark/lifting4.txt %}
       </script>
 
       <!-- #5 -->
@@ -128,7 +128,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/lifting5.txt %}
+        {% include txt/ark/lifting5.txt %}
       </script>
 
       <!-- #6 -->
@@ -142,19 +142,19 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/lifting7.txt %}
+        {% include txt/ark/lifting7.txt %}
       </script>
 
       <!-- #8 -->
       <li>After 1 month ASP spends Funding transaction (1) via <em>ASP in 1 month</em></li>
       <script type="text/typogram">
-        {% include txt/ark2/lifting8.txt %}
+        {% include txt/ark/lifting8.txt %}
       </script>
     </ol>
     <p>So far, Alice polluted onchain by funding an address, and the ASP by claiming funds from that address.</p>
     <p>Further steps from here will be footprint minimal.</p>
 
-    <p><strong>Adversarial scenarios</strong></p>
+    <h4>Adversarial scenarios</h4>
     <ul>
       <li>
         Alice broadcasts <strong>Funding transaction</strong> (1) but ASP never responds:<br />

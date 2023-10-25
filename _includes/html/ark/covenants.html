@@ -1,0 +1,50 @@
+<h3>Covenants</h3>
+<p>Ideally Ark would use covenants to achieve <strong>non-interactivity</strong>:</p>
+<ul>
+  <li>OP_CHECKTEMPLATEVERIFY (CTV)</li>
+  <li>OP_TXHASH / OP_TX</li>
+  <li>OP_CHECKSIGFROMSTACK (on Liquid)</li>
+  <li>SIGHASH_ANYPREVOUT</li>
+</ul>
+<div class="tech">
+  <a onclick="toggleVisibility('#c1')">🔎 Non interactive version</a>
+  <div class="hidden" id="c1">
+    <script type="text/typogram">
+      {% include txt/ark/covenants1.txt %}
+    </script>
+  </div>
+</div>
+<h4>Without covenants: clArk</h4>
+<ul>
+  <li>Possible on Bitcoin today</li>
+  <li>
+    Uses multisigs instead of covenants
+    <ul>
+      <li>All receivers cosign with ASP</li>
+      <li>Requires receivers online &rarr; <strong>Interactive version</strong></li>
+    </ul>
+  </li>
+</ul>
+<div class="tech">
+  <a onclick="toggleVisibility('#c2')">🔎 Interactive version</a>
+  <div class="hidden" id="c2">
+    <script type="text/typogram">
+      {% include txt/ark/covenants2.txt %}
+    </script>
+  </div>
+</div>
+<h4>The Somsen Shortcut</h4>
+<p>Allows Eve to receive while not online:</p>
+<ul>
+  <li>Send VTXOs outside the Ark round</li>
+  <li>Eve must trust Alice she will not double spend her VTXO</li>
+  <li>Makes clArk non interactive</li>
+</ul>
+<div class="tech">
+  <a onclick="toggleVisibility('#c3')">🔎 The Somsen Shortcut</a>
+  <div class="hidden" id="c3">
+    <script type="text/typogram">
+      {% include txt/ark/covenants3.txt %}
+    </script>
+  </div>
+</div>

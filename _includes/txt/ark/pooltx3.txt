@@ -1,8 +1,8 @@
 
 
-      .~~~~~~~~~.            .~~~~~~~~~.
-      : onchain :            : virtual :
-      '~~~~~~~~~'            '~~~~~~~~~'
+.~~~~~~~~~.                 .~~~~~~~~~.
+: onchain :                 : virtual :
+'~~~~~~~~~'                 '~~~~~~~~~'
                          :
 Pool Tx 2                :
                          :
@@ -12,3 +12,4 @@ ASP UTXO | Shared UTXO o----->* | Alice VTXO
          |   "..."       :      | Bob   VTXO
                          :      | Carol VTXO 
                          :      | Dave  VTXO
+                         

@@ -1,13 +1,12 @@
 
-
-      .~~~~~~~~~.        
-      : onchain :        
-      '~~~~~~~~~'        
-                         
-Funding transaction                
-                         
-IN         | OUT        
------------+----------------
-Frank UTXO | Funding address ~~~~> pk(F) && (older(4 weeks) || pk(ASP))      
-           |            
+ .~~~~~~~~. 
+ :  psbt  : 
+ '~~~~~~~~' 
+   
+  Funding transaction                
+                          
+  IN   | OUT        
+  -----+----------------
+  UTXO |"(Alice + ASP) or"    
+       |"(ASP in 1 month)"            
                          

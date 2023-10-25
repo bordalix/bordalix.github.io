@@ -8,15 +8,15 @@
 <div class="tech">
   <a onclick="toggleVisibility('#dd0')">🔎 Deep dive on Pool transactions</a>
   <div class="hidden" id="dd0">
-    <p><strong>Pool transaction</strong></p>
+    <h4>Pool transaction</h4>
     <p>
       The ASP places one (or more) input(s) to its pool transaction to supply funds to the shared UTXO, connectors
       output, change output, and transaction fees.
     </p>
     <script type="text/typogram">
-      {% include txt/ark2/pooltx1.txt %}
+      {% include txt/ark/pooltx1.txt %}
     </script>
-    <p><strong>Shared output (aka Shared UTXO)</strong></p>
+    <h4>Shared output (aka Shared UTXO)</h4>
     <p>The shared UTXO is locked by 2 taproot leaves:</p>
     <ul>
       <li>A multisig <em>n-of-n</em>, where n is the number of participants in the transaction.</li>
@@ -29,7 +29,7 @@
     </p>
     <p>Each leaf on this tree represents a VTXO:</p>
     <script type="text/typogram">
-      {% include txt/ark2/pooltx2.txt %}
+      {% include txt/ark/pooltx2.txt %}
     </script>
     <p>
       In the example above, Alice's VTXO will be <em>tx1:1 => tx2:1 => tx4</em> that she can broadcast anytime to
@@ -48,7 +48,7 @@
     </ul>
     <p>For clarity, VTXOs will be represented like this:</p>
     <script type="text/typogram">
-      {% include txt/ark2/pooltx3.txt %}
+      {% include txt/ark/pooltx3.txt %}
     </script>
   </div>
 </div>

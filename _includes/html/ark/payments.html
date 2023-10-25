@@ -8,7 +8,7 @@
 </p>
 <p>Now let's imagine Alice wants to send some sats to Bob using Ark:</p>
 <script type="text/typogram">
-  {% include txt/ark2/payment0.txt %}
+  {% include txt/ark/payment0.txt %}
 </script>
 <p>Alice forfeits its VTXO to the ASP and in return Bob receives a VTXO</p>
 <p>In order to be trustless:</p>
@@ -28,7 +28,7 @@
       <li>Alice informs ASP she wants to pay 0.01 BTC to address B</li>
       <li>ASP prepares new transaction (Pool Tx 2) and show it to Alice:</li>
       <script type="text/typogram">
-        {% include txt/ark2/payment3.txt %}
+        {% include txt/ark/payment3.txt %}
       </script>
       <li>Alice looks at the locking script for this new UTXO and sees Bob's public key on it</li>
       <li>Alice understands that when Pool Tx 2 confirms, Bob will have 0.01 BTC on Ark</li>
@@ -37,14 +37,14 @@
         We will call this the forfeit transaction:
       </li>
       <script type="text/typogram">
-        {% include txt/ark2/payment6.txt %}
+        {% include txt/ark/payment6.txt %}
       </script>
       <li>
         ASP cannot cheat, if he wants to receive from Alice he needs to send it to Bob, which means Alice is paying Bob
         atomically.
       </li>
     </ol>
-    <p><strong>"Only if Pool Tx 2 is confirmed"</strong></p>
+    <h4>"Only if Pool Tx 2 is confirmed"</h4>
     <p>
       This condition is not possible to implement today using Bitcoin script, but we can implement it using
       <strong>anchored transactions</strong>:
@@ -58,10 +58,10 @@
       <li>The ASP will sign the connector input</li>
     </ul>
     <script type="text/typogram">
-      {% include txt/ark2/connector.txt %}
+      {% include txt/ark/payment7.txt %}
     </script>
     <p>This way, the transaction where Alice gives her VTXO to the ASP is only valid if Pool Tx 2 is confirmed.</p>
-    <p><strong>Adversarial scenarios</strong></p>
+    <h4>Adversarial scenarios</h4>
     <ul>
       <li>
         Alice doesn't sign the <strong>Forfeit transaction</strong><br />
