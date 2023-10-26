@@ -7,7 +7,7 @@
 </p>
 <p>In this example, Alice, Bob, Carol and Dave are "lifting" 0.01 BTC each to Ark:</p>
 <script type="text/typogram">
-  {% include txt/ark/onboarding.txt %}
+  {% include txt/ark/onboarding0.txt %}
 </script>
 <p>In order to be trustless:</p>
 <ul>
@@ -69,23 +69,23 @@
     <ol>
       <li>Frank sends 0.01 BTC to <em>pk(F) && (older(4 weeks) || pk(ASP))</em> (aka funding address):</li>
       <script type="text/typogram">
-        {% include txt/ark/lifting1.txt %}
+        {% include txt/ark/onboarding1.txt %}
       </script>
       <li>
         Frank creates an PSBT and adds as input the output of funding transaction. We will call this transaction the
         sweep transaction, since it will allow the ASP to sweep the funds:
       </li>
       <script type="text/typogram">
-        {% include txt/ark/lifting2.txt %}
+        {% include txt/ark/onboarding2.txt %}
       </script>
       <li>Frank passes this PSBT to the ASP</li>
       <li>ASP places one input to PSBT, the "connector output" from the next pool transaction:</li>
       <script type="text/typogram">
-        {% include txt/ark/lifting4.txt %}
+        {% include txt/ark/onboarding4.txt %}
       </script>
       <li>ASP places one output to PSBT, <em>pk(ASP)</em>, a singlesig output that sweeps all money to itself:</li>
       <script type="text/typogram">
-        {% include txt/ark/lifting5.txt %}
+        {% include txt/ark/onboarding5.txt %}
       </script>
       <li>
         ASP passes PSBT to Frank and both sign the PSBT and keep this transaction private. This transaction is not valid
@@ -93,7 +93,7 @@
       </li>
       <li>ASP signs the pool transaction and broadcast it:</li>
       <script type="text/typogram">
-        {% include txt/ark/lifting7.txt %}
+        {% include txt/ark/onboarding7.txt %}
       </script>
       <li>
         ASP can now claim 0.01 BTC from the funding transaction by revealing the descendant transaction of connectors
@@ -101,7 +101,7 @@
         funding transaction is locked to: <em>pk(F) && (older(4weeks) || pk(ASP))</em>.
       </li>
       <script type="text/typogram">
-        {% include txt/ark/lifting8.txt %}
+        {% include txt/ark/onboarding8.txt %}
       </script>
       <li>
         Frank now has a 0.01 BTC worth UTXO representation as a descendant of the shared UTXO output (a VTXO). To avoid
@@ -109,7 +109,7 @@
         confirmed:
       </li>
       <script type="text/typogram">
-        {% include txt/ark/lifting9.txt %}
+        {% include txt/ark/onboarding9.txt %}
       </script>
     </ol>
     <p>So far, Frank polluted onchain by funding an address, and the ASP by claiming funds from that address.</p>

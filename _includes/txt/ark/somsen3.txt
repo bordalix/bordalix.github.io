@@ -1,0 +1,22 @@
+
+ +~~~~~~~~~+                     +~~~~~~~~+ 
+ : onchain :                     :  psbt  : 
+ +~~~~~~~~~+                     +~~~~~~~~+ 
+      
+  Funding transaction        :   Redeem transaction        Forfeit transaction              
+                             :                                                               
+  IN   | OUT                 :   IN | OUT                  IN | OUT            
+  -----+----------------     :   ---+----------------      ---+----------------  
+  UTXO |"(Alice + ASP) or"o--:--->* |"(Alice + ASP) or"o--->* | ASP (unconditional)    
+       |"(ASP in 1 month)"|  :      |"(Alice in 24h)"         |                
+                          |  :                          
+                          |  :                          
+                          |  :                          
+                          |  :   Shortcut transaction  
+                          |  :                         
+                          |  :   IN | OUT         
+                          |  :   ---+------------ 
+                          +--:--->* |"(Bob + ASP) or"
+                             :      |"(Alice + ASP) or"
+                             :      |"(Alice in 24h)"  
+                             

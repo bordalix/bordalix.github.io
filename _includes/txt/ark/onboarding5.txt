@@ -1,7 +1,7 @@
 
- .~~~~~~~~~.                     .~~~~~~~~. 
+ +~~~~~~~~~+                     +~~~~~~~~+ 
  : onchain :                     :  psbt  : 
- '~~~~~~~~~'                     '~~~~~~~~' 
+ +~~~~~~~~~+                     +~~~~~~~~+ 
       
   Funding transaction        :   Redeem transaction        Forfeit transaction              
                              :                                                               

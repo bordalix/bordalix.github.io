@@ -1,7 +1,7 @@
   
- .~~~~~~~~. 
+ +~~~~~~~~+ 
  :  psbt  : 
- '~~~~~~~~' 
+ +~~~~~~~~+ 
    
   Funding transaction         Redeem transaction               
                                                                    

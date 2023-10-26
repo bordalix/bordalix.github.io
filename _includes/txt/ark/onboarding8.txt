@@ -1,7 +1,7 @@
 
- .~~~~~~~~~. 
+ +~~~~~~~~~+ 
  : onchain : 
- '~~~~~~~~~' 
+ +~~~~~~~~~+ 
    
   Funding transaction         Claim transaction                
                                                                 

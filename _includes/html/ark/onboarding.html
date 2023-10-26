@@ -1,4 +1,4 @@
-<h2 id="onboarding">Onboarding</h2>
+<h2 id="onboarding">Onboarding the Ark</h2>
 <p>
   The first step is for Alice to lift her coins. This is an <u>atomic</u> swap where she will give up a UTXO (+ fees) to
   receive a <strong>VTXO</strong> from the ASP at the same time. This <strong>VTXO</strong> will be inside the next
@@ -6,7 +6,7 @@
 </p>
 <p>In this example, Alice, Bob, Carol and Dave are "lifting" UTXOs to Ark:</p>
 <script type="text/typogram">
-  {% include txt/ark/onboarding.txt %}
+  {% include txt/ark/onboarding0.txt %}
 </script>
 <p>In order to be trustless:</p>
 <ul>
@@ -85,7 +85,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark/lifting1.txt %}
+        {% include txt/ark/onboarding1.txt %}
       </script>
 
       <!-- #2 -->
@@ -97,7 +97,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark/lifting2.txt %}
+        {% include txt/ark/onboarding2.txt %}
       </script>
 
       <!-- #3 -->
@@ -111,11 +111,14 @@
           </li>
         </ul>
       </li>
+      <script type="text/typogram">
+        {% include txt/ark/onboarding3.txt %}
+      </script>
 
       <!-- #4 -->
       <li>ASP (with Alice) prepares next <strong>Pool transaction</strong></li>
       <script type="text/typogram">
-        {% include txt/ark/lifting4.txt %}
+        {% include txt/ark/onboarding4.txt %}
       </script>
 
       <!-- #5 -->
@@ -128,7 +131,7 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark/lifting5.txt %}
+        {% include txt/ark/onboarding5.txt %}
       </script>
 
       <!-- #6 -->
@@ -142,13 +145,13 @@
         </ul>
       </li>
       <script type="text/typogram">
-        {% include txt/ark/lifting7.txt %}
+        {% include txt/ark/onboarding7.txt %}
       </script>
 
       <!-- #8 -->
       <li>After 1 month ASP spends Funding transaction (1) via <em>ASP in 1 month</em></li>
       <script type="text/typogram">
-        {% include txt/ark/lifting8.txt %}
+        {% include txt/ark/onboarding8.txt %}
       </script>
     </ol>
     <p>So far, Alice polluted onchain by funding an address, and the ASP by claiming funds from that address.</p>

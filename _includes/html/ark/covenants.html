@@ -7,44 +7,72 @@
   <li>SIGHASH_ANYPREVOUT</li>
 </ul>
 <div class="tech">
-  <a onclick="toggleVisibility('#c1')">🔎 Non interactive version</a>
+  <a onclick="toggleVisibility('#c1')">🔎 Deep dive on Ark with covenants</a>
   <div class="hidden" id="c1">
     <script type="text/typogram">
       {% include txt/ark/covenants1.txt %}
     </script>
   </div>
 </div>
-<h3>Without covenants: clArk</h3>
+<h3 id="clark">Without covenants: clArk</h3>
 <ul>
   <li>Possible on Bitcoin today</li>
   <li>
-    Uses multisigs instead of covenants
+    Uses multisigs instead of covenants:
     <ul>
       <li>All receivers cosign with ASP</li>
-      <li>Requires receivers online &rarr; <strong>Interactive version</strong></li>
+      <li>Requires senders and receivers online &rarr; <strong>Interactive version</strong></li>
     </ul>
   </li>
 </ul>
 <div class="tech">
-  <a onclick="toggleVisibility('#c2')">🔎 Interactive version</a>
+  <a onclick="toggleVisibility('#c2')">🔎 Deep dive on Ark without covenants</a>
   <div class="hidden" id="c2">
     <script type="text/typogram">
       {% include txt/ark/covenants2.txt %}
     </script>
   </div>
 </div>
-<h3>The Somsen Shortcut</h3>
-<p>Allows Eve to receive while not online:</p>
+<h3 id="somsen_shortcut">The Somsen Shortcut</h3>
+<p>Allows Bob to receive while not online:</p>
 <ul>
-  <li>Send VTXOs outside the Ark round</li>
-  <li>Eve must trust Alice she will not double spend her VTXO</li>
-  <li>Makes clArk non interactive</li>
+  <li>No trust needed</li>
+  <li>Reduces Ark interactivity without a soft fork</li>
+  <li>Preserves proof of payment and has no race conditions.</li>
 </ul>
 <div class="tech">
-  <a onclick="toggleVisibility('#c3')">🔎 The Somsen Shortcut</a>
+  <a onclick="toggleVisibility('#c3')">🔎 Deep dive on the Somsen Shortcut</a>
   <div class="hidden" id="c3">
-    <script type="text/typogram">
-      {% include txt/ark/covenants3.txt %}
-    </script>
+    <ol>
+      <!-- #1 -->
+      <li>Let's say Alice wants to send to Bob</li>
+      <script type="text/typogram">
+        {% include txt/ark/somsen1.txt %}
+      </script>
+      <!-- #2 -->
+      <li>
+        Alice gets the ASP to sign a new <strong>Shortcut transaction</strong> with the following script:
+        <em>(Bob + ASP) or (Alice + ASP) or (Alice in 1 month)</em> (i.e. adding the <em>Bob + ASP</em> condition)
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark/somsen2.txt %}
+      </script>
+      <!-- #3 -->
+      <li>
+        Now Alice foregoes her claim on the old <strong>Redeem transaction</strong> by signing an <u>unconditional</u>
+        <strong>Forfeit transaction</strong>, thus allowing ASP to simply claim the money if
+        <strong>Redeem transaction</strong> ever gets published.
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark/somsen3.txt %}
+      </script>
+      <!-- #4 -->
+      <li>
+        Alice now sends <strong>Shortcut transaction</strong> to Bob, who can claim the payment by swapping with the
+        ASP.<br />
+        If Bob isn't responsive, Alice can perform the swap instead, or attempt to repeat the same steps with another
+        recipient.
+      </li>
+    </ol>
   </div>
 </div>
