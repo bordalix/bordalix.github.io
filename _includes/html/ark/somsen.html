@@ -1,5 +1,11 @@
 <h2 id="somsen">The Somsen Shortcut</h2>
 <p>
+  Currently both senders and recipients need to be online simultaneously to transfer value in Ark. This requirement can
+  be reduced by a soft fork (i.e. OP_CTV). We can eliminate the need for a soft fork by giving both the sender and the
+  recipient the option to complete a swap with S, allowing the recipient to complete the payment on their own.
+</p>
+<h3>The swap option</h3>
+<p>
   Enables both Alice as well as Bob to control the funds together with the ASP and makes no judgement about who
   currently owns the money.
 </p>
@@ -15,7 +21,7 @@
 </ul>
 
 <div class="tech">
-  <a onclick="toggleVisibility('#ss1')">🔎 Deep dive on the Somsen Shortcut</a>
+  <a onclick="toggleVisibility('#ss1')">🔎 Deep dive on the swap option</a>
   <div class="hidden" id="ss1">
     <ol>
       <!-- #1 -->
