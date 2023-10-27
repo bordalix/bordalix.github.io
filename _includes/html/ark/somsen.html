@@ -2,7 +2,7 @@
 <p>
   Currently both senders and recipients need to be online simultaneously to transfer value in Ark. This requirement can
   be reduced by a soft fork (i.e. OP_CTV). We can eliminate the need for a soft fork by giving both the sender and the
-  recipient the option to complete a swap with S, allowing the recipient to complete the payment on their own.
+  recipient the option to complete a swap with the ASP, allowing the recipient to complete the payment on their own.
 </p>
 <h3>The swap option</h3>
 <p>
@@ -69,10 +69,29 @@
 </ul>
 
 <div class="tech">
-  <a onclick="toggleVisibility('#ss2')">🔎 Deep dive on the Statechain option</a>
+  <a onclick="toggleVisibility('#ss2')">🔎 Deep dive on the statechain option</a>
   <div class="hidden" id="ss2">
-    <script type="text/typogram">
-      {% include txt/ark/roose1.txt %}
-    </script>
+    <ol>
+      <!-- #1 -->
+      <li>Let's say Alice wants to send to Bob</li>
+      <script type="text/typogram">
+        {% include txt/ark/somsen1.txt %}
+      </script>
+      <!-- #2 -->
+      <li>
+        Alice gets the ASP to sign a new <strong>Shortcut transaction</strong> with locking script:
+        <em>(Bob + ASP) or (Bob in 24h)</em>
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark/roose2.txt %}
+      </script>
+      <!-- #3 -->
+      <li>Alice doesn't need to sign a <strong>Forfeit transaction</strong></li>
+      <!-- #4 -->
+      <li>The Ark tree will look something like this:</li>
+      <script type="text/typogram">
+        {% include txt/ark/roose1.txt %}
+      </script>
+    </ol>
   </div>
 </div>
