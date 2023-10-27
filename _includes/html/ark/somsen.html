@@ -1,0 +1,72 @@
+<h2 id="somsen">The Somsen Shortcut</h2>
+<p>
+  Enables both Alice as well as Bob to control the funds together with the ASP and makes no judgement about who
+  currently owns the money.
+</p>
+<p>
+  Now it's up to Alice or Bob to collaborate with the ASP and transfer the coins inside Ark (so a new on-chain UTXO) in
+  order to turn over the ownership exclusively to either Alice or Bob.
+</p>
+<p>In practice this means Bob can finish the payment without requiring direct interaction with A.</p>
+<ul>
+  <li>No trust needed</li>
+  <li>Reduces Ark interactivity without a soft fork</li>
+  <li>Preserves proof of payment and has no race conditions</li>
+</ul>
+
+<div class="tech">
+  <a onclick="toggleVisibility('#ss1')">🔎 Deep dive on the Somsen Shortcut</a>
+  <div class="hidden" id="ss1">
+    <ol>
+      <!-- #1 -->
+      <li>Let's say Alice wants to send to Bob</li>
+      <script type="text/typogram">
+        {% include txt/ark/somsen1.txt %}
+      </script>
+      <!-- #2 -->
+      <li>
+        Alice gets the ASP to sign a new <strong>Shortcut transaction</strong> with the following script:
+        <em>(Bob + ASP) or (Alice + ASP) or (Alice in 1 month)</em> (i.e. adding the <em>Bob + ASP</em> condition)
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark/somsen2.txt %}
+      </script>
+      <!-- #3 -->
+      <li>
+        Now Alice foregoes her claim on the old <strong>Redeem transaction</strong> by signing an <u>unconditional</u>
+        <strong>Forfeit transaction</strong>, thus allowing ASP to simply claim the money if
+        <strong>Redeem transaction</strong> ever gets published.
+      </li>
+      <script type="text/typogram">
+        {% include txt/ark/somsen3.txt %}
+      </script>
+      <!-- #4 -->
+      <li>
+        Alice now sends <strong>Shortcut transaction</strong> to Bob, who can claim the payment by swapping with the
+        ASP. If Bob isn't responsive, Alice can perform the swap instead, or attempt to repeat the same steps with
+        another recipient.
+      </li>
+    </ol>
+  </div>
+</div>
+
+<h3>The statechain option</h3>
+<p>
+  This "statechain option" is basically statechains on top of Ark, so you're transferring from Alice to Bob without
+  going on-chain by co-signing with the ASP and trusting them not to change their minds. As long as this this assumption
+  holds, the transfer is instant.
+</p>
+<ul>
+  <li>Basically statechains on top of Ark</li>
+  <li>Bob trusts Alice and ASP will not to change their minds</li>
+  <li>Instant (trusted) finality.</li>
+</ul>
+
+<div class="tech">
+  <a onclick="toggleVisibility('#ss2')">🔎 Deep dive on the Statechain option</a>
+  <div class="hidden" id="ss2">
+    <script type="text/typogram">
+      {% include txt/ark/roose1.txt %}
+    </script>
+  </div>
+</div>
