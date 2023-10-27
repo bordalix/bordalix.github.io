@@ -32,7 +32,9 @@
       <!-- #2 -->
       <li>
         Alice gets the ASP to sign a new <strong>Shortcut transaction</strong> with the following script:
-        <em>(Bob + ASP) or (Alice + ASP) or (Alice in 1 month)</em> (i.e. adding the <em>Bob + ASP</em> condition)
+        <em>(Bob + ASP) or (Alice + ASP) or (Alice in 1 month)</em> (i.e. adding the <em>Bob + ASP</em> condition). We
+        ensure the new <strong>Shortcut transaction</strong> becomes valid before the old
+        <strong>Redeem transaction</strong> with timelocks.
       </li>
       <script type="text/typogram">
         {% include txt/ark/somsen2.txt %}
@@ -65,7 +67,7 @@
 <ul>
   <li>Basically statechains on top of Ark</li>
   <li>Bob trusts Alice and ASP will not to change their minds</li>
-  <li>Instant (trusted) finality.</li>
+  <li>Instant (trusted) finality</li>
 </ul>
 
 <div class="tech">
@@ -75,7 +77,7 @@
       <!-- #1 -->
       <li>Let's say Alice wants to send to Bob</li>
       <script type="text/typogram">
-        {% include txt/ark/somsen1.txt %}
+        {% include txt/ark/statechain1.txt %}
       </script>
       <!-- #2 -->
       <li>
@@ -83,14 +85,14 @@
         <em>(Bob + ASP) or (Bob in 24h)</em>
       </li>
       <script type="text/typogram">
-        {% include txt/ark/roose2.txt %}
+        {% include txt/ark/statechain2.txt %}
       </script>
       <!-- #3 -->
       <li>Alice doesn't need to sign a <strong>Forfeit transaction</strong></li>
       <!-- #4 -->
       <li>The Ark tree will look something like this:</li>
       <script type="text/typogram">
-        {% include txt/ark/roose1.txt %}
+        {% include txt/ark/statechain4.txt %}
       </script>
     </ol>
   </div>
