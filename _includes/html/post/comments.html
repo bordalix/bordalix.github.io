@@ -1,14 +1,14 @@
 <style>
   body {
     --nc-background: var(--white);
-    --nc-container-font-family: arial;
-    --nc-container-font-size: 1.2em;
-    --nc-comment-author-font-size: 1.2em;
+    --nc-container-font-family: inherit;
+    --nc-container-font-size: 0.8rem;
+    --nc-comment-author-font-size: 0.8rem;
     --nc-comment-author-font-family: monospace;
     --nc-comment-author-font-color: inherit;
     --nc-comment-date-color: inherit;
     --nc-comment-date-font-family: sans-serif;
-    --nc-comment-date-font-size: 0.7em;
+    --nc-comment-date-font-size: 0.8rem;
     --nc-link-text-decor: none;
     --nc-link-text-decor-hover: underline;
     --nc-textarea-font-family: inherit;
@@ -19,14 +19,41 @@
     --nc-primary-color: var(--black);
     --nc-primary-contrast: var(--white);
   }
-  #xxx > div > div {
+  #comments_header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 3rem;
+  }
+  #comments_header > p {
+    margin-bottom: 0;
+  }
+  #comments_container > div > div {
     padding: 0;
   }
-  #xxx > div > div > div {
+  #comments_container > div > div > div:first-child {
+    border: 0;
+    padding: 1rem 0;
+  }
+  #comments_container > div > div > div:first-child > div button {
+    border-radius: var(--border-radius);
+  }
+  #comments_container > div > div > div:not(:first-child) > div {
+    background-color: var(--cream);
+    border: 0;
+    margin: 0.5rem 0;
     padding: 1rem;
+  }
+  #comments_container img {
+    margin: 0 0.25rem;
+    width: auto;
   }
 </style>
 
-<div id="xxx">
+<div id="comments_header">
+  <p><strong>Add your opinion</strong></p>
+  <p style="font-size: 0.8rem">powered by <a href="https://github.com/fiatjaf/nocomment">nocomment</a></p>
+</div>
+<div id="comments_container">
   <script src="https://nocomment.fiatjaf.com/embed.js" id="nocomment"></script>
 </div>
