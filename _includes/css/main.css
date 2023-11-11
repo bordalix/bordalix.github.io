@@ -18,7 +18,7 @@ body {
   --red: rgb(175, 46, 27);
   --white: var(--my_white);
 
-  --border-radius: 30px;
+  --border-radius: 8px;
   --box-opacity: 1;
 }
 

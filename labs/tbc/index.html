@@ -31,11 +31,19 @@ description: Buy TBC with Liquid
     margin-bottom: 0;
   }
   #amountContainer {
-    border: 1px solid var(--grey);
+    border: 1px solid var(--orange);
+    background-color: var(--orange);
+  }
+  #amountContainer p {
+    color: var(--my_white);
   }
   #feesContainer,
   #limitsContainer {
     background-color: var(--cream);
+  }
+  #buttonContainer {
+    margin-top: 2rem;
+    text-align: center;
   }
   #iframeContainer {
     width: 70%;
@@ -43,7 +51,7 @@ description: Buy TBC with Liquid
 </style>
 
 <div class="container" id="tbc">
-  <h1>Buy from TBC with Liquid</h1>
+  <h1>Buy from The Bitcoin Company with Liquid</h1>
   <div class="flexed">
     <div id="iframeContainer">
       <iframe src="https://embed.thebitcoincompany.com/giftcard" style="height: 720px; width: 100%"></iframe>
@@ -78,11 +86,11 @@ description: Buy TBC with Liquid
 <template id="limitsTemplate">
   <p>Boltz limits</p>
   <div class="flexed">
-    <p>Minimum</p>
+    <p>Min</p>
     <p id="minimum"></p>
   </div>
   <div class="flexed">
-    <p>Maximum</p>
+    <p>Max</p>
     <p id="maximum"></p>
   </div>
 </template>
@@ -94,7 +102,7 @@ description: Buy TBC with Liquid
     <p id="invoiceAmount"></p>
   </div>
   <div class="flexed">
-    <p>Boltz fee</p>
+    <p>Boltz fees</p>
     <p id="feeAmount"></p>
   </div>
   <hr />
@@ -105,12 +113,14 @@ description: Buy TBC with Liquid
 </template>
 
 <template id="payWithMarinaTemplate">
-  <button class="btn" onclick="payWithMarina()">Pay with Marina</button>
+  <button class="btn" id="payWithMarinaButton" disabled>Pay with Marina</button>
 </template>
 
 <template id="installMarinaTemplate">
-  <a class="btn" href="">Install Marina</a>
+  <a class="btn" href="https://vulpem.com/marina.html" target="_blank">Install Marina</a>
 </template>
+
+<script src="./decimal.js"></script>
 
 <script>
   let minimum, maximum, minerFees, percentage, invoiceAmount, feeAmount, totalAmount, invoiceLN
@@ -124,15 +134,15 @@ description: Buy TBC with Liquid
   const addFees = () => {
     const feesContainer = getCleanedContainer('feesContainer')
     feesContainer.append(feesTemplate.content.cloneNode(true))
-    document.getElementById('minerFees').innerText = minerFees
-    document.getElementById('percentage').innerText = percentage
+    document.getElementById('minerFees').innerText = `${minerFees} sats`
+    document.getElementById('percentage').innerText = `${percentage} %`
   }
 
   const addLimits = () => {
     const limitsContainer = getCleanedContainer('limitsContainer')
     limitsContainer.append(limitsTemplate.content.cloneNode(true))
-    document.getElementById('minimum').innerText = minimum
-    document.getElementById('maximum').innerText = maximum
+    document.getElementById('minimum').innerText = `${minimum} sats`
+    document.getElementById('maximum').innerText = `${maximum} sats`
   }
 
   const addAmount = () => {
@@ -148,7 +158,13 @@ description: Buy TBC with Liquid
     document.querySelector('#buttonContainer').append(button.content.cloneNode(true))
   }
 
+  const enableButton = () => {
+    document.querySelector('#payWithMarinaButton').disabled = false
+    document.querySelector('#payWithMarinaButton').onclick = payWithMarina
+  }
+
   const payWithMarina = async () => {
+    if (!(await window.marina.isEnabled())) await window.marina.enable()
     const nextAddress = await window.marina.getNextAddress()
     const swap = await fetch('https://api.boltz.exchange/createswap', {
       method: 'POST',
@@ -171,20 +187,26 @@ description: Buy TBC with Liquid
     ])
   }
 
+  const getPairFromBoltz = async () => {
+    const resp = await fetch('https://api.boltz.exchange/getpairs')
+    if (!resp.ok) throw new Error(`HTTP error: ${resp.status}`)
+    const json = await resp.json()
+    if (!json) throw new Error('Invalid json response')
+    const pair = json.pairs['L-BTC/BTC']
+    if (!pair) throw new Error('Invalid pair response:', json)
+    return pair
+  }
+
   window.onload = () => {
-    fetch('https://api.boltz.exchange/getpairs').then((resp) => {
-      if (!resp.ok) throw new Error(`HTTP error: ${resp.status}`)
-      resp.json().then((json) => {
-        const pair = json.pairs['L-BTC/BTC']
-        if (!pair) throw new Error('Invalid pair response:', json)
-        minerFees = pair.fees.minerFees.baseAsset.normal
-        percentage = pair.fees.percentageSwapIn
-        minimum = pair.limits.minimal
-        maximum = pair.limits.maximal
-        addFees(minerFees, percentage)
-        addLimits(minimum, maximum)
-      })
+    getPairFromBoltz().then((pair) => {
+      minerFees = pair.fees.minerFees.baseAsset.normal
+      percentage = pair.fees.percentageSwapIn
+      minimum = pair.limits.minimal
+      maximum = pair.limits.maximal
+      addFees(minerFees, percentage)
+      addLimits(minimum, maximum)
     })
+    addButton()
   }
 
   window.addEventListener(
@@ -198,12 +220,12 @@ description: Buy TBC with Liquid
       if (!invoice) throw new Error('No invoice on TBC response')
       const amountInAddress = address.split('amount=')?.[1]
       if (!amountInAddress) throw new Error('Invalid address format')
-      invoiceAmount = Number(amountInAddress) * 100_000_000
-      feeAmount = Math.ceil((invoiceAmount * percentage) / 100 + minerFees)
-      totalAmount = invoiceAmount + feeAmount
+      invoiceAmount = Decimal.mul(amountInAddress, 100_000_000).toNumber()
+      feeAmount = Math.ceil(Decimal.mul(invoiceAmount, percentage).div(100).add(minerFees).toNumber())
+      totalAmount = Decimal.add(invoiceAmount, feeAmount).toNumber()
       invoiceLN = invoice
       addAmount()
-      addButton()
+      enableButton()
     },
     false
   )
