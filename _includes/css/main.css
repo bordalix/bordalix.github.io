@@ -36,7 +36,7 @@ body.dark-theme {
   --green: rgb(193, 179, 50); /* lime */
   --lime: rgb(115, 107, 30); /* green */
   --white: rgb(10, 9, 8); /* black */
-  --yellow: rgb(120, 111, 41);
+  --yellow: rgb(76, 70, 26);
 }
 
 ::placeholder {
