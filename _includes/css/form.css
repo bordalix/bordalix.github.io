@@ -54,7 +54,13 @@ textarea.form-control {
   padding: 0.5rem 1rem;
 }
 
-.btn:hover {
+.btn:disabled {
+  background-color: var(--grey);
+  border-color: var(--grey);
+  cursor: default;
+}
+
+.btn:not(:disabled):hover {
   color: var(--black);
   background: var(--white);
 }
