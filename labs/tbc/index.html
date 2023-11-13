@@ -1,5 +1,5 @@
 ---
-title: Liquid TBC
+title: TBC with Liquid
 layout: main
 description: Buy TBC with Liquid
 ---
@@ -13,7 +13,7 @@ description: Buy TBC with Liquid
     margin: 0;
     text-align: center;
   }
-  #tbc p {
+  #actionContainer p {
     margin-bottom: 0.5rem;
   }
   #tbc .flexed p {
@@ -33,8 +33,6 @@ description: Buy TBC with Liquid
   #amountContainer {
     border: 1px solid var(--orange);
     background-color: var(--orange);
-  }
-  #amountContainer p {
     color: var(--my_white);
   }
   #feesContainer,
@@ -51,7 +49,12 @@ description: Buy TBC with Liquid
 </style>
 
 <div class="container" id="tbc">
-  <h1>Buy from The Bitcoin Company with Liquid</h1>
+  <h1>TBC with Liquid</h1>
+  <p>
+    Buy from <a href="https://embed.thebitcoincompany.com" target="_blank">The Bitcoin Company</a> with Liquid.<br />
+    Powered by <a href="https://boltz.exchange" target="_blank">Boltz</a> and
+    <a href="https://vulpem.com/marina.html" target="_blank">Marina</a>.
+  </p>
   <div class="flexed">
     <div id="iframeContainer">
       <iframe src="https://embed.thebitcoincompany.com/giftcard" style="height: 720px; width: 100%"></iframe>
@@ -64,7 +67,7 @@ description: Buy TBC with Liquid
         <p class="waiting">Loading limits</p>
       </div>
       <div id="amountContainer">
-        <p class="waiting">Waiting for invoice</p>
+        <p class="waiting">&larr; Waiting for invoice</p>
       </div>
       <div id="buttonContainer"></div>
     </div>
