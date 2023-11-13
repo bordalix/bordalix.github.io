@@ -47,43 +47,43 @@ const components = [
     'dos índices pretendidos. ',
     'da forma de acção. ',
   ],
-];
+]
 
-const content = document.getElementById('content_container');
+const content = document.getElementById('content_container')
 
 function addParagraph(html) {
-  const p = document.createElement('p');
-  p.innerHTML = html;
-  content.appendChild(p);
+  const p = document.createElement('p')
+  p.innerHTML = html
+  content.appendChild(p)
 }
 
 function addPageSeparator(num) {
-  const p = document.createElement('p');
-  p.classList.add('right');
-  p.innerHTML = `página ${num + 1}`;
-  content.appendChild(p);
+  const p = document.createElement('p')
+  p.classList.add('pageSeparator')
+  p.innerHTML = `página ${num + 1}`
+  content.appendChild(p)
 }
 
 function generateBullshit() {
-  content.innerHTML = '';
-  const numParagraphs = document.getElementById('numParagraphs').value || 4;
-  const numSentences = document.getElementById('numSentences').value || 5;
-  const numPages = document.getElementById('numPages').value || 1;
+  content.innerHTML = ''
+  const numParagraphs = document.getElementById('numParagraphs').value || 4
+  const numSentences = document.getElementById('numSentences').value || 5
+  const numPages = document.getElementById('numPages').value || 1
   for (let page = 0; page < numPages; page++) {
     for (let paragraph = 0; paragraph < numParagraphs; paragraph++) {
-      const paragraph = [];
+      const paragraph = []
       for (let sentence = 0; sentence < numSentences; sentence++) {
-        const sentence = [];
+        const sentence = []
         for (let j = 0; j < components.length; j++) {
-          const index = Math.floor(Math.random() * components[j].length);
-          sentence.push(components[j][index]);
+          const index = Math.floor(Math.random() * components[j].length)
+          sentence.push(components[j][index])
         }
-        paragraph.push(sentence.join(' '));
+        paragraph.push(sentence.join(' '))
       }
-      addParagraph(paragraph.join(''));
+      addParagraph(paragraph.join(''))
     }
-    if (!document.getElementById('omitPage').checked) addPageSeparator(page);
+    if (!document.getElementById('omitPage').checked) addPageSeparator(page)
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => generateBullshit());
+document.addEventListener('DOMContentLoaded', () => generateBullshit())

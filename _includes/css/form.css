@@ -71,6 +71,8 @@ textarea.form-control {
 }
 
 input {
+  background-color: var(--white);
+  border: 1px solid var(--grey);
   color: var(--black);
 }
 input[type='submit'] {
