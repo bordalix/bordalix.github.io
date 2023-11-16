@@ -23,10 +23,6 @@ description: Buy TBC with Liquid
     padding-left: 1rem;
     width: 30%;
   }
-  #actionContainer > div {
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-  }
   #actionContainer > div div p:last-child {
     margin-bottom: 0;
   }
@@ -34,12 +30,17 @@ description: Buy TBC with Liquid
     border: 1px solid var(--orange);
     background-color: var(--orange);
     color: var(--my_white);
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
   }
   #feesContainer,
   #limitsContainer {
     background-color: var(--cream);
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
   }
   #buttonContainer {
+    padding: 0;
     margin-top: 2rem;
     text-align: center;
   }
@@ -56,7 +57,8 @@ description: Buy TBC with Liquid
     <a href="https://vulpem.com/marina.html" target="_blank">Marina</a>.
   </p>
   <noscript>Needs javascript to run.</noscript>
-  <div class="flexed only-if-js">
+  <p class="show-on-mobile" style="display: none">Only works on desktop.</p>
+  <div class="flexed only-if-js show-on-desktop" style="display: none">
     <div id="iframeContainer">
       <iframe src="https://embed.thebitcoincompany.com/giftcard" style="height: 720px; width: 100%"></iframe>
     </div>
@@ -121,7 +123,7 @@ description: Buy TBC with Liquid
 </template>
 
 <template id="installMarinaTemplate">
-  <a class="btn" href="https://vulpem.com/marina.html" target="_blank">Install Marina</a>
+  <p><a class="btn" href="https://vulpem.com/marina.html" target="_blank">Install Marina</a></p>
 </template>
 
 <script src="./decimal.js"></script>
@@ -202,6 +204,12 @@ description: Buy TBC with Liquid
   }
 
   window.onload = () => {
+    // detectif is mobile via userAgent
+    if (window.navigator.userAgent.match(/Mobile|Android|BlackBerry/)) {
+      document.querySelector('.show-on-mobile').style.display = 'block'
+      return
+    }
+    document.querySelector('.show-on-desktop').style.display = 'flex'
     getPairFromBoltz().then((pair) => {
       minerFees = pair.fees.minerFees.baseAsset.normal
       percentage = pair.fees.percentageSwapIn
