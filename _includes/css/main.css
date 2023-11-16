@@ -402,3 +402,7 @@ em,
   color: var(--orange);
   cursor: pointer;
 }
+
+body.no-js .only-if-js {
+  display: none;
+}

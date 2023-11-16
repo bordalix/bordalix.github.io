@@ -33,9 +33,9 @@
 <div class="metainfo">
   <p>
     <time datetime="{{ foo.date }}" class="timeago">{{ foo.date }}</time>
-    &middot;
-    <span class="listen false-link">listen</span>
-    <span class="stop false-link" style="display: none">stop</span>
+    <span class="only-if-js">&middot;</span>
+    <span class="listen only-if-js false-link">listen</span>
+    <span class="stop only-if-js false-link" style="display: none">stop</span>
   </p>
   {% include html/post/share.html %}
 </div>
