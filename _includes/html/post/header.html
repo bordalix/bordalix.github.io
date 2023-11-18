@@ -48,7 +48,10 @@
   {% include html/post/share.html %}
 </div>
 <div class="auxiliar">
-  <p>{{ post.content | reading_time }}</p>
+  <p>
+    {% assign words = foo.content | number_of_words %} {% if words < 360 %} 1 minute {% else %} {{ words |
+    divided_by:180 }} minutes {% endif %} read
+  </p>
   {% if foo.tags %}
   <p style="text-align: right">
     {% for tag in foo.tags %}
