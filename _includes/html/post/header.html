@@ -16,6 +16,7 @@
     color: silver;
     display: flex;
     justify-content: space-between;
+    margin-top: 0.21rem;
   }
   div.auxiliar p {
     font-size: 0.66rem;
@@ -53,7 +54,7 @@
     divided_by:180 }} minutes {% endif %} read
   </p>
   {% if foo.tags %}
-  <p style="text-align: right">
+  <p>
     {% for tag in foo.tags %}
     <a class="tag" href="/search?q={{tag}}">
       <span>#{{ tag }}</span>
