@@ -12,6 +12,14 @@
     font-size: 0.9rem;
     margin: 0.3rem 0;
   }
+  div.auxiliar {
+    color: silver;
+    display: flex;
+    justify-content: space-between;
+  }
+  div.auxiliar p {
+    font-size: 0.66rem;
+  }
   a.tag:hover {
     text-decoration: none;
   }
@@ -39,12 +47,15 @@
   </p>
   {% include html/post/share.html %}
 </div>
-{% if foo.tags %}
-<p style="text-align: right">
-  {% for tag in foo.tags %}
-  <a class="tag" href="/search?q={{tag}}">
-    <span>#{{ tag }}</span>
-  </a>
-  {% endfor %}
-</p>
+<div class="auxiliar">
+  <p>{{ post.content | reading_time }}</p>
+  {% if foo.tags %}
+  <p style="text-align: right">
+    {% for tag in foo.tags %}
+    <a class="tag" href="/search?q={{tag}}">
+      <span>#{{ tag }}</span>
+    </a>
+    {% endfor %}
+  </p>
+</div>
 {% endif %}
