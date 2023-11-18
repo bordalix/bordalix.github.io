@@ -3,11 +3,11 @@ category: articles
 date: 2017-10-02 10:44:09
 extended: true
 layout: post
+tags: [hatitude, meteor]
 title: "Buy men's underwear and help an athlete"
 ---
 
 <p>Today I'm proud to announce <a href="http://hatitude.pt">http://hatitude.pt</a>, the place where you help an athlete every time you buy men's underwear. The idea was presented to me by <a href="http://hatitude.pt/athlete/hagah">Hugo</a>. I loved it, and so I decided to help him by developing the website.</p>
-
 
 <!--more-->
 <p><strong>The problem</strong></p>
@@ -27,5 +27,3 @@ title: "Buy men's underwear and help an athlete"
 <p><strong>Shameless plug</strong></p>
 
 <p>I developed all the design, code, hosting and integration with the payment service providers (Credit Card, Paypal and Multibanco). If you have an idea and want to create something, talk to me.</p>
-
-

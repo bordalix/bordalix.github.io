@@ -2,6 +2,7 @@
 category: articles
 date: 2015-05-29 14:09:50
 layout: post
+tags: [google]
 title: 'Project Jacquard'
 ---
 

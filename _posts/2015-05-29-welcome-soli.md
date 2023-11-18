@@ -2,6 +2,7 @@
 category: articles
 date: 2015-05-29 13:57:45
 layout: post
+tags: [google]
 title: 'Welcome Soli'
 ---
 

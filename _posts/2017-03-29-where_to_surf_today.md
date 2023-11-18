@@ -3,8 +3,8 @@ category: articles
 date: 2017-03-29 16:25:32
 extended: true
 layout: post
-tags: [wtst]
-title: "Where to surf today"
+tags: [wtst, meteor]
+title: 'Where to surf today'
 ---
 
 <p><strong>The problem:</strong></p>
