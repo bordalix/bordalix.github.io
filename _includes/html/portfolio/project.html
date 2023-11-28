@@ -11,14 +11,17 @@
     <strong>Status:</strong> {{ page.project.status }}<br />
     <strong>Client:</strong> {{ page.project.client }}<br />
   </p>
-  {% if page.project.link %}
   <p>
+    {% if page.project.link %}
     <i class="fa fa-external-link"></i>
     <a href="{{ page.project.link }}">
-      {% if page.project.link_desc %} {{ page.project.link_desc }} {% else %} {{ page.project.link }} {% endif %}
-    </a>
+      {% if page.project.link_desc %} {{ page.project.link_desc }} {% else %} {{ page.project.link }} {% endif %} </a
+    ><br />
+    {% endif %} {% if page.project.repo %}
+    <i class="fa fa-github"></i>
+    <a href="{{ page.project.repo }}"> {{ page.project.repo }} </a>
+    {% endif %}
   </p>
-  {% endif %}
   <div class="columns">
     <div>
       <picture>
