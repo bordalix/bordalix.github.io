@@ -222,6 +222,10 @@ nav img {
   vertical-align: middle;
 }
 
+video {
+  margin: 1rem 0;
+}
+
 .container {
   max-width: 820px;
   margin: 0 auto;
