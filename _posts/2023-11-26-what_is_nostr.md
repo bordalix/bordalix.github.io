@@ -4,7 +4,7 @@ date: 2023-11-26 11:27:38
 extended: true
 layout: post
 tags: [nostr]
-title: 'Nostr'
+title: 'What is Nostr'
 ---
 
 Nostr stands for "Notes and Other Stuff Transmitted by Relays". It is a decentralized social network protocol that aims to create a censorship-resistant and user-empowered alternative to existing social media platforms.
