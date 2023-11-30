@@ -1,6 +1,6 @@
 ---
 category: articles
-date: 2023-11-29 12:34:56
+date: 2023-11-30 12:34:56
 extended: true
 layout: post
 tags: [bitcoin, liquid, lightning]
