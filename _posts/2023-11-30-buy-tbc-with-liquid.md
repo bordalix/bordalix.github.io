@@ -4,7 +4,7 @@ date: 2023-11-30 12:34:56
 extended: true
 layout: post
 tags: [bitcoin, liquid, lightning]
-title: 'Buy from The Bitcoin Company with Liquid'
+title: 'Buy gift cards with Liquid'
 ---
 
 Buy gift cards from [The Bitcoin Company](https://embed.thebitcoincompany.com) and pay with Liquid BTC:
