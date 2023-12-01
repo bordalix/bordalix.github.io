@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="author" content="Joao Bordalo" />
+<meta name="author" content="João Bordalo" />
 {% if page.description %}
 <meta name="description" content="{{ page.description | truncate: 160 }}" />
 <meta name="twitter:description" content="{{ page.description | truncate: 160 }}" />
@@ -19,6 +19,18 @@
 <meta name="twitter:description" content="{{ site.description | truncate: 160 }}" />
 <meta property="og:description" content="{{ site.description | truncate: 160 }}" />
 {% endif %}
+<meta name="twitter:label1" content="Author" />
+<meta name="twitter:data1" content="João Bordalo" />
+{% if page.content %}
+<meta name="twitter:label2" content="Reading time" />
+{% assign words = page.content | number_of_words %} {% if words < 360 %}
+<meta name="twitter:data2" content="1 minute" />
+{% else %}
+<meta
+  name="twitter:data2"
+  content="{{ words |
+    divided_by:180 }} minutes" />
+{% endif %} {% endif %}
 <meta name="keywords" content="Full stack developer" />
 <meta property="og:locale" content="pt_PT" />
 <meta property="og:type" content="website" />
