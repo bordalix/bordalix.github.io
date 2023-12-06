@@ -32,3 +32,7 @@ gem 'jekyll-seo-tag'
 gem 'jekyll-sitemap'
 gem 'jekyll-timeago'
 gem 'jekyll-paginate'
+
+gem "rexml", "~> 3.2"
+
+gem "webrick", "~> 1.8"
