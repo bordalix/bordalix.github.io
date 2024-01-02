@@ -27,15 +27,16 @@ description: Bitcoin price
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
-      const price = await fetchPrice()
-      const text = price ? `$ ${price}` : 'error'
-      document.getElementsByTagName('h2')[0].innerHTML = text
+      const { eur, usd } = await fetchPrice()
+      document.getElementsByTagName('h2')[0].innerHTML = usd ? `$ ${usd}` : 'error'
+      document.getElementsByTagName('h2')[1].innerHTML = eur ? `€ ${eur}` : 'error'
     })
   </script>
 
   <div class="container">
     <h1 class="heading">Bitcoin price</h1>
     <h2>$ _____.__</h2>
+    <h2>€ _____.__</h2>
     <p>Median price from a dozen sources</p>
   </div>
 </body>
