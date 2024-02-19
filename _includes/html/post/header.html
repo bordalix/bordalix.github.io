@@ -57,7 +57,7 @@
   {% if foo.tags %}
   <p>
     {% for tag in foo.tags %}
-    <a class="tag" href="/search?q={{tag}}">
+    <a class="tag" href="/search/#{{tag}}">
       <span>#{{ tag }}</span>
     </a>
     {% endfor %}

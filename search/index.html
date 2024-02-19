@@ -17,18 +17,23 @@ layout: blog
     <input
       type="search"
       id="search-input"
-      placeholder="Search posts, live results"
       class="form-control"
-      autofocus="autofocus" />
+      autofocus="autofocus"
+      oninput="updateHash()"
+      placeholder="Search posts, live results" />
   </p>
   <ul id="results-container"></ul>
 </div>
 
 <script src="/js/simple-jekyll-search.min.js"></script>
 <script>
+  function updateHash() {
+    const searchInput = document.getElementById('search-input')
+    location.hash = searchInput.value
+  }
   document.onreadystatechange = () => {
     const json = '/search.json'
-    const query = new URL(location.href).searchParams.get('q')
+    const query = location.hash.replace(/^#/, '')
     const searchInput = document.getElementById('search-input')
     const resultsContainer = document.getElementById('results-container')
     const searchResultTemplate =
