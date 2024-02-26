@@ -1,75 +1,64 @@
-abbr,
-acronym,
-address,
-applet,
 article,
-aside,
-audio,
-b,
-big,
 blockquote,
 body,
-canvas,
-caption,
-center,
-cite,
 code,
-dd,
-del,
-details,
-dfn,
 div,
-dl,
-dt,
 em,
-fieldset,
 figcaption,
 figure,
 footer,
-form,
+form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-header,
-hgroup,
 html,
 i,
 iframe,
-img,
-ins,
-kbd,
-legend,
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 li,
-mark,
-menu,
 nav,
 object,
 ol,
-q,
-s,
-samp,
-small,
 span,
 strike,
 strong,
-sub,
-summary,
 sup,
 table,
-tbody,
+tbody {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 td,
 tfoot,
 th,
 thead,
 time,
 tr,
-tt,
-u,
 ul,
-var,
 video {
   margin: 0;
   padding: 0;
@@ -116,8 +105,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
-menu,
 nav,
 section {
   display: block;

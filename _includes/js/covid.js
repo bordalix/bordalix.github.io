@@ -16,17 +16,7 @@ const state = {
     arsnorte: { density: 168, population: 3682370 },
     madeira: { density: 317, population: 270000 },
   },
-  ages: [
-    '0_9',
-    '10_19',
-    '20_29',
-    '30_39',
-    '40_49',
-    '50_59',
-    '60_69',
-    '70_79',
-    '80_plus',
-  ],
+  ages: ['0_9', '10_19', '20_29', '30_39', '40_49', '50_59', '60_69', '70_79', '80_plus'],
   population_by_age: {
     // https://www.pordata.pt/Portugal/Popula%c3%a7%c3%a3o+residente++m%c3%a9dia+anual+total+e+por+grupo+et%c3%a1rio-10-1127
     '0_9': 433332 + 461299,
@@ -39,14 +29,7 @@ const state = {
     '70_79': 544016 + 429107,
     '80_plus': 352218 + 316442,
   },
-  symptoms: [
-    'tosse',
-    'febre',
-    'dores_musculares',
-    'cefaleia',
-    'fraqueza_generalizada',
-    'dificuldade_respiratoria',
-  ],
+  symptoms: ['tosse', 'febre', 'dores_musculares', 'cefaleia', 'fraqueza_generalizada', 'dificuldade_respiratoria'],
   employment: [
     { month: 'Jan', year: '19', young: 305500, old: 4502200 },
     { month: 'Fev', year: '19', young: 301900, old: 4511200 },
@@ -564,9 +547,7 @@ const tables = {
         <tbody>
           <tr>
             <td><a href="#activos">${state.category_labels.activos}</a></td>
-            <td>${utils.addPrefix(
-              state.json.delta.ativos[state.json.today]
-            )}</td>
+            <td>${utils.addPrefix(state.json.delta.ativos[state.json.today])}</td>
             <td>${utils.prettyNumber(state.json.last.ativos)}</td>
           </tr>
           <tr>
@@ -575,60 +556,34 @@ const tables = {
             <td>${utils.prettyNumber(parseInt(lastAmostras[1]))}</td>
           </tr>
           <tr>
-            <td><a href="#confirmados">${
-              state.category_labels.confirmados
-            }</a></td>
+            <td><a href="#confirmados">${state.category_labels.confirmados}</a></td>
             <td>${utils.addPrefix(state.json.last.confirmados_novos)}</td>
             <td>${utils.prettyNumber(state.json.last.confirmados)}</td>
           </tr>
           <tr>
-            <td><a href="#internados">${
-              state.category_labels.internados
-            }</a></td>
-            <td>${utils.addPrefix(
-              state.json.delta.internados[state.json.today]
-            )}</td>
-            <td>${utils.prettyNumber(
-              state.json.full.internados[state.json.today]
-            )}</td>
+            <td><a href="#internados">${state.category_labels.internados}</a></td>
+            <td>${utils.addPrefix(state.json.delta.internados[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.full.internados[state.json.today])}</td>
           </tr>
           <tr>
-            <td><a href="#internados">${
-              state.category_labels.internados
-            } UCI</a></td>
-            <td>${utils.addPrefix(
-              state.json.delta.internados_uci[state.json.today]
-            )}</td>
-            <td>${utils.prettyNumber(
-              state.json.full.internados_uci[state.json.today]
-            )}</td>
+            <td><a href="#internados">${state.category_labels.internados} UCI</a></td>
+            <td>${utils.addPrefix(state.json.delta.internados_uci[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.full.internados_uci[state.json.today])}</td>
           </tr>
           <tr>
             <td><a href="#obitos">${state.category_labels.obitos}</a></td>
-            <td>${utils.addPrefix(
-              state.json.delta.obitos[state.json.today]
-            )}</td>
-            <td>${utils.prettyNumber(
-              state.json.full.obitos[state.json.today]
-            )}</td>
+            <td>${utils.addPrefix(state.json.delta.obitos[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.full.obitos[state.json.today])}</td>
           </tr>
           <tr>
-            <td><a href="#recuperados">${
-              state.category_labels.recuperados
-            }</a></td>
-            <td>${utils.addPrefix(
-              state.json.delta.recuperados[state.json.today]
-            )}</td>
-            <td>${utils.prettyNumber(
-              state.json.full.recuperados[state.json.today]
-            )}</td>
+            <td><a href="#recuperados">${state.category_labels.recuperados}</a></td>
+            <td>${utils.addPrefix(state.json.delta.recuperados[state.json.today])}</td>
+            <td>${utils.prettyNumber(state.json.full.recuperados[state.json.today])}</td>
           </tr>
           <tr>
             <td><a href="#vacinas">${state.category_labels.vacinas}</a></td>
             <td></td>
-            <td>${utils.prettyNumber(
-              state.vaccines.total[state.vaccines.total.length - 1][1]
-            )}</td>
+            <td>${utils.prettyNumber(state.vaccines.total[state.vaccines.total.length - 1][1])}</td>
           </tr>
         </tbody>
       </table>`
@@ -652,11 +607,8 @@ const tables = {
     for (const age of state.ages) {
       const full = state.json.full
       const index = state.last_with_age_data.index
-      const confir =
-        full[`confirmados_${age}_f`][index] +
-        full[`confirmados_${age}_m`][index]
-      const obitos =
-        full[`obitos_${age}_f`][index] + full[`obitos_${age}_m`][index]
+      const confir = full[`confirmados_${age}_f`][index] + full[`confirmados_${age}_m`][index]
+      const obitos = full[`obitos_${age}_f`][index] + full[`obitos_${age}_m`][index]
       const cfrate = ((100 * obitos) / confir).toFixed(2) + '%'
       total_confir += confir
       total_obitos += obitos
@@ -706,20 +658,16 @@ const charts = {
       title: { text: 'Confirmados por dia' },
       yAxis: { min: 0, title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
       series: Object.keys(state.regions).map((region) => {
         return {
           name: region,
-          data: Object.keys(state.json.delta[`confirmados_${region}`]).map(
-            (d) => {
-              return state.json.delta[`confirmados_${region}`][d]
-            }
-          ),
+          data: Object.keys(state.json.delta[`confirmados_${region}`]).map((d) => {
+            return state.json.delta[`confirmados_${region}`][d]
+          }),
         }
       }),
       credits: { text: 'Dados DGS' },
@@ -732,23 +680,17 @@ const charts = {
       title: { text: 'Confirmados por dia % população' },
       yAxis: { min: 0, title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
       series: Object.keys(state.regions).map((region) => {
         return {
           name: region,
-          data: Object.keys(state.json.delta[`confirmados_${region}`]).map(
-            (d) => {
-              const p =
-                state.json.delta[`confirmados_${region}`][d] /
-                state.regions[region].population
-              return parseFloat((100 * p).toFixed(2))
-            }
-          ),
+          data: Object.keys(state.json.delta[`confirmados_${region}`]).map((d) => {
+            const p = state.json.delta[`confirmados_${region}`][d] / state.regions[region].population
+            return parseFloat((100 * p).toFixed(2))
+          }),
         }
       }),
       credits: { text: 'Dados DGS' },
@@ -756,17 +698,13 @@ const charts = {
   },
   confirmados_dia: (outer) => {
     utils.createGraphContainer('confirmados_dia', outer)
-    const data = Object.keys(state.json.full.data).map(
-      (k) => state.json.delta.confirmados[k]
-    )
+    const data = Object.keys(state.json.full.data).map((k) => state.json.delta.confirmados[k])
     Highcharts.chart('confirmados_dia', {
       chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -790,18 +728,14 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
       series: [
         {
           name: 'Confirmados',
-          data: Object.keys(state.json.full.data).map(
-            (k) => state.json.full.confirmados[k]
-          ),
+          data: Object.keys(state.json.full.data).map((k) => state.json.full.confirmados[k]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -844,21 +778,11 @@ const charts = {
       series: [
         {
           name: 'Confirmados femininos',
-          data: state.ages.map(
-            (age) =>
-              -state.json.delta[`confirmados_${age}_f`][
-                state.last_with_age_data.index
-              ]
-          ),
+          data: state.ages.map((age) => -state.json.delta[`confirmados_${age}_f`][state.last_with_age_data.index]),
         },
         {
           name: 'Confirmados masculinos',
-          data: state.ages.map(
-            (age) =>
-              state.json.delta[`confirmados_${age}_m`][
-                state.last_with_age_data.index
-              ]
-          ),
+          data: state.ages.map((age) => state.json.delta[`confirmados_${age}_m`][state.last_with_age_data.index]),
         },
       ],
       credits: { text: state.last_with_age_data.label },
@@ -896,21 +820,11 @@ const charts = {
       series: [
         {
           name: 'Confirmados femininos',
-          data: state.ages.map(
-            (age) =>
-              -state.json.full[`confirmados_${age}_f`][
-                state.last_with_age_data.index
-              ]
-          ),
+          data: state.ages.map((age) => -state.json.full[`confirmados_${age}_f`][state.last_with_age_data.index]),
         },
         {
           name: 'Confirmados masculinos',
-          data: state.ages.map(
-            (age) =>
-              state.json.full[`confirmados_${age}_m`][
-                state.last_with_age_data.index
-              ]
-          ),
+          data: state.ages.map((age) => state.json.full[`confirmados_${age}_m`][state.last_with_age_data.index]),
         },
       ],
       credits: { text: state.last_with_age_data.label },
@@ -922,15 +836,13 @@ const charts = {
     const data = state.ages.map((age) => {
       return {
         name: age,
-        data: Object.keys(state.json.full[`confirmados_${age}`]).map(
-          (key, index) => {
-            // for some reason, 25 April 2021 doesn't have data
-            let value = state.json.full[`confirmados_${age}`][key]
-            if (index > 100 && value === 0) value = last_value
-            last_value = value
-            return value
-          }
-        ),
+        data: Object.keys(state.json.full[`confirmados_${age}`]).map((key, index) => {
+          // for some reason, 25 April 2021 doesn't have data
+          let value = state.json.full[`confirmados_${age}`][key]
+          if (index > 100 && value === 0) value = last_value
+          last_value = value
+          return value
+        }),
       }
     })
     Highcharts.chart('confirmados_grupo_etario', {
@@ -938,9 +850,7 @@ const charts = {
       title: { text: 'Confirmados idade' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -954,17 +864,15 @@ const charts = {
     const data = state.ages.map((age) => {
       return {
         name: age,
-        data: Object.keys(state.json.full[`confirmados_${age}`]).map(
-          (key, index) => {
-            // for some reason, 25 April 2021 doesn't have data
-            let value = state.json.full[`confirmados_${age}`][key]
-            const population = state.population_by_age[age]
-            if (index > 100 && value === 0) value = last_value
-            last_value = value
-            const p = (value * 100) / population
-            return parseFloat(p.toFixed(2))
-          }
-        ),
+        data: Object.keys(state.json.full[`confirmados_${age}`]).map((key, index) => {
+          // for some reason, 25 April 2021 doesn't have data
+          let value = state.json.full[`confirmados_${age}`][key]
+          const population = state.population_by_age[age]
+          if (index > 100 && value === 0) value = last_value
+          last_value = value
+          const p = (value * 100) / population
+          return parseFloat(p.toFixed(2))
+        }),
       }
     })
     Highcharts.chart('confirmados_grupo_etario_percentagem', {
@@ -975,9 +883,7 @@ const charts = {
         title: { text: null },
       },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -996,9 +902,7 @@ const charts = {
       series: [
         {
           name: 'Confirmados',
-          data: Object.keys(state.regions).map(
-            (r) => state.json.delta[`confirmados_${r}`][state.json.today]
-          ),
+          data: Object.keys(state.regions).map((r) => state.json.delta[`confirmados_${r}`][state.json.today]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1015,9 +919,7 @@ const charts = {
       series: [
         {
           name: 'Confirmados',
-          data: Object.keys(state.regions).map(
-            (r) => state.json.last[`confirmados_${r}`]
-          ),
+          data: Object.keys(state.regions).map((r) => state.json.last[`confirmados_${r}`]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1035,8 +937,7 @@ const charts = {
         {
           name: 'Confirmados % população',
           data: Object.keys(state.regions).map((r) => {
-            const confirmed =
-              state.json.delta[`confirmados_${r}`][state.json.today]
+            const confirmed = state.json.delta[`confirmados_${r}`][state.json.today]
             const population = state.regions[r].population
             return Math.round(((confirmed * 100) / population) * 10000) / 10000
           }),
@@ -1072,9 +973,7 @@ const charts = {
       chart: { type: 'area', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Evolução confirmados' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((key) =>
-          utils.compactDate(state.json.full.data[key])
-        ),
+        categories: Object.keys(state.json.full.data).map((key) => utils.compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -1094,9 +993,7 @@ const charts = {
       series: Object.keys(state.regions).map((r) => {
         return {
           name: r,
-          data: Object.keys(state.json.full.data).map(
-            (key) => state.json.full[`confirmados_${r}`][key]
-          ),
+          data: Object.keys(state.json.full.data).map((key) => state.json.full[`confirmados_${r}`][key]),
         }
       }),
       credits: { text: 'Dados DGS' },
@@ -1108,9 +1005,7 @@ const charts = {
       chart: { type: 'area', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Evolução confirmados' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((key) =>
-          utils.compactDate(state.json.full.data[key])
-        ),
+        categories: Object.keys(state.json.full.data).map((key) => utils.compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -1133,9 +1028,7 @@ const charts = {
       series: Object.keys(state.regions).map((r) => {
         return {
           name: r,
-          data: Object.keys(state.json.full.data).map(
-            (key) => state.json.full[`confirmados_${r}`][key]
-          ),
+          data: Object.keys(state.json.full.data).map((key) => state.json.full[`confirmados_${r}`][key]),
         }
       }),
       credits: { text: 'Dados DGS' },
@@ -1143,17 +1036,13 @@ const charts = {
   },
   obitos_dia: (outer) => {
     utils.createGraphContainer('obitos_dia', outer)
-    const data = Object.keys(state.json.full.data).map(
-      (k) => state.json.delta.obitos[k]
-    )
+    const data = Object.keys(state.json.full.data).map((k) => state.json.delta.obitos[k])
     Highcharts.chart('obitos_dia', {
       chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -1177,18 +1066,14 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
       series: [
         {
           name: 'Óbitos',
-          data: Object.keys(state.json.full.data).map(
-            (k) => state.json.full.obitos[k]
-          ),
+          data: Object.keys(state.json.full.data).map((k) => state.json.full.obitos[k]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1226,21 +1111,11 @@ const charts = {
       series: [
         {
           name: 'Óbitos femininos',
-          data: state.ages.map(
-            (age) =>
-              -state.json.delta[`obitos_${age}_f`][
-                state.last_with_age_data.index
-              ]
-          ),
+          data: state.ages.map((age) => -state.json.delta[`obitos_${age}_f`][state.last_with_age_data.index]),
         },
         {
           name: 'Óbitos masculinos',
-          data: state.ages.map(
-            (age) =>
-              state.json.delta[`obitos_${age}_m`][
-                state.last_with_age_data.index
-              ]
-          ),
+          data: state.ages.map((age) => state.json.delta[`obitos_${age}_m`][state.last_with_age_data.index]),
         },
       ],
       credits: { text: state.last_with_age_data.label },
@@ -1278,19 +1153,11 @@ const charts = {
       series: [
         {
           name: 'Óbitos femininos',
-          data: state.ages.map(
-            (age) =>
-              -state.json.full[`obitos_${age}_f`][
-                state.last_with_age_data.index
-              ]
-          ),
+          data: state.ages.map((age) => -state.json.full[`obitos_${age}_f`][state.last_with_age_data.index]),
         },
         {
           name: 'Óbitos masculinos',
-          data: state.ages.map(
-            (age) =>
-              state.json.full[`obitos_${age}_m`][state.last_with_age_data.index]
-          ),
+          data: state.ages.map((age) => state.json.full[`obitos_${age}_m`][state.last_with_age_data.index]),
         },
       ],
       credits: { text: state.last_with_age_data.label },
@@ -1302,14 +1169,12 @@ const charts = {
     const data = state.ages.map((age) => {
       return {
         name: age,
-        data: Object.keys(state.json.full[`obitos_${age}`]).map(
-          (key, index) => {
-            let value = state.json.full[`obitos_${age}`][key]
-            if (index > 100 && value == 0) value = last_value
-            last_value = value
-            return value
-          }
-        ),
+        data: Object.keys(state.json.full[`obitos_${age}`]).map((key, index) => {
+          let value = state.json.full[`obitos_${age}`][key]
+          if (index > 100 && value == 0) value = last_value
+          last_value = value
+          return value
+        }),
       }
     })
     Highcharts.chart('obitos_grupo_etario', {
@@ -1317,9 +1182,7 @@ const charts = {
       title: { text: 'Óbitos idade' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -1333,16 +1196,14 @@ const charts = {
     const data = state.ages.map((age) => {
       return {
         name: age,
-        data: Object.keys(state.json.full[`obitos_${age}`]).map(
-          (key, index) => {
-            let value = state.json.full[`obitos_${age}`][key]
-            const population = state.population_by_age[age]
-            if (index > 100 && value === 0) value = last_value
-            last_value = value
-            const p = (value * 100) / population
-            return parseFloat(p.toFixed(2))
-          }
-        ),
+        data: Object.keys(state.json.full[`obitos_${age}`]).map((key, index) => {
+          let value = state.json.full[`obitos_${age}`][key]
+          const population = state.population_by_age[age]
+          if (index > 100 && value === 0) value = last_value
+          last_value = value
+          const p = (value * 100) / population
+          return parseFloat(p.toFixed(2))
+        }),
       }
     })
     Highcharts.chart('obitos_grupo_etario_percentagem', {
@@ -1353,9 +1214,7 @@ const charts = {
         title: { text: null },
       },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -1373,9 +1232,7 @@ const charts = {
       series: [
         {
           name: 'Óbitos',
-          data: Object.keys(state.regions).map(
-            (r) => state.json.delta[`obitos_${r}`][state.json.today]
-          ),
+          data: Object.keys(state.regions).map((r) => state.json.delta[`obitos_${r}`][state.json.today]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1391,9 +1248,7 @@ const charts = {
       series: [
         {
           name: 'Óbitos',
-          data: Object.keys(state.regions).map(
-            (r) => state.json.full[`obitos_${r}`][state.json.today]
-          ),
+          data: Object.keys(state.regions).map((r) => state.json.full[`obitos_${r}`][state.json.today]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1445,9 +1300,7 @@ const charts = {
       chart: { type: 'area', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Evolução óbitos' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((key) =>
-          utils.compactDate(state.json.full.data[key])
-        ),
+        categories: Object.keys(state.json.full.data).map((key) => utils.compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -1467,9 +1320,7 @@ const charts = {
       series: Object.keys(state.regions).map((r) => {
         return {
           name: r,
-          data: Object.keys(state.json.full.data).map(
-            (key) => state.json.full[`obitos_${r}`][key]
-          ),
+          data: Object.keys(state.json.full.data).map((key) => state.json.full[`obitos_${r}`][key]),
         }
       }),
       credits: { text: 'Dados DGS' },
@@ -1481,9 +1332,7 @@ const charts = {
       chart: { type: 'area', zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Evolução óbitos' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((key) =>
-          utils.compactDate(state.json.full.data[key])
-        ),
+        categories: Object.keys(state.json.full.data).map((key) => utils.compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -1506,9 +1355,7 @@ const charts = {
       series: Object.keys(state.regions).map((r) => {
         return {
           name: r,
-          data: Object.keys(state.json.full.data).map(
-            (key) => state.json.full[`obitos_${r}`][key]
-          ),
+          data: Object.keys(state.json.full.data).map((key) => state.json.full[`obitos_${r}`][key]),
         }
       }),
       credits: { text: 'Dados DGS' },
@@ -1521,9 +1368,7 @@ const charts = {
       title: { text: 'Óbitos por dia' },
       yAxis: { min: 0, title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -1545,9 +1390,7 @@ const charts = {
       title: { text: 'Óbitos por dia % população' },
       yAxis: { min: 0, title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 }, // show only every 30 days
       },
       legend: { enable: false },
@@ -1555,9 +1398,7 @@ const charts = {
         return {
           name: region,
           data: Object.keys(state.json.delta[`obitos_${region}`]).map((d) => {
-            const p =
-              state.json.delta[`obitos_${region}`][d] /
-              state.regions[region].population
+            const p = state.json.delta[`obitos_${region}`][d] / state.regions[region].population
             return parseFloat((100 * p).toFixed(4))
           }),
         }
@@ -1567,17 +1408,13 @@ const charts = {
   },
   recuperados_dia: (outer) => {
     utils.createGraphContainer('recuperados_dia', outer)
-    const data = Object.keys(state.json.full.data).map(
-      (k) => state.json.delta.recuperados[k]
-    )
+    const data = Object.keys(state.json.full.data).map((k) => state.json.delta.recuperados[k])
     Highcharts.chart('recuperados_dia', {
       chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -1601,18 +1438,14 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
       series: [
         {
           name: 'Recuperados',
-          data: Object.keys(state.json.full.data).map(
-            (k) => state.json.full.recuperados[k]
-          ),
+          data: Object.keys(state.json.full.data).map((k) => state.json.full.recuperados[k]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1620,17 +1453,13 @@ const charts = {
   },
   ativos_dia: (outer) => {
     utils.createGraphContainer('ativos_dia', outer)
-    const data = Object.keys(state.json.full.data).map(
-      (k) => state.json.delta.ativos[k]
-    )
+    const data = Object.keys(state.json.full.data).map((k) => state.json.delta.ativos[k])
     Highcharts.chart('ativos_dia', {
       chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Por dia' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -1654,18 +1483,14 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
       series: [
         {
           name: 'Activos',
-          data: Object.keys(state.json.full.data).map(
-            (k) => state.json.full.ativos[k]
-          ),
+          data: Object.keys(state.json.full.data).map((k) => state.json.full.ativos[k]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1700,9 +1525,7 @@ const charts = {
     utils.createGraphContainer('amostras_dia_perc_positivos', outer)
     const data = state.amostras.map((a, k) => {
       if (parseInt(a[2]) === 0) return 0
-      return parseFloat(
-        ((100 * state.json.delta.confirmados[k]) / parseInt(a[2])).toFixed(2)
-      )
+      return parseFloat(((100 * state.json.delta.confirmados[k]) / parseInt(a[2])).toFixed(2))
     })
     Highcharts.chart('amostras_dia_perc_positivos', {
       chart: { zoomType: 'x', resetZoomButton, panning },
@@ -1781,17 +1604,13 @@ const charts = {
   },
   internados_normal_dia: (outer) => {
     utils.createGraphContainer('internados_normal_dia', outer)
-    const data = Object.keys(state.json.full.data).map(
-      (k) => state.json.delta.internados[k]
-    )
+    const data = Object.keys(state.json.full.data).map((k) => state.json.delta.internados[k])
     Highcharts.chart('internados_normal_dia', {
       chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Variação diária' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -1810,17 +1629,13 @@ const charts = {
   },
   internados_uci_dia: (outer) => {
     utils.createGraphContainer('internados_uci_dia', outer)
-    const data = Object.keys(state.json.full.data).map(
-      (k) => state.json.delta.internados_uci[k]
-    )
+    const data = Object.keys(state.json.full.data).map((k) => state.json.delta.internados_uci[k])
     Highcharts.chart('internados_uci_dia', {
       chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Variação diária UCI' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -1844,18 +1659,14 @@ const charts = {
       title: { text: 'Total' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
       series: [
         {
           name: 'Internados',
-          data: Object.keys(state.json.full.data).map(
-            (k) => state.json.full.internados[k]
-          ),
+          data: Object.keys(state.json.full.data).map((k) => state.json.full.internados[k]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1868,18 +1679,14 @@ const charts = {
       title: { text: 'Total UCI' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
       series: [
         {
           name: 'Internados UCI',
-          data: Object.keys(state.json.full.data).map(
-            (k) => state.json.full.internados_uci[k]
-          ),
+          data: Object.keys(state.json.full.data).map((k) => state.json.full.internados_uci[k]),
         },
       ],
       credits: { text: 'Dados DGS' },
@@ -1903,9 +1710,7 @@ const charts = {
       series: [
         {
           name: 'Sintomas',
-          data: state.symptoms.map(
-            (s) => state.json.last[`sintomas_${s}`] * 100
-          ),
+          data: state.symptoms.map((s) => state.json.last[`sintomas_${s}`] * 100),
         },
       ],
       credits: { text: 'Dados DGS - deixou de informar a 16/08/2020' },
@@ -1917,9 +1722,7 @@ const charts = {
       chart: { type: 'area' },
       title: { text: 'Evolução' },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((key) =>
-          utils.compactDate(state.json.full.data[key])
-        ),
+        categories: Object.keys(state.json.full.data).map((key) => utils.compactDate(state.json.full.data[key])),
         tickmarkPlacement: 'on',
         title: { enabled: false },
         labels: { step: 30 },
@@ -1942,9 +1745,7 @@ const charts = {
       series: state.symptoms.map((s) => {
         return {
           name: s,
-          data: Object.keys(state.json.full.data).map(
-            (key) => state.json.full[`sintomas_${s}`][key]
-          ),
+          data: Object.keys(state.json.full.data).map((key) => state.json.full[`sintomas_${s}`][key]),
         }
       }),
       credits: { text: 'Dados DGS - deixou de informar a 16/08/2020' },
@@ -2055,9 +1856,7 @@ const charts = {
       series: [
         {
           name: 'Habitantes',
-          data: Object.keys(state.regions).map(
-            (r) => state.regions[r].population
-          ),
+          data: Object.keys(state.regions).map((r) => state.regions[r].population),
         },
       ],
       credits: { text: 'Dados SNS' },
@@ -2111,9 +1910,7 @@ const charts = {
             return {
               name: r,
               x: state.regions[r].density,
-              y:
-                (100 * state.json.last[`confirmados_${r}`]) /
-                state.regions[r].population,
+              y: (100 * state.json.last[`confirmados_${r}`]) / state.regions[r].population,
             }
           }),
         },
@@ -2121,9 +1918,9 @@ const charts = {
       credits: { text: 'Dados DGS + Pordata + SNS' },
       tooltip: {
         formatter: function () {
-          return `<b>${this.point.name}</b><br >
-                  <b>${this.x}</b> hab/km<sup>2</sup><br >
-                  <b>${this.y.toFixed(2)}%</b> da população`
+          return `<strong>${this.point.name}</strong><br >
+                  <strong>${this.x}</strong> hab/km<sup>2</sup><br >
+                  <strong>${this.y.toFixed(2)}%</strong> da população`
         },
       },
     })
@@ -2159,9 +1956,7 @@ const charts = {
             return {
               name: r,
               x: state.regions[r].density,
-              y:
-                (100 * state.json.last[`obitos_${r}`]) /
-                state.regions[r].population,
+              y: (100 * state.json.last[`obitos_${r}`]) / state.regions[r].population,
             }
           }),
         },
@@ -2169,9 +1964,9 @@ const charts = {
       credits: { text: 'Dados DGS + Pordata + SNS' },
       tooltip: {
         formatter: function () {
-          return `<b>${this.point.name}</b><br >
-                  <b>${this.x}</b> hab/km<sup>2</sup><br >
-                  <b>${this.y.toFixed(2)}%</b> da população`
+          return `<strong>${this.point.name}</strong><br >
+                  <strong>${this.x}</strong> hab/km<sup>2</sup><br >
+                  <strong>${this.y.toFixed(2)}%</strong> da população`
         },
       },
     })
@@ -2207,9 +2002,7 @@ const charts = {
         },
         {
           name: 'Ajustado à sazonalidade',
-          data: state.employment_adjusted.map((i) =>
-            i ? i.young + i.old : null
-          ),
+          data: state.employment_adjusted.map((i) => (i ? i.young + i.old : null)),
         },
       ],
       credits: { enabled: true, text: 'Dados INE' },
@@ -2229,9 +2022,7 @@ const charts = {
         },
         {
           name: 'Ajustado à sazonalidade',
-          data: state.employment_variation_adjusted.map((i) =>
-            i ? i.young + i.old : null
-          ),
+          data: state.employment_variation_adjusted.map((i) => (i ? i.young + i.old : null)),
         },
       ],
       credits: { enabled: true, text: 'Dados INE' },
@@ -2289,10 +2080,7 @@ const charts = {
         name: year,
         data: Object.keys(state.unemployment.data[year]).map((month) => {
           const regions = state.unemployment.regions()
-          return regions.reduce(
-            (acc, cur) => (acc += state.unemployment.data[year][month][cur]),
-            0
-          )
+          return regions.reduce((acc, cur) => (acc += state.unemployment.data[year][month][cur]), 0)
         }),
       })),
       credits: { text: 'Dados IEFP' },
@@ -2340,9 +2128,7 @@ const charts = {
       yAxis: { title: { text: null } },
       series: Object.keys(state.gdp).map((year) => ({
         name: year,
-        data: Object.keys(state.gdp[year]).map(
-          (quarter) => state.gdp[year][quarter]
-        ),
+        data: Object.keys(state.gdp[year]).map((quarter) => state.gdp[year][quarter]),
       })),
       credits: { text: 'Dados INE' },
     })
@@ -2431,9 +2217,7 @@ const charts = {
       },
       series: Object.keys(state.inflation).map((year) => ({
         name: year,
-        data: Object.keys(state.inflation[year]).map(
-          (month) => state.inflation[year][month]
-        ),
+        data: Object.keys(state.inflation[year]).map((month) => state.inflation[year][month]),
       })),
       credits: { text: 'Dados INE' },
     })
@@ -2448,9 +2232,7 @@ const charts = {
         title: { text: null },
       },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -2459,8 +2241,7 @@ const charts = {
           name: 'Percentagem internados / activos',
           data: Object.keys(state.json.full.data).map((k) => {
             if (k < 100) return null
-            const percentage =
-              (state.json.full.internados[k] / state.json.full.ativos[k]) * 100
+            const percentage = (state.json.full.internados[k] / state.json.full.ativos[k]) * 100
             return parseFloat(percentage.toFixed(2))
           }),
         },
@@ -2478,9 +2259,7 @@ const charts = {
         title: { text: null },
       },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -2489,8 +2268,7 @@ const charts = {
           name: 'Percentagem óbitos / activos',
           data: Object.keys(state.json.full.data).map((k) => {
             if (k < 100) return null
-            const percentage =
-              (state.json.delta.obitos[k] / state.json.full.ativos[k]) * 100
+            const percentage = (state.json.delta.obitos[k] / state.json.full.ativos[k]) * 100
             return parseFloat(percentage.toFixed(2))
           }),
         },
@@ -2500,17 +2278,13 @@ const charts = {
   },
   rt_nacional: (outer) => {
     utils.createGraphContainer('rt_nacional', outer)
-    const data = Object.keys(state.json.full.data).map(
-      (k) => state.json.full.rt_nacional[k]
-    )
+    const data = Object.keys(state.json.full.data).map((k) => state.json.full.rt_nacional[k])
     Highcharts.chart('rt_nacional', {
       chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Rt' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -2520,17 +2294,13 @@ const charts = {
   },
   incidencia_nacional: (outer) => {
     utils.createGraphContainer('incidencia_nacional', outer)
-    const data = Object.keys(state.json.full.data).map(
-      (k) => state.json.full.incidencia_nacional[k]
-    )
+    const data = Object.keys(state.json.full.data).map((k) => state.json.full.incidencia_nacional[k])
     Highcharts.chart('incidencia_nacional', {
       chart: { zoomType: 'x', resetZoomButton, panning },
       title: { text: 'Incidência' },
       yAxis: { title: { text: null } },
       xAxis: {
-        categories: Object.keys(state.json.full.data).map((k) =>
-          utils.compactDate(state.json.full.data[k])
-        ),
+        categories: Object.keys(state.json.full.data).map((k) => utils.compactDate(state.json.full.data[k])),
         labels: { step: 30 },
       },
       legend: { enable: false },
@@ -2561,8 +2331,7 @@ const utils = {
       const sjf = state.json.full
       sjf.testes[day] = null
       if (sjf.confirmados[day] && sjf.n_confirmados[day]) {
-        sjf.testes[day] =
-          sjf.confirmados[day] + sjf.n_confirmados[day] + sjf.lab[day]
+        sjf.testes[day] = sjf.confirmados[day] + sjf.n_confirmados[day] + sjf.lab[day]
       }
     }
     // calculate deltas for all days and indicators
@@ -2574,9 +2343,7 @@ const utils = {
           delta[category][day] = 0
           if (day !== '0' && state.json.full[category][day]) {
             const previous = `${parseInt(day) - 1}`
-            const diff =
-              state.json.full[category][day] -
-              state.json.full[category][previous]
+            const diff = state.json.full[category][day] - state.json.full[category][previous]
             delta[category][day] = state.json.full[category][day] > 0 ? diff : 0
           }
         }
@@ -2589,8 +2356,7 @@ const utils = {
         const id = `${kind}_${age}`
         state.json.full[id] = {}
         for (const day of Object.keys(state.json.full[`${id}_f`])) {
-          state.json.full[id][day] =
-            state.json.full[`${id}_f`][day] + state.json.full[`${id}_m`][day]
+          state.json.full[id][day] = state.json.full[`${id}_f`][day] + state.json.full[`${id}_m`][day]
         }
       }
     }
@@ -2631,19 +2397,17 @@ const utils = {
       }
     })
     // calculate employement monthly variation adjusted
-    state.employment_variation_adjusted = state.employment_variation.map(
-      (month, index) => {
-        if (index < 12) {
-          return null
-        } else {
-          adjustment = state.employment_adjustement[index]
-          return {
-            young: month.young - adjustment.young,
-            old: month.old - adjustment.old,
-          }
+    state.employment_variation_adjusted = state.employment_variation.map((month, index) => {
+      if (index < 12) {
+        return null
+      } else {
+        adjustment = state.employment_adjustement[index]
+        return {
+          young: month.young - adjustment.young,
+          old: month.old - adjustment.old,
         }
       }
-    )
+    })
     // calculate number of people vaccinated
     state.vaccines = {
       total: [],
@@ -2660,10 +2424,7 @@ const utils = {
       day4 = day[4] || day4
       state.vaccines.total.push([Date.parse(day0), parseInt(day1, 10)])
       if (day2 && day3) {
-        state.vaccines.onedose.push([
-          Date.parse(day0),
-          parseInt(day2 - day3, 10),
-        ])
+        state.vaccines.onedose.push([Date.parse(day0), parseInt(day2 - day3, 10)])
         state.vaccines.twodose.push([Date.parse(day0), parseInt(day3, 10)])
       }
       if (day4) {
@@ -2783,17 +2544,12 @@ const utils = {
   // scroll back to top of the page
   backToTop() {
     window.scrollTo(0, 0)
-    history.pushState(
-      '',
-      document.title,
-      window.location.pathname + window.location.search
-    )
+    history.pushState('', document.title, window.location.pathname + window.location.search)
   },
   // adds a new h2 and a new div, returns the div
   addLead(anchor) {
     const label = state.category_labels[anchor]
-    const btt =
-      '<a onclick="utils.backToTop()" class="btt"><i class="fa fa-level-up"></i></a>'
+    const btt = '<a onclick="utils.backToTop()" class="btt"><i class="fa fa-level-up"></i></a>'
     const h2 = document.createElement('h2')
     h2.id = anchor
     h2.classList.add('section_divider')
@@ -2808,8 +2564,7 @@ const utils = {
   },
   // add tip on how to zoom graphics
   addGraphicsTip: () => {
-    let html =
-      '<i class="fa fa-lightbulb-o" aria-hidden="true" aria-label="Email"></i> '
+    let html = '<i class="fa fa-lightbulb-o" aria-hidden="true" aria-label="Email"></i> '
     html +=
       document.ontouchstart === undefined
         ? 'Clica e arrasta nos gráficos para fazer zoom'
@@ -2843,10 +2598,7 @@ const utils = {
         addTo('loading', 'Feito<br >Mostrar tabela com os dados do dia... ')
         break
       case 1:
-        addTo(
-          'loading',
-          'Feito<br >A chamar o estagiário para desenhar os gráficos... '
-        )
+        addTo('loading', 'Feito<br >A chamar o estagiário para desenhar os gráficos... ')
         break
       case 0:
         document.getElementById('loading').remove()
@@ -2857,10 +2609,7 @@ const utils = {
   renderTOC() {
     state.toc.push({ anchor: 'Fontes', label: 'Fontes' })
     const html =
-      'Index: <br >' +
-      state.toc
-        .map((item) => `<a href="#${item.anchor}">${item.label}</a>`)
-        .join(' &middot; ')
+      'Index: <br >' + state.toc.map((item) => `<a href="#${item.anchor}">${item.label}</a>`).join(' &middot; ')
     document.getElementById('toc').innerHTML = html
   },
   // given an action, returns a api url
@@ -2876,9 +2625,7 @@ const utils = {
   // add a '+' on positive numbers
   addPrefix(number) {
     if (!number) return 0
-    return number > 0
-      ? `+${utils.prettyNumber(number)}`
-      : utils.prettyNumber(number)
+    return number > 0 ? `+${utils.prettyNumber(number)}` : utils.prettyNumber(number)
   },
   // compact and format date
   compactDate(date) {
