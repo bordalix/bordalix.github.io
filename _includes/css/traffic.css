@@ -14,8 +14,7 @@ div.cams {
 div.cams img {
   margin: 0;
   width: 100%;
-  background: no-repeat center/100%
-    url('/images/static/traffic/placeholder.png');
+  background: no-repeat center/100% url('/images/static/traffic/placeholder.png');
 }
 div#incidents {
   padding-bottom: 60px;
@@ -28,23 +27,23 @@ div#incidents div {
 }
 div#incidents div div {
   background-color: #ea9a27;
-  width: calc(100% - 3em);
+  width: calc(100% - 3rem);
   display: table;
   float: right;
-  height: 4em;
+  height: 4rem;
 }
 div#incidents div div:first-child {
   background-color: #9b681c;
   float: left;
-  width: 3em;
+  width: 3rem;
 }
 div#incidents div div p {
   display: table-cell;
   vertical-align: middle;
-  padding: 0 1em;
+  padding: 0 1rem;
 }
 div#incidents div div i {
-  padding: 1em 0;
+  padding: 1rem 0;
   color: white;
 }
 @media (max-width: 767px) {

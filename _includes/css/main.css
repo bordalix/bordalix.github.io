@@ -341,7 +341,7 @@ article.post h2 a {
 blockquote {
   background-color: var(--cream);
   border-left: 5px solid var(--grey);
-  padding: 1.25em 1.5em;
+  padding: 1.25rem 1.5rem;
   font-weight: 300;
   line-height: 24px;
   margin-bottom: 24px;
