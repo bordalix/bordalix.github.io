@@ -178,7 +178,7 @@ p.social {
 }
 
 p.social a {
-  color: var(--white);
+  color: var(--black);
   display: inline-block;
   height: 2rem;
   width: 2rem;
