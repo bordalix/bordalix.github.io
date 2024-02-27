@@ -19,14 +19,16 @@
     color: var(--my_white);
     padding: 0;
     font-size: 0.875rem;
-    font-weight: 700;
     line-height: 2;
     margin-bottom: 0;
   }
 
-  footer p span {
+  footer p a {
     cursor: pointer;
     color: var(--orange);
+  }
+  footer p a:hover {
+    text-decoration: none;
   }
 
   @media (max-width: 767px) {
@@ -41,10 +43,10 @@
     <div class="flexed">
       <p>2005-2024 João Bordalo</p>
       <p>
-        <span onclick="window.scrollTo(0, 0);">
+        <a onclick="window.scrollTo(0, 0);">
           back to top
           <i class="fa fa-level-up"></i>
-        </span>
+        </a>
       </p>
     </div>
   </div>
