@@ -17,42 +17,42 @@
 }
 
 .box.iscore {
-  background-color: rgba(136, 160, 168, var(--box-opacity));
+  background-color: rgba(94, 113, 120, var(--box-opacity));
 }
 .no-js .box.iscore {
   background-image: url('https://joaobordalo.com/images/static/portfolio/iscore.png');
 }
 
 .box.hatitude {
-  background-color: rgba(219, 211, 201, var(--box-opacity));
+  background-color: rgba(120, 108, 94, var(--box-opacity));
 }
 .no-js .box.hatitude {
   background-image: url('https://joaobordalo.com/images/static/portfolio/hatitude.png');
 }
 
 .box.cowork {
-  background-color: rgba(188, 180, 221, var(--box-opacity));
+  background-color: rgba(113, 109, 136, var(--box-opacity));
 }
 .no-js .box.cowork {
   background-image: url('https://joaobordalo.com/images/static/portfolio/cowork.png');
 }
 
 .box.ethereum-roulette {
-  background-color: rgba(180, 206, 179, var(--box-opacity));
+  background-color: rgba(100, 115, 100, var(--box-opacity));
 }
 .no-js .box.ethereum-roulette {
   background-image: url('https://joaobordalo.com/images/static/portfolio/ethereum-roulette.png');
 }
 
 .box.batalhadosbitaites {
-  background-color: rgba(255, 104, 132, var(--box-opacity));
+  background-color: rgba(173, 82, 98, var(--box-opacity));
 }
 .no-js .box.batalhadosbitaites {
   background-image: url('https://joaobordalo.com/images/static/portfolio/batalhadosbitaites.png');
 }
 
 .box.worldleague {
-  background-color: rgba(134, 197, 223, var(--box-opacity));
+  background-color: rgba(82, 115, 128, var(--box-opacity));
 }
 .no-js .box.worldleague {
   background-image: url('https://joaobordalo.com/images/static/portfolio/worldleague.png');
@@ -66,7 +66,7 @@
 }
 
 .box.appcoins {
-  background-color: rgba(255, 170, 72, var(--box-opacity));
+  background-color: rgba(148, 100, 46, var(--box-opacity));
 }
 .no-js .box.appcoins {
   background-image: url('https://joaobordalo.com/images/static/portfolio/appcoins.png');
