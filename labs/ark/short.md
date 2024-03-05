@@ -2,7 +2,7 @@
 title: Ark explainer
 layout: page
 description: Ark explainer
-category: pages
+category: labs
 date: 2023-10-24 03:27:04
 ---
 
