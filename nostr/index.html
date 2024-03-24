@@ -1,0 +1,99 @@
+---
+title: João Bordalo
+layout: main
+---
+
+<script src="https://bundle.run/buffer@6.0.3"></script>
+<script src="https://bundle.run/bech32@2.0.0"></script>
+<script src="https://nostr-utils.pages.dev/js/jquery-3.6.2.min.js"></script>
+<script src="https://nostr-utils.pages.dev/js/nostr-utils.js"></script>
+
+<style>
+  div.metainfo {
+    border-bottom: 1px silver solid;
+    border-top: 1px silver solid;
+    color: silver;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0;
+  }
+  div.metainfo p,
+  div.metainfo time {
+    font-size: 0.8rem;
+    padding: 0.2rem 0;
+    margin: 0;
+  }
+</style>
+
+<template id="post">
+  <section>
+    <div class="metainfo">
+      <time datetime="" class="timeago"></time>
+      <p></p>
+    </div>
+    <p></p>
+  </section>
+</template>
+
+<section id="nostr" tabindex="0" style="margin-top: 0">
+  <div class="container" id="postsList">
+    <h1 class="heading">
+      <span>Nostr</span>
+    </h1>
+    <h2 class="lead">Last 7 days on Nostr</h2>
+    <p id="loading">Loading...</p>
+  </div>
+</section>
+
+<script>
+  const relays = [
+    'wss://relay.utxo.one',
+    'wss://relay.bitcoinpark.com',
+    'wss://relay.damus.io',
+    'wss://nos.lol',
+    'wss://relay.current.fyi',
+    'wss://relay.damus.io',
+    'wss://relay.nostr.bg',
+  ]
+  const pubkey = '62cef883863022a4f1d60d54857c9d729650702c9fe227b0988c0b6e36c4bcce'
+
+  const pretty = {
+    date: (unix) => {
+      return new Date(unix * 1000).toLocaleDateString('en-us', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
+    },
+    html: (content) => {
+      for (const match of content.match(/https:\/\/.*/g)) {
+        content = content.replace(match, `<a href="${match}">${match}</a>`)
+      }
+      return content.replace(/\n/g, '<br />')
+    },
+    link: (id) => `<a href="http://njump.me/${id}">link</a>`,
+  }
+
+  const container = document.querySelector('#postsList')
+  const template = document.querySelector('#post')
+
+  const addNote = (note) => {
+    const clone = template.content.cloneNode(true)
+    const p = clone.querySelectorAll('p')
+    const t = clone.querySelector('time')
+    t.innerHTML = pretty.date(note.created_at)
+    p[0].innerHTML = pretty.link(note.id)
+    p[1].innerHTML = pretty.html(note.content)
+    container.appendChild(clone)
+  }
+
+  // get events from relays
+  const aWeekAgo = Math.floor(Date.now() / 1000 - 7 * 24 * 60 * 60)
+  const filter = { authors: [pubkey], kinds: [1], since: aWeekAgo }
+  getEvents(filter).then((data) => {
+    document.querySelector('#loading').remove()
+    data.filter((n) => n.tags.length === 0).map(addNote)
+  })
+</script>
