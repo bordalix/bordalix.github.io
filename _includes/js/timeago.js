@@ -31,7 +31,7 @@ function getFormattedDate(date, prefomattedDate = false) {
     return `${prefomattedDate} at ${hours}:${minutes}`
   }
 
-  // 10. January 2017
+  // January 3, 2009
   return `${month} ${day}, ${year}`
 }
 
