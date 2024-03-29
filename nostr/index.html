@@ -24,7 +24,49 @@ layout: main
     padding: 0.2rem 0;
     margin: 0;
   }
+  section.user {
+    display: flex;
+    justify-content: space-between;
+    & img {
+      border-radius: 50%;
+      height: 8rem;
+      width: auto;
+    }
+    & > div {
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      & div:first-child p {
+        font-weight: 700;
+        padding-right: 1rem;
+        text-align: right;
+      }
+      & p {
+        margin-bottom: 0.21rem;
+      }
+    }
+  }
 </style>
+
+<template id="user">
+  <section class="user">
+    <p></p>
+    <div>
+      <div>
+        <p>name:</p>
+        <p>nip05:</p>
+        <p>lud16:</p>
+        <p>website:</p>
+      </div>
+      <div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+      </div>
+    </div>
+  </section>
+</template>
 
 <template id="post">
   <section>
@@ -56,7 +98,19 @@ layout: main
     'wss://relay.damus.io',
     'wss://relay.nostr.bg',
   ]
-  const pubkey = '62cef883863022a4f1d60d54857c9d729650702c9fe227b0988c0b6e36c4bcce'
+
+  let pubkey =
+    '62cef883863022a4f1d60d54857c9d729650702c9fe227b0988c0b6e36c4bcce'
+
+  if (!window.location.search) {
+    window.location.href = window.location.href + `?${pubkey}`
+  } else {
+    pubkey = window.location.search.substring(1)
+    if (/^npub/.test(pubkey)) {
+      pubkey = npub2hexa(pubkey)
+      window.location.search = `?${pubkey}`
+    }
+  }
 
   const pretty = {
     date: (unix) => {
@@ -76,24 +130,43 @@ layout: main
     link: (id) => `<a href="http://njump.me/${id}">link</a>`,
   }
 
-  const container = document.querySelector('#postsList')
-  const template = document.querySelector('#post')
-
-  const addNote = (note) => {
-    const clone = template.content.cloneNode(true)
+  // get user profile
+  getEvents({ authors: [pubkey], kinds: [0] }).then((events) => {
+    document.querySelector('#loading').remove()
+    const mostRecent = events.reduce((prev, curr) =>
+      curr.created_at > prev.created_at ? curr : prev
+    )
+    const user = JSON.parse(mostRecent.content)
+    const npub = hexa2npub(pubkey)
+    const clone = document.querySelector('#user').content.cloneNode(true)
     const p = clone.querySelectorAll('p')
-    const t = clone.querySelector('time')
-    t.innerHTML = pretty.date(note.created_at)
-    p[0].innerHTML = pretty.link(note.id)
-    p[1].innerHTML = pretty.html(note.content)
-    container.appendChild(clone)
-  }
+    p[0].innerHTML = `<img src="${user.picture}">`
+    p[5].innerHTML = `<a href="https://njump.me/${npub}">${user.name}</a>`
+    p[6].innerHTML = `<a href="https://njump.me/${user.nip05}">${user.nip05}</a>`
+    p[7].innerHTML = `${user.lud16} ⚡`
+    p[8].innerHTML = `<a href="https://njump.me/${user.website}">${user.website}</a>`
+    document.querySelector('#postsList').appendChild(clone)
+  })
 
   // get events from relays
   const aWeekAgo = Math.floor(Date.now() / 1000 - 7 * 24 * 60 * 60)
   const filter = { authors: [pubkey], kinds: [1], since: aWeekAgo }
   getEvents(filter).then((data) => {
-    document.querySelector('#loading').remove()
-    data.filter((n) => n.tags.length === 0).map(addNote)
+    if (data.length === 0) {
+      const p = document.createElement('p')
+      p.innerText = '<empty>'
+      document.querySelector('#postsList').appendChild(p)
+    }
+    data
+      .filter((n) => n.tags.length === 0) // no replies
+      .map((note) => {
+        const clone = document.querySelector('#post').content.cloneNode(true)
+        const p = clone.querySelectorAll('p')
+        const t = clone.querySelector('time')
+        t.innerHTML = pretty.date(note.created_at)
+        p[0].innerHTML = pretty.link(note.id)
+        p[1].innerHTML = pretty.html(note.content)
+        document.querySelector('#postsList').appendChild(clone)
+      })
   })
 </script>
