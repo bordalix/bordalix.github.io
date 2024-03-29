@@ -42,7 +42,19 @@ layout: main
         text-align: right;
       }
       & p {
+        font-size: 0.8rem;
         margin-bottom: 0.21rem;
+      }
+    }
+  }
+  @media (max-width: 440px) {
+    section.user {
+      flex-direction: column;
+      & > p {
+        text-align: center;
+      }
+      & > div {
+        justify-content: center;
       }
     }
   }
