@@ -97,7 +97,10 @@ layout: main
       <span>Nostr</span>
     </h1>
     <h2 class="lead">Last 7 days on Nostr</h2>
-    <p id="loading">Loading...</p>
+    <p id="loadingProfile">Loading profile...</p>
+    <div id="profileInfo"></div>
+    <p id="loadingNotes">Loading notes...</p>
+    <div id="notesList"></div>
   </div>
 </section>
 
@@ -145,7 +148,7 @@ layout: main
 
   // get user profile
   getEvents({ authors: [pubkey], kinds: [0] }).then((events) => {
-    document.querySelector('#loading').remove()
+    document.querySelector('#loadingProfile').remove()
     const mostRecent = events.reduce((prev, curr) =>
       curr.created_at > prev.created_at ? curr : prev
     )
@@ -158,20 +161,22 @@ layout: main
     p[6].innerHTML = `<a href="https://njump.me/${user.nip05}">${user.nip05}</a>`
     p[7].innerHTML = `${user.lud16} ⚡`
     p[8].innerHTML = `<a href="https://njump.me/${user.website}">${user.website}</a>`
-    document.querySelector('#postsList').appendChild(clone)
+    document.querySelector('#profileInfo').appendChild(clone)
   })
 
   // get events from relays
   const aWeekAgo = Math.floor(Date.now() / 1000 - 7 * 24 * 60 * 60)
   const filter = { authors: [pubkey], kinds: [1], since: aWeekAgo }
   getEvents(filter).then((data) => {
+    document.querySelector('#loadingNotes').remove()
     if (data.length === 0) {
       const p = document.createElement('p')
       p.innerText = '<empty>'
-      document.querySelector('#postsList').appendChild(p)
+      document.querySelector('#notesList').appendChild(p)
     }
     data
       .filter((n) => n.tags.length === 0) // no replies
+      .sort((a, b) => b.created_at - a.created_at)
       .map((note) => {
         const clone = document.querySelector('#post').content.cloneNode(true)
         const p = clone.querySelectorAll('p')
@@ -179,7 +184,7 @@ layout: main
         t.innerHTML = pretty.date(note.created_at)
         p[0].innerHTML = pretty.link(note.id)
         p[1].innerHTML = pretty.html(note.content)
-        document.querySelector('#postsList').appendChild(clone)
+        document.querySelector('#notesList').appendChild(clone)
       })
   })
 </script>
