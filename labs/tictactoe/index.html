@@ -1,0 +1,128 @@
+---
+title: Tic Tac Toe
+layout: main
+description: Play Tic Tac Toe
+---
+
+<style>
+  .board {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+    width: 16rem;
+    & p {
+      border: 1px solid orange;
+      margin: 0;
+      padding: 2rem 2.5rem;
+    }
+  }
+</style>
+
+<div class="container" id="tictactoe">
+  <h1>Play Tic Tac Toe</h1>
+  <noscript>Needs javascript to run.</noscript>
+  <div id="boardContainer"></div>
+  <button onclick="resetBoard()">Reset</button>
+</div>
+
+<template id="boardTemplate">
+  <div class="board">
+    <p id="c00" onclick="handleClick(this)">&nbsp;</p>
+    <p id="c01" onclick="handleClick(this)">&nbsp;</p>
+    <p id="c02" onclick="handleClick(this)">&nbsp;</p>
+    <p id="c10" onclick="handleClick(this)">&nbsp;</p>
+    <p id="c11" onclick="handleClick(this)">&nbsp;</p>
+    <p id="c12" onclick="handleClick(this)">&nbsp;</p>
+    <p id="c20" onclick="handleClick(this)">&nbsp;</p>
+    <p id="c21" onclick="handleClick(this)">&nbsp;</p>
+    <p id="c22" onclick="handleClick(this)">&nbsp;</p>
+  </div>
+</template>
+
+<script>
+  let turn = 0
+  const symbols = ['x', 'o']
+  const getSymbol = () => symbols[turn % 2]
+
+  const emptyBoard = [
+    [undefined, undefined, undefined],
+    [undefined, undefined, undefined],
+    [undefined, undefined, undefined],
+  ]
+
+  let actualBoard = structuredClone(emptyBoard)
+
+  const resetBoard = () => {
+    console.log('reset board', emptyBoard)
+    actualBoard = structuredClone(emptyBoard)
+    updateBoard()
+  }
+
+  const getBoardContainer = () => {
+    const container = document.querySelector('#boardContainer')
+    container.innerHTML = ''
+    return container
+  }
+
+  const updateBoard = () => {
+    const container = getBoardContainer()
+    const clone = boardTemplate.content.cloneNode(true)
+    for (let row = 0; row < 3; row++) {
+      for (let col = 0; col < 3; col++) {
+        const val = actualBoard[row][col]
+        if (val) console.log(val, row, col)
+        if (val) clone.querySelector(`#c${row}${col}`).innerText = val
+      }
+    }
+    container.append(clone)
+  }
+
+  const victory = () => {
+    console.log('board', actualBoard)
+    // rows
+    for (let row = 0; row < 3; row++) {
+      if (
+        actualBoard[row][0] &&
+        actualBoard[row][0] === actualBoard[row][1] &&
+        actualBoard[row][0] === actualBoard[row][2]
+      )
+        return true
+    }
+    // cols
+    for (let col = 0; col < 3; col++) {
+      if (
+        actualBoard[0][col] &&
+        actualBoard[0][col] === actualBoard[1][col] &&
+        actualBoard[0][col] === actualBoard[2][col]
+      )
+        return true
+    }
+    // diagonals
+    if (
+      actualBoard[0][0] && 
+      actualBoard[0][0] === actualBoard[1][1] &&
+      actualBoard[0][0] === actualBoard[2][2]
+    )
+      return true
+    if (
+      actualBoard[0][2] &&
+      actualBoard[0][2] === actualBoard[1][1] &&
+      actualBoard[0][2] === actualBoard[2][0]
+    )
+      return true
+    return false
+  }
+
+  const handleClick = ({ id }) => {
+    const [row, col] = id.replace('c', '').split('')
+    actualBoard[row][col] = getSymbol()
+    updateBoard()
+    if (victory()) console.log('victory')
+    else turn++
+  }
+
+  window.onload = () => {
+    updateBoard()
+  }
+</script>
