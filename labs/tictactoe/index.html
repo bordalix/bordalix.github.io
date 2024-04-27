@@ -58,8 +58,10 @@ description: Play Tic Tac Toe
   const incrementTurn = () => turn++
 
   const resetBoard = () => {
+    turn = 0
     gameEnded = false
     actualBoard = structuredClone(emptyBoard)
+    document.querySelector('#announcement').innerHTML = '&nbsp;'
     updateBoard()
   }
 
@@ -75,16 +77,46 @@ description: Play Tic Tac Toe
     for (let row = 0; row < 3; row++) {
       for (let col = 0; col < 3; col++) {
         const val = actualBoard[row][col]
-        if (val) console.log(val, row, col)
         if (val) clone.querySelector(`#c${row}${col}`).innerText = val
       }
     }
     container.append(clone)
   }
 
-  const updateSquare = (id) => {
+  const updateSquare = (id, symbol) => {
     const [row, col] = id.replace('c', '').split('')
-    actualBoard[row][col] = currentSymbol()
+    actualBoard[row][col] = symbol
+  }
+
+  const tooManySymbols = () => {
+    const count = actualBoard.reduce(
+      (prev, row) =>
+        prev +
+        row.reduce((p, c) => {
+          return c === currentSymbol() ? p + 1 : p
+        }, 0),
+      0
+    )
+    return count > 3
+  }
+
+  const getRandomEmoji = () => {
+    const emojis = ['🎉', '🥳', '🎊', '🍾', '🕺', '💃']
+    const randomIndex = Math.floor(Math.random() * emojis.length)
+    return emojis[randomIndex]
+  }
+
+  const getRandomSquare = (id) => {
+    const squares = []
+    for (let row = 0; row < 3; row++) {
+      for (let col = 0; col < 3; col++) {
+        const cellId = `c${row}${col}`
+        if (actualBoard[row][col] === currentSymbol() && id !== cellId)
+          squares.push(cellId)
+      }
+    }
+    const randomIndex = Math.floor(Math.random() * squares.length)
+    return squares[randomIndex]
   }
 
   const threeInARow = () => {
@@ -108,7 +140,7 @@ description: Play Tic Tac Toe
     }
     // diagonal \
     if (
-      actualBoard[0][0] && 
+      actualBoard[0][0] &&
       actualBoard[0][0] === actualBoard[1][1] &&
       actualBoard[0][0] === actualBoard[2][2]
     )
@@ -124,15 +156,23 @@ description: Play Tic Tac Toe
 
   const declareVictory = () => {
     gameEnded = true
-    document.querySelector('#announcement').innerText = `${threeInARow()} as won`
+    document.querySelector(
+      '#announcement'
+    ).innerText = `${getRandomEmoji()} ${threeInARow().toUpperCase()} as won`
   }
 
   const handleClick = ({ id }) => {
     if (gameEnded) return
-    updateSquare(id)
+    updateSquare(id, currentSymbol())
     updateBoard()
-    if (threeInARow()) declareVictory()
-    else incrementTurn()
+    if (threeInARow()) return declareVictory()
+    if (tooManySymbols()) {
+      const randomSquareId = getRandomSquare(id)
+      console.log('randomSquareId', randomSquareId)
+      updateSquare(randomSquareId, undefined)
+      updateBoard()
+    }
+    incrementTurn()
   }
 
   window.onload = () => {
