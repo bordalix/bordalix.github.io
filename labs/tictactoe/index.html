@@ -5,16 +5,37 @@ description: Play Tic Tac Toe
 ---
 
 <style>
+  html {
+    --square-size: 4rem;
+    --gap-width: 0.5rem;
+  }
+  #boardContainer {
+    --board-width: calc(calc(3 * var(--square-size)) + calc(2 * var(--gap-width)));
+    width: var(--board-width);
+    & p {
+      text-align: center;
+    }
+  }
+  #announcement {
+    font-size: 1.2rem;
+    margin: 1rem 0 0.4rem;
+  }
   .board {
     display: grid;
-    gap: 0.5rem;
+    gap: var(--gap-width);
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 1rem;
-    width: 16rem;
     & p {
-      border: 1px solid orange;
+      background-color: var(--cream);
+      border: 1px solid var(--orange);
+      font-size: 3rem;
+      height: var(--square-size);
+      line-height: 1;
       margin: 0;
-      padding: 2rem 2.5rem;
+      width: var(--square-size);
+    }
+    & p.winner {
+      background-color: var(--lime);
     }
   }
 </style>
@@ -23,12 +44,11 @@ description: Play Tic Tac Toe
   <h2>Play Tic Tac Toe</h2>
   <h3 class="lead" style="margin-bottom: 2rem">There can be only 3</h3>
   <noscript>Needs javascript to run.</noscript>
-  <p id="announcement" style="margin: 1rem 0 0.4rem 0">&nbsp;</p>
   <div id="boardContainer"></div>
-  <button onclick="resetBoard()">Reset</button>
 </div>
 
 <template id="boardTemplate">
+  <p id="announcement">&nbsp;</p>
   <div class="board">
     <p id="c00" onclick="handleClick(this)">&nbsp;</p>
     <p id="c01" onclick="handleClick(this)">&nbsp;</p>
@@ -40,6 +60,9 @@ description: Play Tic Tac Toe
     <p id="c21" onclick="handleClick(this)">&nbsp;</p>
     <p id="c22" onclick="handleClick(this)">&nbsp;</p>
   </div>
+  <p>
+    <button class="btn" onclick="resetBoard()">Reset board</button>
+  </p>
 </template>
 
 <script>
@@ -62,7 +85,6 @@ description: Play Tic Tac Toe
     turn = 0
     gameEnded = false
     actualBoard = structuredClone(emptyBoard)
-    document.querySelector('#announcement').innerHTML = '&nbsp;'
     updateBoard()
   }
 
@@ -120,6 +142,12 @@ description: Play Tic Tac Toe
     return squares[randomIndex]
   }
 
+  const markWinner = (squares) => {
+    squares.forEach((x) =>
+      document.querySelector(`#c${x.join('')}`).classList.add('winner')
+    )
+  }
+
   const threeInARow = () => {
     // rows
     for (let row = 0; row < 3; row++) {
@@ -127,8 +155,10 @@ description: Play Tic Tac Toe
         actualBoard[row][0] &&
         actualBoard[row][0] === actualBoard[row][1] &&
         actualBoard[row][0] === actualBoard[row][2]
-      )
+      ) {
+        markWinner([[row, 0], [row, 1], [row, 2]])
         return actualBoard[row][0]
+      }
     }
     // cols
     for (let col = 0; col < 3; col++) {
@@ -136,30 +166,36 @@ description: Play Tic Tac Toe
         actualBoard[0][col] &&
         actualBoard[0][col] === actualBoard[1][col] &&
         actualBoard[0][col] === actualBoard[2][col]
-      )
+      ) {
+        markWinner([[0, col], [1, col], [2, col]])
         return actualBoard[0][col]
+      }
     }
     // diagonal \
     if (
       actualBoard[0][0] &&
       actualBoard[0][0] === actualBoard[1][1] &&
       actualBoard[0][0] === actualBoard[2][2]
-    )
+    ) {
+      markWinner([[0, 0], [1, 1], [2, 2]])
       return actualBoard[0][0]
+    }
     // diagonal /
     if (
       actualBoard[0][2] &&
       actualBoard[0][2] === actualBoard[1][1] &&
       actualBoard[0][2] === actualBoard[2][0]
-    )
+    ){
+      markWinner([[0, 2], [1, 1], [2, 0]])
       return actualBoard[0][2]
+    }
   }
 
   const declareVictory = () => {
     gameEnded = true
     document.querySelector(
       '#announcement'
-    ).innerText = `${getRandomEmoji()} ${threeInARow().toUpperCase()} as won`
+    ).innerText = `${getRandomEmoji()} ${threeInARow().toUpperCase()} as won ${getRandomEmoji()}`
   }
 
   const handleClick = ({ id }) => {
