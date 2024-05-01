@@ -25,16 +25,20 @@ description: Play Tic Tac Toe
     gap: var(--gap-width);
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 1rem;
-    & p {
+    & div {
       background-color: var(--cream);
       border: 1px solid var(--orange);
-      font-size: 3rem;
       height: var(--square-size);
-      line-height: 1;
       margin: 0;
       width: var(--square-size);
+      & p {
+        cursor: pointer;
+        font-size: 3rem;
+        line-height: 1;
+        margin: 0;
+      }
     }
-    & p.winner {
+    & div.winner {
       background-color: var(--lime);
     }
   }
@@ -50,15 +54,51 @@ description: Play Tic Tac Toe
 <template id="boardTemplate">
   <p id="announcement">&nbsp;</p>
   <div class="board">
-    <p id="c00" onclick="handleClick(this)">&nbsp;</p>
-    <p id="c01" onclick="handleClick(this)">&nbsp;</p>
-    <p id="c02" onclick="handleClick(this)">&nbsp;</p>
-    <p id="c10" onclick="handleClick(this)">&nbsp;</p>
-    <p id="c11" onclick="handleClick(this)">&nbsp;</p>
-    <p id="c12" onclick="handleClick(this)">&nbsp;</p>
-    <p id="c20" onclick="handleClick(this)">&nbsp;</p>
-    <p id="c21" onclick="handleClick(this)">&nbsp;</p>
-    <p id="c22" onclick="handleClick(this)">&nbsp;</p>
+    <div
+      id="c00"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
+    <div
+      id="c01"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
+    <div
+      id="c02"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
+    <div
+      id="c10"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
+    <div
+      id="c11"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
+    <div
+      id="c12"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
+    <div
+      id="c20"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
+    <div
+      id="c21"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
+    <div
+      id="c22"
+      onclick="handleClick(this)"
+      ondragover="onDragOver(event)"
+      ondrop="onDrop(event)"></div>
   </div>
   <p>
     <button class="btn" onclick="resetBoard()">Reset board</button>
@@ -100,15 +140,46 @@ description: Play Tic Tac Toe
     for (let row = 0; row < 3; row++) {
       for (let col = 0; col < 3; col++) {
         const val = actualBoard[row][col]
-        if (val) clone.querySelector(`#c${row}${col}`).innerText = val
+        if (val)
+          clone.querySelector(
+            `#c${row}${col}`
+          ).innerHTML = `<p id="p${row}${col}" draggable="true" ondragstart="onDragStart(event)">${val}</p>`
       }
     }
     container.append(clone)
   }
 
-  const updateSquare = (id, symbol) => {
-    const [row, col] = id.replace('c', '').split('')
+  const handleChange = () => {
+    updateBoard()
+    if (threeInARow()) {
+      declareVictory()
+      document.querySelectorAll('p').forEach(p => p.draggable = false)
+    }
+    incrementTurn()
+  }
+
+  const updateSquare = (id, symbol = undefined) => {
+    const [row, col] = id.replace('c', '').replace('p', '').split('')
     actualBoard[row][col] = symbol
+  }
+
+  const onDragStart = (event) => {
+    event.dataTransfer.setData('text/plain', event.target.id)
+  }
+
+  const onDragOver = (event) => {
+    event.preventDefault()
+  }
+
+  const onDrop = (event) => {
+    const id = event.dataTransfer.getData('text')
+    const draggableElement = document.getElementById(id)
+    const dropzone = event.target
+    dropzone.appendChild(draggableElement)
+    event.dataTransfer.clearData();
+    updateSquare(id, undefined)
+    updateSquare(event.target.id, currentSymbol())
+    handleChange()
   }
 
   const tooManySymbols = () => {
@@ -120,7 +191,7 @@ description: Play Tic Tac Toe
         }, 0),
       0
     )
-    return count > 3
+    return count > 2
   }
 
   const getRandomEmoji = () => {
@@ -129,20 +200,8 @@ description: Play Tic Tac Toe
     return emojis[randomIndex]
   }
 
-  const getRandomSquare = (id) => {
-    const squares = []
-    for (let row = 0; row < 3; row++) {
-      for (let col = 0; col < 3; col++) {
-        const cellId = `c${row}${col}`
-        if (actualBoard[row][col] === currentSymbol() && id !== cellId)
-          squares.push(cellId)
-      }
-    }
-    const randomIndex = Math.floor(Math.random() * squares.length)
-    return squares[randomIndex]
-  }
-
   const markWinner = (squares) => {
+    console.log('squares', squares)
     squares.forEach((x) =>
       document.querySelector(`#c${x.join('')}`).classList.add('winner')
     )
@@ -156,7 +215,11 @@ description: Play Tic Tac Toe
         actualBoard[row][0] === actualBoard[row][1] &&
         actualBoard[row][0] === actualBoard[row][2]
       ) {
-        markWinner([[row, 0], [row, 1], [row, 2]])
+        markWinner([
+          [row, 0],
+          [row, 1],
+          [row, 2],
+        ])
         return actualBoard[row][0]
       }
     }
@@ -167,7 +230,11 @@ description: Play Tic Tac Toe
         actualBoard[0][col] === actualBoard[1][col] &&
         actualBoard[0][col] === actualBoard[2][col]
       ) {
-        markWinner([[0, col], [1, col], [2, col]])
+        markWinner([
+          [0, col],
+          [1, col],
+          [2, col],
+        ])
         return actualBoard[0][col]
       }
     }
@@ -177,7 +244,11 @@ description: Play Tic Tac Toe
       actualBoard[0][0] === actualBoard[1][1] &&
       actualBoard[0][0] === actualBoard[2][2]
     ) {
-      markWinner([[0, 0], [1, 1], [2, 2]])
+      markWinner([
+        [0, 0],
+        [1, 1],
+        [2, 2],
+      ])
       return actualBoard[0][0]
     }
     // diagonal /
@@ -185,8 +256,12 @@ description: Play Tic Tac Toe
       actualBoard[0][2] &&
       actualBoard[0][2] === actualBoard[1][1] &&
       actualBoard[0][2] === actualBoard[2][0]
-    ){
-      markWinner([[0, 2], [1, 1], [2, 0]])
+    ) {
+      markWinner([
+        [0, 2],
+        [1, 1],
+        [2, 0],
+      ])
       return actualBoard[0][2]
     }
   }
@@ -198,18 +273,17 @@ description: Play Tic Tac Toe
     ).innerText = `${getRandomEmoji()} ${threeInARow().toUpperCase()} as won ${getRandomEmoji()}`
   }
 
+  const warnTooManySymbols = () => {
+    const w = document.querySelector('#announcement')
+    w.innerText = '⚠️ Drag one existing ⚠️'
+    setTimeout(() => (w.innerHTML = '&nbsp;'), 2_000)
+  }
+
   const handleClick = ({ id }) => {
     if (gameEnded) return
+    if (tooManySymbols()) return warnTooManySymbols()
     updateSquare(id, currentSymbol())
-    updateBoard()
-    if (threeInARow()) return declareVictory()
-    if (tooManySymbols()) {
-      const randomSquareId = getRandomSquare(id)
-      console.log('randomSquareId', randomSquareId)
-      updateSquare(randomSquareId, undefined)
-      updateBoard()
-    }
-    incrementTurn()
+    handleChange()
   }
 
   window.onload = () => {
