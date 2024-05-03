@@ -178,7 +178,7 @@ description: Play Tic Tac Toe
     const draggableElement = document.getElementById(id)
     const dropzone = event.target
     dropzone.appendChild(draggableElement)
-    event.dataTransfer.clearData();
+    event.dataTransfer.clearData(null);
     updateSquare(id, undefined)
     updateSquare(event.target.id, currentSymbol())
     handleChange()
@@ -203,7 +203,6 @@ description: Play Tic Tac Toe
   }
 
   const markWinner = (squares) => {
-    console.log('squares', squares)
     squares.forEach((x) =>
       document.querySelector(`#c${x.join('')}`).classList.add('winner')
     )
