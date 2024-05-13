@@ -1,0 +1,64 @@
+---
+title: Helm wallet
+layout: main
+category: portfolio
+description: The lightning wallet even your grandma can use
+og_image: https://joaobordalo.com/images/static/portfolio/hatitude_r.png
+portfolio:
+  previous:
+    name: Hatitude
+    link: hatitude.html
+  next:
+    name: iScore
+    link: iscore.html
+project:
+  description: The lightning wallet even your grandma can use
+  status: Active
+  client: Personal project
+  image: helm_r
+  link: https://helm-wallet.pages.dev
+  repo: https://github.com/bordalix/helm-wallet/
+techsheet:
+  devops: Cloudflare pages
+  datalayer: Bitcoin explorers
+  purpose: Self-custodial PWA Lightning wallet
+  framework: React + Typescript
+  design: Tailwind CSS
+---
+
+{% include html/portfolio/project.html %}
+
+<div class="fullstory">
+  <div class="container">
+    <h2>Full story</h2>
+    <p>I believe there's a huge gap between the ease of use of Wallet of Satoshi and the self-custody of Phoenix. To minimize this gap, I created a new web app, a wallet that has the self-custody of Phoenix and is easy to use as WoS.</p>
+
+    <p>Helm is a Liquid wallet that uses Boltz submarine swaps to disguise itself as a Lightning wallet that even your grandma can use.</p>
+
+    <p>But it has a cost.</p>
+
+    <p>All transactions must go on the Liquid chain and also Boltz must earn something for the service they provide, so there are fees to be paid:</p>
+
+    <ul>
+      <li>The minimum cost for sending a payment is around 200 sats;</li>
+      <li>The average cost for sending
+        <strong>or receiving</strong>
+        a payment is around 400 sats plus 0.1% of the amount;</li>
+      <li>Transactions between Helm wallets don’t pay Boltz fees but can take up to 1 minute to complete;</li>
+      <li>Amounts are limited between 1.000 and 25.000.000 sats.</li>
+    </ul>
+
+    <p>You can try it (testnet if you want) on
+      <a href="https://helm-wallet.pages.dev/">https://helm-wallet.pages.dev/</a>
+    </p>
+
+    <p>Code is available at
+      <a href="https://github.com/bordalix/helm-wallet">https://github.com/bordalix/helm-wallet</a>
+    </p>
+
+    <p>The web app is completely independent, no server required. You can clone it, build it and run it from your own computer. Everything runs on the browser.</p>
+
+    <p>Critics and suggestions are welcome.</p>
+    {% include html/portfolio/navigation.html %}
+  </div>
+</div>

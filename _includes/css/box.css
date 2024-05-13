@@ -101,7 +101,7 @@
 }
 
 .box.nostr-utils {
-  background-color: rgba(85, 85, 85, var(--box-opacity));
+  background-color: rgba(115, 107, 30, var(--box-opacity));
 }
 .no-js .box.nostr-utils {
   background-image: url('https://joaobordalo.com/images/static/portfolio/nostr-utils.png');
@@ -126,6 +126,13 @@
 }
 .no-js .box.tdex {
   background-image: url('https://joaobordalo.com/images/static/portfolio/tdex.png');
+}
+
+.box.helm {
+  background-color: rgba(85, 85, 85, var(--box-opacity));
+}
+.no-js .box.helm {
+  background-image: url('https://joaobordalo.com/images/static/portfolio/helm.png');
 }
 
 .box_text {

@@ -75,6 +75,8 @@ portfolio:
     name: 'Fuji Money'
   - blob: hatitude
     name: 'Hatitude'
+  - blob: helm
+    name: 'Helm wallet'
   - blob: iscore
     name: 'iScore'
   - blob: nostr-utils
@@ -83,8 +85,6 @@ portfolio:
     name: 'TDEX'
   - blob: wheretosurftoday
     name: 'Where to surf today'
-  - blob: worldleague
-    name: 'World league'
 
 skills:
   - HTML:
