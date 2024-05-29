@@ -1,25 +1,29 @@
 :root {
   --my_black: rgb(10, 9, 8);
+  --my_black_comp: rgb(80, 79, 78);
   --my_white: rgb(245, 244, 243);
+  --my_white_comp: rgb(175, 174, 173);
 }
 
 body {
   --black: var(--my_black);
+  --black_light: var(--my_black_comp);
   --blue: rgb(59, 75, 89);
-  --blue-transparent: rgba(59, 75, 89, 0);
   --brown: rgb(191, 160, 122);
   --brown_light: rgb(242, 236, 228);
   --brown_dark: rgb(38, 32, 24);
   --cream: rgb(237, 235, 233);
-  --cream-transparent: rgba(237, 235, 233, 0);
+  --cream_transparent: rgba(237, 235, 233, 0);
   --cyan: rgb(82, 105, 124);
   --egg: rgb(211, 206, 201);
   --green: rgb(115, 107, 30);
   --grey: rgb(147, 136, 125);
+  --grey_dark: rgb(77, 76, 76);
   --lime: rgb(193, 179, 50);
   --orange: rgb(204, 99, 36);
   --red: rgb(175, 46, 27);
   --white: var(--my_white);
+  --white_dark: var(--my_white_comp);
 
   --border-radius: 8px;
   --box-opacity: 1;
@@ -27,18 +31,19 @@ body {
 
 /* for dark theme, we just invert the colors */
 body.dark-theme {
-  --black: rgb(245, 244, 243); /* white */
+  --black: var(--my_white); /* white */
+  --black_light: var(--my_white_comp); /* white_dark */
   --blue: rgb(237, 235, 233); /* cream */
-  --blue-transparent: rgba(237, 235, 233, 0);
   --brown_light: rgb(38, 32, 24);
   --brown_dark: rgb(242, 236, 228);
   --cream: rgb(59, 75, 89); /* blue */
-  --cream-transparent: rgba(59, 75, 89, 0);
+  --cream_transparent: rgba(59, 75, 89, 0);
   --cyan: rgb(211, 206, 201); /* egg */
   --egg: rgb(82, 105, 124); /* cyan */
   --green: rgb(193, 179, 50); /* lime */
   --lime: rgb(115, 107, 30); /* green */
-  --white: rgb(10, 9, 8, 26); /* black */
+  --white: var(--my_black); /* black */
+  --white_dark: var(--my_black_comp); /* black_light */
 }
 
 ::placeholder {
@@ -54,8 +59,9 @@ html {
 body {
   background-color: var(--white);
   color: var(--black);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
-    Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   letter-spacing: 0;
   line-height: 1.5;
   min-height: 100vh;
