@@ -1,36 +1,44 @@
-<link rel="alternate" hreflang="x-default" href="https://joaobordalo.com/" />
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href="https://joaobordalo.com/" />
 <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
 <link rel="preconnect" href="https://joaobordalo.com" />
-<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+<title>
+  {% if page.title %}
+    {{ page.title }}
+  {% else %}
+    {{ site.title }}{% endif %}
+</title>
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="author" content="João Bordalo" />
 {% if page.description %}
-<meta name="description" content="{{ page.description | truncate: 160 }}" />
-<meta name="twitter:description" content="{{ page.description | truncate: 160 }}" />
-<meta property="og:description" content="{{ page.description | truncate: 160 }}" />
+  <meta name="description" content="{{ page.description | truncate: 160 }}" />
+  <meta name="twitter:description" content="{{ page.description | truncate: 160 }}" />
+  <meta property="og:description" content="{{ page.description | truncate: 160 }}" />
 {% elsif page.title %}
-<meta name="description" content="{{ page.title | truncate: 160 }}" />
-<meta name="twitter:description" content="{{ page.title | truncate: 160 }}" />
-<meta property="og:description" content="{{ page.title | truncate: 160 }}" />
+  <meta name="description" content="{{ page.title | truncate: 160 }}" />
+  <meta name="twitter:description" content="{{ page.title | truncate: 160 }}" />
+  <meta property="og:description" content="{{ page.title | truncate: 160 }}" />
 {% else %}
-<meta name="description" content="{{ site.description | truncate: 160 }}" />
-<meta name="twitter:description" content="{{ site.description | truncate: 160 }}" />
-<meta property="og:description" content="{{ site.description | truncate: 160 }}" />
+  <meta name="description" content="{{ site.description | truncate: 160 }}" />
+  <meta name="twitter:description" content="{{ site.description | truncate: 160 }}" />
+  <meta property="og:description" content="{{ site.description | truncate: 160 }}" />
 {% endif %}
 <meta name="twitter:label1" content="Author" />
 <meta name="twitter:data1" content="João Bordalo" />
-{% if page.content %}
-<meta name="twitter:label2" content="Reading time" />
-{% assign words = page.content | number_of_words %} {% if words < 360 %}
-<meta name="twitter:data2" content="1 minute" />
-{% else %}
-<meta
-  name="twitter:data2"
-  content="{{ words |
+{% if content %}
+  <meta name="twitter:label2" content="Reading time" />
+  {% assign words = content | number_of_words %}
+  {% if words < 360 %}
+    <meta name="twitter:data2" content="1 minute" />
+  {% else %}
+    <meta name="twitter:data2" content="{{ words |
     divided_by:180 }} minutes" />
-{% endif %} {% endif %}
+  {% endif %}
+{% endif %}
 <meta name="keywords" content="Full stack developer" />
 <meta property="og:locale" content="pt_PT" />
 <meta property="og:type" content="website" />
@@ -52,12 +60,31 @@
 <meta name="twitter:image" content="{{ site.cdn_url }}/logos/logo_twitter.png" />
 <meta name="theme-color" content="#1f75b2" />
 <link rel="apple-touch-icon-precomposed" href="{{ site.cdn_url }}/logos/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{ site.cdn_url }}/logos/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ site.cdn_url }}/logos/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.cdn_url }}/logos/apple-touch-icon-152x152.png" />
-<link rel="shortcut icon" href="{{ site.cdn_url }}/logos/logo_circle.png" type="image/x-icon" />
-<link rel="icon" href="{{ site.cdn_url }}/logos/logo_circle.png" type="image/x-icon" />
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="60x60"
+  href="{{ site.cdn_url }}/logos/apple-touch-icon-76x76.png" />
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="114x114"
+  href="{{ site.cdn_url }}/logos/apple-touch-icon-120x120.png" />
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="{{ site.cdn_url }}/logos/apple-touch-icon-152x152.png" />
+<link
+  rel="shortcut icon"
+  href="{{ site.cdn_url }}/logos/logo_circle.png"
+  type="image/x-icon" />
+<link
+  rel="icon"
+  href="{{ site.cdn_url }}/logos/logo_circle.png"
+  type="image/x-icon" />
 <link rel="manifest" href="https://joaobordalo.com/manifest.json" />
 <link rel="publisher" href="https://plus.google.com/+bordalix" />
-<link rel="alternate" type="application/atom+xml" title="RSS Feed for João Bordalo's blog" href="/feed.xml" />
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  title="RSS Feed for João Bordalo's blog"
+  href="/feed.xml" />
 <meta name="lightning" content="bordalix@getalby.com" />
