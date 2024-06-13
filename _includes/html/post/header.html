@@ -49,17 +49,19 @@
   {% include html/post/share.html %}
 </div>
 <div class="auxiliar">
-  <p>
-    {% assign words = foo.content | number_of_words %} {% if words < 360 %} 1 minute {% else %} {{ words |
-    divided_by:180 }} minutes {% endif %} read
-  </p>
+  {% assign words = foo.content | number_of_words %}
+  {% if words < 300 %}
+    <p>1 minute read</p>
+  {% else %}
+    <p>{{ words | divided_by: 150 }} minutes read</p>
+  {% endif %}
   {% if foo.tags %}
-  <p>
-    {% for tag in foo.tags %}
-    <a class="tag" href="/search/#{{tag}}">
-      <span>#{{ tag }}</span>
-    </a>
-    {% endfor %}
-  </p>
+    <p>
+      {% for tag in foo.tags %}
+        <a class="tag" href="/search/#{{tag}}">
+          <span>#{{ tag }}</span>
+        </a>
+      {% endfor %}
+    </p>
+  {% endif %}
 </div>
-{% endif %}
