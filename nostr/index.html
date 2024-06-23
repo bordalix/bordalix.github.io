@@ -27,17 +27,22 @@ layout: main
   section.user {
     display: flex;
     justify-content: space-between;
+    & > p {
+      height: 8rem;
+      width: 8rem;
+    }
     & img {
       border-radius: 50%;
       border: 1px solid silver;
-      height: 8rem;
-      width: auto;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
     }
     & > div {
       align-items: center;
       display: flex;
       justify-content: flex-end;
-      & div:first-child p {
+       & div:first-child p {
         font-weight: 700;
         padding-right: 1rem;
         text-align: right;
@@ -72,10 +77,10 @@ layout: main
         <p>website:</p>
       </div>
       <div>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
       </div>
     </div>
   </section>
@@ -91,7 +96,10 @@ layout: main
   </section>
 </template>
 
-<section id="nostr" tabindex="0" style="margin-top: 0">
+<section
+  id="nostr"
+  tabindex="0"
+  style="margin-top: 0">
   <div class="container" id="postsList">
     <h1 class="heading">
       <span>Nostr</span>
@@ -106,11 +114,9 @@ layout: main
 
 <script>
   const relays = [
-    'wss://relay.utxo.one',
     'wss://relay.bitcoinpark.com',
     'wss://relay.damus.io',
     'wss://nos.lol',
-    'wss://relay.current.fyi',
     'wss://relay.damus.io',
     'wss://relay.nostr.bg',
   ]
@@ -138,8 +144,10 @@ layout: main
       })
     },
     html: (content) => {
-      for (const match of content.match(/https:\/\/.*/g)) {
-        content = content.replace(match, `<a href="${match}">${match}</a>`)
+      if (content.match(/https:\/\/.*/g)) {
+        for (const match of content.match(/https:\/\/.*/g)) {
+          content = content.replace(match, `<a href="${match}">${match}</a>`)
+        }
       }
       return content.replace(/\n/g, '<br />')
     },
@@ -152,15 +160,15 @@ layout: main
     const mostRecent = events.reduce((prev, curr) =>
       curr.created_at > prev.created_at ? curr : prev
     )
-    const user = JSON.parse(mostRecent.content)
+    const { lud16, name, nip05, picture, website} = JSON.parse(mostRecent.content)
     const npub = hexa2npub(pubkey)
     const clone = document.querySelector('#user').content.cloneNode(true)
     const p = clone.querySelectorAll('p')
-    p[0].innerHTML = `<img src="${user.picture}">`
-    p[5].innerHTML = `<a href="https://njump.me/${npub}">${user.name}</a>`
-    p[6].innerHTML = `<a href="https://njump.me/${user.nip05}">${user.nip05}</a>`
-    p[7].innerHTML = `${user.lud16} ⚡`
-    p[8].innerHTML = `<a href="https://njump.me/${user.website}">${user.website}</a>`
+    if (picture) p[0].innerHTML = `<img src="${picture}">`
+    if (name) p[5].innerHTML = `<a href="https://njump.me/${npub}">${name}</a>`
+    if (nip05) p[6].innerHTML = `<a href="https://njump.me/${nip05}">${nip05}</a>`
+    if (lud16) p[7].innerHTML = `${lud16} ⚡`
+    if (website) p[8].innerHTML = `<a href="https://njump.me/${website}">${website}</a>`
     document.querySelector('#profileInfo').appendChild(clone)
   })
 
