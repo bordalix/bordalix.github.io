@@ -31,3 +31,5 @@ Code is available at [https://github.com/bordalix/helm-wallet/](https://github.c
 The web app is completely independent, no server required. You can clone it, build it and run it from your own computer. Everything runs on the browser.
 
 Critics and suggestions are welcome.
+
+[Landing page](https://helm-wallet.com)
