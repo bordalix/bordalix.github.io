@@ -417,3 +417,10 @@ em,
 body.no-js .only-if-js {
   display: none;
 }
+
+svg.inline {
+  position: relative;
+  top: 0.4rem;
+  width: 1rem;
+  height: 1rem;
+}
