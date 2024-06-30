@@ -21,14 +21,15 @@ const normalizeURL = (link) => {
 
 function addChannel(channel) {
   const template = document.getElementById('channel_template')
-  const element = template.content.firstElementChild.cloneNode(true)
-  const span = element.querySelector('span')
-  const img = element.querySelector('img')
-  element.onclick = () => window.open(channel.link, '_blank')
+  const div = template.content.firstElementChild.cloneNode(true)
+  const span = div.querySelector('span')
+  const img = div.querySelector('img')
+  // p.style['background-image'] = `url(${channel.logo})`
+  div.onclick = () => window.open(channel.link, '_blank')
   span.textContent = channel.name
   img.src = channel.logo
   img.onerror = () => (img.src = '/images/static/icons/logo-placeholder.png')
-  content.appendChild(element)
+  content.appendChild(div)
 }
 
 function parseM3U(text) {
@@ -53,7 +54,6 @@ function parseM3U(text) {
         } else {
           channel.link = normalizeURL(matchLink[1])
         }
-        if (!matchLink[1].match(/m3u8/)) console.log(channel)
         channels.push(channel)
         channel = { link: '', logo: '', name: '' }
       }
@@ -74,6 +74,7 @@ async function run() {
   content = document.getElementById('channels_list')
   const m3u_file = await fetchM3U()
   const channels = parseM3U(m3u_file)
+  console.log('channels', channels)
   for (const channel of channels) addChannel(channel)
 }
 

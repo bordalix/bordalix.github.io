@@ -5,19 +5,24 @@ description: IPTV channels
 ---
 
 <style>
-  {% include css/tv.css %}
+  {% include css/tvradio.css %}
 </style>
 
+<template id="channel_template">
+  <div class="channel">
+    <p><img/></p>
+    <span></span>
+  </div>
+</template>
+
 <div class="container">
-  <h1 class="heading"><span>IPTV channels</span></h1>
+  <h1 class="heading">
+    <span>IPTV channels</span>
+  </h1>
   <h2 class="lead">Only public and legal streams in m3u format</h2>
-  <p>Via <a href="https://m3upt.com/">https://m3upt.com/</a></p>
-  <template id="channel_template">
-    <div class="channel">
-      <p><img alt="channel logo" /></p>
-      <p><span></span></p>
-    </div>
-  </template>
+  <p>Via
+    <a href="https://m3upt.com/">https://m3upt.com/</a>
+  </p>
   <div id="channels_list"></div>
 </div>
 

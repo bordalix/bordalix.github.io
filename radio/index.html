@@ -5,19 +5,24 @@ description: Radio stations
 ---
 
 <style>
-  {% include css/radio.css %}
+  {% include css/tvradio.css %}
 </style>
 
+<template id="station_template">
+  <div class="channel">
+    <p><img/></p>
+    <span></span>
+  </div>
+</template>
+
 <div class="container">
-  <h1 class="heading"><span>Radio stations</span></h1>
+  <h1 class="heading">
+    <span>Radio stations</span>
+  </h1>
   <h2 class="lead">Only public and legal streams in m3u format</h2>
-  <p>Via <a href="https://m3upt.com/">https://m3upt.com/</a></p>
-  <template id="station_template">
-    <div class="station">
-      <p><img alt="station logo" /></p>
-      <p><span></span></p>
-    </div>
-  </template>
+  <p>Via
+    <a href="https://m3upt.com/">https://m3upt.com/</a>
+  </p>
   <div id="stations_list"></div>
 </div>
 

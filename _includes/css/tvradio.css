@@ -1,0 +1,46 @@
+#channels_list,
+#stations_list {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 767px) {
+  #channels_list,
+  #stations_list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  #channels_list,
+  #stations_list {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+.channel {
+  cursor: pointer;
+  font-size: 0.72rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.channel p {
+  background-color: var(--egg);
+  border-radius: 10px;
+  margin: auto;
+  padding: 1rem;
+  width: 5rem;
+  height: 4rem;
+  &:hover {
+    background-color: var(--grey);
+  }
+}
+
+.channel img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
