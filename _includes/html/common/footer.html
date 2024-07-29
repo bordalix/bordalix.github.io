@@ -23,12 +23,9 @@
     margin-bottom: 0;
   }
 
-  footer p a {
+  footer p.link {
     cursor: pointer;
     color: var(--orange);
-  }
-  footer p a:hover {
-    text-decoration: none;
   }
 
   @media (max-width: 767px) {
@@ -42,11 +39,9 @@
   <div class="container" style="width: 100%">
     <div class="flexed">
       <p>2005-2024 João Bordalo</p>
-      <p>
-        <a onclick="window.scrollTo(0, 0);">
-          back to top
-          <i class="fa fa-level-up"></i>
-        </a>
+      <p class="link" onclick="window.scrollTo(0, 0);">
+        back to top
+        <i class="fa fa-level-up"></i>
       </p>
     </div>
   </div>
