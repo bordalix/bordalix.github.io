@@ -46,7 +46,7 @@ textarea {
 
 .btn {
   background-color: initial;
-  background-image: linear-gradient(var(--black_light), var(--black));
+  background-image: linear-gradient(var(--button_up), var(--button_down));
   border: 1px solid var(--black);
   border-radius: var(--border-radius);
   color: var(--white);

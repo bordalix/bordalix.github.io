@@ -7,11 +7,12 @@
 
 body {
   --black: var(--my_black);
-  --black_light: var(--my_black_comp);
   --blue: rgb(59, 75, 89);
   --brown: rgb(191, 160, 122);
   --brown_light: rgb(242, 236, 228);
   --brown_dark: rgb(38, 32, 24);
+  --button_up: var(--my_black_comp);
+  --button_down: var(--black);
   --cream: rgb(237, 235, 233);
   --cream_transparent: rgba(237, 235, 233, 0);
   --cyan: rgb(82, 105, 124);
@@ -32,10 +33,11 @@ body {
 /* for dark theme, we just invert the colors */
 body.dark-theme {
   --black: var(--my_white); /* white */
-  --black_light: var(--my_white_comp); /* white_dark */
   --blue: rgb(237, 235, 233); /* cream */
   --brown_light: rgb(38, 32, 24);
   --brown_dark: rgb(242, 236, 228);
+  --button_up: var(--my_white);
+  --button_down: var(--my_white_comp);
   --cream: rgb(59, 75, 89); /* blue */
   --cream_transparent: rgba(59, 75, 89, 0);
   --cyan: rgb(211, 206, 201); /* egg */
