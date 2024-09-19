@@ -28,7 +28,7 @@ layout: main
       align-items: center;
       display: flex;
       justify-content: flex-end;
-       & div:first-child p {
+      & div:first-child p {
         font-weight: 700;
         padding-right: 1rem;
         text-align: right;
@@ -50,39 +50,26 @@ layout: main
       }
     }
   }
-  section.day {
-    & time {
-      background-color: var(--orange);
-      color: var(--white);
-      display: block;
-      font-size: 0.8rem;
-      margin: 0;
-      padding: 0.2rem 1rem;
-    }
-    & .notesAndReplies {
-      & .post {
-        padding: 1rem;
-         & div:first-child {
-          display: flex;
-          justify-content: space-between;
-          & p {
-            color: var(--grey);
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-          }
-        }
-      }
-       & .post:nth-child(even) {
-        background-color: var(--egg);
-      }
-       & .post:nth-child(odd) {
-        background-color: var(--cream);
-      }
-       & .post p:first-child {
-        font-size: 0.8rem;
-      }
-       & .post p:last-child {
+  article.note {
+    margin-bottom: 3rem;
+    & div {
+      color: silver;
+      margin-bottom: 24px;
+      & div {
+        border-bottom: 1px silver solid;
+        border-top: 1px silver solid;
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 0;
+        padding: 0;
+      }
+      & p {
+        font-size: 0.8rem;
+        padding: 0.2rem 0;
+        margin: 0;
+        &.read {
+          font-size: 0.66rem;
+        }
       }
     }
   }
@@ -108,27 +95,23 @@ layout: main
   </section>
 </template>
 
-<template id="day">
-  <section class="day">
-    <time></time>
-    <div class="notesAndReplies"></div>
-  </section>
-</template>
-
-<template id="post">
-  <div class="post">
+<template id="note">
+  <article class="note">
+    <h2>Note</h2>
     <div>
-      <p></p>
-      <p></p>
+      <div>
+        <p class="time">
+          <time datetime="" class="timeago"></time>
+        </p>
+        <p class="link"></p>
+      </div>
+      <p class="read"></p>
     </div>
-    <p></p>
-  </div>
+    <p class="content"></p>
+  </article>
 </template>
 
-<section
-  id="nostr"
-  tabindex="0"
-  style="margin-top: 0">
+<section id="nostr" tabindex="0" style="margin-top: 0">
   <div class="container" id="postsList">
     <h1 class="heading">
       <span>Nostr</span>
@@ -137,7 +120,7 @@ layout: main
     <p id="loadingProfile">Loading profile {% include /svg/loading.svg %}</p>
     <div id="profileInfo"></div>
     <p id="loadingNotes">Loading notes {% include /svg/loading.svg %}</p>
-    <div id="notesList"></div>
+    <div id="notesContainer"></div>
   </div>
 </section>
 
@@ -151,8 +134,7 @@ layout: main
     'wss://relay.primal.net',
   ]
 
-  let pubkey =
-    '62cef883863022a4f1d60d54857c9d729650702c9fe227b0988c0b6e36c4bcce'
+  let pubkey = '62cef883863022a4f1d60d54857c9d729650702c9fe227b0988c0b6e36c4bcce'
 
   if (!window.location.search) {
     window.location.href = window.location.href + `?${pubkey}`
@@ -174,7 +156,10 @@ layout: main
       })
     },
     hour: (unix) => {
-      return new Date(unix * 1000).toLocaleTimeString('en-us')
+      return new Date(unix * 1000).toLocaleTimeString('en-us', {
+        timeZone: 'UTC',
+        timeZoneName: 'short',
+      })
     },
     html: (content) => {
       if (content.match(/https:\/\/.*/g)) {
@@ -193,10 +178,8 @@ layout: main
   // get user profile
   getEvents({ authors: [pubkey], kinds: [0] }).then((events) => {
     document.querySelector('#loadingProfile').remove()
-    const mostRecent = events.reduce((prev, curr) =>
-      curr.created_at > prev.created_at ? curr : prev
-    )
-    const { lud16, name, nip05, picture, website} = JSON.parse(mostRecent.content)
+    const mostRecent = events.reduce((prev, curr) => (curr.created_at > prev.created_at ? curr : prev))
+    const { lud16, name, nip05, picture, website } = JSON.parse(mostRecent.content)
     const npub = hexa2npub(pubkey)
     const clone = document.querySelector('#user').content.cloneNode(true)
     const p = clone.querySelectorAll('p')
@@ -211,37 +194,27 @@ layout: main
   // get events from relays
   const aWeekAgo = Math.floor(Date.now() / 1000 - 7 * 24 * 60 * 60)
   const filter = { authors: [pubkey], kinds: [1], since: aWeekAgo }
-  const days = {}
   getEvents(filter).then((data) => {
+    notesContainer = document.querySelector('#notesContainer')
     document.querySelector('#loadingNotes').remove()
     if (data.length === 0) {
       const p = document.createElement('p')
       p.innerText = '<empty>'
-      document.querySelector('#notesList').appendChild(p)
+      notesContainer.appendChild(p)
     }
     data
       .sort((a, b) => b.created_at - a.created_at)
       .map((note) => {
-        const day = pretty.date(note.created_at)
-        if (!days[day]) days[day] = []
-        days[day].push(note)
+        const lines = note.content.split('\n')
+        const title = lines[0] ? lines[0] : 'Note'
+        const clone = document.querySelector('#note').content.cloneNode(true)
+        const m = Math.ceil(note.content.split(' ').length / 150)
+        clone.querySelector('h2').innerHTML = title.replace(/:$/, '')
+        clone.querySelector('time').innerHTML = pretty.date(note.created_at)
+        clone.querySelector('.read').innerHTML = `${m} minute${m === 1 ? '' : 's'} read`
+        clone.querySelector('.link').innerHTML = pretty.link(note)
+        clone.querySelector('.content').innerHTML = pretty.html(note.content)
+        notesContainer.appendChild(clone)
       })
-    for (const day of Object.keys(days)) {
-      const clone = document.querySelector('#day').content.cloneNode(true)
-      const time = clone.querySelector('time')
-      const list = clone.querySelector('.notesAndReplies')
-      // add day separator
-      time.innerText = day
-      // add notes
-      for (const note of days[day]) {
-        const c = document.querySelector('#post').content.cloneNode(true)
-        const p = c.querySelectorAll('p')
-        p[0].innerHTML = pretty.hour(note.created_at)
-        p[1].innerHTML = pretty.link(note)
-        p[2].innerHTML = pretty.html(note.content)
-        list.appendChild(c)
-      }
-      document.querySelector('#notesList').appendChild(clone)
-    }
   })
 </script>

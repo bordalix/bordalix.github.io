@@ -1,6 +1,6 @@
 {
   "prettier.bracketSameLine": true,
-  "prettier.printWidth": 80,
+  "prettier.printWidth": 120,
   "liquid.engine": "jekyll",
   "files.associations": {
     "*.html": "liquid",
