@@ -1,0 +1,56 @@
+{
+  "version": "v1.0.0",
+  "entity": {
+    "type": "individual",
+    "role": "maintainer",
+    "name": "João Bordalo",
+    "email": "joao.bordalo@gmail.com",
+    "description": "Bitcoiner trying to give access to digital money to everyone.",
+    "webpageUrl": {
+      "url": "https://joaobordalo.com"
+    }
+  },
+  "projects": [
+    {
+      "guid": "helm-wallet",
+      "name": "Helm wallet",
+      "description": "The lightning wallet even your grandma can use",
+      "webpageUrl": {
+        "url": "https://helm-wallet.com"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/bordalix/helm-wallet"
+      },
+      "licenses": ["MIT"],
+      "tags": ["bitcoin", "lightning"]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "bitcoin",
+        "type": "other",
+        "address": "bc1qwww7m8856nhluw65ae8v78j3sllng35qjh85hq",
+        "description": "Payment in BTC via Mainnet"
+      },
+      {
+        "guid": "lightning",
+        "type": "other",
+        "address": "bordalix@getalby.com",
+        "description": "Payment in BTC via Lightning Network"
+      }
+    ],
+    "plans": [
+      {
+        "guid": "myplan",
+        "status": "active",
+        "name": "Monthly help",
+        "amount": 500,
+        "currency": "EUR",
+        "frequency": "monthly",
+        "channels": ["bitcoin", "lightning"]
+      }
+    ],
+    "history": []
+  }
+}
