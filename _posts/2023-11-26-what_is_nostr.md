@@ -44,7 +44,7 @@ A few examples of dApps built on top of Nostr:
   - [Nostr Market](https://market.nostr.com/#/): Create your own decentralized market
   - [Joinstr](https://gitlab.com/1440000bytes/joinstr): Coinjoin implementation using Nostr
   - [Formstr](https://formstr.app/): A usable alternative to google forms
-  - [Hostr](hostr.cc): Decentralized web hosting solution on Nostr
+  - [Hostr](https://hostr.cc): Decentralized web hosting solution on Nostr
   - [w3.do](https://w3.do/): URL shortener
   - [Stremr](https://stemstr.app/): Sharing music
 - Made by me
