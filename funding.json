@@ -36,7 +36,7 @@
       {
         "guid": "lightning",
         "type": "other",
-        "address": "bordalix@getalby.com",
+        "address": "bordalix@coinos.io",
         "description": "Payment in BTC via Lightning Network"
       }
     ],
