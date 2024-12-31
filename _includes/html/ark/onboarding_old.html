@@ -18,9 +18,9 @@
 <div class="tech">
   <p onclick="toggleVisibility('#dd1')">🔎 Deep dive on onboarding Ark</p>
   <div class="hidden" id="dd1">
-    <h3>Pool transaction</h3>
+    <h3>Round transaction</h3>
     <p>
-      The ASP places one (or more) input(s) to its pool transaction to supply funds to the shared UTXO output,
+      The ASP places one (or more) input(s) to its round transaction to supply funds to the shared UTXO output,
       connectors output, change output, and transaction fees.
     </p>
     <script type="text/typogram">
@@ -32,7 +32,7 @@
       <li>The other leaf, <em>pk(ASP) && older(4 weeks)</em>, allows the ASP to spend it alone after 4 weeks.</li>
     </ul>
     <p>
-      In order to be trustless, before signing the pool transaction Alice needs a way to unilaterally get their funds
+      In order to be trustless, before signing the round transaction Alice needs a way to unilaterally get their funds
       back. To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each
       participant.
     </p>
@@ -79,7 +79,7 @@
         {% include txt/ark/onboarding2.txt %}
       </script>
       <li>Frank passes this PSBT to the ASP</li>
-      <li>ASP places one input to PSBT, the "connector output" from the next pool transaction:</li>
+      <li>ASP places one input to PSBT, the "connector output" from the next round transaction:</li>
       <script type="text/typogram">
         {% include txt/ark/onboarding4.txt %}
       </script>
@@ -91,7 +91,7 @@
         ASP passes PSBT to Frank and both sign the PSBT and keep this transaction private. This transaction is not valid
         yet, since the connector's outpoint context does not exist yet;
       </li>
-      <li>ASP signs the pool transaction and broadcast it:</li>
+      <li>ASP signs the round transaction and broadcast it:</li>
       <script type="text/typogram">
         {% include txt/ark/onboarding7.txt %}
       </script>
@@ -122,11 +122,11 @@
           Franks will be able to get his funds back in 4 weeks<br /><br />
         </li>
         <li>
-          <strong>ASP never broadcasts pool transaction</strong><br />
+          <strong>ASP never broadcasts round transaction</strong><br />
           Franks will be able to get his funds back in 4 weeks<br /><br />
         </li>
         <li>
-          <strong>ASP doesn't wait for confirmation of funding address before broadcasting pool tx</strong><br />
+          <strong>ASP doesn't wait for confirmation of funding address before broadcasting round tx</strong><br />
           Franks will double spend his original UTXO, making the funding transaction invalid and them spending the VTXO,
           thus stealing the ASP<br /><br />
         </li>

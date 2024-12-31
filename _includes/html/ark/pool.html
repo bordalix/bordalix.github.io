@@ -1,16 +1,16 @@
-<h2 id="pool">Pool transaction</h2>
+<h2 id="pool">Round transaction</h2>
 <p>
-  The ASP makes a special transaction, called <strong>Pool transaction</strong>, where it mixes UTXOs from many users
+  The ASP makes a special transaction, called <strong>Round transaction</strong>, where it mixes UTXOs from many users
   (among other things) and creates a <strong>Shared UTXO</strong> as well as many offchain <strong>VTXOs</strong> for
   each of those users.
 </p>
 
 <div class="tech">
-  <p onclick="toggleVisibility('#dd0')">🔎 Deep dive on Pool transactions</p>
+  <p onclick="toggleVisibility('#dd0')">🔎 Deep dive on Round transactions</p>
   <div class="hidden" id="dd0">
-    <h3>Pool transaction</h3>
+    <h3>Round transaction</h3>
     <p>
-      The ASP places one (or more) input(s) to its pool transaction to supply funds to the shared UTXO, connectors
+      The ASP places one (or more) input(s) to its round transaction to supply funds to the shared UTXO, connectors
       output, change output, and transaction fees.
     </p>
     <script type="text/typogram">
@@ -23,7 +23,7 @@
       <li>The other leaf, <em>ASP in 1 month</em>, allows the ASP to spend it alone after 1 month.</li>
     </ul>
     <p>
-      In order to be trustless, before signing the pool transaction Alice needs a way to unilaterally get their funds
+      In order to be trustless, before signing the round transaction Alice needs a way to unilaterally get their funds
       back. To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each
       participant.
     </p>

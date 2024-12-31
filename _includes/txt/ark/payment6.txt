@@ -8,6 +8,6 @@ Pool Tx 1                :                         Forfeit transaction
 IN       | OUT           :   IN | OUT              IN | OUT
 ---------+------------   :   ---+---------         ---+--------
 ASP UTXO | Shared UTXO o----->* | Alice VTXO o----->* | ASP but only if
-         |   "..."       :      |                     | pool tx 2 confirmed
+         |   "..."       :      |                     | round tx 2 confirmed
          |               :      |                     |
                          :

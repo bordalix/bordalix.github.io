@@ -34,15 +34,15 @@ date: 2023-10-24 03:27:04
 ##### Forfeit transaction \*
 
 - Insurance for the ASP, in case Alice tries to double spend her VTXO after spending it inside Ark
-- Before the ASP funds Bob’s VTXO in the next Pool transaction, he must receive this transaction signed by Alice
-- Uses a connector from the next Pool transaction to achieve atomicity
+- Before the ASP funds Bob’s VTXO in the next Round transaction, he must receive this transaction signed by Alice
+- Uses a connector from the next Round transaction to achieve atomicity
 
 | Inputs                                    | Outputs |
 | ----------------------------------------- | ------- |
 | Redeem transaction spending `Alice + ASP` | `ASP`   |
-| Connector from next Pool transaction      |
+| Connector from next Round transaction     |
 
-##### Pool transaction (aka Ark transaction)
+##### Round transaction (aka Ark transaction)
 
 - Funded by the ASP, creates VTXOs
 - After 4 weeks, the ASP can get their funds back
@@ -63,7 +63,7 @@ date: 2023-10-24 03:27:04
 ##### VTXO \*
 
 - Similar to Redeem transaction
-- Can be broadcasted anytime, on the condition that previous transactions on the transaction tree (up to the Pool transaction) are confirmed or broadcasted at the same time
+- Can be broadcasted anytime, on the condition that previous transactions on the transaction tree (up to the Round transaction) are confirmed or broadcasted at the same time
 
 | Inputs                                  | Outputs                                |
 | --------------------------------------- | -------------------------------------- |
@@ -84,37 +84,37 @@ date: 2023-10-24 03:27:04
    - Is now safe for Alice to broadcast this funding transaction because now she can leave anytime with
      [Redeem transaction](#redeem-transaction-) (2) spending `Alice in 24h`, i.e. Alice will be able to get
      her funds back in 24 hours.
-4. ASP (with Alice) prepares next [Pool transaction](#pool-transaction-aka-ark-transaction)
+4. ASP (with Alice) prepares next [Round transaction](#round-transaction-aka-ark-transaction)
 5. Alice creates a [Forfeit transaction](#forfeit-transaction-):
    - spends from Redeem transaction (2) via `Alice + ASP`
-   - adds connector output from Pool transaction (4) as input
+   - adds connector output from Round transaction (4) as input
    - signs (SIGHASH_ALL) and sends it to the ASP
-6. ASP broadcasts [Pool transaction](#pool-transaction-aka-ark-transaction) (4)
+6. ASP broadcasts [Round transaction](#round-transaction-aka-ark-transaction) (4)
 7. Alice has now a [VTXO](#vtxo)
 8. After 1 month ASP spends Funding transaction (1) via `ASP in 1 month`
 
 ##### Payment to Bob
 
 1. Alice tells ASP to send [VTXO](#vtxo) to Bob
-2. ASP (with Alice) prepares next [Pool transaction](#pool-transaction-aka-ark-transaction)
+2. ASP (with Alice) prepares next [Round transaction](#round-transaction-aka-ark-transaction)
 3. Alice creates a [Forfeit transaction](#forfeit-transaction-):
    - spends from VTXO (1) via `Alice + ASP`
-   - adds connector output from Pool transaction (2) as input
+   - adds connector output from Round transaction (2) as input
    - signs (SIGHASH_ALL) and sends it to the ASP
-4. ASP broadcasts [Pool transaction](#pool-transaction-aka-ark-transaction)
+4. ASP broadcasts [Round transaction](#round-transaction-aka-ark-transaction)
 5. Bob has now a new [VTXO](#vtxo)
 6. For at most 4 weeks, Alice will be able to double spend her’s [VTXO](#vtxo), but if she does it, the ASP will have time to grab the funds from the [VTXO](#vtxo) to itself using the [Forfeit transaction](#forfeit-transaction-)
 
 ##### Exiting the Ark
 
 1. Alice tells ASP she wants to trade [VTXO](#vtxo) for UTXO
-2. ASP (with Alice) prepares next [Pool transaction](#pool-transaction-aka-ark-transaction):
+2. ASP (with Alice) prepares next [Round transaction](#round-transaction-aka-ark-transaction):
    - an additional output is added, locked by `Alice in 24 hours`
 3. Alice creates a [Forfeit transaction](#forfeit-transaction-):
    - spends from VTXO (1) with `Alice + ASP`
-   - adds connector output from Pool transaction (2) as input
+   - adds connector output from Round transaction (2) as input
    - signs it and send it to the ASP
-4. ASP broadcasts [Pool transaction](#pool-transaction-aka-ark-transaction)
+4. ASP broadcasts [Round transaction](#round-transaction-aka-ark-transaction)
 5. Alice has now a new UTXO, spendable in 24 hours
 6. For at most 4 weeks, Alice will be able to double spend her’s [VTXO](#vtxo), but if she does it, the ASP will have time (24 hours) to grab the funds from the [VTXO](#vtxo) to itself using the [Forfeit transaction](#forfeit-transaction-)
 

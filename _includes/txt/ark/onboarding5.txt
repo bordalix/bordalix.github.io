@@ -8,11 +8,11 @@
   IN   | OUT                 :   IN | OUT                  IN | OUT            
   -----+----------------     :   ---+----------------      ---+----------------  
   UTXO |"(Alice + ASP) or"o--:--->* |"(Alice + ASP) or"o--->* | ASP but only if next    
-       |"(ASP in 1 month)"   :      |"(Alice in 24h)"    +->* | pool tx is confirmed               
+       |"(ASP in 1 month)"   :      |"(Alice in 24h)"    +->* | round tx is confirmed               
                              :                           |
                              :                           |
                              :                           |
-                             :   Next pool transaction   |
+                             :   Next round transaction   |
                              :                           |
                              :   IN       | OUT          |
                              :   ---------+------------  |
