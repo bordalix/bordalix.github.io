@@ -28,7 +28,7 @@ layout: main
       align-items: center;
       display: flex;
       justify-content: flex-end;
-      & div:first-child p {
+       & div:first-child p {
         font-weight: 700;
         padding-right: 1rem;
         text-align: right;
@@ -114,7 +114,10 @@ layout: main
   </article>
 </template>
 
-<section id="nostr" tabindex="0" style="margin-top: 0">
+<section
+  id="nostr"
+  tabindex="0"
+  style="margin-top: 0">
   <div class="container" id="postsList">
     <h1 class="heading">
       <span>Nostr</span>
@@ -165,9 +168,15 @@ layout: main
       })
     },
     html: (content) => {
-      if (content.match(/https:\/\/.*/g)) {
+      if (content.match(/https:\/\//)) {
         for (const match of content.match(/https:\/\/.*/g)) {
           content = content.replace(match, `<a href="${match}">${match}</a>`)
+        }
+      }
+      if (content.match(/nostr:/)) {
+        for (const match of content.match(/nostr:.*/g)) {
+          const id = match.split(':')[1]
+          content = content.replace(match, `<a href="https://njump.me/${id}">${match}</a>`)
         }
       }
       return content.replace(/\n/g, '<br />')
