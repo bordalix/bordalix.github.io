@@ -1,6 +1,6 @@
 <h2 id="payments">Payments on Ark</h2>
 <p>
-  Alice then instructs the ASP to take her VTXO and pay Bob. She will only need to know Bob's address. This payment is
+  Alice then instructs the ASP to take her VTXO and pay Bob. She will only need to know Bob's address. This payment is   
   also atomic and private. The ASP does not know which VTXO belongs to which user and blindly mixes them to produce
   another anonymous VTXO set. Ark's magic occurs in the fact that the post-mix VTXOs can only be claimed by the intended
   recipients even though the ASP has no idea who owns them. Put another way, the ASP is simply coordinating blind
@@ -15,9 +15,7 @@
 <ul>
   <li>Alice sending funds to ASP and the ASP creating the VTXO for Bob needs to be an atomic operation</li>
   <li>
-    The ASP needs to have an insurance that Alice will not try to double spend her VTXO after it funds Bob's VTXO, so it
-    demands a signed transaction (the forfeit transaction) from Alice. This forfeit transaction spends from Alice's VTXO
-    and it will be broadcasted only if Alice tries to double spend her VTXO
+    The ASP needs to have an insurance that Alice will not try to double spend her VTXO after it funds Bob's VTXO, so it demands a signed transaction (the forfeit transaction) from Alice. This forfeit transaction spends from Alice's VTXO and it will be broadcasted only if Alice tries to double spend her VTXO
   </li>
 </ul>
 <div class="tech">
@@ -26,31 +24,31 @@
     <ol>
       <li>Alice asks Bob for an address (address B)</li>
       <li>Alice informs ASP she wants to pay 0.01 BTC to address B</li>
-      <li>ASP prepares new transaction (Pool Tx 2) and show it to Alice:</li>
+      <li>ASP prepares new transaction (Round Tx 2) and show it to Alice:</li>
       <script type="text/typogram">
         {% include txt/ark/payment3.txt %}
       </script>
       <li>Alice looks at the locking script for this new UTXO and sees Bob's public key on it</li>
-      <li>Alice understands that when Pool Tx 2 confirms, Bob will have 0.01 BTC on Ark</li>
+      <li>Alice understands that when Round Tx 2 confirms, Bob will have 0.01 BTC on Ark</li>
       <li>
-        Alice proceeds by signing a PSBT that sends her VTXO to the ASP, on the condition that Pool Tx 2 is confirmed.
-        We will call this the forfeit transaction:
+        Alice proceeds by signing a PSBT that sends her VTXO to the ASP, on the condition that Round Tx 2 is confirmed. We will call this the forfeit transaction:
       </li>
       <script type="text/typogram">
         {% include txt/ark/payment6.txt %}
       </script>
       <li>
-        ASP cannot cheat, if he wants to receive from Alice he needs to send it to Bob, which means Alice is paying Bob
-        atomically.
+        ASP cannot cheat, if he wants to receive from Alice he needs to send it to Bob, which means Alice is paying Bob atomically.
       </li>
     </ol>
-    <h3>"Only if Pool Tx 2 is confirmed"</h3>
+    <h3>"Only if Round Tx 2 is confirmed"</h3>
     <p>
       This condition is not possible to implement today using Bitcoin script, but we can implement it using
       <strong>anchored transactions</strong>:
     </p>
     <ul>
-      <li>Pool Tx 1 will have additional outputs, called <em>connectors</em></li>
+      <li>Round Tx 1 will have additional outputs, called
+        <em>connectors</em>
+      </li>
       <li>This connectors have no financial value (minimum dust limit)</li>
       <li>Connectors are singlesig spendable by the ASP (<em>ASP</em>)</li>
       <li>Alice will use one of this connectors as input to the new transaction</li>
@@ -60,16 +58,18 @@
     <script type="text/typogram">
       {% include txt/ark/payment7.txt %}
     </script>
-    <p>This way, the transaction where Alice gives her VTXO to the ASP is only valid if Pool Tx 2 is confirmed.</p>
+    <p>This way, the transaction where Alice gives her VTXO to the ASP is only valid if Round Tx 2 is confirmed.</p>
     <h3>Adversarial scenarios</h3>
     <ul>
       <li>
-        Alice doesn't sign the <strong>Forfeit transaction</strong><br />
-        The ASP doesn't include Bob's VTXO on the next round transaction<br /><br />
+        Alice doesn't sign the
+        <strong>Forfeit transaction</strong><br/>
+        The ASP doesn't include Bob's VTXO on the next round transaction<br/><br/>
       </li>
       <li>
-        ASP never broadcasts the next <strong>Round transaction</strong><br />
-        ASP forfeit transaction becomes invalid, which means Alice still has full control of her VTXO<br /><br />
+        ASP never broadcasts the next
+        <strong>Round transaction</strong><br/>
+        ASP forfeit transaction becomes invalid, which means Alice still has full control of her VTXO<br/><br/>
       </li>
     </ul>
   </div>

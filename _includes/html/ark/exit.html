@@ -1,6 +1,6 @@
 <h2 id="exit">Offboarding the Ark</h2>
 <p>
-  When Alice wants to exit the Ark, she arranje with the ASP to have an output (<em>Alice</em>) on the next Pool
+  When Alice wants to exit the Ark, she arranje with the ASP to have an output (<em>Alice</em>) on the next Round 
   transaction.
 </p>
 <script type="text/typogram">
@@ -11,7 +11,7 @@
 <ul>
   <li>Alice sending the VTXO to ASP and the ASP sending funds to Alice must be atomic</li>
   <li>
-    The ASP needs to have an insurance that Alice will not try to double spend her VTXO after it funds Alice's UTXO, so
+    The ASP needs to have an insurance that Alice will not try to double spend her VTXO after it funds Alice's UTXO, so 
     it demands a signed transaction (the forfeit transaction) from Alice. This forfeit transaction spends from Alice's
     VTXO and it will be broadcasted only if Alice tries to double spend her VTXO
   </li>
@@ -23,18 +23,18 @@
     <ol>
       <li>Alice generates new onchain address A</li>
       <li>Alice informs ASP she wants to pay 0.01 BTC onchain to address A</li>
-      <li>ASP (with help of Alice) prepares new transaction (Pool Tx 3) and show it to Alice:</li>
+      <li>ASP (with help of Alice) prepares new transaction (Round Tx 3) and show it to Alice:</li>
       <script type="text/typogram">
         {% include txt/ark/exiting3.txt %}
       </script>
       <li>Alice sees extra output paying 0.01 BTC to her address</li>
-      <li>Alice understands that when Pool Tx 3 confirms, she will have 0.01 BTC onchain</li>
-      <li>Alice proceeds by sending her VTXO to the ASP, on the condition that Pool Tx 3 is confirmed:</li>
+      <li>Alice understands that when Round Tx 3 confirms, she will have 0.01 BTC onchain</li>
+      <li>Alice proceeds by sending her VTXO to the ASP, on the condition that Round Tx 3 is confirmed:</li>
       <script type="text/typogram">
         {% include txt/ark/exiting6.txt %}
       </script>
       <li>
-        ASP cannot cheat, if he wants to receive the VTXO from Alice he needs to send it onchain to Alice, which means
+        ASP cannot cheat, if he wants to receive the VTXO from Alice he needs to send it onchain to Alice, which means 
         Alice is exiting the Ark atomically.
       </li>
       <script type="text/typogram">
@@ -52,12 +52,14 @@
     <h3>Adversarial scenarios</h3>
     <ul>
       <li>
-        Alice doesn't sign the <strong>Forfeit transaction</strong><br />
-        The ASP doesn't include Alice's UTXO on the next round transaction<br /><br />
+        Alice doesn't sign the
+        <strong>Forfeit transaction</strong><br/>
+        The ASP doesn't include Alice's UTXO on the next round transaction<br/><br/>
       </li>
       <li>
-        ASP never broadcasts the next <strong>Round transaction</strong><br />
-        ASP forfeit transaction becomes invalid, which means Alice still has full control of her VTXO<br /><br />
+        ASP never broadcasts the next
+        <strong>Round transaction</strong><br/>
+        ASP forfeit transaction becomes invalid, which means Alice still has full control of her VTXO<br/><br/>
       </li>
     </ul>
   </div>

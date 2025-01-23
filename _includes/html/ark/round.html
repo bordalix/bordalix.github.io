@@ -1,0 +1,68 @@
+<h2 id="round">Round transaction</h2>
+<p>
+  The ASP makes a special transaction, called
+  <strong>Round transaction</strong>, where it mixes UTXOs from many users    
+  (among other things) and creates a
+  <strong>Shared UTXO</strong>
+  as well as many offchain
+  <strong>VTXOs</strong>
+  for    
+  each of those users.
+</p>
+
+<div class="tech">
+  <p onclick="toggleVisibility('#dd0')">🔎 Deep dive on Round transactions</p>
+  <div class="hidden" id="dd0">
+    <h3>Round transaction</h3>
+    <p>
+      The ASP places one (or more) input(s) to its round transaction to supply funds to the shared UTXO, connectors    
+      output, change output, and transaction fees.
+    </p>
+    <script type="text/typogram">
+      {% include txt/ark/roundtx1.txt %}
+    </script>
+    <h3>Shared output (aka Shared UTXO)</h3>
+    <p>The shared UTXO is locked by 2 taproot leaves:</p>
+    <ul>
+      <li>A multisig
+        <em>n-of-n</em>, where n is the number of participants in the transaction.</li>
+      <li>The other leaf,
+        <em>ASP in 1 month</em>, allows the ASP to spend it alone after 1 month.</li>
+    </ul>
+    <p>
+      In order to be trustless, before signing the round transaction Alice needs a way to unilaterally get their funds    
+      back. To achieve this, the ASP builds and signs a binary tree of transactions and shares them with each
+      participant.
+    </p>
+    <p>Each leaf on this tree represents a VTXO:</p>
+    <script type="text/typogram">
+      {% include txt/ark/roundtx2.txt %}
+    </script>
+    <p>
+      In the example above, Alice can broadcast anytime
+      <em>tx1 => tx2 => tx4</em>
+      to receive their funds back.<br/>
+      For comparison, Bob will need to broadcast
+      <em>tx1 => tx2 => tx5</em>.
+    </p>
+    <p>Notes:</p>
+    <ul>
+      <li>
+        Since
+        <em>tx1:1 => tx2:1 => tx4</em>
+        (the VTXO) have no fees, Alice will need to add an extra transaction to pay    
+        for all the fees (see
+        <a href="https://bitcoinops.org/en/topics/cpfp/" target="_blank">CPFP</a>).
+      </li>
+      <li>
+        The number of transactions on this branches will be equal to
+        <em>log2(n) + 1</em>, where n = number of    
+        participants
+      </li>
+    </ul>
+    <p>For clarity, VTXOs will be represented like this:</p>
+    <script type="text/typogram">
+      {% include txt/ark/roundtx3.txt %}
+    </script>
+  </div>
+</div>
