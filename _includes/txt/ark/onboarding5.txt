@@ -12,7 +12,7 @@
                              :                           |
                              :                           |
                              :                           |
-                             :   Next round transaction   |
+                             :   Next round transaction  |
                              :                           |
                              :   IN       | OUT          |
                              :   ---------+------------  |

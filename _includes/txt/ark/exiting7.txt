@@ -16,7 +16,7 @@ ASP UTXO | Shared UTXO o----->* | Alice VTXO o----->* | ASP but only if
 : mempool :              :                          |       
 +~~~~~~~~~+              :                          |   
                          :                          |                         
-Round transaction 3       :                          |
+Round transaction 3      :                          |
                          :                          |
 IN       | OUT           :                          |
 ---------+------------   :                          |

@@ -3,7 +3,7 @@
 :  psbt  :                  : virtual :
 +~~~~~~~~+                  +~~~~~~~~~+
                          :
-Next round transaction    :
+Next round transaction   :
                          :
 IN       | OUT           :   IN | OUT
 ---------+------------   :   ---+-----------
