@@ -53,7 +53,9 @@ layout: main
   article.note {
     margin-bottom: 3rem;
     & h2 {
+      overflow: hidden;
       margin-bottom: 0.7rem;
+      text-overflow: ellipsis;
     }
     & div {
       color: silver;
@@ -74,6 +76,10 @@ layout: main
           font-size: 0.66rem;
         }
       }
+    }
+    & p.content {
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 </style>
