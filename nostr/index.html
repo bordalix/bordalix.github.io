@@ -218,7 +218,7 @@ layout: main
       .sort((a, b) => b.created_at - a.created_at)
       .map((note) => {
         const lines = note.content.split('\n')
-        const title = lines[0] ? lines[0] : 'Note'
+        const title = lines.find((line) => line.length > 0)
         const clone = document.querySelector('#note').content.cloneNode(true)
         const m = Math.ceil(note.content.split(' ').length / 150)
         clone.querySelector('h2').innerHTML = title.replace(/:$/, '')
