@@ -57,6 +57,8 @@ portfolio:
     name: 'APPC Explorer'
   - blob: appcoins
     name: 'Appcoins'
+  - blob: arkade
+    name: 'Arkade'
   - blob: batalhadosbitaites
     name: 'Batalha dos Bitaites'
   - blob: bitcoinstats
@@ -73,18 +75,24 @@ portfolio:
     name: 'Ethereum Roulette'
   - blob: fuji
     name: 'Fuji Money'
+  - blob: fulmine
+    name: 'Fulmine'
   - blob: hatitude
     name: 'Hatitude'
   - blob: helm
     name: 'Helm wallet'
   - blob: iscore
     name: 'iScore'
+  - blob: marina
+    name: 'Marina'
   - blob: nostr-utils
     name: 'Nostr Utils'
   - blob: tdex
     name: 'TDEX'
   - blob: wheretosurftoday
     name: 'Where to surf today'
+  - blob: worldleague
+    name: 'World League'
 
 skills:
   - HTML:

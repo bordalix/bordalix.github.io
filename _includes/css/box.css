@@ -135,6 +135,27 @@
   background-image: url('https://joaobordalo.com/images/static/portfolio/helm.png');
 }
 
+.box.marina {
+  background-color: rgba(36, 119, 114, var(--box-opacity));
+}
+.no-js .box.marina {
+  background-image: url('https://joaobordalo.com/images/static/portfolio/marina.png');
+}
+
+.box.fulmine {
+  background-color: rgba(104, 39, 0, var(--box-opacity));
+}
+.no-js .box.fulmine {
+  background-image: url('https://joaobordalo.com/images/static/portfolio/fulmine.png');
+}
+
+.box.arkade {
+  background-color: rgba(99, 56, 215, var(--box-opacity));
+}
+.no-js .box.arkade {
+  background-image: url('https://joaobordalo.com/images/static/portfolio/arkade.png');
+}
+
 .box_text {
   text-align: center;
   position: absolute;
