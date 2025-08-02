@@ -8,18 +8,27 @@
   </h1>
   <h2 class="lead">{{ page.project.description }}</h2>
   <p>
-    <strong>Status:</strong> {{ page.project.status }}<br />
-    <strong>Client:</strong> {{ page.project.client }}<br />
+    <strong>Status:</strong>
+    {{ page.project.status }}<br/>
+    <strong>Client:</strong>
+    {{ page.project.client }}<br/>
   </p>
   <p>
     {% if page.project.link %}
-    <i class="fa fa-external-link"></i>
-    <a href="{{ page.project.link }}">
-      {% if page.project.link_desc %} {{ page.project.link_desc }} {% else %} {{ page.project.link }} {% endif %} </a
-    ><br />
-    {% endif %} {% if page.project.repo %}
-    <i class="fa fa-github"></i>
-    <a href="{{ page.project.repo }}"> {{ page.project.repo }} </a>
+      <i class="fa fa-external-link"></i>
+      <a href="{{ page.project.link }}">
+        {% if page.project.link_desc %}
+          {{ page.project.link_desc }}
+        {% else %}
+          {{ page.project.link }}
+        {% endif %}
+      </a><br/>
+    {% endif %}
+    {% if page.project.repo %}
+      <i class="fa fa-github"></i>
+      <a href="{{ page.project.repo }}">
+        {{ page.project.repo }}
+      </a>
     {% endif %}
   </p>
   <div class="columns">
@@ -36,11 +45,18 @@
       </picture>
     </div>
     <div>
-      <p><span>DevOps</span><br />{{ page.techsheet.devops }}</p>
-      <p><span>Data layer</span><br />{{ page.techsheet.datalayer }}</p>
-      <p><span>Business logic</span><br />{{ page.techsheet.purpose }}</p>
-      <p><span>API layer / MVC</span><br />{{ page.techsheet.framework }}</p>
-      <p><span>Design</span><br />{{ page.techsheet.design }}</p>
+      <p>
+        <span>DevOps</span><br/>{{ page.techsheet.devops }}</p>
+      <p>
+        <span>Data layer</span><br/>{{ page.techsheet.datalayer }}</p>
+      <p>
+        <span>Business logic</span><br/>{{ page.techsheet.purpose }}</p>
+      <p>
+        <span>API layer / MVC</span><br/>{{ page.techsheet.framework }}</p>
+      {% if page.techsheet.design %}
+        <p>
+          <span>Design</span><br/>{{ page.techsheet.design }}</p>
+      {% endif %}
     </div>
   </div>
 
