@@ -1,11 +1,7 @@
 <svg class="inline" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <style>
     circle {
-      fill: black
-    }
-
-    body.dark-theme circle {
-      fill: white
+      fill: var(--zinc);
     }
   </style>
   <circle cx="4" cy="12" r="3">

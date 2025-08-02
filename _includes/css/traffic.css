@@ -38,6 +38,7 @@ div#incidents div div:first-child {
   width: 3rem;
 }
 div#incidents div div p {
+  color: var(--black);
   display: table-cell;
   vertical-align: middle;
   padding: 0 1rem;

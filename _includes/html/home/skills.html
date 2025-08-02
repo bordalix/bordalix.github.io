@@ -6,9 +6,9 @@
     <h3 class="lead">Jack of all trades</h3>
     <div class="skills-container">
       {% for skill in site.skills %}
-      <div style="--bg-img: url(/images/static/skills/{{skill.icon}})">
-        <p>{{ skill.name }}</p>
-      </div>
+        <div style="--bg-img: url(/images/static/skills/{{skill.icon}})">
+          <p>{{ skill.name }}</p>
+        </div>
       {% endfor %}
     </div>
   </div>
@@ -37,8 +37,8 @@
     }
 
     .skills-container div {
-      background: linear-gradient(90deg, var(--cream) 0%, var(--cream) 60%, var(--cream_transparent) 100%),
-        no-repeat right 40% / 40% var(--bg-img);
+      background: linear-gradient(90deg, var(--cream) 0%, var(--cream) 60%, var(--cream_transparent) 100%)
+      , no-repeat right 40% / 40% var(--bg-img);
       border: 1px solid var(--blue);
       border-radius: var(--border-radius);
       padding: 14px;
@@ -46,6 +46,7 @@
     }
 
     .skills-container p {
+      color: var(--black);
       margin: 0;
     }
   </style>
