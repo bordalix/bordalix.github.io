@@ -1,0 +1,39 @@
+---
+title: Streams
+layout: main
+---
+
+<section
+  id="streams"
+  tabindex="0"
+  style="margin-top: 0">
+  <div class="container">
+    <h1 class="heading">
+      <span>Streams</span>
+    </h1>
+    <p>The CUII is a private german organization that reserves the right to block websites it deems to infringe copyright law. This occurs without court orders - and internet providers are following suit in a blatantly unconstitutional attack to free speech.</p>
+    <p>The CUII blocks domains. Which ones exactly? The CUII does not disclose this. But don't worry — that's why
+      <a href="https://cuiiliste.de/">cuiiliste.de</a>
+      exists: They are doing their best to collect and publish all blocked domains.
+    </p>
+    <p>Here are the last 21 blocked domains:</p>
+    <div id="cuiiliste"></div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    fetch('https://api.cuiiliste.de/blocked_domains').then(response => response.json()).then(data => {
+      const list = document.getElementById('cuiiliste');
+      const ul = document.createElement('ul');
+      data.sort((a, b) => new Date(b.first_blocked_on) - new Date(a.first_blocked_on)).slice(0, 21).forEach(domain => {
+        const li = document.createElement('li');
+        li.innerHTML = `${domain.first_blocked_on} - <a href="${domain.domain}">${domain.domain}</a>`;
+        ul.appendChild(li);
+      });
+      list.appendChild(ul);
+    }).catch(error => {
+      console.error('Error fetching blocked domains:', error);
+    });
+  });
+</script>
