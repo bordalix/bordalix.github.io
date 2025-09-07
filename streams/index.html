@@ -28,7 +28,7 @@ layout: main
       const ul = document.createElement('ul');
       data.sort((a, b) => new Date(b.first_blocked_on) - new Date(a.first_blocked_on)).slice(0, 21).forEach(domain => {
         const li = document.createElement('li');
-        li.innerHTML = `${domain.first_blocked_on} - <a href="${domain.domain}">${domain.domain}</a>`;
+        li.innerHTML = `${domain.first_blocked_on} - <a href="https://${domain.domain}">${domain.domain}</a>`;
         ul.appendChild(li);
       });
       list.appendChild(ul);
