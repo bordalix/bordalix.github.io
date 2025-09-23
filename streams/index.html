@@ -16,21 +16,29 @@ layout: main
       <a href="https://cuiiliste.de/">cuiiliste.de</a>
       exists: They are doing their best to collect and publish all blocked domains.
     </p>
-    <p>Here are the last 21 blocked domains:</p>
+    <p>Here are the blocked domains in the last 6 months:</p>
     <div id="cuiiliste"></div>
   </div>
 </section>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    fetch('https://api.cuiiliste.de/blocked_domains').then(response => response.json()).then(data => {
-      const list = document.getElementById('cuiiliste');
-      const ul = document.createElement('ul');
-      data.sort((a, b) => new Date(b.first_blocked_on) - new Date(a.first_blocked_on)).slice(0, 21).forEach(domain => {
-        const li = document.createElement('li');
-        li.innerHTML = `${domain.first_blocked_on} - <a href="https://${domain.domain}">${domain.domain}</a>`;
-        ul.appendChild(li);
-      });
+    const today = new Date();
+    const sixMonthsAgo = new Date(today);
+    sixMonthsAgo.setMonth(today.getMonth() - 6);
+    fetch('https://api.cuiiliste.de/blocked_domains')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('cuiiliste');
+        const ul = document.createElement('ul');
+        data
+          .filter((a) => new Date(a.first_blocked_on) > sixMonthsAgo)
+          .sort((a, b) => new Date(b.first_blocked_on) - new Date(a.first_blocked_on))
+          .forEach(domain => {
+            const li = document.createElement('li');
+            li.innerHTML = `${domain.first_blocked_on} - <a href="https://${domain.domain}">${domain.domain}</a>`;
+            ul.appendChild(li);
+          });
       list.appendChild(ul);
     }).catch(error => {
       console.error('Error fetching blocked domains:', error);
