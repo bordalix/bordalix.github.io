@@ -430,3 +430,7 @@ svg.inline {
   width: 1rem;
   height: 1rem;
 }
+
+i.fa {
+  min-width: 1rem;
+}
