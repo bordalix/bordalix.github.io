@@ -9,13 +9,13 @@ layout: main
 <script src="https://nostr-utils.pages.dev/js/nostr-utils.js"></script>
 
 <style>
-  section.user {
+  section.user > div {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    & > p {
-      height: 8rem;
-      width: 8rem;
+    p.pic {
+      height: 10rem;
+      width: 10rem;
     }
     & img {
       border-radius: 50%;
@@ -41,8 +41,11 @@ layout: main
     }
   }
   @media (max-width: 440px) {
-    section.user {
+    section.user > div {
       flex-direction: column;
+       &:first-child {
+        flex-direction: row;
+      }
       & > p {
         margin: auto;
       }
@@ -87,19 +90,28 @@ layout: main
 
 <template id="user">
   <section class="user">
-    <p></p>
     <div>
+      <h2 class="dis"></h2>
+      <a href="/articles/2023/11/26/what_is_nostr.html">What is Nostr?</a>
+    </div>
+    <p class="abo"></p>
+    <div>
+      <p class="pic"></p>
       <div>
-        <p>name:</p>
-        <p>nip05:</p>
-        <p>lud16:</p>
-        <p>website:</p>
-      </div>
-      <div>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
+        <div>
+          <p>name:</p>
+          <p>nip05:</p>
+          <p>lud16:</p>
+          <p>website:</p>
+          <p>username:</p>
+        </div>
+        <div>
+          <p class="nam">&nbsp;</p>
+          <p class="nip">&nbsp;</p>
+          <p class="lud">&nbsp;</p>
+          <p class="web">&nbsp;</p>
+          <p class="usr">&nbsp;</p>
+        </div>
       </div>
     </div>
   </section>
@@ -130,9 +142,6 @@ layout: main
       <span>Nostr</span>
     </h1>
     <h2 class="lead">Last 7 days on Nostr</h2>
-    <p>
-      <a href="/articles/2023/11/26/what_is_nostr.html">What is Nostr?</a>
-    </p>
     <p id="loadingProfile">Loading profile {% include /svg/loading.svg %}</p>
     <div id="profileInfo"></div>
     <p id="loadingNotes">Loading notes {% include /svg/loading.svg %}</p>
@@ -143,11 +152,10 @@ layout: main
 <script>
   const relays = [
     'wss://nos.lol',
-    'wss://relay.bitcoinpark.com',
     'wss://relay.damus.io',
-    'wss://relay.nostr.bg',
-    'wss://relay.noswhere.com',
     'wss://relay.primal.net',
+    'wss://relay.noswhere.com',
+    'wss://relay.bitcoinpark.com',
   ]
 
   let pubkey = '62cef883863022a4f1d60d54857c9d729650702c9fe227b0988c0b6e36c4bcce'
@@ -157,10 +165,18 @@ layout: main
   } else {
     pubkey = window.location.search.substring(1)
     if (/^npub/.test(pubkey)) {
-      pubkey = npub2hexa(pubkey)
-      window.location.search = `?${pubkey}`
+      window.location.search = `?${npub2hexa(pubkey)}`
     }
-  }
+    if (/^.+@.+$/.test(pubkey)) {
+    const [name, domain] = pubkey.split('@')
+    const url = `https://${domain}/.well-known/nostr.json?name=${name}`
+    fetch(`https://${domain}/.well-known/nostr.json?name=${name}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data || !data.names || !data.names[name]) return
+        window.location.search = `?${data.names[name]}`
+      })
+  }}
 
   const pretty = {
     date: (unix) => {
@@ -201,15 +217,18 @@ layout: main
   getEvents({ authors: [pubkey], kinds: [0] }).then((events) => {
     document.querySelector('#loadingProfile').remove()
     const mostRecent = events.reduce((prev, curr) => (curr.created_at > prev.created_at ? curr : prev))
-    const { lud16, name, nip05, picture, website } = JSON.parse(mostRecent.content)
+    console.log(JSON.parse(mostRecent.content))
+    const { about, displayName, lud16, name, nip05, picture, username, website } = JSON.parse(mostRecent.content)
     const npub = hexa2npub(pubkey)
     const clone = document.querySelector('#user').content.cloneNode(true)
-    const p = clone.querySelectorAll('p')
-    if (picture) p[0].innerHTML = `<img src="${picture}">`
-    if (name) p[5].innerHTML = `<a href="https://njump.me/${npub}">${name}</a>`
-    if (nip05) p[6].innerHTML = `<a href="https://njump.me/${nip05}">${nip05}</a>`
-    if (lud16) p[7].innerHTML = `${lud16} ⚡`
-    if (website) p[8].innerHTML = `<a href="https://njump.me/${website}">${website}</a>`
+    if (about) clone.querySelector('.abo').innerText = about
+    if (displayName) clone.querySelector('.dis').innerText = displayName
+    if (picture) clone.querySelector('.pic').innerHTML = `<img src="${picture}">`
+    if (name) clone.querySelector('.nam').innerHTML = `<a href="https://njump.me/${npub}">${name}</a>`
+    if (nip05) clone.querySelector('.nip').innerHTML = `<a href="https://njump.me/${nip05}">${nip05}</a>`
+    if (lud16) clone.querySelector('.lud').innerHTML = `${lud16} ⚡`
+    if (website) clone.querySelector('.web').innerHTML = `<a href="https://njump.me/${website}">${website}</a>`
+    if (username) clone.querySelector('.usr').innerText = username
     document.querySelector('#profileInfo').appendChild(clone)
   })
 
