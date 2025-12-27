@@ -169,7 +169,6 @@ layout: main
     }
     if (/^.+@.+$/.test(pubkey)) {
     const [name, domain] = pubkey.split('@')
-    const url = `https://${domain}/.well-known/nostr.json?name=${name}`
     fetch(`https://${domain}/.well-known/nostr.json?name=${name}`)
       .then((response) => response.json())
       .then((data) => {
@@ -202,14 +201,14 @@ layout: main
       if (content.match(/nostr:/)) {
         for (const match of content.match(/nostr:.*/g)) {
           const id = match.split(':')[1]
-          content = content.replace(match, `<a href="https://njump.me/${id}">${match}</a>`)
+          content = content.replace(match, `<a href="https://nhopper.pages.dev/?${id}">${match}</a>`)
         }
       }
       return content.replace(/\n/g, '<br />')
     },
     link: (note) => {
       const text = `link to ${note.tags?.length == 0 ? 'note' : 'reply'}`
-      return `<a href="http://njump.me/${note.id}">${text}</a>`
+      return `<a href="https://nhopper.pages.dev/?${note.id}">${text}</a>`
     },
   }
 
@@ -221,13 +220,14 @@ layout: main
     const { about, displayName, lud16, name, nip05, picture, username, website } = JSON.parse(mostRecent.content)
     const npub = hexa2npub(pubkey)
     const clone = document.querySelector('#user').content.cloneNode(true)
+    const url = 'https://nhopper.pages.dev/'
     if (about) clone.querySelector('.abo').innerText = about
     if (displayName) clone.querySelector('.dis').innerText = displayName
     if (picture) clone.querySelector('.pic').innerHTML = `<img src="${picture}">`
-    if (name) clone.querySelector('.nam').innerHTML = `<a href="https://njump.me/${npub}">${name}</a>`
-    if (nip05) clone.querySelector('.nip').innerHTML = `<a href="https://njump.me/${nip05}">${nip05}</a>`
+    if (name) clone.querySelector('.nam').innerHTML = `<a href="${url}?${npub}">${name}</a>`
+    if (nip05) clone.querySelector('.nip').innerHTML = `<a href="${url}?${nip05}">${nip05}</a>`
     if (lud16) clone.querySelector('.lud').innerHTML = `${lud16} ⚡`
-    if (website) clone.querySelector('.web').innerHTML = `<a href="https://njump.me/${website}">${website}</a>`
+    if (website) clone.querySelector('.web').innerHTML = `<a href="${url}?${website}">${website}</a>`
     if (username) clone.querySelector('.usr').innerText = username
     document.querySelector('#profileInfo').appendChild(clone)
   })
