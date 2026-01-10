@@ -25,7 +25,7 @@ body {
   --red: rgb(175, 46, 27);
   --white: var(--my_white);
   --white_dark: var(--my_white_comp);
-  --zinc: rgb(80, 80, 80);
+  --zinc: rgb(80, 79, 78);
 
   --border-radius: 8px;
   --box-opacity: 1;
@@ -47,7 +47,7 @@ body.dark-theme {
   --lime: rgb(115, 107, 30); /* green */
   --white: var(--my_black); /* black */
   --white_dark: var(--my_black_comp); /* black_light */
-  --zinc: rgb(161, 161, 161);
+  --zinc: rgb(192, 191, 190);
 }
 
 ::placeholder {
