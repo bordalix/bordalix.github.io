@@ -28,18 +28,20 @@ description: Bitcoin price
 
     document.addEventListener('DOMContentLoaded', async () => {
       const { pricefeed } = await fetchPrice()
-      document.getElementsByTagName('h2')[0].innerText = `$ ${pricefeed.usd}`
-      document.getElementsByTagName('h2')[1].innerText = `€ ${pricefeed.eur}`
+      document.getElementById('usd').innerText = `$ ${pricefeed.usd}`
+      document.getElementById('eur').innerText = `€ ${pricefeed.eur}`
     })
   </script>
 
   <div class="container">
     <h1 class="heading">Bitcoin price</h1>
-    <h2>$ _____.__</h2>
-    <h2>€ _____.__</h2>
-    <p>Median price from a dozen sources</p>
-    <p>
-      <a href="https://github.com/bordalix/btcoracle">github</a>
-    </p>
+    <section>
+      <p id="usd">$ _____.__</p>
+      <p id="eur">€ _____.__</p>
+      <p>Median price from a dozen sources</p>
+      <p>
+        <a href="https://github.com/bordalix/btcoracle">github</a>
+      </p>
+    </section>
   </div>
 </body>

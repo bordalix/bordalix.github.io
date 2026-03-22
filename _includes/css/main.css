@@ -1,8 +1,10 @@
 :root {
   --my_black: rgb(10, 9, 8);
-  --my_black_comp: rgb(80, 79, 78);
-  --my_white: rgb(245, 244, 243);
-  --my_white_comp: rgb(175, 174, 173);
+  --my_black_comp: rgb(45, 44, 43);
+  --my_black_terciary: rgb(85, 79, 71);
+  --my_white: #f5f0eb;
+  --my_white_comp: #ebe5de;
+  --my_white_terciary: #e0d8cf;
 }
 
 body {
@@ -21,10 +23,11 @@ body {
   --grey: rgb(147, 136, 125);
   --grey_dark: rgb(77, 76, 76);
   --lime: rgb(193, 179, 50);
-  --orange: rgb(204, 99, 36);
+  --orange: rgb(212, 84, 0);
   --red: rgb(175, 46, 27);
   --white: var(--my_white);
   --white_dark: var(--my_white_comp);
+  --white_border: var(--my_white_terciary);
   --zinc: rgb(80, 79, 78);
 
   --border-radius: 8px;
@@ -47,6 +50,7 @@ body.dark-theme {
   --lime: rgb(115, 107, 30); /* green */
   --white: var(--my_black); /* black */
   --white_dark: var(--my_black_comp); /* black_light */
+  --white_border: var(--my_black_terciary); /* black_terciary */
   --zinc: rgb(192, 191, 190);
 }
 
@@ -57,14 +61,28 @@ body.dark-theme {
 }
 
 html {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 body {
   background-color: var(--white);
   color: var(--black);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
-    Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family:
+    saira,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
   letter-spacing: 0;
   line-height: 1.5;
   min-height: 100vh;
@@ -115,14 +133,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.2;
   color: var(--black);
 }
 
 h1 {
   font-weight: 800;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
 }
 
 h1 a,
@@ -133,7 +151,7 @@ h1 a:hover {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.33rem;
   margin-bottom: 1rem;
 }
 
@@ -185,7 +203,7 @@ p {
 p.social {
   display: flex;
   justify-content: space-between;
-  margin: 3rem auto 0;
+  margin: 4rem auto 0;
   max-width: 300px;
 }
 
@@ -260,13 +278,13 @@ video {
   border: 0;
 }
 
-.heading {
+.heading_old {
   text-align: left;
   margin-bottom: 40px;
   color: var(--black);
 }
 
-.heading:after {
+.heading_old:after {
   content: ' ';
   display: block;
   width: 200px;
@@ -303,7 +321,7 @@ video {
 
 @media (max-width: 767px) {
   html {
-    font-size: 16px;
+    font-size: 14px;
   }
   .container {
     padding: 1rem;
@@ -433,4 +451,109 @@ svg.inline {
 
 i.fa {
   min-width: 1rem;
+}
+
+heading {
+  & h1 {
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--grey);
+    margin-bottom: 0.5rem;
+  }
+  & h2 {
+    line-height: 1.2;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    &.fn-mono {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: #8a7a68;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+  }
+  & h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+  & p {
+    line-height: 1.2;
+    font-size: 1.2rem;
+    color: var(--grey);
+    margin-top: 0;
+  }
+}
+
+boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1rem;
+  row-gap: 1rem;
+  & h3,
+  & p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+  & a:last-child box {
+    background-color: var(--white);
+  }
+  & centered {
+    height: 100%;
+    & p {
+      color: var(--orange);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  boxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 440px) {
+  boxes {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+box {
+  background: var(--white_dark);
+  border: 1px solid var(--white_border);
+  border-top: 2px solid var(--orange);
+  padding: 20px;
+  transition: all 0.25s;
+  display: block;
+  height: 100%;
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #8a7a68;
+    margin: 0;
+  }
+}
+
+.fn-mono {
+  font-family:
+    'SF Mono',
+    SF Mono,
+    Consolas,
+    'Liberation Mono',
+    Menlo,
+    Courier,
+    monospace;
 }

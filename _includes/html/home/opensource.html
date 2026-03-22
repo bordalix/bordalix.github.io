@@ -1,47 +1,82 @@
 <section id="opensource" tabindex="0">
   <div class="container">
-    <h2 class="heading">
-      <span>Open source</span>
-    </h2>
-    <h3 class="lead">Giving back</h3>
-    <p>
-      Open source plays a tremendous part in my engineering journey. This is my primary way of learning and I'm truly   
-      humbled to have influenced so many people with my projects. Here are just a few of them.
-    </p>
-  </div>
-  <div>
-    <a href="/portfolio/bitcoinstats.html" aria-label="Bitcoin stats">
-      <div class="box bitcoinstats" data-bg-image="bitcoinstats">
-        <div class="box_text">
+    <heading>
+      <h2 class="fn-mono" style="font-size:10px;letter-spacing:4px;color:#8a7a68;text-transform:uppercase;margin-bottom:16px">Open source</h2>
+    </heading>
+    <boxes>
+      <a href="https://github.com/bordalix/bitcoinstats" aria-label="Bitcoin stats">
+        <box>
           <h3>Bitcoin stats</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/helm.html" aria-label="Helm wallet">
-      <div class="box helm" data-bg-image="helm">
-        <div class="box_text">
+          <p>Dashboard with generic stats about Bitcoin&nbsp;&rarr;</p>
+        </box>
+      </a>
+      <a href="https://github.com/bordalix/helm-wallet" aria-label="Helm wallet">
+        <box>
           <h3>Helm wallet</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/nostr-utils.html" aria-label="Nostr utils">
-      <div class="box nostr-utils" data-bg-image="nostr-utils">
-        <div class="box_text">
+          <p>Lightning wallet even your grandma can use&nbsp;&rarr;</p>
+        </box>
+      </a>
+      <a href="https://github.com/bordalix/chesstr" aria-label="Chesstr">
+        <box>
+          <h3>Chesstr</h3>
+          <p>Chessboard powered by Nostr&nbsp;&rarr;</p>
+        </box>
+      </a>
+      <a href="https://github.com/bordalix/nostr-utils" aria-label="Nostr utils">
+        <box>
           <h3>Nostr utils</h3>
-        </div>
-      </div>
-    </a>
-    <a href="/portfolio/tdex.html" aria-label="TDEX">
-      <div class="box tdex" data-bg-image="tdex">
-        <div class="overlay"></div>
-        <div class="box_text">
+          <p>JavaScript utilities to use with Nostr&nbsp;&rarr;</p>
+        </box>
+      </a>
+      <a href="https://github.com/bordalix/dex.nextjs" aria-label="TDEX">
+        <box>
           <h3>TDEX</h3>
-        </div>
-      </div>
-    </a>
+          <p>Decentralized exchange on Liquid (NextJS UI)&nbsp;&rarr;</p>
+        </box>
+      </a>
+      <a href="https://github.com/bordalix/nhop" aria-label="nhop">
+        <box>
+          <h3>nhop</h3>
+          <p>A client side only njump.me substitute&nbsp;&rarr;</p>
+        </box>
+      </a>
+      <a href="https://github.com/bordalix/paywally" aria-label="paywally">
+        <box>
+          <h3>Paywally</h3>
+          <p>Client side cashu paywall&nbsp;&rarr;</p>
+        </box>
+      </a>
+      <a href="https://github.com/bordalix/pinlink" aria-label="pinlink">
+        <box>
+          <h3>Pinlink</h3>
+          <p>Fetch from pinboard and publish to Nostr&nbsp;&rarr;</p>
+        </box>
+      </a>
+      <a href="https://github.com/bordalix" aria-label="More on GitHub">
+        <centered>
+          <p>More on GitHub&nbsp;&rarr;</p>
+        </centered>
+      </a>
+    </boxes>
   </div>
-  <div style="clear: both"></div>
-  <p class="btn-container">
-    <a class="btn" href="https://github.com/bordalix">View more on GitHub</a>
-  </p>
 </section>
+<style>
+  .project_boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+
+  @media (max-width: 767px) {
+    .project_boxes {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 440px) {
+    .project_boxes {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+</style>

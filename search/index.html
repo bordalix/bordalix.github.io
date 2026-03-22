@@ -12,17 +12,19 @@ layout: blog
   <h1 class="heading">
     <span>Search</span>
   </h1>
-  <noscript>Needs javascript to run.</noscript>
-  <p class="control only-if-js">
-    <input
-      type="search"
-      id="search-input"
-      class="form-control"
-      autofocus
-      oninput="updateHash()"
-      placeholder="Search posts, live results" />
-  </p>
-  <ul id="results-container"></ul>
+  <section>
+    <noscript>Needs javascript to run.</noscript>
+    <p class="control only-if-js">
+      <input
+        type="search"
+        id="search-input"
+        class="form-control"
+        autofocus
+        oninput="updateHash()"
+        placeholder="Search posts, live results" />
+    </p>
+    <ul id="results-container"></ul>
+  </section>
 </div>
 
 <script src="/js/simple-jekyll-search.min.js"></script>
