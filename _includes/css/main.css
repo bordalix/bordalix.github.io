@@ -500,6 +500,7 @@ boxes {
   }
   & centered {
     height: 100%;
+    min-height: 5rem;
     & p {
       color: var(--orange);
     }
