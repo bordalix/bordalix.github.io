@@ -5,6 +5,7 @@
   --my_white: #f5f0eb;
   --my_white_comp: #ebe5de;
   --my_white_terciary: #e0d8cf;
+  --my_brown: #8a7a68;
 }
 
 body {
@@ -467,7 +468,7 @@ heading {
     &.fn-mono {
       font-size: 10px;
       letter-spacing: 4px;
-      color: #8a7a68;
+      color: var(--my_brown);
       text-transform: uppercase;
       margin-bottom: 16px;
     }
@@ -543,7 +544,7 @@ box {
   p {
     font-size: 12px;
     line-height: 1.5;
-    color: #8a7a68;
+    color: var(--my_brown);
     margin: 0;
   }
 }
