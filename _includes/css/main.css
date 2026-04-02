@@ -443,6 +443,12 @@ body.no-js .only-if-js {
   display: none;
 }
 
+svg {
+  path {
+    fill: var(--black);
+  }
+}
+
 svg.inline {
   position: relative;
   top: 0.4rem;

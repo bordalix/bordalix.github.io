@@ -1,13 +1,15 @@
 <nav class="menu-top">
   <div class="container flexed">
-    <p class="navLeft">
+    <div class="navLeft">
       <span>
-        <a href="/" aria-label="logo"> {% include /svg/logo.svg %} </a>
+        <a href="/" aria-label="logo">
+          {% include /svg/logo.svg %}
+        </a>
       </span>
       &middot;
       <a href="/blog">Blog</a>
-    </p>
-    <p class="navRight">
+    </div>
+    <div class="navRight">
       <span class="dark-theme-toggle">
         {% include /svg/dark-theme.svg %}
         <span class="sr-only">Dark mode toggle</span>
@@ -20,9 +22,12 @@
         {% include /svg/rss.svg %}
         <span class="sr-only">RSS feed</span>
       </a>
-    </p>
+    </div>
   </div>
   <style>
+    nav {
+      margin-bottom: 1rem;
+    }
     nav a,
     nav a:hover {
       color: var(--black);
@@ -36,6 +41,9 @@
       margin-left: 0.5rem;
     }
     .navRight {
+      background-color: var(--white_dark);
+      border-radius: var(--border-radius);
+      padding: 0.25rem 0.5rem;
       margin-bottom: 0;
     }
   </style>
