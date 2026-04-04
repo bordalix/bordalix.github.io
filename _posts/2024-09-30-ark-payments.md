@@ -18,7 +18,7 @@ Let’s call it <u>Send</u> and <u>Send Async</u> respectively.
 
 <!--more-->
 
-In Ark there also 2 options for Alice (assuming Alice already has a VTXO).
+In Ark there are also 2 options for Alice (assuming Alice already has a VTXO).
 
 **Send:**
 

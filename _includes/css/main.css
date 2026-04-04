@@ -447,6 +447,9 @@ svg {
   path {
     fill: var(--black);
   }
+  &:hover path {
+    fill: var(--orange);
+  }
 }
 
 svg.inline {
