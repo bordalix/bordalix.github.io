@@ -12,24 +12,39 @@ description: Gerador de estratégia nacional
 
 <section id="main">
   <div class="container">
-    <h2 class="heading">Gerador de estratégia nacional</h2>
-    <h3 class="lead">
+    <h1>Gerador de estratégia</h1>
+    <p>
       Inspirado neste
       <a href="https://twitter.com/bordalix/status/1302014840832241665">twit</a>
-    </h3>
+    </p>
     <p style="text-align: right">
       Omitir separador de página:
       <input id="omitPage" type="checkbox" />
-      <br />
+      <br/>
       Número de frases por parágrafo:
-      <input id="numSentences" type="number" min="1" max="999" value="5" />
-      <br />
+      <input
+        id="numSentences"
+        type="number"
+        min="1"
+        max="999"
+        value="5" />
+      <br/>
       Número de parágrafos por página:
-      <input id="numParagraphs" type="number" min="1" max="999" value="4" />
-      <br />
+      <input
+        id="numParagraphs"
+        type="number"
+        min="1"
+        max="999"
+        value="4" />
+      <br/>
       Número de páginas:
-      <input id="numPages" type="number" min="1" max="999" value="1" />
-      <br />
+      <input
+        id="numPages"
+        type="number"
+        min="1"
+        max="999"
+        value="1" />
+      <br/>
       <button onclick="generateBullshit()">Gerar</button>
     </p>
     <div id="content_container"></div>

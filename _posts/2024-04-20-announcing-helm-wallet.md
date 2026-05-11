@@ -19,10 +19,11 @@ But it has a cost.
 
 All transactions must go on the Liquid chain and also Boltz must earn something for the service they provide, so there are fees to be paid:
 
-- The minimum cost for sending a payment is around 200 sats;
-- The average cost for sending **or receiving** a payment is around 400 sats plus 0.1% of the amount;
+- Boltz fee is 0.1% of the amount for sending to Lightning;
+- Boltz fee is 0.25% of the amount for receiving from Lightning;
+- The average network fee for sending or receiving a payment is around 47 sats;
 - Transactions between Helm wallets don’t pay Boltz fees but can take up to 1 minute to complete;
-- Amounts are limited between 1.000 and 25.000.000 sats.
+- Boltz swaps are limited between 100 and 25.000.000 sats.
 
 You can try it (testnet if you want) on [https://helm-wallet.pages.dev/](https://helm-wallet.pages.dev/)
 

@@ -4,19 +4,18 @@ description: João Bordalo's Blog
 ---
 
 <div class="container">
-  <h1 class="heading">
-    <span>Blog</span>
-  </h1>
-  {% for post in paginator.posts %} {% assign mod = forloop.index | modulo: 2 %}
-  <section>
-    <article class="post">
-      {% assign foo = post %} {% include html/post/header.html %}
-      <div class="content">{{ post.excerpt }}</div>
-      {% if post.extended %}
-      <a href="{{ post.url }}">Read more...</a>
-      {% endif %}
-    </article>
-  </section>
+  <h1>Blog</h1>
+  {% for post in paginator.posts %}
+    {% assign mod = forloop.index | modulo: 2 %}
+    <section>
+      <article class="post">
+        {% assign foo = post %} {% include html/post/header.html %}
+        <div class="content">{{ post.excerpt }}</div>
+        {% if post.extended %}
+          <a href="{{ post.url }}">Read more...</a>
+        {% endif %}
+      </article>
+    </section>
   {% endfor %}
 </div>
 <section>
@@ -25,13 +24,13 @@ description: João Bordalo's Blog
     <div class="pagination">
       <p>
         {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path }}">&laquo; Previous</a>
+          <a href="{{ paginator.previous_page_path }}">&laquo; Previous</a>
         {% endif %}
       </p>
       <p>Page: {{ paginator.page }} of {{ paginator.total_pages }}</p>
       <p>
         {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path }}" class="next">Next &raquo;</a>
+          <a href="{{ paginator.next_page_path }}" class="next">Next &raquo;</a>
         {% endif %}
       </p>
     </div>
