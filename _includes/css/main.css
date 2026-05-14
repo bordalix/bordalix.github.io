@@ -25,6 +25,7 @@ body {
   --egg: rgb(211, 206, 201);
   --green: rgb(115, 107, 30);
   --grey: rgb(147, 136, 125);
+  --grey_light: rgba(147, 136, 125, 0.5);
   --grey_dark: rgb(77, 76, 76);
   --lime: rgb(193, 179, 50);
   --orange: rgb(212, 84, 0);

@@ -41,28 +41,16 @@ figcaption {
 
 .project .columns p {
   line-height: 1.2;
-  margin-bottom: 0.3rem;
+  margin-bottom: 1.5rem;
 }
 
-.project .columns p span {
-  color: var(--egg);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
+.project .columns h2 {
+  margin-bottom: 0.2rem;
 }
 
 .project .text_column.right p {
   line-height: 1;
   margin-bottom: 0.7rem;
-}
-
-.project .text_column.right p span {
-  color: var(--egg);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
 }
 
 .fullstory {
