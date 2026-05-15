@@ -5,9 +5,9 @@ description: João Bordalo's Blog
 
 <div class="container">
   <h1>Blog</h1>
-  {% for post in paginator.posts %}
-    {% assign mod = forloop.index | modulo: 2 %}
-    <section>
+  <section class="posts-list">
+    {% for post in paginator.posts %}
+      {% assign mod = forloop.index | modulo: 2 %}
       <article class="post">
         {% assign foo = post %} {% include html/post/header.html %}
         <div class="content">{{ post.excerpt }}</div>
@@ -15,8 +15,8 @@ description: João Bordalo's Blog
           <a href="{{ post.url }}">Read more...</a>
         {% endif %}
       </article>
-    </section>
-  {% endfor %}
+    {% endfor %}
+  </section>
 </div>
 <section>
   <div class="container">

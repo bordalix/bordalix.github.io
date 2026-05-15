@@ -34,9 +34,10 @@
   padding: 1rem;
   width: 5rem;
   height: 4rem;
-  &:hover {
-    background-color: var(--grey);
-  }
+}
+
+.channel p:hover {
+  background-color: var(--grey);
 }
 
 .channel img {

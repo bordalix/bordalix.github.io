@@ -2,36 +2,14 @@
   <div class="container">
     <h2 class="fn-mono">Open source</h2>
     <boxes>
-      <a href="https://github.com/bordalix/bitcoinstats" aria-label="Bitcoin stats">
-        <box>
-          <h3>Bitcoin stats</h3>
-          <p>Dashboard with generic stats about Bitcoin&nbsp;&nearr;</p>
-        </box>
-      </a>
-      <a href="https://github.com/bordalix/helm-wallet" aria-label="Helm wallet">
-        <box>
-          <h3>Helm wallet</h3>
-          <p>Lightning wallet even your grandma can use&nbsp;&nearr;</p>
-        </box>
-      </a>
-      <a href="https://github.com/bordalix/chesstr" aria-label="Chesstr">
-        <box>
-          <h3>Chesstr</h3>
-          <p>Chessboard powered by Nostr&nbsp;&nearr;</p>
-        </box>
-      </a>
-      <a href="https://github.com/bordalix/nhop" aria-label="nhop">
-        <box>
-          <h3>nhop</h3>
-          <p>A client side only njump.me substitute&nbsp;&nearr;</p>
-        </box>
-      </a>
-      <a href="https://github.com/bordalix/paywally" aria-label="paywally">
-        <box>
-          <h3>Paywally</h3>
-          <p>Client side cashu paywall&nbsp;&nearr;</p>
-        </box>
-      </a>
+      {% for project in site.opensource %}
+        <a href="{{ project.url }}" aria-label="{{ project.name }}">
+          <box>
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}&nbsp;&nearr;</p>
+          </box>
+        </a>
+      {% endfor %}
       <a href="https://github.com/bordalix" aria-label="More on GitHub">
         <centered>
           <p>More on GitHub&nbsp;&nearr;</p>
@@ -40,23 +18,3 @@
     </boxes>
   </div>
 </section>
-<style>
-  .project_boxes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 10px;
-    row-gap: 10px;
-  }
-
-  @media (max-width: 767px) {
-    .project_boxes {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 440px) {
-    .project_boxes {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-</style>

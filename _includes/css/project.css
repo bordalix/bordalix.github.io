@@ -23,9 +23,7 @@ figcaption {
   opacity: 1;
   height: auto;
   width: 100%;
-  box-shadow: 6px 6px 6px var(--grey);
   transition: opacity 0.3s;
-  border: 1px solid var(--grey);
 }
 
 .project .columns {
@@ -65,11 +63,9 @@ figcaption {
 .fullstory img,
 .fullstory .img-container {
   opacity: 1;
-  height: auto;
   width: 100%;
-  box-shadow: 6px 6px 6px var(--grey);
+  height: auto;
   transition: opacity 0.3s;
-  border: 1px solid var(--grey);
 }
 
 @media (min-width: 1200px) {
