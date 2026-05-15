@@ -1,0 +1,101 @@
+<section id="experience" tabindex="0">
+  <div class="container">
+    <h2 class="fn-mono">Experience</h2>
+    <div class="milestones">
+      {% for milestone in site.experience %}
+        <div class="milestone">
+          <div class="when">{{ milestone.start_date }}
+            <span>-</span>
+            {{ milestone.end_date }}</div>
+          <div class="sepa">
+            <span class="mark"></span>
+            <span class="line"></span>
+          </div>
+          <div class="body">
+            <h3>{{ milestone.name }}</h3>
+            <h4>{{ milestone.role }}</h4>
+            <p>{{ milestone.description }}</p>
+            <div class="tags">
+              {% for tag in milestone.tags %}
+                <div class="tag">{{ tag }}</div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <style>
+    .milestone {
+      gap: 0 18px;
+      display: grid;
+      position: relative;
+      grid-template-columns: 140px 28px 1fr;
+    }
+    @media screen and (max-width: 600px) {
+      .milestone .when span {
+        display: none;
+      }
+      .milestone {
+        gap: 0 10px;
+        display: grid;
+        position: relative;
+        grid-template-columns: 60px 28px 1fr;
+      }
+    }
+    .milestone h3 {
+      font-size: 19px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-family: var(--serif);
+    }
+    .milestone h4 {
+      font-size: 17px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      color: var(--orange);
+    }
+    .milestone .when {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 12px;
+      padding-top: 4px;
+    }
+    .milestone .sepa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .milestone .sepa .mark {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 3px solid var(--orange);
+    }
+    .milestone .sepa .line {
+      flex: 1;
+      width: 2px;
+      margin: 4px 0;
+      background: var(--grey_light);
+    }
+    .milestone .body {
+      padding-bottom: 36px;
+    }
+    .milestone .tags {
+      gap: 8px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .milestone .tag {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      background: var(--cream);
+      border: 1px solid var(--grey_light);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+  </style>
+</section>
