@@ -1,0 +1,20 @@
+<section id="portfolio" tabindex="0">
+  <div class="container">
+    <h2 class="fn-mono">Selected work</h2>
+    <boxes>
+      {% for project in site.projects %}
+        <a href="{{ project.url }}" aria-label="{{ project.name }}">
+          <box>
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}&nbsp;&rarr;</p>
+          </box>
+        </a>
+      {% endfor %}
+      <a href="/portfolio/" aria-label="More on portfolio">
+        <centered>
+          <p>More on portfolio&nbsp;&rarr;</p>
+        </centered>
+      </a>
+    </boxes>
+  </div>
+</section>
