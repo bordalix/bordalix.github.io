@@ -1,53 +1,52 @@
-<nav class="menu-top">
-  <div class="container flexed">
-    <div class="navLeft">
-      <span>
-        <a href="/" aria-label="logo">
-          {% include /svg/logo.svg %}
-        </a>
-      </span>
-      &middot;
-      <a href="/blog">Blog</a>
-    </div>
-    <div class="navRight">
-      <span class="dark-theme-toggle">
-        {% include /svg/dark-theme.svg %}
-        <span class="sr-only">Dark mode toggle</span>
-      </span>
-      <a href="/search" title="Search">
-        {% include /svg/search.svg %}
-        <span class="sr-only">Search</span>
-      </a>
-      <a href="/feed.xml" title="RSS feed">
-        {% include /svg/rss.svg %}
-        <span class="sr-only">RSS feed</span>
-      </a>
-    </div>
+<nav class="container flexed">
+  <div>
+    <a href="/" aria-label="logo">
+      {% include /svg/logo.svg %}
+    </a>
+    &middot;
+    <a href="/blog">Blog</a>
   </div>
-  <style>
-    nav {
-      margin-bottom: 1rem;
-    }
-    nav a,
-    nav a:hover {
-      color: var(--black);
-      cursor: pointer;
-      text-decoration: none;
-    }
-    nav svg {
-      vertical-align: middle;
-    }
-    .navRight a {
-      margin-left: 0.5rem;
-    }
-    .navRight {
-      background-color: var(--white_dark);
-      border-radius: var(--border-radius);
-      padding: 0.25rem 0.5rem;
-      margin-bottom: 0;
-    }
-  </style>
-  <script>
-    {% include js/dark_mode.js %}
-  </script>
+  <div class="shadow">
+    <span class="dark-theme-toggle">
+      {% include /svg/dark-theme.svg %}
+      <span class="sr-only">Dark mode toggle</span>
+    </span>
+    <a href="/search" title="Search">
+      {% include /svg/search.svg %}
+      <span class="sr-only">Search</span>
+    </a>
+    <a href="/feed.xml" title="RSS feed">
+      {% include /svg/rss.svg %}
+      <span class="sr-only">RSS feed</span>
+    </a>
+  </div>
 </nav>
+<style>
+  nav {
+    margin-bottom: 1rem;
+  }
+  nav a,
+  nav a:hover {
+    color: var(--black);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  nav div {
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  nav svg {
+    vertical-align: middle;
+  }
+  .shadow {
+    background-color: var(--white_dark);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    margin-bottom: 0;
+  }
+</style>
+<script>
+  {% include js/dark_mode.js %}
+</script>
