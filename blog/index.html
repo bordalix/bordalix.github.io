@@ -18,21 +18,35 @@ description: João Bordalo's Blog
     {% endfor %}
   </section>
 </div>
-<section>
-  <div class="container">
-    <!-- Pagination links -->
-    <div class="pagination">
-      <p>
-        {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path }}">&laquo; Previous</a>
-        {% endif %}
-      </p>
-      <p>Page: {{ paginator.page }} of {{ paginator.total_pages }}</p>
-      <p>
-        {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path }}" class="next">Next &raquo;</a>
-        {% endif %}
-      </p>
-    </div>
-  </div>
-</section>
+<!-- Pagination links -->
+<div class="container pagination">
+  {% if paginator.previous_page %}
+    <p class="shadow">
+      <a href="{{ paginator.previous_page_path }}">
+        &laquo; Newer
+      </a>
+    </p>
+  {% else %}
+    <p></p>
+  {% endif %}
+  <p style="color: var(--zinc)">Page: {{ paginator.page }} of {{ paginator.total_pages }}</p>
+  {% if paginator.next_page %}
+    <p class="shadow">
+      <a href="{{ paginator.next_page_path }}" class="next">Older &raquo;</a>
+    </p>
+  {% else %}
+    <p></p>
+  {% endif %}
+</div>
+<style>
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .pagination p {
+    margin: 0;
+    min-width: 4rem;
+  }
+</style>
