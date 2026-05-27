@@ -5,30 +5,6 @@
 <div class="container project">
   <h1>{{ page.title }}</h1>
   <h2>{{ page.project.description }}</h2>
-  <p style="margin-top: 2rem;">
-    <strong>Status:</strong>
-    {{ page.project.status }}<br/>
-    <strong>Client:</strong>
-    {{ page.project.client }}<br/>
-  </p>
-  <p>
-    {% if page.project.link %}
-      <i class="fa fa-external-link"></i>
-      <a href="{{ page.project.link }}">
-        {% if page.project.link_desc %}
-          {{ page.project.link_desc }}
-        {% else %}
-          {{ page.project.link }}
-        {% endif %}
-      </a><br/>
-    {% endif %}
-    {% if page.project.repo %}
-      <i class="fa fa-github"></i>
-      <a href="{{ page.project.repo }}">
-        {{ page.project.repo }}
-      </a>
-    {% endif %}
-  </p>
   <div class="columns">
     <div>
       <picture>
@@ -43,20 +19,60 @@
       </picture>
     </div>
     <div>
-      <h2 class="fn-mono">DevOps</h2>
-      <p>{{ page.techsheet.devops }}</p>
-      <h2 class="fn-mono">Data layer</h2>
-      <p>{{ page.techsheet.datalayer }}</p>
-      <h2 class="fn-mono">Business logic</h2>
-      <p>{{ page.techsheet.purpose }}</p>
-      <h2 class="fn-mono">API layer / MVC</h2>
-      <p>{{ page.techsheet.framework }}</p>
-      {% if page.techsheet.design %}
-        <h2 class="fn-mono">Design</h2>
-        <p>{{ page.techsheet.design }}</p>
+      <h2 class="fn-mono">Techsheet</h2>
+      <table>
+        <tr>
+          <td>Status</td>
+          <td>{{ page.project.status }}</td>
+        </tr>
+        <tr>
+          <td>Client</td>
+          <td>{{ page.project.client }}</td>
+        </tr>
+        <tr>
+          <td>DevOps</td>
+          <td>{{ page.techsheet.devops }}</td>
+        </tr>
+        <tr>
+          <td>Data</td>
+          <td>{{ page.techsheet.datalayer }}</td>
+        </tr>
+        <tr>
+          <td>Logic</td>
+          <td>{{ page.techsheet.purpose }}</td>
+        </tr>
+        <tr>
+          <td>Framework</td>
+          <td>{{ page.techsheet.framework }}</td>
+        </tr>
+        {% if page.techsheet.design %}
+          <tr>
+            <td>Design</td>
+            <td>{{ page.techsheet.design }}</td>
+          </tr>
+        {% endif %}
+      </table>
+      {% if page.project.link %}
+        <h2 class="fn-mono" style="margin-bottom: 0">Link</h2>
+        <p style="margin-bottom: 1rem;">
+          <a href="{{ page.project.link }}">
+            {% if page.project.link_desc %}
+              {{ page.project.link_desc }}
+            {% else %}
+              {{ page.project.link }}
+            {% endif %}
+          </a>
+        </p>
+      {% endif %}
+      {% if page.project.repo %}
+        <h2 class="fn-mono" style="margin-bottom: 0">Repo</h2>
+        <p>
+          <a href="{{ page.project.repo }}">
+            {{ page.project.repo }}
+          </a>
+        </p>
       {% endif %}
     </div>
   </div>
-
   {% include html/portfolio/navigation.html %}
 </div>

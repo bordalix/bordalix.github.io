@@ -29,8 +29,8 @@ figcaption {
 .project .columns {
   display: grid;
   column-gap: 2rem;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 3rem;
+  grid-template-columns: 2fr 1fr;
+  margin: 3rem 0;
 }
 
 .project .columns div {
@@ -38,12 +38,16 @@ figcaption {
 }
 
 .project .columns p {
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
+  font-size: 14px;
+  margin: 0.5rem 0;
 }
 
-.project .columns h2 {
-  margin-bottom: 0.2rem;
+.project .columns h2:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.project .columns p span {
+  font-weight: 600;
 }
 
 .project .text_column.right p {
@@ -65,12 +69,9 @@ figcaption {
   opacity: 1;
   width: 100%;
   height: auto;
-  transition: opacity 0.3s;
-}
-
-@media (min-width: 1200px) {
-  .project .columns p {
-    margin-bottom: 1rem;
+  transition: opacity 0.5s;
+  @starting-style {
+    opacity: 0; /* State when element first loads */
   }
 }
 
@@ -78,4 +79,12 @@ figcaption {
   .project .columns {
     grid-template-columns: 1fr;
   }
+}
+
+table {
+  border-color: var(--my_brown);
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 1rem 0;
+  width: 100%;
 }

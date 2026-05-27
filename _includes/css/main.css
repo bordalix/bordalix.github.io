@@ -146,17 +146,6 @@ h2 {
   font-weight: 400;
   line-height: 1.3;
 }
-h2.fn-mono {
-  line-height: 1.2;
-  font-size: 1.5rem;
-  margin-bottom: 0;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: var(--my_brown);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
 
 h3 {
   font-size: 1.2rem;
@@ -246,7 +235,7 @@ table {
   margin-bottom: 2rem;
 }
 td {
-  border-top: 1px solid var(--black);
+  border-top: 1px solid var(--my_brown);
 }
 th {
   background-color: var(--cream);
@@ -257,7 +246,7 @@ th {
 }
 td:first-child,
 th:first-child {
-  border-right: 1px solid var(--black);
+  border-right: 1px solid var(--my_brown);
 }
 
 ul {
@@ -294,11 +283,41 @@ video {
 }
 
 .fn-mono {
+  font-size: 11px;
+  margin-bottom: 0;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  color: var(--my_brown);
   font-family: var(--mono);
+  text-transform: uppercase;
 }
 
 .left {
   float: left;
+}
+
+.metainfo {
+  border-top: 1px var(--white_dark) solid;
+  border-bottom: 1px var(--white_dark) solid;
+  margin-bottom: 1rem;
+  padding: 4px 0;
+}
+.metainfo div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+  padding: 0;
+}
+.metainfo p {
+  color: var(--zinc);
+  font-size: 0.8rem;
+  padding: 0;
+  margin: 0;
+}
+.metainfo div p:first-child {
+  min-height: 24px;
 }
 
 .right {
@@ -308,8 +327,24 @@ video {
 .shadow {
   background-color: var(--white_dark);
   border-radius: var(--border-radius);
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   margin-bottom: 0;
+}
+
+.share-buttons {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.share-buttons svg {
+  height: 0.8rem;
+  path {
+    fill: var(--zinc);
+  }
+}
+.share-buttons a:hover svg path {
+  fill: var(--black);
 }
 
 .social {
