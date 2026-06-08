@@ -11,18 +11,20 @@ layout: main
 <style>
   section.user > div {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    margin-bottom: 2rem;
     gap: 2rem;
-    p.pic {
+    & p.pic {
       height: 10rem;
       width: 10rem;
-    }
-    & img {
-      border-radius: 50%;
-      border: 1px solid silver;
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
+      & img {
+        border-radius: 50%;
+        border: 1px solid silver;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
     }
     & > div {
       align-items: center;
@@ -67,20 +69,35 @@ layout: main
       text-overflow: ellipsis;
     }
   }
+  p.music {
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    margin-top: -2rem;
+    color: var(--zinc);
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: start;
+  }
 </style>
 
 <template id="user">
   <section class="user">
     <div>
       <h2 class="dis"></h2>
-      <a href="/articles/2023/11/26/what_is_nostr.html">What is Nostr?</a>
+      <p style="font-size: 0.8rem">
+        <a href="/articles/2023/11/26/what_is_nostr.html">What is Nostr?</a>
+      </p>
     </div>
-    <p class="abo"></p>
+    <p class="music" style="display: none">
+      {% include /svg/music.svg %}
+      <span></span>
+    </p>
     <div>
       <p class="pic"></p>
       <div>
         <div>
           <p>name:</p>
+          <p>about:</p>
           <p>nip05:</p>
           <p>lud16:</p>
           <p>website:</p>
@@ -88,6 +105,7 @@ layout: main
         </div>
         <div>
           <p class="nam">&nbsp;</p>
+          <p class="abo">&nbsp;</p>
           <p class="nip">&nbsp;</p>
           <p class="lud">&nbsp;</p>
           <p class="web">&nbsp;</p>
@@ -200,7 +218,6 @@ layout: main
   getEvents({ authors: [pubkey], kinds: [0] }).then((events) => {
     document.querySelector('#loadingProfile').remove()
     const mostRecent = events.reduce((prev, curr) => (curr.created_at > prev.created_at ? curr : prev))
-    console.log(JSON.parse(mostRecent.content))
     const { about, displayName, lud16, name, nip05, picture, username, website } = JSON.parse(mostRecent.content)
     const npub = hexa2npub(pubkey)
     const clone = document.querySelector('#user').content.cloneNode(true)
@@ -216,10 +233,18 @@ layout: main
     document.querySelector('#profileInfo').appendChild(clone)
   })
 
+  // get current music playing
+  const tenMinsAgo = Math.floor(Date.now() / 1000 - 10 * 60)
+  getEvents({ authors: [pubkey], kinds: [30315], since: tenMinsAgo }).then((events) => {
+    if (events.length === 0) return
+    const mostRecent = events.reduce((prev, curr) => (curr.created_at > prev.created_at ? curr : prev))
+    document.querySelector('.music span').innerHTML = mostRecent.content
+    document.querySelector('.music').style.display = 'flex'
+  })
+
   // get events from relays
   const aWeekAgo = Math.floor(Date.now() / 1000 - 7 * 24 * 60 * 60)
-  const filter = { authors: [pubkey], kinds: [1], since: aWeekAgo }
-  getEvents(filter).then((data) => {
+  getEvents({ authors: [pubkey], kinds: [1], since: aWeekAgo }).then((data) => {
     notesContainer = document.querySelector('#notesContainer')
     document.querySelector('#loadingNotes').remove()
     if (data.length === 0) {
