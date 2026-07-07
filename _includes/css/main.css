@@ -522,3 +522,9 @@ box {
     font-size: 12px;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
