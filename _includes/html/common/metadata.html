@@ -56,6 +56,7 @@
 <meta name="twitter:url" content="{{ site.url }}{{ page.url }}" />
 <meta name="twitter:image" content="{{ site.cdn_url }}/logos/logo_twitter.png" />
 <meta name="theme-color" content="#1f75b2" />
+<meta name="lightning" content="bordalix@coinos.io" />
 <link rel="apple-touch-icon-precomposed" href="{{ site.cdn_url }}/logos/apple-touch-icon-57x57.png" />
 <link
   rel="apple-touch-icon-precomposed"
@@ -79,5 +80,8 @@
   rel="alternate"
   type="application/atom+xml"
   title="RSS Feed for João Bordalo's blog"
-  href="/feed.xml" />
-<meta name="lightning" content="bordalix@coinos.io" />
+  href="{{ '/feed.xml' | absolute_url }}" />
+<link rel="alternate"
+  type="application/rss+xml"
+  title="RSS Feed for João Bordalo's blog"
+  href="{{ '/rss.xml' | absolute_url }}">
