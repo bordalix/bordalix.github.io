@@ -4,7 +4,7 @@ date: 2023-07-10 11:27:38
 extended: true
 layout: post
 tags: [bitcoin, difficulty, pow]
-title: "Maximum target hash"
+title: 'Maximum target hash'
 ---
 
 Do you know which Bitcoin constant is this?
@@ -27,7 +27,7 @@ This adjustment is made every 2016 blocks (~2 weeks), by multiplying the current
 
 For example, if the last 2016 took 18144 minutes (instead of 20160), the ratio would be 1.1 and the new difficulty would be 1.1 times the previous difficulty:
 
-new difficulty = difficulty \* ( 20160 / 18144)
+new difficulty = difficulty \* (20160 / 18144)
 
 To reflect difficulty in the process of mining, a new value is calculated from the difficulty value (the target hash) and block headers must be equal or below this target hash. Since block headers are found by trial and error, the lower the target hash, the harder it is to find a valid block header.
 
