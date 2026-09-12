@@ -93,7 +93,6 @@ a.tag:hover {
 }
 a.tag span {
   background-color: var(--white_dark);
-  border-radius: 4px;
   font-size: 0.66rem;
   padding: 0 0.3rem;
 }
@@ -326,7 +325,6 @@ video {
 
 .shadow {
   background-color: var(--white_dark);
-  border-radius: var(--border-radius);
   padding: 0.5rem 1rem;
   margin-bottom: 0;
 }

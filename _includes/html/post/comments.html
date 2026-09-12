@@ -40,7 +40,6 @@
   }
   #comments_container > div > div > div:first-child > div button {
     border-color: var(--white);
-    border-radius: var(--border-radius);
   }
   #comments_container > div > div > div:not(:first-child) > div {
     background-color: var(--brown_light);
@@ -59,9 +58,12 @@
 
 <div class="only-if-js">
   <div id="comments_header">
-    <p><strong>Add your opinion</strong></p>
+    <p>
+      <strong>Add your opinion</strong>
+    </p>
     <p style="font-size: 0.8rem">
-      powered by <a href="https://github.com/fiatjaf/nocomment" target="_blank">nocomment</a>
+      powered by
+      <a href="https://github.com/fiatjaf/nocomment" target="_blank">nocomment</a>
     </p>
   </div>
   <div id="comments_container">
@@ -69,7 +71,6 @@
       data-owner="npub1vt803quxxq32fuwkp42g2lyaw2t9qupvnl3z0vyc3s9kudkyhn8qt28cxv"
       id="nocomment"
       data-placeholder="Any critics, comments or suggestions are welcome"
-      src="/js/nocomment.js">
-    </script>
+      src="/js/nocomment.js"></script>
   </div>
 </div>
