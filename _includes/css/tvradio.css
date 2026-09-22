@@ -28,16 +28,14 @@
 }
 
 .channel p {
-  background-color: var(--egg);
-  border-radius: 10px;
   margin: auto;
-  padding: 1rem;
+  padding: 0;
   width: 5rem;
   height: 4rem;
 }
 
-.channel p:hover {
-  background-color: var(--grey);
+.channel:hover {
+  background-color: var(--white_border);
 }
 
 .channel img {

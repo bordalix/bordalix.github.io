@@ -234,7 +234,7 @@ table {
   margin-bottom: 2rem;
 }
 td {
-  border-top: 1px solid var(--my_brown);
+  border-top: 1px solid var(--white_border);
 }
 th {
   background-color: var(--cream);
@@ -245,7 +245,7 @@ th {
 }
 td:first-child,
 th:first-child {
-  border-right: 1px solid var(--my_brown);
+  border-right: 1px solid var(--white_border);
 }
 
 ul {

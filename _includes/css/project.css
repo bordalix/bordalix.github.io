@@ -82,7 +82,7 @@ figcaption {
 }
 
 table {
-  border-color: var(--my_brown);
+  border-color: var(--white_border);
   border-collapse: collapse;
   font-size: 12px;
   margin: 1rem 0;

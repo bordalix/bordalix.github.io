@@ -41,9 +41,9 @@ textarea.form-control {
 }
 
 textarea {
-  background-color: var(--cream);
   background-image: none;
-  border: 1px solid var(--grey);
+  background-color: var(--cream);
+  border: 1px solid var(--white_border);
 }
 
 .btn {
@@ -80,7 +80,7 @@ textarea {
 
 input {
   background-color: var(--cream);
-  border: 1px solid var(--grey);
+  border: 1px solid var(--white_border);
   color: var(--black);
 }
 input[type='submit'] {
